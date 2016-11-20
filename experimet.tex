@@ -1,0 +1,46 @@
+\documentclass[10pt]{article}
+\usepackage{doc}
+\usepackage{texmate}
+\usepackage{chessboard}
+
+\begin{document}
+\setfigfontfamily{merida}
+\setboardfontfamily{merida}
+
+\newgame
+\twocolumn
+\renewcommand\afterno{.~}
+\renewcommand\iiopent{\par}
+\renewcommand\iicloset{\par}
+\renewcommand\takes{x}
+\renewcommand\beforeb{\the\move.~\dots\ }
+
+\let\ifont\normalfont
+% \let\showboard\chessboard
+
+\subsection{Watson's format}
+
+\begin{center}
+\textsf{Timoshenko -- Itkis}
+
+\textit{Baile Herculane 1996}
+\end{center}
+\noindent
+\newgame
+|1. e4 e6 2. d4 d5 3. Nc3 Nf6 4. e5 Nfd7 5. f4 c5 6. Nf3 Nc6 7. Be3 cxd4 8. Nxd4 Qb6|
+|9. Qd2 Qxb2 10. Rb1 Qa3 Rb3 b6!!|
+\indent
+\begin{figure}[h]
+\centering
+\showboard
+\end{figure}
+
+\newgame
+\leftdiagramturn
+\indent
+\begin{figure}[h]
+\centering
+\showboard
+\end{figure}
+
+\end{document}
