@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you give
+% someone the link to this page, they can edit at the same
+% time. See the help menu above for more info. Enjoy!
+%
+% Note: you can export the pdf to see the result at full
+% resolution.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A simple Tree
+% Author: Stefan Kottwitz
+% https://www.packtpub.com/hardware-and-creative/latex-cookbook
+% \documentclass[border=10pt]{standalone}
+\documentclass[border=10pt]{article}
+%%%<
+\usepackage{verbatim}
+%%%>
+
+\usepackage{tikz}
+\begin{document}
+
+\tikzstyle{b}=[draw=red,fill=red!30]
+\tikzstyle{a}=[draw=green,fill=green!30]
+\tikzstyle{every node}=[
+    shape=rectangle,
+    rounded corners,
+    draw, align=center,
+    top color=white,
+    bottom color=blue!20]
+
+\begin{tikzpicture}[sibling distance=10em]
+    \node [a] {$\exists x\forall z(\forall y(\varphi(z, y)\leftrightarrow x=z))$}
+    child { node [b] {$\neg(\forall y\exists x\forall z(\varphi(z,y)\leftrightarrow x=z))$}
+      child { node [b] {$\exists y\neg(\exists x\forall z(\varphi(z,y)\leftrightarrow x=z))$}
+        child { node [b] {$\neg(\exists x\forall z(\varphi(z,a)\leftrightarrow x=z))$}
+          child { node [a] {$\forall z(\forall y(\varphi(z, y)\leftrightarrow b=z))$}
+            child { node [b] {$\forall x\neg(\forall z(\varphi(z,a)\leftrightarrow x=z))$}
+              child { node [b] {$\neg(\forall z(\varphi(z,a)\leftrightarrow b=z))$}
+                child { node [b] {$\exists z(\varphi(z,a)\leftrightarrow b\neq z))$}
+                  child { node [b] {$\neg(\varphi(c,a)\leftrightarrow b=c)$}
+                    child { node [a] {$\forall y(\varphi(c, y)\leftrightarrow b=c)$}
+                      child { node [a] {$\varphi(c, a)\leftrightarrow b=c$}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+\end{tikzpicture}
+
+\newpage
+\begin{tikzpicture}[sibling distance=10em]
+    \node [a] {$\forall y\exists x\forall z(\varphi(z,y)\leftrightarrow x=z)$}
+    child { node [b] {$\neg(\exists x\forall z(\forall y(\varphi(z, y)\leftrightarrow x=z)))$}
+      child { node [b] {$\forall x\neg(\forall z(\forall y(\varphi(z, y)\leftrightarrow x=z)))$}
+        child {node [a] {$\exists x\forall z(\varphi(z,a)\leftrightarrow x=z)$}
+          child {node [a] {$\forall z(\varphi(z,a)\leftrightarrow b=z)$}
+            child { node [b] {$\neg(\forall z(\forall y(\varphi(z, y)\leftrightarrow b=z)))$}
+              child { node [b] {$\exists z\neg(\forall y(\varphi(z, y)\leftrightarrow b=z))$}
+                child { node [b] {$\neg(\forall y(\varphi(c, y)\leftrightarrow b=c))$}
+                  child {node [a] {$\varphi(c,a)\leftrightarrow b=c$}
+                    child { node [b] {$\exists y\neg(\varphi(c, y)\leftrightarrow b=c)$}
+                      child { node [b] {$\neg(\varphi(c, d)\leftrightarrow b=c)$}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+\end{tikzpicture}
+\end{document}
