@@ -1,22 +1,5 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Welcome to Overleaf --- just edit your LaTeX on the left,
-% and we'll compile it for you on the right. If you give
-% someone the link to this page, they can edit at the same
-% time. See the help menu above for more info. Enjoy!
-%
-% Note: you can export the pdf to see the result at full
-% resolution.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% A simple Tree
-% Author: Stefan Kottwitz
-% https://www.packtpub.com/hardware-and-creative/latex-cookbook
-% \documentclass[border=10pt]{standalone}
 \documentclass{article}
-%%%<
 \usepackage{verbatim}
-%%%>
 
 \usepackage{tikz}
 \begin{document}
@@ -38,13 +21,24 @@
     \node (01) [a] {$\exists x\forall y(\varphi(y)\leftrightarrow x=y))$ (01)};
     \node (02) [b, below of=01] {$\neg\exists x(\varphi(x)\wedge\forall y(\varphi(y)\to x=y))$ (02)};
     \node (03) [b, below of=02] {$\forall x\neg(\varphi(x)\wedge\forall y(\varphi(y)\to x=y))$ (03)};
-    \node (04) [a, below of=03] {$\forall y(\varphi(y)\leftrightarrow a=y))$ (04)};
+    \node (04) [a, below of=03] {$\forall y(\varphi(y)\leftrightarrow a=y)$ (04)};
+    \node (05) [b, below of=04] {$\neg(\varphi(a)\wedge\forall y(\varphi(y)\to a=y)$ (05)};
+    \node (06) [b, below of=05, xshift=2.5cm] {$\neg\varphi(a)$ (06)};
+    \node (07) [b, below of=05, xshift=-2.5cm] {$\neg\forall y(\varphi(y)\to a=y$ (07)};
+    \node (08) [a, below of=06] {$\varphi(a)\leftrightarrow a=a$ (08)};
 
     \draw (01) to (02);
     \draw (02) to (03);
     \draw (03) to (04);
+    \draw (04) to (05);
+    \draw (05) to (06);
+    \draw (05) to (07);
+    \draw (06) to (08);
 
     \draw (01.east) .. controls +(350:2cm) and +(10:2cm) .. node[right, swap] {$\exists x \to a$} (04.east);
+    \draw[bend right]    (02.west) to node[auto, swap] {$\neg$}            (03.west);
+    \draw[bend right]    (03.west) to node[auto, swap] {$\forall x \to a$} (05.west);
+    \draw[bend left=70]  (04.east) to node[auto]       {$\forall y \to a$} (08.east);
 
 \end{tikzpicture}
 \end{document}
