@@ -1,0 +1,47 @@
+\documentclass[10pt]{article}
+\usepackage{doc}
+\usepackage{texmate}
+
+\begin{document}
+\setfigfontfamily{merida}
+\setboardfontfamily{merida}
+
+\newgame
+\twocolumn
+\renewcommand\afterno{~}
+\renewcommand\iiopent{\par}
+\renewcommand\iicloset{\par}
+\renewcommand\takes{x}
+\renewcommand\beforeb{\the\move.~\dots\ }
+\subsection{Watson's format}
+The following game opening is taken from John~Watson's wonderful \emph{Secrets of Modern Chess Strategy} (Gambit, 1998), page~254. I also copy his formatting: in addition to double-column (on which I blame the overfulls), `x' for captures, long commentary in individual paragraphs, no period (but a space) after numbers. These are the appropriate declarations:
+
+\begin{verbatim}
+\renewcommand\afterno{~}
+\renewcommand\iiopent{\par}
+\renewcommand\iicloset{\par}
+\renewcommand\takes{x}
+\end{verbatim}
+
+\begin{center}
+\textsf{Timoshenko -- Itkis}
+
+\textit{Baile Herculane 1996}
+\end{center}
+\noindent|1. e4 e6 2. d4 d5 3. Nc3 Nf6 4. e5 Nfd7 5 f4 c5 6. Nf3 Nc6 7 Be3 cxd4 8 Nxd4 Qb6 9 Qd2 Qxb2 10 Rb1 Qa3 
+\[|Znosko-Borovsky's principle is high\-ly relevant here: the queen itself
+provides some countterplay agains White's c3 point, which give Black a chance
+against the coming  onslaught. |\]11 Bb5! Nxd4!?\[|Risky. Later games saw 
+|Ndb8 12 f5! Bb4!|, aparently leading to a messy equality.|\]
+12 Bxd4 Bb4 13. 0-0 a6 14. Rb3 Qa5 15 Rfb1 Ba3!?\[|Very provocative. |Qxb5 |
+is unclear after both |16 Nxb5 Bxd2| and |\white 16 Rxb4 Qc6|.|\]16. f5!!~{\normalfont(\emph{D})}\[|%
+Timoshenko attributes this move to Krup\-pa.
+
+\begin{center}
+\diagram{r1b1k2r/1p1n1ppp/p3p/qB1pPP/3B/bRN/P1PQ2PP/1R4K}
+\end{center}
+
+|\]axb5 17 Rxa3! Qxa3 18 Nxb5 Qxa2 19 Nd6+ Kf8 20. Ra1 Qxa1+ 21. Bxa1 Rxa1+ 22 Kf2\[|%
+Here the game went |\dummy Ra8? 23 Qg5! f6 24 Qh5 g6 25 Qh6+| with a winning attack. Better seems  |\black 22 Nxe5| (Nunn), leading to |23 Qc3 Ng4+ 24 Ke2|, when |Ra8? 25 Qc7!| is good for White, but |\black 24 Ke7| holds out hope for equality, for example |Nxc8+ [Qb4!?| is another possibility|] Rxc8 26 Qxc8 Ra4! 27. Qxb7+ Kf6|.
+
+\end{document}
