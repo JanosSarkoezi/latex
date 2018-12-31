@@ -6,6 +6,58 @@
 \setfigfontfamily{merida}
 \setboardfontfamily{merida}
 
+\section{Theoritical section}
+Chess has passed throught a lenthty course of a development and today it is
+continuing its evolution so swiftly, that yesterday's evolutions look
+increasingly obsolete. The rise in the importance of the competitive factor
+is the most marked tendency of modern chess.
+
+The deciding of the 1997 world championship in a rapid-play game is the best
+demonstration of this thesis. Victory in chess ist certainly the undisputed
+aim, but this factor should not prevail over the search for the truth,
+however difficult it may be.
+
+As Alekhine wrote back in the 1920s, in chess it is important not wath, but
+how.
+
+With the apperance of computers, the technical level and the level of 
+opening knowledge ist constantly rising.
+
+Now the battle between two opponents passes through several critical points.
+
+In many games the hierarchy of strategic factors, determining the evaluation
+of a position, varies, and plans and ideas are transforme.
+
+It is this that constitutes dynamism in chess.
+
+The method on which I have worked, and which I offer here, enables the
+dynamic evolution of strategic elements in a chess game to be foreseen, for
+them to be analysed, and, in the end, for this process to be controlled.
+
+This short paragraph comprises in concentrated form the move search algotitm
+in chess.
+
+Thus to foresee the modification of the hierarchy of strategic factors is
+nothing other than to be able to define critical positions. I suggest
+analysing critical positions on the basis of their static state, without
+taking account of dynamic factors.
+
+This aim is served by the proposed static balance.
+
+Candidate moves are chosen in accordance with the static balance.
+
+Here we should perhaps dwell on the concepts of 'static' and 'dynamic'
+factors.
+
+By 'static' are implied factors that have an enduring effect.
+
+Whereas dynamic factors are associated with a change in the state of a
+position,with the energy of a breakthrouth, with the coming into contact
+with the opposing army.
+
+With the passage of time their role diminishes and reduces ho noutht.
+
+...
 \newgame
 \twocolumn
 \renewcommand\afterno{~}
@@ -13,35 +65,15 @@
 \renewcommand\iicloset{\par}
 \renewcommand\takes{x}
 \renewcommand\beforeb{\the\move.~\dots\ }
-\subsection{Watson's format}
-The following game opening is taken from John~Watson's wonderful \emph{Secrets of Modern Chess Strategy} (Gambit, 1998), page~254. I also copy his formatting: in addition to double-column (on which I blame the overfulls), `x' for captures, long commentary in individual paragraphs, no period (but a space) after numbers. These are the appropriate declarations:
-
-\begin{verbatim}
-\renewcommand\afterno{~}
-\renewcommand\iiopent{\par}
-\renewcommand\iicloset{\par}
-\renewcommand\takes{x}
-\end{verbatim}
 
 \begin{center}
-\textsf{Timoshenko -- Itkis}
+\textsf{NN -- NN}
 
-\textit{Baile Herculane 1996}
+\textit{Example game}
 \end{center}
-\noindent|1. e4 e6 2. d4 d5 3. Nc3 Nf6 4. e5 Nfd7 5 f4 c5 6. Nf3 Nc6 7 Be3 cxd4 8 Nxd4 Qb6 9 Qd2 Qxb2 10 Rb1 Qa3 
-\[|Znosko-Borovsky's principle is high\-ly relevant here: the queen itself
-provides some countterplay agains White's c3 point, which give Black a chance
-against the coming  onslaught. |\]11 Bb5! Nxd4!?\[|Risky. Later games saw 
-|Ndb8 12 f5! Bb4!|, aparently leading to a messy equality.|\]
-12 Bxd4 Bb4 13. 0-0 a6 14. Rb3 Qa5 15 Rfb1 Ba3!?\[|Very provocative. |Qxb5 |
-is unclear after both |16 Nxb5 Bxd2| and |\white 16 Rxb4 Qc6|.|\]16. f5!!~{\normalfont(\emph{D})}\[|%
-Timoshenko attributes this move to Krup\-pa.
+\noindent|1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. 0-0 Be7 6. Re1 b5 7. Bb3 d6 8. c3 0-0 9. h3 Na5 10. Bc2 c5 11. d4 Qc7 12. Nbd2 Nc6 13. d5 Na5 14. b3 c4 15. b4 Nb7 16. a4|
 
 \begin{center}
-\diagram{r1b1k2r/1p1n1ppp/p3p/qB1pPP/3B/bRN/P1PQ2PP/1R4K}
+\showboard
 \end{center}
-
-|\]axb5 17 Rxa3! Qxa3 18 Nxb5 Qxa2 19 Nd6+ Kf8 20. Ra1 Qxa1+ 21. Bxa1 Rxa1+ 22 Kf2\[|%
-Here the game went |\dummy Ra8? 23 Qg5! f6 24 Qh5 g6 25 Qh6+| with a winning attack. Better seems  |\black 22 Nxe5| (Nunn), leading to |23 Qc3 Ng4+ 24 Ke2|, when |Ra8? 25 Qc7!| is good for White, but |\black 24 Ke7| holds out hope for equality, for example |Nxc8+ [Qb4!?| is another possibility|] Rxc8 26 Qxc8 Ra4! 27. Qxb7+ Kf6|.
-
 \end{document}
