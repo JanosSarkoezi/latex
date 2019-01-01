@@ -1,6 +1,6 @@
 \documentclass[10pt]{article}
 \usepackage{doc}
-\usepackage{texmate}
+\usepackage{xskak}
 
 \begin{document}
 \setfigfontfamily{merida}
@@ -15,20 +15,19 @@ is the most marked tendency of modern chess.
 The deciding of the 1997 world championship in a rapid-play game is the best
 demonstration of this thesis. Victory in chess ist certainly the undisputed
 aim, but this factor should not prevail over the search for the truth,
-however difficult it may be.
+however difficult it may be.\\
 
-As Alekhine wrote back in the 1920s, in chess it is important not wath, but
-how.
+\textbf{As Alekhine wrote back in the 1920s, in chess it is important not 
+wath, but how.}\\
 
 With the apperance of computers, the technical level and the level of 
 opening knowledge ist constantly rising.
 
-Now the battle between two opponents passes through several critical points.
+Now the battle between two opponents passes through several critical points.\\
 
-In many games the hierarchy of strategic factors, determining the evaluation
+\textbf{In many games the hierarchy of strategic factors, determining the evaluation
 of a position, varies, and plans and ideas are transforme.
-
-It is this that constitutes dynamism in chess.
+It is this that constitutes dynamism in chess.}\\
 
 The method on which I have worked, and which I offer here, enables the
 dynamic evolution of strategic elements in a chess game to be foreseen, for
@@ -37,43 +36,83 @@ them to be analysed, and, in the end, for this process to be controlled.
 This short paragraph comprises in concentrated form the move search algotitm
 in chess.
 
-Thus to foresee the modification of the hierarchy of strategic factors is
-nothing other than to be able to define critical positions. I suggest
-analysing critical positions on the basis of their static state, without
-taking account of dynamic factors.
+Thus to foresee \textbf{the modification of the hierarchy of strategic
+factors} is nothing other than to be able to define critical positions.
+\textbf{I suggest analysing critical positions on the basis of their
+static state,} without taking account of dynamic factors.\\
 
-This aim is served by the proposed static balance.
-
-Candidate moves are chosen in accordance with the static balance.
-
+\textbf{This aim is served by the proposed static balance.
+Candidate moves are chosen in accordance with the static balance.\\
 Here we should perhaps dwell on the concepts of 'static' and 'dynamic'
-factors.
-
-By 'static' are implied factors that have an enduring effect.
-
+factors.\\
+By 'static' are implied factors that have an enduring effect.\\
 Whereas dynamic factors are associated with a change in the state of a
 position,with the energy of a breakthrouth, with the coming into contact
-with the opposing army.
+with the opposing army.\\
+With the passage of time their role diminishes and reduces ho noutht.}\\
 
-With the passage of time their role diminishes and reduces ho noutht.
+Imagine the following situation: one of the warring sides ist shut up
+castle, surrounded by the enemy. A whole series of factor influence
+action of the opponents. Thus for the example abstence of food or drinking
+water may force the castle defenders to engage in an open battle. Otherwise
+it may be better to strengthen the walls in the expectation of winter, when
+the enemy will be forced to untertake a dubious storm, in order to not lose
+a significant part of their army.\\
 
-...
-\newgame
-\twocolumn
-\renewcommand\afterno{~}
-\renewcommand\iiopent{\par}
-\renewcommand\iicloset{\par}
-\renewcommand\takes{x}
-\renewcommand\beforeb{\the\move.~\dots\ }
+For lady chess players I could suggest another comparsion: between classical
+clothes and footwear and other corresponding to the latest fashion, sometime
+rather extravagant. The latter are more costly, and demand immediate wearing,
+sice soon it will be hard to find any use of them.\\
+
+\textbf{In for one of the player static balance is negative, he must without
+hesitation employ dynamic means, and be ready to go in for extreme measures.}\\
 
 \begin{center}
-\textsf{NN -- NN}
+    \textbf{\Large A brief resume}
+\end{center}
+The move search algotitm:\\
 
+\textbf{1) Find a critical position (a turning point in the play, a moment when
+there is a possible change in the hierarchy of strategic elements).}\\
+
+\textbf{2) Draw up the static balance of this postion , allowing it to be dediced
+who in the following phase should use a static and who a dynamic means.}\\
+
+\textbf{3) Consider the candidate moves and chose a specific move.}\\
+
+Between critical positions there are technical phases.\\
+
+\textbf{In my view, the separation of a game into opening, middlegame and endgame
+has no practical use.}\\
+
+\textbf{To some extent it is even harmful, since already at very early stage a game
+often pass through several critical positions.}
+\newpage
+\textbf{\Large Definition of a critical position}\\
+
+I suggest three criteria for the existence of a critical postion.\\
+
+\textbf{1)} A position in which a decision has to be taken regarding \textbf{a
+\underline{possible} exchange.} If the exchange is forced there is no change compared
+with the previous critical position.\\
+
+\textbf{2)} A position in which a decision has to be taken regarding \textbf{a
+\underline{possible} change in the pawn formation.} Especially of the central pawns.\\
+
+\textbf{3) The end of a series of forced moves.} Here one should not draw a parallel
+between  force moves and the moves relating to a combination.\\
+
+To sense that a position is critical is already a great sucess.
+
+\begin{center}
+\twocolumn
+\textsf{NN -- NN}\\
 \textit{Example game}
 \end{center}
-\noindent|1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. 0-0 Be7 6. Re1 b5 7. Bb3 d6 8. c3 0-0 9. h3 Na5 10. Bc2 c5 11. d4 Qc7 12. Nbd2 Nc6 13. d5 Na5 14. b3 c4 15. b4 Nb7 16. a4|
+\newchessgame
+\mainline{1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 d6 8. c3 O-O 9. h3 Na5 10. Bc2 c5 11. d4 Qc7 12. Nbd2 Nc6 13. d5 Na5 14. b3 c4 15. b4 Nb7 16. a4}
 
 \begin{center}
-\showboard
+    \chessboard[smallboard, showmover, label=false]
 \end{center}
 \end{document}

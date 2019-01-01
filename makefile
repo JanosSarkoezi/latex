@@ -8,7 +8,7 @@ pdf:
 	for file in $$(ls *tex | cut -d \. -f 1) ; do make $$file.pdf ; done
 
 %.pdf: %.tex
-	pdflatex $<; pkill -1 mupdf
+	pdflatex $<; pkill -HUP mupdf-x11
 
 clean:
 	rm -f *.toc *.aux *.log *.out *.idx *.dvi
