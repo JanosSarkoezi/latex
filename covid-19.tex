@@ -2,12 +2,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}                 % Umlaute und co
 \usepackage[ngerman]{babel}              % Deutsche Trennung von Wörtern
-\usepackage{graphicx}
+\usepackage{graphicx}                    % Für includegraphics
 \usepackage{enumitem}                    % Abstände zwischen Listen und Aufzählungen
-\usepackage{wrapfig}
 \usepackage{tikz}                        % Zeichnen von Diagrammen
 \usepackage{caption}                     % Beschriftung von Abbildungen
 \usepackage{amsmath}                     % Mathematische Gleichungen besser formatieren
+\usepackage{pgfplots}                    % Zeichnen von Daten
+\usepackage{pgfplotstable}
 
 \usetikzlibrary{arrows} 
 
@@ -50,9 +51,10 @@ Krank = K, Immun = I und Tot = T ab.
     \draw [arrow] (i) -- (d);
 \end{tikzpicture}
 \caption{Zustandsänderung der Befölkerung}
+\label{fig:sir}
 \end{figure}
 
-In Abbildung 1 ist folgendes zu sehen. Aus anfälligen Personen können durch den Virus Kranke personen werden. Die kranken Personen können gesund werden und eine Immunität daruch
+In Abbildung \ref{fig:sir} ist folgendes zu sehen. Aus anfälligen Personen können durch den Virus Kranke personen werden. Die kranken Personen können gesund werden und eine Immunität daruch
 erlangen oder Sie sterben. Es stellt sich noch dir Frage, ob immune Personen doch nicht die
 Immunität haben wie gedacht und wieder anfällig werden können? Einfachheits halber, sollen
 die immune Personen immun bleiben. In der Abbildung 1 soll auch ein einfaches Modell
@@ -73,8 +75,8 @@ Erweitert man die Abbildung 1 wie folgt:
     \draw [arrow] (i) -- (r) node[midway, above=2pt, fill=none] {$\gamma$K};
     \draw [arrow] (i) -- (d) node[midway, right=2pt, fill=none] {$\delta$K};
 \end{tikzpicture}
-\label{dynModel}
 \caption{Dynamisches Modell}
+\label{fig:dynModel}
 \end{figure}
 
 Dann kann ein Differentialgleichungssystem aufgeschrieben werden. Es beschreibt die
@@ -85,18 +87,47 @@ Dann kann ein Differentialgleichungssystem aufgeschrieben werden. Es beschreibt 
         \frac{dA}{dt} &= -\beta AK                      \\[5pt]
         \frac{dK}{dt} &= \beta AK - \gamma K - \delta K \\[5pt]
         \frac{dI}{dt} &= \gamma K                       \\[5pt]
-        \frac{dT}{dt} &= \delta K                       \\
+        \frac{dT}{dt} &= \delta K                       \\[10pt]
     \end{aligned}
 \end{equation}
 
-Die erste Gleichung beschreibt die Änderung der anfälligen Personen. Das Minuszeichen auf
-der rechten Seite der Gleichung besagt, dass die Anzahl der anfälligen Personen mit der
-Zeit weniger wird. Die zweite Gleichung ist ewas komplizierter. Aber wenn  die Abbildung
-\ref{dynModel} betrachtet wird, so wird sie verständlich. Der Pfeil geht von A nach K, also
-werden genauso viele Personen in K eintreffen wie aus A rausgenommen wurden. Weiterhin
-wandern aus K Personen nach I und T. Schließlich die Personen, die aus K gewandert sind,
-kommen in I und T an. Dies sagen die letzten beiden Gleichungen aus.
+Diese Gleichungen können leicht aus der Abbildung \ref{fig:dynModel} aufgeschrieben werden.
+Die erste Gleichungen ist aus dem Pfeil von A nach K herzuleiten. Der Pfeil zeigt im
+gewissen sinne die Wanderung von Personen von einem zustand in das nächste. Da der Pfeil
+aus A kommt, wird die Funktion $\beta$AK mit einem minus bewertet. Für den Kasten K kommen
+drei Pfeile in Frage. Ein Pfeil trifft K und zwie Pfeile verlassen K. Damit sind die letzen
+beiden Gleichungen mit I und T klar.
+
+\section{Lösen der Gleichungen}
 
 Für das Lösen des Gleichungssystems kramt man sich aus dem Internet etwas raus. Ich habe
-mich für  Jupyther Notebook entschieden.
+mich für  Jupyther Notebook entschieden. Das Ergebnis sieht dann so aus:
+
+% \begin{figure}
+%     \centering
+%     \includegraphics{images/Download.png}
+%     \caption{Meine Grafik}
+%     \label{fig:meine-grafik}
+% \end{figure}
+% 
+\begin{tikzpicture}
+    \begin{axis}[xlabel=Q Series, ylabel=P Values]
+        \addplot table [y=P, x=$Q_A$] {data/data.dat};
+        \addlegendentry{$Q_A$ series}
+        \addplot table [y=P, x=$Q_B$] {data/data.dat};
+        \addlegendentry{$Q_B$ series}
+        \addplot table [y=P, x=$Q_D$] {data/data.dat};
+        \addlegendentry{$Q_D$ series}
+    \end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \begin{axis}[xlabel=Q Series, ylabel=P Values]
+        \addplot table [x=Name, y=Age, col sep=comma] {data/asdf.csv};
+        \addlegendentry{$Q_A$ series}
+        \addplot table [x=Name, y=Bla, col sep=comma] {data/asdf.csv};
+        \addlegendentry{$Q_B$ series}
+    \end{axis}
+\end{tikzpicture}
+
 \end{document}
