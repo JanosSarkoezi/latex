@@ -9,6 +9,7 @@
 \usepackage{amsmath}                     % Mathematische Gleichungen besser formatieren
 \usepackage{pgfplots}                    % Zeichnen von Daten
 \usepackage{pgfplotstable}
+\usepackage{hyperref}                    % Einbinden von html-Links
 
 \usetikzlibrary{arrows} 
 
@@ -18,7 +19,7 @@
 \begin{document}
 
 \begin{titlepage}
-    \title{Die gedanken eines Mathematikers über die COVID-19}
+    \title{Die Jagt der COVID-19}
     \author{Janos Sarközi}
     \maketitle
 \end{titlepage}
@@ -51,17 +52,38 @@ Krank = K, Immun = I und Tot = T ab.
     \draw [arrow] (i) -- (d);
 \end{tikzpicture}
 \caption{Zustandsänderung der Befölkerung}
-\label{fig:sir}
+\label{fig:sird}
 \end{figure}
 
-In Abbildung \ref{fig:sir} ist folgendes zu sehen. Aus anfälligen Personen können durch den Virus Kranke personen werden. Die kranken Personen können gesund werden und eine Immunität daruch
-erlangen oder Sie sterben. Es stellt sich noch dir Frage, ob immune Personen doch nicht die
-Immunität haben wie gedacht und wieder anfällig werden können? Einfachheits halber, sollen
-die immune Personen immun bleiben. In der Abbildung 1 soll auch ein einfaches Modell
-betrachtet werden. Es gibt natürlich auch kompliziertere Modelle, aber sehen wir mal an,
-wie weit wir mit diesem Modell kommen.
+In Abbildung \ref{fig:sird} ist folgendes zu sehen. Aus anfälligen Personen können durch
+den Virus Kranke personen werden. Die kranken Personen können gesund werden und eine
+Immunität daruch erlangen oder Sie sterben. Es stellt sich noch dir Frage, ob immune
+Personen doch nicht die Immunität haben wie gedacht und wieder anfällig werden können?
+Hier ein Bild dazu.
 
-\newpage
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \node (s) [box]                                  {A};
+    \node (i) [box, node distance=2.2cm, right of=s] {K};
+    \node (r) [box, node distance=2.2cm, right of=i] {I};
+    \node (d) [box, node distance=1.5cm, below of=i] {T};
+    \coordinate[above of=r] (d1);
+    \coordinate[above of=s] (d2);
+    \draw [arrow] (s) -- (i);
+    \draw [arrow] (i) -- (r);
+    \draw [arrow] (i) -- (d);
+    \draw [arrow] (r) -- (d1) -- (d2) -- (s);
+\end{tikzpicture}
+\caption{Rückfall aus der Immunität}
+\label{fig:noImmune}
+\end{figure}
+
+Einfachheits halber, sollen die immune Personen immun bleiben. In der Abbildung
+\ref{fig:sird} soll auch ein einfaches Modell betrachtet werden. Natürlich gitb es auch
+noch kompliziertere Modelle, aber sehen wir mal an, wie weit wir mit diesem Modell aus der
+Abbildung \ref{fig:sird} kommen.
+
 \section{Etwas Mathematik}
 Erweitert man die Abbildung 1 wie folgt:
 \begin{figure}[h]
@@ -89,45 +111,73 @@ Dann kann ein Differentialgleichungssystem aufgeschrieben werden. Es beschreibt 
         \frac{dI}{dt} &= \gamma K                       \\[5pt]
         \frac{dT}{dt} &= \delta K                       \\[10pt]
     \end{aligned}
+    \label{eq:sird}
 \end{equation}
 
 Diese Gleichungen können leicht aus der Abbildung \ref{fig:dynModel} aufgeschrieben werden.
-Die erste Gleichungen ist aus dem Pfeil von A nach K herzuleiten. Der Pfeil zeigt im
-gewissen sinne die Wanderung von Personen von einem zustand in das nächste. Da der Pfeil
-aus A kommt, wird die Funktion $\beta$AK mit einem minus bewertet. Für den Kasten K kommen
-drei Pfeile in Frage. Ein Pfeil trifft K und zwie Pfeile verlassen K. Damit sind die letzen
-beiden Gleichungen mit I und T klar.
 
+\begin{itemize}[itemsep=0pt]
+    \item Das Minuszeichen in der ersten Gleichung erklärt sich durch die Abwanderung der
+        Anfälligen zu den Kranken.
+    \item Die Zuwanderung der Anfälligen zu den Kranen, ist der erste Teil der zweiten Gleichung.
+        Der rest der zweiten Gleichung beschreibt den Sachchverhalt, dass aus den Kranken
+        immune oder gestorbene werden.
+    \item Die dritte und vierte Gleichung übernimmt nur die Kranken, sodass sie entweder
+        gesund oder gestorben sind.
+\end{itemize}
+
+\newpage
 \section{Lösen der Gleichungen}
 
 Für das Lösen des Gleichungssystems kramt man sich aus dem Internet etwas raus. Ich habe
 mich für  Jupyther Notebook entschieden. Das Ergebnis sieht dann so aus:
 
-% \begin{figure}
-%     \centering
-%     \includegraphics{images/Download.png}
-%     \caption{Meine Grafik}
-%     \label{fig:meine-grafik}
-% \end{figure}
-% 
+\begin{figure}[h]
+\centering
 \begin{tikzpicture}
-    \begin{axis}[xlabel=Q Series, ylabel=P Values]
-        \addplot table [y=P, x=$Q_A$] {data/data.dat};
-        \addlegendentry{$Q_A$ series}
-        \addplot table [y=P, x=$Q_B$] {data/data.dat};
-        \addlegendentry{$Q_B$ series}
-        \addplot table [y=P, x=$Q_D$] {data/data.dat};
-        \addlegendentry{$Q_D$ series}
+    \begin{axis} [xlabel=Zeit, ylabel=relative Häufigkeit, legend cell align={left}]
+        \addplot [line width=1pt, color=blue, no markers]
+          table [x=x, y=S, col sep=comma] {data/sird.csv};
+        \addlegendentry{Anfällig}
+        \addplot [line width=1pt, color=red, no markers]
+          table [x=x, y=I, col sep=comma] {data/sird.csv};
+        \addlegendentry{Krank}
+        \addplot [line width=1pt, color=green, no markers]
+          table [x=x, y=R, col sep=comma] {data/sird.csv};
+        \addlegendentry{Immun}
+        \addplot [line width=1pt, no markers]
+          table [x=x, y=D, col sep=comma] {data/sird.csv};
+        \addlegendentry{Tot}
     \end{axis}
 \end{tikzpicture}
+\caption{Dynamisches Modell}
+\label{plot:sird}
+\end{figure}
 
+Berichtet wird meinst nur über die Kranken und Tote. Damit fokusieren wir und nur noch auf
+diese. Ein Bild sagt mehr aus tausend Worte.
+
+\begin{figure}[h]
+\centering
 \begin{tikzpicture}
-    \begin{axis}[xlabel=Q Series, ylabel=P Values]
-        \addplot table [x=Name, y=Age, col sep=comma] {data/asdf.csv};
-        \addlegendentry{$Q_A$ series}
-        \addplot table [x=Name, y=Bla, col sep=comma] {data/asdf.csv};
-        \addlegendentry{$Q_B$ series}
+    \begin{axis} [xlabel=Zeit, ylabel=relative Häufigkeit, legend cell align={left}]
+        \addplot [line width=1pt, color=red, no markers]
+          table [x=x, y=I, col sep=comma] {data/sird.csv};
+        \addlegendentry{Krank}
+        \addplot [line width=1pt, no markers]
+          table [x=x, y=D, col sep=comma] {data/sird.csv};
+        \addlegendentry{Tot}
     \end{axis}
 \end{tikzpicture}
+\caption{Betrachtug von Infizierten und Gestorbenen}
+\label{plot:id}
+\end{figure}
+
+Damit wird klar was passieren kann nach diesem Modell. Die Infizierten nehmen explosionsartig
+zu um eine maximale Grüße zu erreichen und danach etwas langsamer abzulklingen. Die Steigung der
+Kurven variieren sicherlich von Land zu Land. Eine schöne Darstellung für die einzelnen Staaten
+ist under der Adresse \url{https://epidemic-simulator.now.sh/#/} zu finden. Die genannte Seite
+benutzt ebenfalls die Gleichungen \ref{eq:sird} für die Darstellung der möglichen Entwicklung
+der pandemie in den einzelnen Ländern.
 
 \end{document}
