@@ -27,9 +27,10 @@
 
 \section{Ich brauche Waffen!}
 
-Hmmm ... welche Waffen könnte ich gebrauchen. Ja irgendwas, womit ich weit schießen kann. Ich nehme
-mir ein einfaches Modell gengen COVID-19. Was kann der Virus? Anfällige Personen kran machen und
-manche kranke töten. Also schreibe ich mir die Gruppen auf, wo mein Jagtziel sich rumtreibt.
+Hmmm ... welche Waffen könnte ich gebrauchen. Ja irgendwas, womit ich weit schießen kann.
+Ich nehme mir ein einfaches Modell gengen COVID-19. Was kann der Virus? Anfällige :Personen
+kran machen und manche kranke töten. Also schreibe ich mir die Gruppen auf, wo mein Jagtziel
+sich rumtreibt.
 
 \begin{itemize}[itemsep=0pt]
     \item Anfällig
@@ -59,20 +60,21 @@ besser under AKIT}
 \label{fig:sird}
 \end{figure}
 
-Ich sehe mir das Bild \ref{fig:sird} an. Da erzählt der Verkäufer mir die Funktionsweise meiner
-Waffe. \textquote{Mit A sind die anfällignen Personen gemeint, K sind die Kranken, I die
-Immunen und T die Toten.} \textquote{Aha} sage ich. Dann spricht er weiter. \textquote{Die
-Pfeile deuten auf die Veränderung der Personen hin. Zum Beispiel wird eine anfälligen Person
-durch eine kranke Person angestecht und wird damit selbst zur kranken Person. Das is der
-Pfeil zwischen A und K. Wo der Virus dann verlohren hatt, sind die Personen, die Immunität
-erlangt haben. Dies Zeigt der Pfeil zwischen K und I an. Allerdigs gibt es auch Verlierer,
-dass sind die mit dem T.}  \textquote{Aha, dann bedeutet der Pfeil von K nach T, dass der
-Virus paar Leute getötet hat?} \textquote{Ja}, sagt der Verkäufer.
+Ich sehe mir das Bild \ref{fig:sird} an. Da erzählt der Verkäufer mir die Funktionsweise
+meiner Waffe. \textquote{Mit A sind die anfällignen Personen gemeint, K sind die Kranken, I
+die Immunen und T die Toten.} \textquote{Aha} sage ich. Dann spricht er weiter.
+\textquote{Die Pfeile deuten auf die Veränderung der Personen hin. Zum Beispiel wird eine
+anfälligen Person durch eine kranke Person angestecht und wird damit selbst zur kranken
+Person. Das is der Pfeil zwischen A und K. Wo der Virus dann verlohren hatt, sind die
+Personen, die Immunität erlangt haben. Dies Zeigt der Pfeil zwischen K und I an. Allerdigs
+gibt es auch Verlierer, dass sind die mit dem T.}  \textquote{Aha, dann bedeutet der Pfeil
+von K nach T, dass der Virus paar Leute getötet hat?} \textquote{Ja}, sagt der Verkäufer.
 
 \newpage
 Der Verkäufer sieht das ich kauffreudig bin und bietet mir ein etwas besseres Modell an.
-\textquote{Schauen Sie sich mal das Modell SIRID} und liegt mir ein andere Beschreibung vor die
-Nase. Oh denke ich, das sieht etwas komplizierter aus, aber ich lasse den Verkäufer ausreden.
+\textquote{Schauen Sie sich mal das Modell SIRID} und liegt mir ein andere Beschreibung vor
+die Nase. Oh denke ich, das sieht etwas komplizierter aus, aber ich lasse den Verkäufer
+ausreden.
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -91,24 +93,45 @@ Nase. Oh denke ich, das sieht etwas komplizierter aus, aber ich lasse den Verkä
 \label{fig:noImmune}
 \end{figure}
 
-\textquote{Der Virus ist hier stärker, denn wie Sie sehen geht hier ein Pfeil von I nach A.
-Das heißt, die Immunen sind garnicht immun geworden, sonder können wieder zu den Anfälligen
-gehöhren und dann sind sie wieder ansteckbar.} \textquote{Ne ne}, sage ich \textquote{mir
-reicht die einfachere Variante. Geben Sie mit das Modell AKIT}
-
-\section{Die Waffe in meiner Hand}
-Der Händler holt eine Waffe von hinten und gibt es mir in die Hand. Sie ist ganz neu. Da
-entdecke ich eine Gravur auf der Seite der Waffe. \textquote{Das sieht ja genau so aus, wie das
-Bild, dass Sie mir gezeigt haben.} Dabei Zeige ich auf die Gravur der Waffe. \textquote{Moment,
-da ist noch mehr zu sehen.}
-
+\textquote{Oder hier die deluxe Variante, mit Quarantäne}
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
     \node (s) [box]                                  {A};
     \node (i) [box, node distance=2.2cm, right of=s] {K};
+    \node (q) [box, node distance=2.2cm, right of=i] {Q};
+    \node (r) [box, node distance=2.2cm, right of=q] {I};
+    \node (d) [box, node distance=1.5cm, below of=q] {T};
+    \coordinate[above of=r] (d1);
+    \coordinate[above of=s] (d2);
+    \draw [arrow] (s) -- (i);
+    \draw [arrow] (i) -- (q);
+    \draw [arrow] (q) -- (r);
+    \draw [arrow] (q) -- (d);
+    \draw [arrow] (r) -- (d1) -- (d2) -- (s);
+\end{tikzpicture}
+\caption{Rückfall aus der Immunität}
+\label{fig:quarantaine}
+\end{figure}
+
+\textquote{In beiden Fällen ist der Virus hier stärker, denn wie Sie sehen geht hier ein
+Pfeil von I nach A. Das heißt, die Immunen sind garnicht immun geworden, sonder können
+wieder zu den Anfälligen gehöhren und dann sind sie wieder ansteckbar.} \textquote{Ne ne},
+sage ich \textquote{mir reicht die einfachere Variante. Geben Sie mit das Modell AKIT}
+
+\section{Die Waffe in meiner Hand}
+Der Händler holt eine Waffe von hinten und gibt es mir in die Hand. Sie ist ganz neu. Da
+entdecke ich eine Gravur auf der Seite der Waffe. \textquote{Das sieht ja genau so aus, wie
+das Bild, dass Sie mir gezeigt haben.} Dabei Zeige ich auf die Gravur der Waffe.
+\textquote{Moment, da ist noch mehr zu sehen.}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+    \node (s) [box]                                  {A};
+    \node (i) [box, node distance=2.2cm, right of=s] {K};
     \node (r) [box, node distance=2.2cm, right of=i] {I};
-    \node (d) [box, node distance=2.0cm, below of=i] {T};
+    \node (d) [box, node distance=1.5cm, below of=i] {T};
     \draw [arrow] (s) -- (i) node[midway, above=2pt, fill=none] {$\beta$AK};
     \draw [arrow] (i) -- (r) node[midway, above=2pt, fill=none] {$\gamma$K};
     \draw [arrow] (i) -- (d) node[midway, right=2pt, fill=none] {$\delta$K};
@@ -117,6 +140,7 @@ da ist noch mehr zu sehen.}
 \label{fig:gravur}
 \end{figure}
 
+\newpage
 \textquote{Was sind diese komischen Zeichen über den Pfeilen?} Frage ich den Händler.
 \textquote{Das haben sich Mathematiker ausgedacht.} Sagt er. \textquote{Aber als guter
 Händler habe ich mir eine Notiz in meinem Büchlein gemacht, für Kunden die sich dafür
@@ -134,9 +158,9 @@ Gleichung. \begin{equation}
     \end{aligned}
     \label{eq:sird}
 \end{equation}
-\textquote{Die erste Gleichung beschreibt die Veränderung der anfällignen Personen. Das sehen
-Sie auf der linken Seite. Auf der rechten Seite entdecken sie die Zeichen, die Sie auf der
-Gravur oberhalb des Pfeiles zwischen A und K gesehen hatten.} Dabei zeigt er nun auf die
+\textquote{Die erste Gleichung beschreibt die Veränderung der anfällignen Personen. Das
+sehen Sie auf der linken Seite. Auf der rechten Seite entdecken sie die Zeichen, die Sie auf
+der Gravur oberhalb des Pfeiles zwischen A und K gesehen hatten.} Dabei zeigt er nun auf die
 Gravur auf der Waffe in meiner Hand.
 
 \begin{figure}[h]
@@ -146,7 +170,7 @@ Gravur auf der Waffe in meiner Hand.
     \node (i) [box, node distance=2.2cm, right of=s] {K};
     \draw [arrow] (s) -- (i) node[midway, above=2pt, fill=none] {$\beta$AK};
 \end{tikzpicture}
-\caption{ein Teil der Gravur}
+\caption{Ein Teil der Gravur}
 \label{fig:teilGravur}
 \end{figure}
 
@@ -169,23 +193,24 @@ Ich schaue auf die Waffe in meiner Hand.
     \draw [arrow] (i) -- (r) node[midway, above=2pt, fill=none] {$\gamma$K};
     \draw [arrow] (i) -- (d) node[midway, right=2pt, fill=none] {$\delta$K};
 \end{tikzpicture}
-\caption{Die Gravur}
+\caption{Der K Teil der Gravur}
 \label{fig:gravur2}
 \end{figure}
 
 \textquote{Ja}, sage ich \textquote{die Personen die anfällig waren sind nun krank geworden
 und von den Kranken weden welche immun oder sterben ... leider.} \textquote{Na sehen Sie, so
 einfach ist es. Die dritte und vierte Gleichung muss ich garnicht mehr erklären.} Ich fange
-an innerlich zu strahlen und merke, dass ich lächle. \textquote{Ja, die Waffe will ich haben!}
+an innerlich zu strahlen und merke, dass ich lächle. \textquote{Ja, die Waffe will ich
+haben!}
 
 \section{Benzutung der Waffe}
 
 \textquote{Sehr schön.} Sagt der Händler. \textquote{Eine Schießübung müssen Sie noch
-machen. Worauf wollen sie schießen?} Frage er mich. \textquote{Zeigen Sie erstmal
-alle Zeile.} \textquote{Na gut, kommen Sie mit raus auf das Feld, da können wir mit der
-Schießübung anfangen. Aber erstmal müssen Sie noch die Waffe richgit einstellen. Schauen
-Sie auf die Gravur Ihrer Waffe. Dort sehen Sie neben den bekannten Buchstaben AKIT auch
-solche wie $\beta$, $\gamma$ und $\delta$.} 
+machen. Worauf wollen sie schießen?} Frage er mich. \textquote{Zeigen Sie erstmal alle
+Zeile.} \textquote{Na gut, kommen Sie mit raus auf das Feld, da können wir mit der
+Schießübung anfangen. Aber erstmal müssen Sie noch die Waffe richgit einstellen. Schauen Sie
+auf die Gravur Ihrer Waffe. Dort sehen Sie neben den bekannten Buchstaben AKIT auch solche
+wie $\beta$, $\gamma$ und $\delta$.} 
 
 \begin{figure}[h]
 \centering
@@ -208,9 +233,10 @@ genau zu treffen.} Er nimm die Waffe aus meiner Hand und Zeigt mir die drei stel
 dann am Vorderschaft und schließlich in der nähe des Abzuges. Er holt sich noch sein
 Büchlein raus und zeigt mir ein Beispiel für eine Einstellung.
 
+\newpage
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}[scale=0.9]
+\begin{tikzpicture}[scale=0.8]
     \begin{axis} [xlabel=Zeit, ylabel=relative Häufigkeit, legend cell align={left}]
         \addplot [line width=1pt, color=blue, no markers]
           table [x=x, y=S, col sep=comma] {data/sird.csv};
@@ -230,24 +256,23 @@ Büchlein raus und zeigt mir ein Beispiel für eine Einstellung.
 \label{plot:sird}
 \end{figure}
 
-\newpage
-Wow, denke ich und Sage dann: \textquote{Was für ein durcheinander. Was ist das denn: Zeit und relative
-Häufigkeit?} \textquote{Ihr Ziel, der Virus, ist beweglich. Springt mit der Zeit von einer
-Person zu einer anderen Person. Daher die Zeit. Relative Häufigkeit besagt, zum Beispiel
-bei den kranken nur die Zahl, die entsteht, wenn Sie die Anzahl der kranken Personen durch
-die Anzahl alle Personen nehmen. Das ist Ihr rote Kurve. Die blauen sind die anfälligen,
-die grünen die immnue und die schwarzen sind die toten Personen.} Da kommt mir eine Frage
-auf \textquote{Wie weit muss ich an den Schräubchen drehen, damit ich das richtige Ziel
-treffe?} \textquote{Da habe ich eine schöne Internetseite für Sie. Haben Sie was zum
-Schreiben?} \textquote{Ja, kann los gehen.} Er sagt mit die Adresse
-\url{https://epidemic-simulator.now.sh/#/}. Dann fügte er noch hinzu, dass auf der Seite
-nur zwei der vier Ergebnisse der Einstellungen zu sehen sind und meinte noch, dass für kenner
+Wow, denke ich und Sage dann: \textquote{Was für ein durcheinander. Was ist das denn: Zeit
+und relative Häufigkeit?} \textquote{Ihr Ziel, der Virus, ist beweglich. Springt mit der
+Zeit von einer Person zu einer anderen Person. Daher die Zeit. Relative Häufigkeit besagt,
+zum Beispiel bei den kranken nur die Zahl, die entsteht, wenn Sie die Anzahl der kranken
+Personen durch die Anzahl alle Personen nehmen. Das ist Ihr rote Kurve. Die blauen sind die
+anfälligen, die grünen die immnue und die schwarzen sind die toten Personen.} Da kommt mir
+eine Frage auf \textquote{Wie weit muss ich an den Schräubchen drehen, damit ich das
+richtige Ziel treffe?} \textquote{Da habe ich eine schöne Internetseite für Sie. Haben Sie
+was zum Schreiben?} \textquote{Ja, kann los gehen.} Er sagt mit die Adresse
+\url{https://epidemic-simulator.now.sh/#/}. Dann fügte er noch hinzu, dass auf der Seite nur
+zwei der vier Ergebnisse der Einstellungen zu sehen sind und meinte noch, dass für kenner
 diese beiden Kurven ausreichen. \textquote{Hier sehen Sie mal, so oder ähnlich sehen die
 Bilder im Internet aus.}
 
 \begin{figure}[h]
 \centering
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.6]
     \begin{axis} [xlabel=Zeit, ylabel=relative Häufigkeit, legend cell align={left}]
         \addplot [line width=1pt, color=red, no markers]
           table [x=x, y=I, col sep=comma] {data/sird.csv};
@@ -266,3 +291,4 @@ auf die Jagt gehen.} Ich bedankte mich für die gute Beratung. Nach dem Bezahlen
 voller Freude ging ich mit meiner neuen Waffe nach Hause.
 
 \end{document}
+% vim: tw=92 ts=4 sw=4 et
