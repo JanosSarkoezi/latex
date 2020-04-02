@@ -10,6 +10,7 @@
 \usepackage{pgfplots}                    % Zeichnen von Daten
 \usepackage{pgfplotstable}
 \usepackage{hyperref}                    % Einbinden von html-Links
+\usepackage{csquotes}                    % Markieren von gesprächen
 
 \usetikzlibrary{arrows} 
 
@@ -19,15 +20,16 @@
 \begin{document}
 
 \begin{titlepage}
-    \title{Die Jagt der COVID-19}
+    \title{Die Jagt nach der COVID-19}
     \author{Janos Sarközi}
     \maketitle
 \end{titlepage}
 
-\section{Einführung}
+\section{Ich brauche Waffen!}
 
-Die Ausbreitung eines Viruses kann durch die Modellierung eines dynamischen System erreicht
-werden. Dafür wird die Befölkerung in vier Gruppen unterteilt.
+Hmmm ... welche Waffen könnte ich gebrauchen. Ja irgendwas, womit ich weit schießen kann. Ich nehme
+mir ein einfaches Modell gengen COVID-19. Was kann der Virus? Anfällige Personen kran machen und
+manche kranke töten. Also schreibe ich mir die Gruppen auf, wo mein Jagtziel sich rumtreibt.
 
 \begin{itemize}[itemsep=0pt]
     \item Anfällig
@@ -36,9 +38,11 @@ werden. Dafür wird die Befölkerung in vier Gruppen unterteilt.
     \item Tot
 \end{itemize}
 
-Zwischen diesen Personen wird durch die Krankheit ein Austausch statt finden. Dies kann
-in ein Diagramm zusammengefasst werden. Dabei kürzen wir die vier Zustände Anfällig = A,
-Krank = K, Immun = I und Tot = T ab.
+Ich gehe in ein Waffenladen und frage einen Verkäufer: \textquote{Welches Modell nehme ich?}
+Der Verkäufer: \textquote{Was wollen Sie den Jagen?} Darauf hin ich \textquote{Einen Virus}.
+Der Verkäufer ramt aus seinem Schubladen ein Plan raus und legt ihn auf den Tisch.
+\textquote{Nehmen Sie das Modell SIRD. Das ist die englische Abkürzug. Hier kennt man die
+besser under AKIT}
 
 \begin{figure}[h]
 \centering
@@ -51,16 +55,24 @@ Krank = K, Immun = I und Tot = T ab.
     \draw [arrow] (i) -- (r);
     \draw [arrow] (i) -- (d);
 \end{tikzpicture}
-\caption{Zustandsänderung der Befölkerung}
+\caption{Modell SIRD}
 \label{fig:sird}
 \end{figure}
 
-In Abbildung \ref{fig:sird} ist folgendes zu sehen. Aus anfälligen Personen können durch
-den Virus Kranke personen werden. Die kranken Personen können gesund werden und eine
-Immunität daruch erlangen oder Sie sterben. Es stellt sich noch dir Frage, ob immune
-Personen doch nicht die Immunität haben wie gedacht und wieder anfällig werden können?
-Hier ein Bild dazu.
+Ich sehe mir das Bild \ref{fig:sird} an. Da erzählt der Verkäufer mir die Funktionsweise meiner
+Waffe. \textquote{Mit A sind die anfällignen Personen gemeint, K sind die Kranken, I die
+Immunen und T die Toten.} \textquote{Aha} sage ich. Dann spricht er weiter. \textquote{Die
+Pfeile deuten auf die Veränderung der Personen hin. Zum Beispiel wird eine anfälligen Person
+durch eine kranke Person angestecht und wird damit selbst zur kranken Person. Das is der
+Pfeil zwischen A und K. Wo der Virus dann verlohren hatt, sind die Personen, die Immunität
+erlangt haben. Dies Zeigt der Pfeil zwischen K und I an. Allerdigs gibt es auch Verlierer,
+dass sind die mit dem T.}  \textquote{Aha, dann bedeutet der Pfeil von K nach T, dass der
+Virus paar Leute getötet hat?} \textquote{Ja}, sagt der Verkäufer.
 
+\newpage
+Der Verkäufer sieht das ich kauffreudig bin und bietet mir ein etwas besseres Modell an.
+\textquote{Schauen Sie sich mal das Modell SIRID} und liegt mir ein andere Beschreibung vor die
+Nase. Oh denke ich, das sieht etwas komplizierter aus, aber ich lasse den Verkäufer ausreden.
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -79,13 +91,17 @@ Hier ein Bild dazu.
 \label{fig:noImmune}
 \end{figure}
 
-Einfachheits halber, sollen die immune Personen immun bleiben. In der Abbildung
-\ref{fig:sird} soll auch ein einfaches Modell betrachtet werden. Natürlich gitb es auch
-noch kompliziertere Modelle, aber sehen wir mal an, wie weit wir mit diesem Modell aus der
-Abbildung \ref{fig:sird} kommen.
+\textquote{Der Virus ist hier stärker, denn wie Sie sehen geht hier ein Pfeil von I nach A.
+Das heißt, die Immunen sind garnicht immun geworden, sonder können wieder zu den Anfälligen
+gehöhren und dann sind sie wieder ansteckbar.} \textquote{Ne ne}, sage ich \textquote{mir
+reicht die einfachere Variante. Geben Sie mit das Modell AKIT}
 
-\section{Etwas Mathematik}
-Erweitert man die Abbildung 1 wie folgt:
+\section{Die Waffe in meiner Hand}
+Der Händler holt eine Waffe von hinten und gibt es mir in die Hand. Sie ist ganz neu. Da
+entdecke ich eine Gravur auf der Seite der Waffe. \textquote{Das sieht ja genau so aus, wie das
+Bild, dass Sie mir gezeigt haben.} Dabei Zeige ich auf die Gravur der Waffe. \textquote{Moment,
+da ist noch mehr zu sehen.}
+
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
@@ -97,14 +113,19 @@ Erweitert man die Abbildung 1 wie folgt:
     \draw [arrow] (i) -- (r) node[midway, above=2pt, fill=none] {$\gamma$K};
     \draw [arrow] (i) -- (d) node[midway, right=2pt, fill=none] {$\delta$K};
 \end{tikzpicture}
-\caption{Dynamisches Modell}
-\label{fig:dynModel}
+\caption{Die Gravur}
+\label{fig:gravur}
 \end{figure}
 
-Dann kann ein Differentialgleichungssystem aufgeschrieben werden. Es beschreibt die
-Änderung der Zustände der Personen.
+\textquote{Was sind diese komischen Zeichen über den Pfeilen?} Frage ich den Händler.
+\textquote{Das haben sich Mathematiker ausgedacht.} Sagt er. \textquote{Aber als guter
+Händler habe ich mir eine Notiz in meinem Büchlein gemacht, für Kunden die sich dafür
+Interessieren. Warten sie ein Moment ich hole das Buch.} Kuze Zeit später ist er mit einem
+braunen lederbezogenen Buch wider zurück. Sieht sehr gepflegt aus. Öffent das Buch und dreht
+es zu mir, sodas ich seine Notizen lesen kann.
 
-\begin{equation}
+\textquote{Das hier sind Differentialgleichungen.} Er Zeigt mit seinem Finger auf die erste
+Gleichung. \begin{equation}
     \begin{aligned}
         \frac{dA}{dt} &= -\beta AK                      \\[5pt]
         \frac{dK}{dt} &= \beta AK - \gamma K - \delta K \\[5pt]
@@ -113,28 +134,83 @@ Dann kann ein Differentialgleichungssystem aufgeschrieben werden. Es beschreibt 
     \end{aligned}
     \label{eq:sird}
 \end{equation}
-
-Diese Gleichungen können leicht aus der Abbildung \ref{fig:dynModel} aufgeschrieben werden.
-
-\begin{itemize}[itemsep=0pt]
-    \item Das Minuszeichen in der ersten Gleichung erklärt sich durch die Abwanderung der
-        Anfälligen zu den Kranken.
-    \item Die Zuwanderung der Anfälligen zu den Kranen, ist der erste Teil der zweiten Gleichung.
-        Der rest der zweiten Gleichung beschreibt den Sachchverhalt, dass aus den Kranken
-        immune oder gestorbene werden.
-    \item Die dritte und vierte Gleichung übernimmt nur die Kranken, sodass sie entweder
-        gesund oder gestorben sind.
-\end{itemize}
-
-\newpage
-\section{Lösen der Gleichungen}
-
-Für das Lösen des Gleichungssystems kramt man sich aus dem Internet etwas raus. Ich habe
-mich für  Jupyther Notebook entschieden. Das Ergebnis sieht dann so aus:
+\textquote{Die erste Gleichung beschreibt die Veränderung der anfällignen Personen. Das sehen
+Sie auf der linken Seite. Auf der rechten Seite entdecken sie die Zeichen, die Sie auf der
+Gravur oberhalb des Pfeiles zwischen A und K gesehen hatten.} Dabei zeigt er nun auf die
+Gravur auf der Waffe in meiner Hand.
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
+    \node (s) [box]                                  {A};
+    \node (i) [box, node distance=2.2cm, right of=s] {K};
+    \draw [arrow] (s) -- (i) node[midway, above=2pt, fill=none] {$\beta$AK};
+\end{tikzpicture}
+\caption{ein Teil der Gravur}
+\label{fig:teilGravur}
+\end{figure}
+
+\textquote{Nur war da kein Minuszeichen. Das kommt daher, weil die anfälligen Personen nach
+der Zeit immer wehniger werden. Als Eselsbrücke, kann man sich merken, wenn ein Pfeil von
+einem Kasten wegzeigt, wird das was über dem Pfeil steht mit einem Minuszeichen versehen.}
+Er nimmt seine Hand zurück und legt seine Finger die zwiete Zeile der Gleichungen.
+\textquote{Wenn Sie sich erinnern hat der Kasten mit dem K, drei Pfeile um sich.  Eins geht
+in Richtung K und zwei gehen weg von K. Schon wird klar was die zeite Gleichung beschreibt.}
+Ich schaue auf die Waffe in meiner Hand.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \node       (i) [box, node distance=2.2cm] {K};
+    \coordinate [node distance=2.2cm, left of=i]  (s);
+    \coordinate [node distance=2.2cm, right of=i] (r);
+    \coordinate [node distance=1.5cm, below of=i] (d);
+    \draw [arrow] (s) -- (i) node[midway, above=2pt, fill=none] {$\beta$AK};
+    \draw [arrow] (i) -- (r) node[midway, above=2pt, fill=none] {$\gamma$K};
+    \draw [arrow] (i) -- (d) node[midway, right=2pt, fill=none] {$\delta$K};
+\end{tikzpicture}
+\caption{Die Gravur}
+\label{fig:gravur2}
+\end{figure}
+
+\textquote{Ja}, sage ich \textquote{die Personen die anfällig waren sind nun krank geworden
+und von den Kranken weden welche immun oder sterben ... leider.} \textquote{Na sehen Sie, so
+einfach ist es. Die dritte und vierte Gleichung muss ich garnicht mehr erklären.} Ich fange
+an innerlich zu strahlen und merke, dass ich lächle. \textquote{Ja, die Waffe will ich haben!}
+
+\section{Benzutung der Waffe}
+
+\textquote{Sehr schön.} Sagt der Händler. \textquote{Eine Schießübung müssen Sie noch
+machen. Worauf wollen sie schießen?} Frage er mich. \textquote{Zeigen Sie erstmal
+alle Zeile.} \textquote{Na gut, kommen Sie mit raus auf das Feld, da können wir mit der
+Schießübung anfangen. Aber erstmal müssen Sie noch die Waffe richgit einstellen. Schauen
+Sie auf die Gravur Ihrer Waffe. Dort sehen Sie neben den bekannten Buchstaben AKIT auch
+solche wie $\beta$, $\gamma$ und $\delta$.} 
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \node (s) [box]                                  {A};
+    \node (i) [box, node distance=2.2cm, right of=s] {K};
+    \node (r) [box, node distance=2.2cm, right of=i] {I};
+    \node (d) [box, node distance=1.5cm, below of=i] {T};
+    \draw [arrow] (s) -- (i) node[midway, above=2pt, fill=none] {$\beta$AK};
+    \draw [arrow] (i) -- (r) node[midway, above=2pt, fill=none] {$\gamma$K};
+    \draw [arrow] (i) -- (d) node[midway, right=2pt, fill=none] {$\delta$K};
+\end{tikzpicture}
+\caption{Die Gravur}
+\label{fig:grauvur3}
+\end{figure}
+
+\textquote{Das sind drei Schräubchen auf Ihrer Waffe, die Sie einstellen müssen um das Zeil
+genau zu treffen.} Er nimm die Waffe aus meiner Hand und Zeigt mir die drei stellen.
+\textquote{Hier, hier und hier.} Zeitg dabei einmal eine Schraube über das Zielfernrohr,
+dann am Vorderschaft und schließlich in der nähe des Abzuges. Er holt sich noch sein
+Büchlein raus und zeigt mir ein Beispiel für eine Einstellung.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.9]
     \begin{axis} [xlabel=Zeit, ylabel=relative Häufigkeit, legend cell align={left}]
         \addplot [line width=1pt, color=blue, no markers]
           table [x=x, y=S, col sep=comma] {data/sird.csv};
@@ -150,12 +226,24 @@ mich für  Jupyther Notebook entschieden. Das Ergebnis sieht dann so aus:
         \addlegendentry{Tot}
     \end{axis}
 \end{tikzpicture}
-\caption{Dynamisches Modell}
+\caption{Eine Einstellmöglichkeit der Waffe}
 \label{plot:sird}
 \end{figure}
 
-Berichtet wird meinst nur über die Kranken und Tote. Damit fokusieren wir und nur noch auf
-diese. Ein Bild sagt mehr aus tausend Worte.
+\newpage
+Wow, denke ich und Sage dann: \textquote{Was für ein durcheinander. Was ist das denn: Zeit und relative
+Häufigkeit?} \textquote{Ihr Ziel, der Virus, ist beweglich. Springt mit der Zeit von einer
+Person zu einer anderen Person. Daher die Zeit. Relative Häufigkeit besagt, zum Beispiel
+bei den kranken nur die Zahl, die entsteht, wenn Sie die Anzahl der kranken Personen durch
+die Anzahl alle Personen nehmen. Das ist Ihr rote Kurve. Die blauen sind die anfälligen,
+die grünen die immnue und die schwarzen sind die toten Personen.} Da kommt mir eine Frage
+auf \textquote{Wie weit muss ich an den Schräubchen drehen, damit ich das richtige Ziel
+treffe?} \textquote{Da habe ich eine schöne Internetseite für Sie. Haben Sie was zum
+Schreiben?} \textquote{Ja, kann los gehen.} Er sagt mit die Adresse
+\url{https://epidemic-simulator.now.sh/#/}. Dann fügte er noch hinzu, dass auf der Seite
+nur zwei der vier Ergebnisse der Einstellungen zu sehen sind und meinte noch, dass für kenner
+diese beiden Kurven ausreichen. \textquote{Hier sehen Sie mal, so oder ähnlich sehen die
+Bilder im Internet aus.}
 
 \begin{figure}[h]
 \centering
@@ -173,11 +261,8 @@ diese. Ein Bild sagt mehr aus tausend Worte.
 \label{plot:id}
 \end{figure}
 
-Damit wird klar was passieren kann nach diesem Modell. Die Infizierten nehmen explosionsartig
-zu um eine maximale Grüße zu erreichen und danach etwas langsamer abzulklingen. Die Steigung der
-Kurven variieren sicherlich von Land zu Land. Eine schöne Darstellung für die einzelnen Staaten
-ist under der Adresse \url{https://epidemic-simulator.now.sh/#/} zu finden. Die genannte Seite
-benutzt ebenfalls die Gleichungen \ref{eq:sird} für die Darstellung der möglichen Entwicklung
-der pandemie in den einzelnen Ländern.
+\textquote{Am besten suchen sie sich Germany raus. Damit können Sie dann hier in Deutschland
+auf die Jagt gehen.} Ich bedankte mich für die gute Beratung. Nach dem Bezahlen und mit
+voller Freude ging ich mit meiner neuen Waffe nach Hause.
 
 \end{document}
