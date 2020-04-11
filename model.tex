@@ -1,4 +1,4 @@
-\documentclass[11pt, a4paper]{article}
+\documentclass[11pt, a2paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}                 % Umlaute und co
 \usepackage[ngerman]{babel}              % Deutsche Trennung von Wörtern
@@ -12,28 +12,108 @@
 \usepackage{hyperref}                    % Einbinden von html-Links
 \usepackage{csquotes}                    % Markieren von gesprächen
 
-\usetikzlibrary{arrows} 
+\usetikzlibrary{arrows}                  % Pfeile zeichnen mit tikZ
+\usetikzlibrary{positioning,calc}        % Positionieren von End oder Anfangspunkten
+\usetikzlibrary{shapes.geometric}        % Geometrische Figuren
 
 \tikzstyle{arrow} = [thick,->,>=stealth]
 \tikzstyle{box}=[draw, minimum size=2em]
+
+\tikzstyle{mybox} = [draw=red, fill=blue!20, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt, minimum size=2em]
 
 \begin{document}
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-    \draw [style=help lines] (0, 0) grid +(2, 2)
-    \node (s) [box]                                  {A};
-    \node (i) [box, node distance=2.2cm, right of=s] {K};
-    \node (r) [box, node distance=2.2cm, right of=i] {I};
-    \node (d) [box, node distance=2.0cm, below of=i] {T};
-    \draw [arrow] (s) -- (i);
-    \draw [arrow] (i) -- (r);
-    \draw [arrow] (i) -- (d);
+    \node (s) [mybox] {
+        \begin{minipage}{4cm}
+        To calculate the horizontal position the kinematic differential
+        equations are needed:
+        For small angles the following approximation can be used:
+        \end{minipage}
+    };
+    \path (s.north east) ++(1.5cm,0.75cm) node[text width=3cm, align=left] (t) {Event\\ bla
+    bla bla bla};
+    \draw[arrow] (t) -| ($(s.north west)!0.75!(s.north east)$);
 \end{tikzpicture}
 \caption{Modell SIRD}
-\label{fig:sird}
+\label{fig:1}
 \end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \node (s) [mybox, text width=5cm, text justified] {
+        To calculate the horizontal position the kinematic differential
+        equations are needed:
+        For small angles the following approximation can be used:
+    };
+    \path (s.north east) ++(1.5cm,0.75cm) node[text width=3cm, align=left] (t) {Event\\ bla
+    bla bla bla};
+    \draw[arrow] (t) -| ($(s.north west)!0.75!(s.north east)$);
+\end{tikzpicture}
+\caption{Modell SIRD}
+\label{fig:2}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \node (s) [mybox, text width=5cm] {
+        To calculate the horizontal position the kinematic differential
+        equations are needed:
+    };
+    \path (s.north east) ++(1.5cm,0.75cm) node[text width=3cm, align=left] (t) {Event\\ bla
+    bla bla bla};
+    \draw[arrow] (t) -| ($(s.north west)!0.75!(s.north east)$);
+    \node (k) [mybox, text width=5cm, above of=s, yshift=-7cm] {
+        To calculate the horizontal position the kinematic differential
+        equations are needed:
+        alll bla bla asdfasdf lasdflasdf 
+        alll bla bla asdfasdf lasdflasdf 
+        alll bla bla asdfasdf lasdflasdf 
+        alll bla bla asdfasdf lasdflasdf 
+    };
+    \path (k.north east) ++(1.5cm,0.75cm) node[text width=3cm, align=left] (u) {Event\\ bla
+    bla bla bla};
+    \draw[arrow] (u) -| ($(k.north west)!0.75!(k.north east)$);
+    \draw[arrow] (s) -- (k);
+\end{tikzpicture}
+\caption{Modell SIRD}
+\label{fig:3}
+\end{figure}
+
+
+% --------------------------
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [startstop] {Start};
+\node (in1) [io, below of=start] {Input};
+\node (pro1) [process, below of=in1] {Process 1};
+\node (dec1) [decision, below of=pro1, yshift=-0.5cm] {Decision 1};
+\node (pro2a) [process, below of=dec1, yshift=-0.0cm] {Process 2a text text text text text text text text text text};
+\node (pro2b) [process, right of=dec1, xshift=2cm] {Process 2b};
+\node (out1) [io, below of=pro2a] {Output};
+\node (stop) [startstop, below of=out1] {Stop};
+
+\draw [arrow] (start) -- (in1);
+\draw [arrow] (in1) -- (pro1);
+\draw [arrow] (pro1) -- (dec1);
+\draw [arrow] (dec1) -- node[anchor=east] {yes} (pro2a);
+\draw [arrow] (dec1) -- node[anchor=south] {no} (pro2b);
+\draw [arrow] (pro2b) |- (pro1);
+\draw [arrow] (pro2a) -- (out1);
+\draw [arrow] (out1) -- (stop);
+
+\end{tikzpicture}
 
 \end{document}
 % vim: tw=92 ts=4 sw=4 et
