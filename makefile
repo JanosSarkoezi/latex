@@ -5,10 +5,11 @@
 all: pdf clean
 
 pdf:
-	for file in $$(ls *tex | cut -d \. -f 1) ; do make $$file.pdf ; done
+	for file in $$(grep -l \begin{document} * | cut -d \. -f 1) ; do make $$file.pdf ; done
 
 %.pdf: %.tex
-	pdflatex $<; pkill -1 mupdf
+	echo $<
+#	pdflatex $<; pkill -1 mupdf
 
 clean:
 	rm -f *.toc *.aux *.log *.out *.idx *.dvi
