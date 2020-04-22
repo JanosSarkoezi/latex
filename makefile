@@ -9,7 +9,7 @@ pdf:
 
 %.pdf: %.tex
 #	echo $<
-	pdflatex $<; pkill -1 mupdf
+	pdflatex -interaction=nonstopmode $<; pkill -1 mupdf
 
 clean:
 	rm -f *.toc *.aux *.log *.out *.idx *.dvi
