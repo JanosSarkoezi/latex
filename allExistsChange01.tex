@@ -1,0 +1,40 @@
+Der Versuch eines Beweises von
+\begin{align*}
+    \forall x\exists y\varphi(x,y) \models\exists y\forall x\varphi(x, y)
+\end{align*}
+als Warheitsbaum, wird scheitern.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \node (01) [a] {$\forall x\exists y\varphi(x, y)$ (01)};
+    \node (02) [b, below of=01] {$\neg\exists y\forall x\varphi(x, y)$ (02)};
+    \node (03) [b, below of=02] {$\forall y\exists x\neg\varphi(x, y)$ (03)};
+    \node (04) [b, below of=03] {$\exists x\neg\varphi(x, a)$ (04)};
+    \node (05) [b, below of=04] {$\neg\varphi(b, a)$ (05)};
+    \node (06) [a, below of=05] {$\exists y\varphi(b, y)$ (06)};
+    \node (07) [a, below of=06] {$\varphi(b, c)$ (07)};
+    \node (08) [b, below of=07] {$\exists x\neg\varphi(x, c)$ (08)};
+    \node (09) [b, below of=08] {$\neg\varphi(d, c)$ (09)};
+    \node (10) [a, below of=09] {$\exists y\varphi(d, y)$ (10)};
+    \node (11) [a, below of=10] {$\varphi(d, e)$ (11)};
+
+    % \node (08) [below of=07, yshift=3mm] {$(07)\lightning(05)$};
+
+    \draw (01) -- (02) -- (03) -- (04) -- (05) -- (06) -- (07) -- (08) -- (09);
+    \draw (09) -- (10) -- (11);
+\end{tikzpicture}
+\caption{Der Versuch eines Beweises}
+\label{fig:allExistsChange01}
+\end{figure}
+Bei den Existenzaussagen müssen immer neue Individualkonstanten eingeführt werden, die
+noch nicht im Baum weiter oben schon vorhanen waren, sodass kein Widerspruch hergeleitet
+werden kann. Die Interpretation
+\begin{align*}
+    D&=\mathbb{N} \\
+    \varphi(x, y)&= x < y
+\end{align*}
+führt zu dem Satz: 
+\begin{align*}
+    \forall x\exists y(x < y) \models\exists y\forall x(x < y)\quad{x,y\in\mathbb{N}}
+\end{align*}

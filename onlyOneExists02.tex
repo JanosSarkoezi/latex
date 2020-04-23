@@ -1,0 +1,52 @@
+Nun die andere Richtung der Aussage
+\begin{align*}
+    \exists x(\varphi(x)\wedge\forall y(\varphi(y)\to x=y)) \models \exists x\forall y(\varphi(y)\leftrightarrow x=y))
+\end{align*}
+als Warheitsbaum.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \node (01) [a] {$\exists x(\varphi(x)\wedge\forall y(\varphi(y)\to x=y))$ (01)};
+    \node (02) [b, below of=01] {$\neg\exists x\forall y(\varphi(y)\leftrightarrow x=y))$ (02)};
+    \node (03) [b, below of=02] {$\forall x\exists y\neg(\varphi(y)\leftrightarrow x=y))$ (03)};
+    \node (04) [a, below of=03] {$\varphi(a)\wedge\forall y(\varphi(y)\to a=y)$ (04)};
+    \node (05) [b, below of=04] {$\exists y\neg(\varphi(y)\leftrightarrow a=y))$ (05)};
+    \node (06) [b, below of=05] {$\neg(\varphi(b)\leftrightarrow a=b))$ (06)};
+    \node (07) [a, below of=06] {$\varphi(a)$ (07)};
+    \node (08) [a, below of=07] {$\forall y(\varphi(y)\to a=y)$ (08)};
+    \node (09) [a, below of=08] {$\varphi(b)\to a=b$ (09)};
+    \node (10) [a, below of=09, xshift=-35mm] {$\neg\varphi(b)$ (10)};
+    \node (11) [a, below of=09, xshift= 35mm] {$a=b$ (11)};
+    \node (12) [b, below of=11, xshift=-15mm] {$\varphi(b)$ (12)};
+    \node (13) [b, below of=11, xshift= 15mm] {$\neg\varphi(b)$ (13)};
+    \node (14) [b, below of=12] {$a\neq b$ (14)};
+    \node (15) [b, below of=13] {$a=b$ (15)};
+    \node (16) [b, below of=10, xshift=-15mm] {$\varphi(b)$ (16)};
+    \node (17) [b, below of=10, xshift= 15mm] {$\neg\varphi(b)$ (17)};
+    \node (18) [b, below of=16] {$a\neq b$ (18)};
+    \node (19) [b, below of=17] {$a=b$ (19)};
+    \node (20) [c, below of=15] {$\neg\varphi(a)$ (20)};
+    \node (21) [c, below of=19] {$\neg\varphi(a)$ (21)};
+
+    \node (22) [below of=18, yshift=3mm] {$(16)\lightning(10)$};
+    \node (23) [below of=21, yshift=3mm] {$(21)\lightning(07)$};
+    \node (24) [below of=14, yshift=3mm] {$(14)\lightning(11)$};
+    \node (25) [below of=20, yshift=3mm] {$(20)\lightning(07)$};
+
+    \draw (01) -- (02) -- (03) -- (04) -- (05) -- (06) -- (07) -- (08) -- (09);
+    \draw (09.south) -- ++(0mm, -2mm) -- ++( 35mm, 0mm) -- (11.north); 
+    \draw (09.south) -- ++(0mm, -2mm) -- ++(-35mm, 0mm) -- (10.north); 
+    \draw (11.south) -- ++(0mm, -2mm) -- ++( 15mm, 0mm) -- (13.north); 
+    \draw (11.south) -- ++(0mm, -2mm) -- ++(-15mm, 0mm) -- (12.north); 
+    \draw (10.south) -- ++(0mm, -2mm) -- ++( 15mm, 0mm) -- (17.north); 
+    \draw (10.south) -- ++(0mm, -2mm) -- ++(-15mm, 0mm) -- (16.north); 
+    \draw (13) -- (15) -- (20);
+    \draw (17) -- (19) -- (21);
+    \draw (16) -- (18);
+    \draw (12) -- (14);
+
+\end{tikzpicture}
+\caption{Die andere Richtung der Äquivalenz}
+\label{fig:onlyOneExists02}
+\end{figure}

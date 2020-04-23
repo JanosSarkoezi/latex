@@ -1,0 +1,58 @@
+Der Satz
+\begin{align*}
+    \exists x\in\mathbb{N}\:\forall y\in\mathbb{N}\:(x < y) \models
+    \forall y\in\mathbb{N}\:\exists x\in\mathbb{N}\:(x < y)
+\end{align*}
+ist nach der Mengenlehre identisch mit dem Satz
+\begin{align*}
+    \exists x(x\in\mathbb{N}\wedge\forall y(y\in\mathbb{N}\rightarrow(x < y)) \models
+    \forall y(y\in\mathbb{N}\rightarrow\exists x(x\in\mathbb{N}\wedge(x < y))
+\end{align*}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \node (01) [a] {%
+        $\exists x(x\in\mathbb{N}\wedge\forall y(y\in\mathbb{N}\rightarrow(x < y))$ (01)%
+    };
+    \node (02) [b, below of=01] {
+        $\neg\forall y(y\in\mathbb{N}\rightarrow\exists x(x\in\mathbb{N}\wedge(x < y))$ (02)%
+    };
+    \node (03) [b, below of=02] {
+        $\exists y\neg(y\in\mathbb{N}\rightarrow\exists x(x\in\mathbb{N}\wedge(x < y))$ (03)%
+    };
+    \node (04) [b, below of=03] {
+        $\neg(a\in\mathbb{N}\rightarrow\exists x(x\in\mathbb{N}\wedge(x < a))$ (04)%
+    };
+    \node (05) [b, below of=04] {$a\in\mathbb{N}$ (05)};
+    \node (06) [b, below of=05] {$\neg\exists x(x\in\mathbb{N}\wedge(x < a))$ (06)};
+    \node (07) [b, below of=06] {$\forall x\neg(x\in\mathbb{N}\wedge(x < a))$ (07)};
+    \node (08) [a, below of=07] {%
+        $b\in\mathbb{N}\wedge\forall y(y\in\mathbb{N}\rightarrow(b < y))$ (08)%
+    };
+    \node (09) [a, below of=08] {$b\in\mathbb{N}$ (09)};
+    \node (10) [a, below of=09] {$\forall y(y\in\mathbb{N}\rightarrow(b < y))$ (10)};
+    \node (11) [a, below of=10] {$a\in\mathbb{N}\rightarrow(b < a)$ (11)};
+    \node (12) [a, below of=11, xshift=-35mm] {$a\not\in\mathbb{N}$ (12)};
+    \node (13) [a, below of=11, xshift=35mm] {$b < a$ (13)};
+    \node (14) [b, below of=13] {$\neg(b\in\mathbb{N}\wedge(b < a))$ (14)};
+    \node (15) [b, below of=14, xshift=-15mm] {$b\not\in\mathbb{N}$ (15)};
+    \node (16) [b, below of=14, xshift= 15mm] {$b \not< a$ (16)};
+
+    \node (17) [below of=12, yshift=3mm] {$(12)\lightning(05)$};
+    \node (18) [below of=15, yshift=3mm] {$(15)\lightning(09)$};
+    \node (19) [below of=16, yshift=3mm] {$(16)\lightning(13)$};
+
+    \draw (01) -- (02) -- (03) -- (04) -- (05) -- (06) -- (07) -- (08) -- (09);
+    \draw (09) -- (10) -- (11);
+    \draw (11.south) -- ++(0mm, -2mm) -- ++(-35mm, 0mm) -- (12.north); 
+    \draw (11.south) -- ++(0mm, -2mm) -- ++( 35mm, 0mm) -- (13.north); 
+    \draw (13) -- (14);
+    \draw (14.south) -- ++(0mm, -2mm) -- ++(-15mm, 0mm) -- (15.north); 
+    \draw (14.south) -- ++(0mm, -2mm) -- ++( 15mm, 0mm) -- (16.north); 
+\end{tikzpicture}
+\caption{Der Beweises über die Menge der natürlichen Zahlen}
+\label{fig:exapleOfExistsAll}
+\end{figure}
+
+% vim: set filetype=tex

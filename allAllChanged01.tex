@@ -1,0 +1,24 @@
+Der Beweis von
+\begin{align*}
+    \forall x\forall y\varphi(x,y) \models\forall y\forall x\varphi(x, y)
+\end{align*}
+als Warheitsbaum.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \node (01) [a] {$\forall x\forall y\varphi(x, y)$ (01)};
+    \node (02) [b, below of=01] {$\neg\forall y\forall x\varphi(x, y)$ (02)};
+    \node (03) [b, below of=02] {$\exists y\exists x\neg\varphi(x, y)$ (03)};
+    \node (04) [b, below of=03] {$\exists x\neg\varphi(x, a)$ (04)};
+    \node (05) [b, below of=04] {$\neg\varphi(b, a)$ (05)};
+    \node (06) [a, below of=05] {$\forall y\varphi(b, y)$ (06)};
+    \node (07) [a, below of=06] {$\varphi(b, a)$ (07)};
+
+    \node (08) [below of=07, yshift=3mm] {$(07)\lightning(05)$};
+
+    \draw (01) -- (02) -- (03) -- (04) -- (05) -- (06) -- (07);
+\end{tikzpicture}
+\caption{Die eine Richtung der Äquivalenz}
+\label{fig:allAllChanged01}
+\end{figure}

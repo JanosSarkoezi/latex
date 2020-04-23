@@ -1,0 +1,52 @@
+\begin{tikzpicture}
+  \node[a]                             (01n) {$\neg\neg\varphi$};
+  \node[a, below of=01n]               (02n) {$\varphi$};
+  \node[a, below of=02n]               (01a) {$\varphi\wedge\psi$};
+  \node[a, below of=01a, xshift=-10mm] (02a) {$\varphi\wedge\psi$};
+  \node[a, below of=01a, xshift= 10mm] (03a) {$\varphi\wedge\psi$};
+  \node[a, below of=01a, yshift=-10mm] (01o) {$\varphi\wedge\psi$};
+  \node[a, below of=01o, xshift=-10mm] (02o) {$\varphi\wedge\psi$};
+  \node[a, below of=01o, xshift= 10mm] (03o) {$\varphi\wedge\psi$};
+%    \path   (  0mm,   0mm) node[a] (01n) {$\neg\neg\varphi$}
+%          ++(  0mm, -10mm) node[a] (02n) {$\varphi$}
+%            (  0mm, -30mm) node[a] (01a) {$\varphi\wedge\psi$}
+%          ++(  0mm, -10mm) node[a] (02a) {$\varphi$}
+%          ++(  0mm, -10mm) node[a] (03a) {$\psi$}
+%            (  0mm, -60mm) node[a] (01o) {$\varphi\vee\psi$}
+%           +(-10mm, -10mm) node[a] (02o) {$\varphi$}
+%           +( 10mm, -10mm) node[a] (03o) {$\psi$}
+%            (  0mm, -90mm) node[a] (01c) {$\varphi\rightarrow\psi$}
+%           +(-10mm, -10mm) node[a] (02c) {$\neg\varphi$}
+%           +( 10mm, -10mm) node[a] (03c) {$\psi$}
+%            (  0mm,-110mm) node[a] (01e) {$\varphi\leftrightarrow\psi$}
+%           +(-10mm, -10mm) node[a] (02e) {$\varphi$}
+%           +(-10mm, -20mm) node[a] (03e) {$\psi$}
+%           +( 10mm, -10mm) node[a] (04e) {$\neg\varphi$}
+%           +( 10mm, -20mm) node[a] (05e) {$\neg\psi$}
+%
+%            ( 30mm,   0mm) node[a] (01w)  {$\varphi$}
+%          ++(  0mm, -10mm) node[a] (02w)  {$\neg\varphi$}
+%          ++(  0mm,  -7mm) node    (03w)  {$\lightning$}
+%            ( 30mm, -30mm) node[a] (01na) {$\neg(\varphi\wedge\psi$)}
+%           +(-10mm, -10mm) node[a] (02na) {$\varphi$}
+%           +( 10mm, -10mm) node[a] (03na) {$\psi$}
+%            ( 30mm, -60mm) node[a] (01no) {$\neg(\varphi\vee\psi)$}
+%          ++(  0mm, -10mm) node[a] (02no) {$\varphi$}
+%          ++(  0mm, -10mm) node[a] (03no) {$\psi$};
+
+
+    % \draw (01n) -- (02n);
+    % \draw (01a) -- (02a) -- (03a);
+    % \draw (01o.south) -- ++(0mm, -2mm) -- ++(-10mm, 0mm) -- (02o.north); 
+    % \draw (01o.south) -- ++(0mm, -2mm) -- ++( 10mm, 0mm) -- (03o.north); 
+    % \draw (01c.south) -- ++(0mm, -2mm) -- ++(-10mm, 0mm) -- (02c.north); 
+    % \draw (01c.south) -- ++(0mm, -2mm) -- ++( 10mm, 0mm) -- (03c.north); 
+    % \draw (01e.south) -- ++(0mm, -2mm) -- ++(-10mm, 0mm) -- (02e.north); 
+    % \draw (01e.south) -- ++(0mm, -2mm) -- ++( 10mm, 0mm) -- (04e.north); 
+    % \draw (02e) -- (03e);
+    % \draw (04e) -- (05e);
+    % \draw (01w) -- (02w);
+    % \draw (01na.south) -- ++(0mm, -2mm) -- ++(-10mm, 0mm) -- (02na.north); 
+    % \draw (01na.south) -- ++(0mm, -2mm) -- ++( 10mm, 0mm) -- (03na.north); 
+    % \draw (01no) -- (02no) -- (03no);
+\end{tikzpicture}
