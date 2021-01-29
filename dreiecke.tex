@@ -1,0 +1,62 @@
+\documentclass[11pt, a4paper]{article}
+% \documentclass{article}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage[hungarian]{babel}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+H\'uzzunk egy $e$ egyenest \'es az $e$ egynessel p\'arhuzamossan egy $f$ egyenest. Mivel az egyenesek p\'arhuzamossak, b\'armely pont az $e$ egyenesen, az $f$ egyenest\H{o}l egyenl\H{o} t\'avols\'agra van. Term\'eszetessen ez az \'all\'it\'as forditva is igaz. Vagyis b\'armely pont az $f$ egyenesen, az $e$ egyenest\H{o}l egyenl\H{o} t\'avols\'agra van.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  \node (e1) at (-3.5, 0.0) {$e$};
+  \node (e2) at ( 3.5, 0.0) {};
+  \node (f1) at (-3.5, 2.0) {$f$};
+  \node (f2) at ( 3.5, 2.0) {};
+  
+  \node (A) at (-2.0, 0.0) [label=below:$A$] {};
+  \node (B) at ( 1.0, 0.0) [label=below:$B$] {};
+  \node (C) at ( 0.0, 2.0) [label=above:$C$] {};
+  
+  \draw (e1) -- (e2);
+  \draw (f1) -- (f2);
+  
+  \filldraw (A) circle (1pt);
+  \filldraw (B) circle (1pt);
+  \filldraw (C) circle (1pt);
+\end{tikzpicture}
+\caption{P\'arhuzamos egyenesek}
+\label{fig:paralel}
+\end{figure}
+P\'eldaul az \ref{fig:paralel} \'abr\'an egy $A$ \'es $B$ pontot l\'atunk az $e$ egyenesen \'es egy $C$ pontot az $f$ egyenesen. Az $A$ \'es a $B$ pont ugynakkora t\'avols\'agra van az $e$ egyenest\H{o}l, mint a $C$ pont az $f$ egyenest\H{o}l.
+
+Ha az $A$ pontot össze kötjük a $C$ ponttal \'es ugyanezt tesszük a $B$ \'es $C$ ponttal, akkor egy h\'aromszöget kapunk.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  \node (e1) at (-3.5, 0.0) {$e$};
+  \node (e2) at ( 3.5, 0.0) {};
+  \node (f1) at (-3.5, 2.0) {$f$};
+  \node (f2) at ( 3.5, 2.0) {};
+  
+  \draw (-2.0, 0.0) -- (0.0, 2.0) -- (1.0, 0.0);
+
+  \node (A) at (-2.0, 0.0) [label=below:$A$] {};
+  \node (B) at ( 1.0, 0.0) [label=below:$B$] {};
+  \node (C) at ( 0.0, 2.0) [label=above:$C$] {};
+
+  \draw (e1) -- (e2);
+  \draw (f1) -- (f2);
+  
+  \filldraw (A) circle (1pt);
+  \filldraw (B) circle (1pt);
+  \filldraw (C) circle (1pt);
+\end{tikzpicture}
+\caption{Egy h\'aromszög}
+\label{fig:tri1}
+\end{figure}
+\end{document}
