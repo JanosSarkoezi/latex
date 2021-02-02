@@ -1,0 +1,159 @@
+\documentclass[11pt, a4paper]{article}
+% \documentclass{article}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[hungarian]{babel}
+\usetikzlibrary{calc}
+
+\title{%
+  H\'azi feladatok S\'arközi J\'anosnak \\
+  \large S\'arközi J\'anost\'ol}
+
+
+\begin{document}
+\maketitle
+\section{El\H{o}k\'eszület}
+Ezek a feladatok a differenci\'alsz\'am\'it\'assal fognak foglalkozni. Ehhez
+egy kis bemeleg\'it\'es k\'eppen egy p\'elda megold\'assal. A p\'elda \'es a
+megold\'as mellet p\'ar matematikai szimb\'olumokat is fogunk l\'atni.
+
+Legyen a követke\H{o} függv\'eny megadva
+\[
+    f(x) = x^2+1
+\]
+Ha az $x$ helyen szeretn\'enk az $f$ függv\'enynek a v\'altoz\'as\'at
+kisz\'amolni, akkor az addott függv\'enyt az $x$ helyhez közeli pontokat kell
+behelyettes\'iteni. Teh\'at az $x+h$ helyeket kell megvizsg\'alni az "x"
+helyhez k\'epest. K\'epletbe öntve ez azt jelenti
+\[
+    f(x+h) - f(x)
+\]
+Szavakban elmondva: Vegyük az addot függv\'eny \'ert\'ek\'et az $x+h$ \'es az
+$x$ helyeken. Ezeknek az \'ert\'ekeknek a különbs\'eg\'et vesszük. Ezt a
+különbs\'eg\'et le lehet rövid\'iteni
+\[
+    \Delta f := f(x+h) - f(x)
+\]
+
+T\'erjünk vissza a p\'eld\'ahoz. Legyen a vizsg\'alt hely $x=1$ \'es $h=1$-gyel.
+Helyettes\'itsük be ezeket az \'ert\'tkeket az \'altal\'anos függv\'enyünkbe:
+\[
+    \Delta f := f(1+1) - f(1)
+\]
+Ez pedig nem m\'as az adott függv\'együnkn\'el $f(x)=x^2+1$ mint
+\[
+    f(1+1) - f(1) = 2^2+1 - (1^2+1) = 3
+\]
+Ha most $h=0,5$-tel akkor
+\[
+    f(1+0,5) - f(1) = 1,5^2+1 - (1^2+1) = 1.25
+\]
+lesz. Vegyünk m\'eg kisebb $h$-t, p\'eldaul $h=0.25$. Akkor
+\[
+    f(1+0,25) - f(1) = 1,25^2+1 - (1^2+1) = 0.5625
+\]
+lesz. V\'egül ha $h=0,1$-gyel, akkor
+\[
+    f(1+0,1) - f(1) = 1,1^2+1 - (1^2+1) = 0.21
+\]
+kapunk. A kutat\'as \'erdek\'eben sz\'amoljuk ki az eg\'eszet $h=0.01$-n\'el \'es $h=0.001$-n\'el. Foglaljuk az eredm\'enyünket egy t\'abl\'azatba
+
+\begin{center}
+\begin{tabular}{ c|c|c|c|c|c } 
+    h        & 1 & 0,5    & 0,1  & 0,01   & 0,001 \\ 
+ \hline
+    \Delta f & 3 & 0,5625 & 0,21 & 0,0201 & 0,002001 \\
+\end{tabular}
+\end{center}
+
+Vezessünk egy m\'asik szimb\'olumot be. Legyen
+\[
+    \Delta x = x+h - x = h.
+\]
+\'Igy a t\'abl\'azatunk a követke\H{o} alakot fogja felvenni
+\begin{center}
+\begin{tabular}{ c|c|c|c|c|c } 
+    \Delta x & 1 & 0,5    & 0,1  & 0,01   & 0,001 \\ 
+ \hline
+    \Delta f & 3 & 0,5625 & 0,21 & 0,0201 & 0,002001 \\
+\end{tabular}
+\end{center}
+Sz\'amoljuk ki a következ\{o} törtet a t\'abl\'azat minden \'ert\'ek\'ere
+\[
+    \frac{\Delta f}{\Delta x}
+\]
+Kib\H{o}v\'itett t\'abl\'azatunk \'igy fog kin\'ezni 
+\begin{center}
+\begin{tabular}{ c|c|c|c|c|c } 
+    \Delta x                  & 1 & 0,5     & 0,1  & 0,01   & 0,001 \\ 
+ \hline
+    \Delta f                  & 3 & 0,5625  & 0,21 & 0,0201 & 0,002001 \\
+ \hline
+  $\frac{\Delta f}{\Delta x}$ & 3 & 1,125   & 2,1  & 2,01   & 2,001 \\
+\end{tabular}
+\end{center}
+Ebb\H{o}l l\'athat\'o, ha $\Delta x$ egyre kisebb lesz, akkor $\frac{\Delta f}{\Delta x}$ a kett\H{o}höz közel\'it, ha $x=1$-gyel.
+
+Sz\'amoljuk ki a t\'abl\'azatot, ha $x=0$. Eml\'ekeztet\H{o} $f(x) = x^2+1$
+\begin{center}
+\begin{tabular}{ c|c|c|c|c|c } 
+    \Delta x                  & 1 & 0,5   & 0,1  & 0,01   & 0,001 \\ 
+ \hline
+    \Delta f                  & 1 & 0,25  & 0,01 & 0,0001 & 0,000001 \\
+ \hline
+  $\frac{\Delta f}{\Delta x}$ & 1 & 0,5   & 0,1  & 0,01   & 0,001 \\
+\end{tabular}
+\end{center}
+Ebben az esetben ha $h$ \'ert\'eke $0$-hoz közeledik, akkor $\frac{\Delta f}{\delta x}$ is $0$-hoz tart.
+\newpage
+1. Feladat. Legyen a függv\'enyünk
+\[
+    f(x) = x^2
+\]
+Töltsd ki a következ\H{o} t\'abl\'azatokat ha $x=0$
+\begin{center}
+\begin{tabular}{ c|c|c|c|c|c } 
+    \Delta x                  & 1 & 0,5   & 0,25 & 0,125  & 0,0625 \\ 
+ \hline
+    \Delta f                  &   &       &      &        &        \\
+ \hline
+  $\frac{\Delta f}{\Delta x}$ &   &       &      &        &        \\
+\end{tabular}
+\end{center}
+Ha $x=0,5$ 
+\begin{center}
+\begin{tabular}{ c|c|c|c|c|c } 
+\Delta x                  & 1 & 0,5   & 0,25 & 0,125  & 0,0625 \\ 
+\hline
+\Delta f                  &   &       &      &        &        \\
+\hline
+$\frac{\Delta f}{\Delta x}$ &   &       &      &        &        \\
+\end{tabular}
+\end{center}
+\'es ha $x=-1$
+\begin{center}
+\begin{tabular}{ c|c|c|c|c|c } 
+\Delta x                  & 1 & 0,5   & 0,25 & 0,125  & 0,0625 \\ 
+\hline
+\Delta f                  &   &       &      &        &        \\
+\hline
+$\frac{\Delta f}{\Delta x}$ &   &       &      &        &        \\
+\end{tabular}
+\end{center}
+Vegyünk \'eszre azt, hogy a $h$ \'ert\'ek\'et az eggyel kezdve mind\'ig feleztük. Teh\'at a $h$ \'ert\'ekei
+\[
+h = 1, 1/2, 1/4, 1/8, 1/16
+\]
+volt.
+
+2. Feladat. V\'egesszük el az 1. feladathoz hasonl\'oan a sz\'am\'it\'asokat, ha
+a függv\'enyük el\H{o}ször
+\[
+    f(x) = 3x+4
+\]
+\'es m\'asokszor
+\[
+    f(x) = (x+1)^2-2
+\]
+\end{document}
