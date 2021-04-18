@@ -9,7 +9,9 @@ pdf:
 
 %.pdf: %.tex
 #	echo $<
-	pdflatex -interaction=nonstopmode $<; pkill -1 mupdf
+	pdflatex -file-line-error -interaction=nonstopmode $<
+	pdflatex -file-line-error -interaction=nonstopmode $<
+	pkill -1 mupdf
 
 clean:
 	rm -f *.toc *.aux *.log *.out *.idx *.dvi
