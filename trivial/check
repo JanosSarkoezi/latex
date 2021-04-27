@@ -1,0 +1,6 @@
+#!/bin/bash
+
+inotifywait -qme close_write ./ |
+while read path action file; do
+  [[ "$file" =~ .*tex$ ]] && make pdf;
+done
