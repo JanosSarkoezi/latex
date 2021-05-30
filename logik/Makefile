@@ -1,10 +1,10 @@
-pdf: esGibtGenauEin.pdf
+pdf: main.pdf
 
-esGibtGenauEin.pdf: esGibtGenauEin.aux
+main.pdf: main.aux
 	pdflatex -file-line-error -interaction=nonstopmode $(addsuffix .tex, $(basename $<))
 	pkill -1 mupdf
 
-esGibtGenauEin.aux: esGibtGenauEin.tex
+main.aux: main.tex
 	pdflatex -file-line-error -interaction=nonstopmode $<
 
 clean:
