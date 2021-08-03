@@ -1,0 +1,183 @@
+\documentclass[11pt, a4paper, fleqn]{report}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+
+% Numerierung der Fromel innerhalb einer Sektion
+\numberwithin{equation}{section}
+
+\title{New Foundations for Classical Mechanics}
+
+\begin{document}
+\maketitle
+\chapter{Origins of Geometric Algebra}
+\section{Geometry and Physics}
+\section{Number and Magnitude}
+\section{Directed Numbers}
+\begin{equation}
+    \mathbf{a} = \mathbf{b}
+\end{equation}
+\begin{equation}
+    \mathbf{b} = \lambda\mathbf{a}
+\end{equation}
+\begin{equation}
+    \mathbf{a} = |\mathbf{a}|\hat{\mathbf{a}}, \textrm{ where } |\hat{\mathbf{a}}|=1
+\end{equation}
+\begin{equation}
+    (0)\mathbf{a}=0
+\end{equation}
+\begin{equation}
+    \mathbf{a}+\mathbf{b}=\mathbf{s}
+\end{equation}
+\begin{equation}
+    \mathbf{a}+\mathbf{b}=\mathbf{b}+\mathbf{a}
+\end{equation}
+\begin{equation}
+    (\mathbf{a}+\mathbf{b})+\mathbf{c}=\mathbf{a}+(\mathbf{b}+\mathbf{c})
+\end{equation}
+\begin{equation}
+    \mathbf{a}+0=\mathbf{a}
+\end{equation}
+\begin{equation}
+    \mathbf{a}+\mathbf{b}=0
+\end{equation}
+\begin{equation}
+    \mathbf{c}-\mathbf{a}=\mathbf{c}+(-\mathbf{a})
+\end{equation}
+\begin{equation}
+    (-1)\mathbf{a}=-\mathbf{a}
+\end{equation}
+
+\section{The Inner Product}
+\begin{equation}
+    \mathbf{a}\cdot\mathbf{b}=|\mathbf{a}||\mathbf{b}|\cos\gamma
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot\mathbf{b}=\mathbf{b}\cdot\mathbf{a}
+\end{equation}
+\begin{equation}
+    (\lambda\mathbf{a})\cdot\mathbf{b}=\lambda(\mathbf{b}\cdot\mathbf{a})=\mathbf{a}\cdot(\lambda\mathbf{b})
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot(\mathbf{b}+\mathbf{c})=\mathbf{a}\cdot\mathbf{b}+\mathbf{a}\cdot\mathbf{c}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot\mathbf{a}=|\mathbf{a}|^2\geq 0
+\end{equation}
+\begin{equation}
+    \mathbf{a}+\mathbf{b}=\mathbf{c}
+\end{equation}
+\begin{equation}
+    |\mathbf{c}|^2=|\mathbf{a}|^2+|\mathbf{b}|^2+2\mathbf{a}\cdot\mathbf{b}
+\end{equation}
+\begin{equation}
+    c^2=a^2+b^2+2ab\cos\gamma
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot\mathbf{b}=0
+\end{equation}
+
+\section{The Outer Product}
+\begin{equation}
+    \mathbf{a}\wedge\mathbf{b}=\mathbf{B}
+\end{equation}
+\begin{equation}
+    \mathbf{b}\wedge\mathbf{a}=-\mathbf{a}\wedge\mathbf{b}=-\mathbf{B}
+\end{equation}
+\begin{equation}
+    \mathbf{b}\wedge\mathbf{a}=\mathbf{a}\wedge(-\mathbf{b})=(-\mathbf{b})\wedge(-\mathbf{a})=(-\mathbf{a})\wedge\mathbf{b}
+\end{equation}
+\begin{equation}
+    |\mathbf{B}|=|\mathbf{a}\wedge\mathbf{b}|=|\mathbf{a}||\mathbf{b}|\sin\gamma
+\end{equation}
+\begin{equation}
+    \mathbf{C}=\lambda\mathbf{B}
+\end{equation}
+\begin{equation}
+    |\mathbf{C}|=|\lambda||\mathbf{B}|
+\end{equation}
+\begin{equation}
+    (1)\mathbf{B}=\mathbf{B}\textrm{ and }(-1)\mathbf{B}=-\mathbf{B}
+\end{equation}
+\begin{equation}
+    (\lambda\mathbf{a})\wedge\mathbf{b}=\lambda(\mathbf{b}\wedge\mathbf{a})=\mathbf{a}\wedge(\lambda\mathbf{b})
+\end{equation}
+\begin{equation}
+    \mathbf{a}\wedge\mathbf{b}=0
+\end{equation}
+\begin{equation}
+    \mathbf{a}\wedge\mathbf{a}=0
+\end{equation}
+\begin{equation}
+    \mathbf{a}\wedge(\mathbf{b}+\mathbf{c})=\mathbf{a}\wedge\mathbf{b}+\mathbf{a}\wedge\mathbf{c}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\wedge\mathbf{c}=\mathbf{a}\wedge\mathbf{b}=\mathbf{c}\wedge\mathbf{b}
+\end{equation}
+\begin{equation}
+    |\mathbf{a}\wedge\mathbf{c}|=|\mathbf{a}\wedge\mathbf{b}|=|\mathbf{c}\wedge\mathbf{b}|
+\end{equation}
+\begin{equation}
+    \frac{\sin\alpha}{a} =\frac{\sin\beta}{b}=\frac{\sin\gamma}{c}
+\end{equation}
+\begin{equation}
+    (\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}=\mathbf{T}
+\end{equation}
+\begin{equation}
+    (\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}=\mathbf{a}\wedge(\mathbf{b}\wedge\mathbf{c})
+\end{equation}
+\begin{equation}
+    (\mathbf{b}\wedge\mathbf{a})\wedge\mathbf{c}=(-\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}=-\mathbf{T}
+\end{equation}
+\begin{equation}
+    (\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}=\mathbf{a}\wedge\mathbf{b}\wedge\mathbf{c}=0
+\end{equation}
+\begin{equation}
+    (\mathbf{a}\wedge\mathbf{b}\wedge\mathbf{c})\wedge\mathbf{d}=\mathbf{a}\wedge\mathbf{b}\wedge\mathbf{c}\wedge\mathbf{d}=0
+\end{equation}
+
+\section{Synthesis and Simplification}
+\begin{equation}
+    \mathbf{a}\mathbf{b}=\mathbf{a}\cdot\mathbf{b}+\mathbf{a}\wedge\mathbf{b}
+\end{equation}
+\begin{equation}
+    \mathbf{b}\mathbf{a}=\mathbf{b}\cdot\mathbf{a}+\mathbf{b}\wedge\mathbf{a}=\mathbf{a}\cdot\mathbf{b}-\mathbf{a}\wedge\mathbf{b}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\wedge\mathbf{b}=0\rightarrow
+    \mathbf{a}\mathbf{b}=\mathbf{a}\cdot\mathbf{b}=\mathbf{b}\mathbf{a}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot\mathbf{b}=0\rightarrow
+\mathbf{a}\mathbf{b}=\mathbf{a}\wedge\mathbf{b}=-\mathbf{b}\wedge\mathbf{a}=-\mathbf{b}\mathbf{a}
+\end{equation}
+\begin{equation}
+    \mathbf{a}(\mathbf{b}+\mathbf{c})=\mathbf{a}\mathbf{b}+\mathbf{a}\mathbf{c}
+\end{equation}
+\begin{equation}
+    (\mathbf{b}+\mathbf{c})\mathbf{a}=\mathbf{b}\mathbf{a}+\mathbf{c}\mathbf{a}
+\end{equation}
+\begin{equation}
+    (\lambda\mathbf{a})\mathbf{b}=\lambda(\mathbf{b}\mathbf{a})=\mathbf{a}(\lambda\mathbf{b})
+\end{equation}
+\begin{equation}
+    \lambda\mathbf{a}=\mathbf{a}\lambda
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot\mathbf{b}=\frac{1}{2}(\mathbf{a}\mathbf{b}+\mathbf{b}\mathbf{a})
+\end{equation}
+\begin{equation}
+    \mathbf{a}\wedge\mathbf{b}=\frac{1}{2}(\mathbf{a}\mathbf{b}-\mathbf{b}\mathbf{a})
+\end{equation}
+\begin{equation}
+    \mathbf{a}(\mathbf{b}\mathbf{c})=(\mathbf{a}\mathbf{b})\mathbf{c}=\mathbf{a}\mathbf{b}\mathbf{c}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot\mathbf{B}=\frac{1}{2}(\mathbf{a}\mathbf{B}-\mathbf{B}\mathbf{a})=-\mathbf{B}\cdot\mathbf{a}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\wedge\mathbf{B}=\frac{1}{2}(\mathbf{a}\mathbf{B}+\mathbf{B}\mathbf{a})=\mathbf{B}\wedge\mathbf{a}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot(\mathbf{b}\wedge\mathbf{c})=(\mathbf{a}\cdot\mathbf{b})\mathbf{c}-(\mathbf{a}\cdot\mathbf{c})\mathbf{b}
+\end{equation}
+\end{document}
