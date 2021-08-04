@@ -5,6 +5,9 @@
 % Numerierung der Fromel innerhalb einer Sektion
 \numberwithin{equation}{section}
 
+% Abkürzung für mathbf
+\def\*#1{\mathbf{#1}}
+
 \title{New Foundations for Classical Mechanics}
 
 \begin{document}
@@ -14,150 +17,154 @@
 \section{Number and Magnitude}
 \section{Directed Numbers}
 \begin{equation}
-    \mathbf{a} = \mathbf{b}
+    \*a = \*b
 \end{equation}
 \begin{equation}
-    \mathbf{b} = \lambda\mathbf{a}
+    \*b = \lambda\*a
 \end{equation}
 \begin{equation}
-    \mathbf{a} = |\mathbf{a}|\hat{\mathbf{a}}, \textrm{ where } |\hat{\mathbf{a}}|=1
+    \*a = |\*a|\hat{\*a}, \textrm{ where } |\hat{\*a}|=1
 \end{equation}
 \begin{equation}
-    (0)\mathbf{a}=0
+    (0)\*a=0
 \end{equation}
 \begin{equation}
-    \mathbf{a}+\mathbf{b}=\mathbf{s}
+    \*a+\*b=\*s
 \end{equation}
 \begin{equation}
-    \mathbf{a}+\mathbf{b}=\mathbf{b}+\mathbf{a}
+    \*a+\*b=\*b+\*a
 \end{equation}
 \begin{equation}
-    (\mathbf{a}+\mathbf{b})+\mathbf{c}=\mathbf{a}+(\mathbf{b}+\mathbf{c})
+    (\*a+\*b)+\*c=\*a+(\*b+\*c)
 \end{equation}
 \begin{equation}
-    \mathbf{a}+0=\mathbf{a}
+    \*a+0=\*a
 \end{equation}
 \begin{equation}
-    \mathbf{a}+\mathbf{b}=0
+    \*a+\*b=0
 \end{equation}
 \begin{equation}
-    \mathbf{c}-\mathbf{a}=\mathbf{c}+(-\mathbf{a})
+    \*c-\*a=\*c+(-\*a)
 \end{equation}
 \begin{equation}
-    (-1)\mathbf{a}=-\mathbf{a}
+    (-1)\*a=-\*a
 \end{equation}
+
+
 
 \section{The Inner Product}
 \begin{equation}
-    \mathbf{a}\cdot\mathbf{b}=|\mathbf{a}||\mathbf{b}|\cos\gamma
+    \*a\cdot\*b=|\*a||\*b|\cos\gamma
 \end{equation}
 \begin{equation}
-    \mathbf{a}\cdot\mathbf{b}=\mathbf{b}\cdot\mathbf{a}
+    \*a \cdot \*b = \*b \cdot \*a
 \end{equation}
 \begin{equation}
-    (\lambda\mathbf{a})\cdot\mathbf{b}=\lambda(\mathbf{b}\cdot\mathbf{a})=\mathbf{a}\cdot(\lambda\mathbf{b})
+    (\lambda\*a)\cdot\*b = \lambda(\*b \cdot\*a)=\*a \cdot(\lambda\*b)
 \end{equation}
 \begin{equation}
-    \mathbf{a}\cdot(\mathbf{b}+\mathbf{c})=\mathbf{a}\cdot\mathbf{b}+\mathbf{a}\cdot\mathbf{c}
+    \*a \cdot(\*b +\*c)=\*a \cdot\*b +\*a \cdot \*c
 \end{equation}
 \begin{equation}
-    \mathbf{a}\cdot\mathbf{a}=|\mathbf{a}|^2\geq 0
+    \*a \cdot \*a = |\*a|^2\geq 0
 \end{equation}
 \begin{equation}
-    \mathbf{a}+\mathbf{b}=\mathbf{c}
+    \*a + \*b=\*c
 \end{equation}
 \begin{equation}
-    |\mathbf{c}|^2=|\mathbf{a}|^2+|\mathbf{b}|^2+2\mathbf{a}\cdot\mathbf{b}
+    |\*c|^2=|\*a|^2+|\*b|^2+2\*a \cdot \*b
 \end{equation}
 \begin{equation}
     c^2=a^2+b^2+2ab\cos\gamma
 \end{equation}
 \begin{equation}
-    \mathbf{a}\cdot\mathbf{b}=0
+    \*a \cdot \*b=0
 \end{equation}
+
+
 
 \section{The Outer Product}
 \begin{equation}
-    \mathbf{a}\wedge\mathbf{b}=\mathbf{B}
+    \*a \wedge \*b=\*B
 \end{equation}
 \begin{equation}
-    \mathbf{b}\wedge\mathbf{a}=-\mathbf{a}\wedge\mathbf{b}=-\mathbf{B}
+    \*b\wedge\*a=-\*a \wedge \*b=-\*B
 \end{equation}
 \begin{equation}
-    \mathbf{b}\wedge\mathbf{a}=\mathbf{a}\wedge(-\mathbf{b})=(-\mathbf{b})\wedge(-\mathbf{a})=(-\mathbf{a})\wedge\mathbf{b}
+    \*b \wedge \*a=\*a \wedge(-\*b)=(-\*b)\wedge(-\*a)=(-\*a)\wedge\*b
 \end{equation}
 \begin{equation}
-    |\mathbf{B}|=|\mathbf{a}\wedge\mathbf{b}|=|\mathbf{a}||\mathbf{b}|\sin\gamma
+    |\*B|=|\*a\wedge\*b|=|\*a||\*b|\sin\gamma
 \end{equation}
 \begin{equation}
-    \mathbf{C}=\lambda\mathbf{B}
+    \*C=\lambda\*B
 \end{equation}
 \begin{equation}
-    |\mathbf{C}|=|\lambda||\mathbf{B}|
+    |\*C|=|\lambda||\*B|
 \end{equation}
 \begin{equation}
-    (1)\mathbf{B}=\mathbf{B}\textrm{ and }(-1)\mathbf{B}=-\mathbf{B}
+    (1)\*B=\*B\textrm{ and }(-1)\*B=-\*B
 \end{equation}
 \begin{equation}
-    (\lambda\mathbf{a})\wedge\mathbf{b}=\lambda(\mathbf{b}\wedge\mathbf{a})=\mathbf{a}\wedge(\lambda\mathbf{b})
+    (\lambda\*a)\wedge\*b=\lambda(\*b\wedge\*a)=\*a\wedge(\lambda\*b)
 \end{equation}
 \begin{equation}
-    \mathbf{a}\wedge\mathbf{b}=0
+    \*a\wedge\*b=0
 \end{equation}
 \begin{equation}
-    \mathbf{a}\wedge\mathbf{a}=0
+    \*a\wedge\*a=0
 \end{equation}
 \begin{equation}
-    \mathbf{a}\wedge(\mathbf{b}+\mathbf{c})=\mathbf{a}\wedge\mathbf{b}+\mathbf{a}\wedge\mathbf{c}
+    \*a\wedge(\*b+\*c)=\*a\wedge\*b+\*a\wedge\*c
 \end{equation}
 \begin{equation}
-    \mathbf{a}\wedge\mathbf{c}=\mathbf{a}\wedge\mathbf{b}=\mathbf{c}\wedge\mathbf{b}
+    \*a\wedge\*c=\*a\wedge\*b=\*c\wedge\*b
 \end{equation}
 \begin{equation}
-    |\mathbf{a}\wedge\mathbf{c}|=|\mathbf{a}\wedge\mathbf{b}|=|\mathbf{c}\wedge\mathbf{b}|
+    |\*a\wedge\*c|=|\*a\wedge\*b|=|\*c\wedge\*b|
 \end{equation}
 \begin{equation}
     \frac{\sin\alpha}{a} =\frac{\sin\beta}{b}=\frac{\sin\gamma}{c}
 \end{equation}
 \begin{equation}
-    (\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}=\mathbf{T}
+    (\*a\wedge\*b)\wedge\*c=\*T
 \end{equation}
 \begin{equation}
-    (\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}=\mathbf{a}\wedge(\mathbf{b}\wedge\mathbf{c})
+    (\*a\wedge\*b)\wedge\*c=\*a\wedge(\*b\wedge\*c)
 \end{equation}
 \begin{equation}
-    (\mathbf{b}\wedge\mathbf{a})\wedge\mathbf{c}=(-\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}=-\mathbf{T}
+    (\*b\wedge\*a)\wedge\*c=(-\*a\wedge\*b)\wedge\*c=-\*T
 \end{equation}
 \begin{equation}
-    (\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}=\mathbf{a}\wedge\mathbf{b}\wedge\mathbf{c}=0
+    (\*a\wedge\*b)\wedge\*c=\*a\wedge\*b\wedge\*c=0
 \end{equation}
 \begin{equation}
-    (\mathbf{a}\wedge\mathbf{b}\wedge\mathbf{c})\wedge\mathbf{d}=\mathbf{a}\wedge\mathbf{b}\wedge\mathbf{c}\wedge\mathbf{d}=0
+    (\*a\wedge\*b\wedge\*c)\wedge\*d=\*a\wedge\*b\wedge\*c\wedge\*d=0
 \end{equation}
+
+
 
 \section{Synthesis and Simplification}
 \begin{equation}
-    \mathbf{a}\mathbf{b}=\mathbf{a}\cdot\mathbf{b}+\mathbf{a}\wedge\mathbf{b}
+    \*a\*b=\*a\cdot\*b+\*a\wedge\*b
 \end{equation}
 \begin{equation}
-    \mathbf{b}\mathbf{a}=\mathbf{b}\cdot\mathbf{a}+\mathbf{b}\wedge\mathbf{a}=\mathbf{a}\cdot\mathbf{b}-\mathbf{a}\wedge\mathbf{b}
+    \*b\*a=\*b\cdot\*a+\*b\wedge\*a=\*a\cdot\*b-\*a\wedge\*b
 \end{equation}
 \begin{equation}
-    \mathbf{a}\wedge\mathbf{b}=0\rightarrow
-    \mathbf{a}\mathbf{b}=\mathbf{a}\cdot\mathbf{b}=\mathbf{b}\mathbf{a}
+    \*a\wedge\*b=0\rightarrow \*a\*b=\*a\cdot\*b=\*b\*a
 \end{equation}
 \begin{equation}
-    \mathbf{a}\cdot\mathbf{b}=0\rightarrow
-\mathbf{a}\mathbf{b}=\mathbf{a}\wedge\mathbf{b}=-\mathbf{b}\wedge\mathbf{a}=-\mathbf{b}\mathbf{a}
+    \*a\cdot\*b=0\rightarrow \*a\*b=\*a\wedge\*b=-\*b\wedge\*a=-\*b\*a
 \end{equation}
 \begin{equation}
-    \mathbf{a}(\mathbf{b}+\mathbf{c})=\mathbf{a}\mathbf{b}+\mathbf{a}\mathbf{c}
+    \*a(\*b + \*c)=\*a\*b + \*a\*c
 \end{equation}
 \begin{equation}
-    (\mathbf{b}+\mathbf{c})\mathbf{a}=\mathbf{b}\mathbf{a}+\mathbf{c}\mathbf{a}
+    (\*b + \+c)\*a=\*b\*a + \*c\*a
 \end{equation}
 \begin{equation}
-    (\lambda\mathbf{a})\mathbf{b}=\lambda(\mathbf{b}\mathbf{a})=\mathbf{a}(\lambda\mathbf{b})
+    (\lambda\*a)\*b=\lambda(\mathbf{b}\mathbf{a})=\mathbf{a}(\lambda\mathbf{b})
 \end{equation}
 \begin{equation}
     \lambda\mathbf{a}=\mathbf{a}\lambda
@@ -179,6 +186,150 @@
 \end{equation}
 \begin{equation}
     \mathbf{a}\mathbf{B}=\mathbf{a}\cdot\mathbf{B}+\mathbf{a}\wedge\mathbf{B}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot(\mathbf{b}\wedge\mathbf{c})=(\mathbf{a}\cdot\mathbf{b})\mathbf{c}-(\mathbf{a}\cdot\mathbf{c})\mathbf{b}
+\end{equation}
+
+
+
+\section{Axioms for Geometric Algebra}
+\begin{equation}
+    A = A_0+\mathbf{A}_1+\mathbf{A}_2+\mathbf{A}_3
+\end{equation}
+\begin{equation}
+    A+B=B+A
+\end{equation}
+\begin{equation}
+    (A+B)+C=A+(B+C)
+\end{equation}
+\begin{equation}
+    (AB)C=A(BC)
+\end{equation}
+\begin{equation}
+    A(B+C)=AB+AC
+\end{equation}
+\begin{equation}
+    (B+C)A=BA+CA
+\end{equation}
+\begin{equation}
+    A+0=A
+\end{equation}
+\begin{equation}
+    1A=A
+\end{equation}
+\begin{equation}
+    A+(-A)=0
+\end{equation}
+\begin{equation}
+    \lambda A=A\lambda
+\end{equation}
+\begin{equation}
+    \mathbf{a}^2=|\mathbf{a}|^2>0
+\end{equation}
+\begin{equation}\tag{1.7.12a}
+    \mathbf{a}\cdot\mathbf{A}_k=\frac{1}{2}(\mathbf{a}\mathbf{A}_k-(-1)^k\mathbf{A}_k\mathbf{a})
+\end{equation}
+\begin{equation}\tag{1.7.12b}
+    \mathbf{a}\wedge\mathbf{A}_k=\frac{1}{2}(\mathbf{a}\mathbf{A}_k+(-1)^k\mathbf{A}_k\mathbf{a})
+\end{equation}
+\begin{equation}\tag{1.7.12c}
+    \mathbf{a}\mathbf{A}_k=\mathbf{a}\cdot\mathbf{A}_k+\mathbf{a}\wedge\mathbf{A}_k
+\end{equation}
+\begin{equation}\tag{1.7.13a}
+    \mathbf{a}\cdot\mathbf{A}_k\textrm{ is a (k-1) vector}
+\end{equation}
+\begin{equation}\tag{1.7.13b}
+    \mathbf{a}\wedge\mathbf{A}_k\textrm{ is a (k+1) vector}
+\end{equation}
+\begin{equation}\tag{1.7.14a}
+    \mathbf{a}\wedge\mathbf{A}_3=0
+\end{equation}
+\begin{equation}\tag{1.7.14b}
+    \mathbf{a}\wedge\mathbf{A}_3=0\rightarrow\mathbf{a}\mathbf{A}_3=\mathbf{A}_3\mathbf{a}
+\end{equation}
+\setcounter{equation}{14}%
+\begin{equation}
+    \mathbf{A}^{-1}\mathbf{A}=1
+\end{equation}
+\begin{equation}
+    \mathbf{a}^{-1}=\frac{\mathbf{a}}{|\mathbf{a}|^2}
+\end{equation}
+\begin{equation}
+    \mathbf{A}^{-1}\mathbf{B}=:\frac{1}{\mathbf{A}}\mathbf{B}
+\end{equation}
+\begin{equation}
+    \mathbf{B}\mathbf{A}^{-1}=:\mathbf{B}\frac{1}{\mathbf{A}}=:\mathbf{B}/\mathbf{A}
+\end{equation}
+
+
+\chapter{Developments in Geometric Algebra}
+\section{Basic Identities and Definitions}
+\begin{equation}
+    \mathbf{a}\mathbf{b}=\mathbf{a}\cdot\mathbf{b}+\mathbf{a}\wedge\mathbf{b}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot\mathbf{b}=\frac{1}{2}(\mathbf{a}\mathbf{b}+\mathbf{b}\mathbf{a})
+\end{equation}
+\begin{equation}
+    \mathbf{a}\wedge\mathbf{b}=\frac{1}{2}(\mathbf{a}\mathbf{b}-\mathbf{b}\mathbf{a})
+\end{equation}
+\begin{equation}
+    \mathbf{a}\mathbf{A}_r=\mathbf{a}\cdot\mathbf{A}_r+\mathbf{a}\wedge\mathbf{A}_r
+\end{equation}
+\begin{equation}
+    \mathbf{a}\cdot\mathbf{A}_r=\frac{1}{2}(\mathbf{a}\mathbf{A}_r-(-1)^r\mathbf{A}_r\mathbf{a})=(-1)^{r+1}\mathbf{A}_r\cdot\mathbf{a}
+\end{equation}
+\begin{equation}
+    \mathbf{a}\wedge\mathbf{A}_r=\frac{1}{2}(\mathbf{a}\mathbf{A}_r+(-1)^r\mathbf{A}_r\mathbf{a})=(-1)^{r}\mathbf{A}_r\wedge\mathbf{a}
+\end{equation}
+\[
+    \mathbf{a}(\mathbf{b}\mathbf{c})=(\mathbf{a}\mathbf{b})\mathbf{c}
+\]
+\[
+    \mathbf{a}(\mathbf{b}\cdot\mathbf{c}+\mathbf{b}\wedge\mathbf{c})=(\mathbf{a}\cdot\mathbf{b}+\mathbf{a}\wedge\mathbf{b})\mathbf{c}
+\]
+\[
+    \mathbf{a}(\mathbf{b}\cdot\mathbf{c})+\mathbf{a}\cdot(\mathbf{b}\wedge\mathbf{c})+\mathbf{a}\wedge(\mathbf{b}\wedge\mathbf{c})=(\mathbf{a}\cdot\mathbf{b})\mathbf{c}+(\mathbf{a}\wedge\mathbf{b})\cdot\mathbf{c}+(\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}
+\]
+\begin{equation}
+    \mathbf{a}\wedge(\mathbf{b}\wedge\mathbf{c})=(\mathbf{a}\wedge\mathbf{b})\wedge\mathbf{c}
+\end{equation}
+\begin{equation}
+    \mathbf{a}(\mathbf{b}\cdot\mathbf{c})+\mathbf{a}\cdot(\mathbf{b}\wedge\mathbf{c})=(\mathbf{a}\cdot\mathbf{b})\mathbf{c}+(\mathbf{a}\wedge\mathbf{b})\cdot\mathbf{c}
+\end{equation}
+\[
+    \mathbf{a}(\mathbf{B}_r+\mathbf{C}_r)=\mathbf{a}\mathbf{B}_r+\mathbf{a}\mathbf{C}_r
+\]
+\begin{equation}\tag{2.1.9a}
+    \mathbf{a}\cdot(\mathbf{B}_r+\mathbf{C}_r)=\mathbf{a}\cdot\mathbf{B}_r+\mathbf{a}\cdot\mathbf{C}_r
+\end{equation}
+\begin{equation}\tag{2.1.9b}
+    \mathbf{a}\wedge(\mathbf{B}_r+\mathbf{C}_r)=\mathbf{a}\wedge\mathbf{B}_r+\mathbf{a}\wedge\mathbf{C}_r
+\end{equation}
+\setcounter{equation}{9}%
+\begin{equation}
+    A=\sum_r\langle A\rangle_r=\langle A\rangle_0+\langle A\rangle_1+\langle A\rangle_2+\langle A\rangle_3
+\end{equation}
+\begin{equation}\tag{2.1.11a}
+    A=\langle A\rangle_++\langle A\rangle_-
+\end{equation}
+\begin{equation}\tag{2.1.11b}
+    \langle A\rangle_+=\langle A\rangle_0+\langle A\rangle_2
+\end{equation}
+\begin{equation}\tag{2.1.11c}
+    \langle A\rangle_-=\langle A\rangle_1+\langle A\rangle_3
+\end{equation}
+Klammerung
+\begin{equation}\tag{2.1.12a}
+    (A \wedge B)C=A \wedge BC\neq A\wedge(BC)
+\end{equation}
+\begin{equation}\tag{2.1.12b}
+    (A \cdot B)C=A \cdot BC\neq A\cdot(BC)
+\end{equation}
+\setcounter{equation}{12}%
+\begin{equation}
+    A \cdot (B\wedge C)=A \cdot B\wedge C\neq (A\cdot B)\wedge C
 \end{equation}
 \begin{equation}
     \mathbf{a}\cdot(\mathbf{b}\wedge\mathbf{c})=(\mathbf{a}\cdot\mathbf{b})\mathbf{c}-(\mathbf{a}\cdot\mathbf{c})\mathbf{b}
