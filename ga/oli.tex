@@ -1,0 +1,82 @@
+\documentclass[11pt, a4paper, fleqn]{report}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usetikzlibrary {arrows.meta, angles, quotes}
+
+% Numerierung der Formel innerhalb einer Sektion
+\numberwithin{equation}{section}
+
+% Abkürzung für mathbf
+\def\*#1{\mathbf{#1}}
+
+\title{Geometrische Algebra \\
+für Oliver Hut \\
+von Janos Sarközi}
+
+\begin{document}
+\maketitle
+\section{Historisches}
+Die Idee der geometrischen Algebra war schon 1844 Hermann Grassmann in seinem
+Buch über die Ausdehnungslehre entwickelt worden. Parallel dazu hatte sich
+Willima Rowan Hamilton mit der Drehung von Objekten im Raum beschäftigt.
+Initial erkannte Hamilton, dass die Drehung von Objekten in der Ebene mit den
+komplexen Zahlen erreicht werden kann. Aus seiner Arbeit von Drehungen von
+Objekten im Raum entstanden die Quaternionen. Seine berühmte Formel
+\[i^2=j^2=k^2=ijk=-1\]
+ist in Dublin auf der Boomer Bridge auf einer Tafel verewigt worden. Dort
+hatte er den Geistesblitz während eines Spazierganges mit seiner Frau.
+Grassmann und Hamilton wussten möglicher Weise von der Arbeit des anderen,
+aber erkannten nicht die Ähnlichkeiten. Nur ein junger Mathematiker namens
+William Kingdon Clifford erkannte dies. Da er schon mit 33 gestorben war,
+er konnte sich nicht in der Welt der Mathematiker etablieren, wurde seine
+Arbeit keine große Aufmerksamkeit gewidmet.
+
+Über hundert Jahre vergingen, bis sich jemand wieder mit diesen Themen
+befasste. Er nahm die Arbeiten von Grassman, Hamilton und Clifford auf und
+führte die geometrische Algebra auf neue gefilde. Diese Person ist David
+Hestenes.
+
+\section{Motivation und Ideen}
+Die Seele der ganzen geometrische Algebra lässt sich in die
+Gleichung
+\[ab = a\cdot b + a\wedge b\]
+schreiben. Heutige Bezeichnung von $a$ und $b$ sind Vektoren. Dabei bedeutet
+$a\cdot b$ das Skalarprodukt oder das innere Produkt und $a\wedge b$ das
+äußere Produkt. Die Formel besagt also, dass das geometrische Produkt zweier
+Vektoren $a$ und $b$ sich aus dem inneren und äußeren Produkt berechnet
+werden kann. Es wird kein neues Zeichen für das geometrische Produkt
+eingeführt.
+
+Verlangt wurde von diesem geometrischen Produkt, dass sie assoziativ und 
+distributiv ist
+\begin{align*}
+    a(bc) &= (ab)c \\
+    a(b+c) &= ab + ac
+\end{align*}
+\newpage
+Wenden wir uns nun den einzelnen Komponenten des geometrischen Produktes zu.
+\section{Das innere Produkt}
+Das innere Produkt ist uns allen durch die Formel bekannt
+\[a\cdot b = |a||b|\cos\alpha \]
+Wobei $\alpha$ der Winkel zwischen den Vektoren $a$ und $b$ ist. Visuell sieht
+das so aus.
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (3,0);
+    \coordinate (D) at (1,1.5);
+
+    \draw[->, thick] (A) -- (B);
+    \draw[->, thick] (A) -- (D);
+    \node[shift={(-0.4,-0.3)}] (v) at (D) {$v$};
+    \node[shift={(-0.5,-0.2)}] (u) at (B) {$u$};
+    \pic["$\alpha$", ->, draw=black, angle radius=0.8cm, angle eccentricity=0.6] {angle=B--A--D};
+
+\end{tikzpicture}
+\caption{Das Skalarprodukt zwischen den Vektoren $a$ und $b$}
+\label{fig:innerProduct}
+\end{figure}
+\end{document}
