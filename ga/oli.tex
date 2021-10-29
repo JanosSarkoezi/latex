@@ -1,4 +1,4 @@
-\documentclass[11pt, a4paper, fleqn]{report}
+\documentclass[fleqn]{scrartcl}
 \usepackage{amsmath}
 \usepackage{tikz}
 \usepackage[ngerman]{babel}
@@ -12,11 +12,12 @@
 \def\*#1{\mathbf{#1}}
 
 \title{Geometrische Algebra \\
-für Oliver Hut \\
-von Janos Sarközi}
+für Oliver Hut}
+\author{Janos Sarközi}
 
 \begin{document}
 \maketitle
+\newpage
 \section{Historisches}
 Die Idee der geometrischen Algebra war schon 1844 Hermann Grassmann in seinem
 Buch über die Ausdehnungslehre entwickelt worden. Parallel dazu hatte sich
@@ -39,10 +40,10 @@ führte die geometrische Algebra auf neue gefilde. Diese Person ist David
 Hestenes.
 
 \section{Motivation und Ideen}
-Die Seele der ganzen geometrische Algebra lässt sich in die
+Die Seele der ganzen geometrische Algebra lässt sich in der
 Gleichung
 \[ab = a\cdot b + a\wedge b\]
-schreiben. Heutige Bezeichnung von $a$ und $b$ sind Vektoren. Dabei bedeutet
+erkennen. Heutige Bezeichnung von $a$ und $b$ sind Vektoren. Dabei bedeutet
 $a\cdot b$ das Skalarprodukt oder das innere Produkt und $a\wedge b$ das
 äußere Produkt. Die Formel besagt also, dass das geometrische Produkt zweier
 Vektoren $a$ und $b$ sich aus dem inneren und äußeren Produkt berechnet
@@ -55,28 +56,247 @@ distributiv ist
     a(bc) &= (ab)c \\
     a(b+c) &= ab + ac
 \end{align*}
-\newpage
 Wenden wir uns nun den einzelnen Komponenten des geometrischen Produktes zu.
-\section{Das innere Produkt}
+\newpage
+\subsection{Das innere Produkt}
 Das innere Produkt ist uns allen durch die Formel bekannt
 \[a\cdot b = |a||b|\cos\alpha \]
 Wobei $\alpha$ der Winkel zwischen den Vektoren $a$ und $b$ ist. Visuell sieht
 das so aus.
-\begin{figure}[h]
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[>=Stealth]
-    \coordinate (A) at (0,0);
-    \coordinate (B) at (3,0);
-    \coordinate (D) at (1,1.5);
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (3,0);
+    \coordinate (B) at (1,1.5);
 
-    \draw[->, thick] (A) -- (B);
-    \draw[->, thick] (A) -- (D);
-    \node[shift={(-0.4,-0.3)}] (v) at (D) {$v$};
-    \node[shift={(-0.5,-0.2)}] (u) at (B) {$u$};
-    \pic["$\alpha$", ->, draw=black, angle radius=0.8cm, angle eccentricity=0.6] {angle=B--A--D};
-
+    \draw[->, thick] (O) -- (A);
+    \draw[->, thick] (O) -- (B);
+    \node[shift={(-0.5,-0.3)}] (v) at (B) {$b$};
+    \node[shift={(-0.5,-0.3)}] (u) at (A) {$a$};
+    \pic["$\alpha$", -, draw=black, angle radius=0.8cm, angle eccentricity=0.6] {angle=A--O--B};
 \end{tikzpicture}
-\caption{Das Skalarprodukt zwischen den Vektoren $a$ und $b$}
+\captionof{figure}{Das Skalarprodukt zwischen den Vektoren $a$ und $b$}
 \label{fig:innerProduct}
-\end{figure}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+
+\subsection{Das äußere Produkt}
+Das äußere Produkt der Vektoren $a$ und $b$ soll die orientierte Fläche des
+Parallelogramms werden, das durch diese Vektoren aufgespannt wird. Hier ein
+Bild
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (3,0);
+    \coordinate (C) at (4,1.5);
+    \coordinate (B) at (1,1.5);
+
+    \filldraw[fill=green!20] (O) -- (A) -- (C) -- (B);
+    \draw[->, thick] (O) -- (A);
+    \draw[->, thick] (O) -- (B);
+    \draw (B) -- (C);
+    \draw (A) -- (C);
+    \node[shift={(-0.5,-0.3)}] (v) at (B) {$b$};
+    \node[shift={(-0.5,-0.3)}] (u) at (A) {$a$};
+    \pic ["$\alpha$", -, draw=black, angle radius=0.8cm, angle eccentricity=0.6] {angle=A--O--B};
+    \draw[->, semithick] ([shift=(0:0.3)]1.8,0.8) arc (0:270:0.3);
+\end{tikzpicture}
+\captionof{figure}{Das äußere Produkt zwischen den Vektoren $a$ und $b$}
+\label{fig:outherProduct}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+
+Die Orientierung der Fläche wird durch die Reihenfolge der Vektoren $a$ und
+$b$ in dem äußeren Produkt $a\wedge b$ bestimmt und wird mit einem kleinen
+Kreissegment mit Pfeil gekennzeichnet. Wird das äußere Produkt von $b$ mit $a$
+gebildet, so soll eine andere Orientierung enstehen. Da es nur zwei
+Orientierungen gibt wird die Beziehung
+\[a\wedge b = - b\wedge a\]
+zwischen den äußeren Produkten gelten. Die Fläche des Parallelogramms lässt
+sich mit der Gleichung
+\[|a\wedge b| = |a||b|\sin\alpha\]
+beschreiben.
+
+Hier enstehen die Ähnlichkeiten zwischen einem Vektor und einer orientierten
+Fläche. Beide haben eine Größe und eine Orientierung. Die Größe nennt sich bei
+dem Vektor die Länge und bei dem äußeren Produkt die Fläche. Die Orientierung
+bei der Fläche hat auch den Namen links bzw. rechts orientiert oder mit dem
+Uhrzeigersinn bzw. gegen dem Uhrzeigersinn.
+
+Paar interessante Eigenschaften des äußeren Produktes. Zuerst eine einfache.
+Liegt der Vektor $b$ in der Richtung von $a$ so ist das äußere Produkt Null.
+Wenn also $b=\lambda a$ ist, so soll
+\[b\wedge a = (\lambda a)\wedge a= 0\]
+sein. Das leuchtet ein, da dann die Fläche des Parallelogramms Null ist. Das
+folgt aus der genannten Gleichung über die Orientierung der Fläche
+\[a\wedge b = - b\wedge a \textrm{ ist äquivalent zu } a\wedge b + b\wedge a = 0\]
+Setzen wir $b = a$ ein, so kommt
+\[2(a\wedge a)=0\]
+raus und damit
+\[a\wedge a = 0\]
+
+Da das äußere Produkt als ein Produkt bezeichnet wird, soll auch die
+Distributivität gelten.
+\[a\wedge (b + c) = a\wedge b + a\wedge c\]
+
+Nun können wir uns auf die Gleichheit von orientierten Fläche stürzen. Wird
+die Spitze des Vektor $b$ parallel zu dem Vektor $a$ verschoben, so ändert
+sich die Fläche des Parallelogramms nicht. Dies folgt aus den vorherigen
+Bemerkungen. Sei dafür $b'= b + \lambda a$. Dann gilt
+\[a\wedge b' = a\wedge (b + \lambda a) = a \wedge b + a\wedge (\lambda a)=
+a\wedge b\]
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (3,0);
+    \coordinate (C) at (4,1.5);
+    \coordinate (B) at (1,1.5);
+
+    \filldraw[fill=green!20] (O) -- (A) -- (C) -- (B);
+    \draw[->, thick] (O) -- (A);
+    \draw[->, thick] (O) -- (B);
+    \draw (B) -- (C);
+    \draw (A) -- (C);
+    \node[shift={(-0.5,-0.3)}] (v) at (B) {$b$};
+    \node[shift={(-0.5,-0.3)}] (u) at (A) {$a$};
+    \draw[->, semithick] ([shift=(0:0.3)]1.8,0.8) arc (0:270:0.3);
+
+    \begin{scope}[shift={(5.5,0)}]
+        \coordinate (O') at (0,0);
+        \coordinate (A') at (3,0);
+        \coordinate (C') at (2.7,1.5);
+        \coordinate (B') at (-0.3,1.5);
+
+        \filldraw[fill=green!20] (O') -- (A') -- (C') -- (B');
+        \draw[->, thick] (O') -- (A');
+        \draw[->, thick] (O') -- (B');
+        \draw (B') -- (C');
+        \draw (A') -- (C');
+        \node[shift={(-0.2,-0.3)}] (v) at (B') {$b'$};
+        \node[shift={(-0.5,-0.3)}] (u) at (A') {$a$};
+        \draw[->, semithick] ([shift=(0:0.3)]1.3,0.8) arc (0:270:0.3);
+    \end{scope}
+\end{tikzpicture}
+\captionof{figure}{Verschiebung der Spitze des Vektors $b$ parallel zu $a$}
+\label{fig:shiftb}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+
+Das gleiche gilt auch für den Vektor $a$, wenn die Spitze des Vektors $a$
+parallel zu dem Vektor $b$ verschoben wird. Eins weiter gedacht, gilt dies auch
+für den Vektor $b'$ und $a$. Wenn also die Spitze des Vektors $a$ parallel zu
+dem Vektor $b'$ verschoben wird. 
+%\newpage
+Hier das Endergebnis unsrer Überlegungen.
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (3,0);
+    \coordinate (C) at (4,1.5);
+    \coordinate (B) at (1,1.5);
+
+    \filldraw[fill=green!20] (O) -- (A) -- (C) -- (B);
+    \draw[->, thick] (O) -- (A);
+    \draw[->, thick] (O) -- (B);
+    \draw (B) -- (C);
+    \draw (A) -- (C);
+    \node[shift={(-0.5,-0.3)}] (v) at (B) {$b$};
+    \node[shift={(-0.5,-0.3)}] (u) at (A) {$a$};
+    \draw[->, semithick] ([shift=(0:0.3)]1.8,0.8) arc (0:270:0.3);
+
+    \begin{scope}[shift={(5.5,0)}]
+        \coordinate (O') at (0,0);
+        \coordinate (A') at (2.9,0.5);
+        \coordinate (C') at (2.6,2.0);
+        \coordinate (B') at (-0.3,1.5);
+
+        \filldraw[fill=green!20] (O') -- (A') -- (C') -- (B');
+        \draw[->, thick] (O') -- (A');
+        \draw[->, thick] (O') -- (B');
+        \draw (B') -- (C');
+        \draw (A') -- (C');
+        \node[shift={(-0.2,-0.3)}] (v) at (B') {$b'$};
+        \node[shift={(-0.5,-0.3)}] (u) at (A') {$a'$};
+        \draw[->, semithick] ([shift=(0:0.3)]1.2,1.0) arc (0:270:0.3);
+    \end{scope}
+\end{tikzpicture}
+\captionof{figure}{Verschiebungen der Vektoren $a$ und $b$}
+\label{fig:shiftshift}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+
+Die Flächen sind gleich, die Orientierung ist gleich ... Ahaaa ... Ich kann
+also beliebige Flächen betrachten, solange nur die Orientierung und Größe der
+Flächen gleich ist ändert sich das äußere Produkt nicht. Somit kann das äußere
+Produkt als ein Kreis, eine Ellipse oder ein wabbeliges Ding dargestellt
+werden.
+
+\subsection{Eingenschaften des geometrischen Produktes}
+Durch die eben beschriebenen Eingenschaften des inneren und äußeren Produktes,
+können wir paar Eingenschaften des geometrischen Produktes herleiten. Aus der
+Gleichung
+\[ab = a\cdot b + a\wedge b\]
+können wir folgern
+\begin{itemize}
+\item Wenn $a \cdot b = 0$, dann $ab = a \wedge b$.
+  \begin{itemize}
+  \item Das heißt, wenn $a \perp b$, dann $ab = a\wedge b$.
+  \item Weiterhin gilt auch wenn $a \perp b$, dann $ab = a \wedge b = - b
+      \wedge a = -ba$
+  \end{itemize}
+\item Wenn $a\wedge b = 0$, dann $ab = a \cdot b$.
+  \begin{itemize}
+  \item Das heißt, wenn $a \parallel b$, dann $ab = a \cdot b$.
+  \end{itemize}
+\end{itemize}
+
+Aber halt ... was haben wir gemacht? Eine Zahl $a\cdot b$ mit einer orientierten
+Fläche $a\wedge b$ addiert? Haben wir nicht Äpfel mit Birnen verglichen bzw.
+addiert? Wenn wir ehrlich sind, dann machen wir das gleiche bei den komplexen
+Zahlen. Denn ist $z$ eine komplexe Zahl, so schreiben wir ganz mutig
+\[z=x+yi\]
+wobei $x$ und $y$ reelle Zahlen sind und $i$ die berühmte imaginäre Zahl ist.
+Diese imaginäre Zahl multiplizieren wir sogar mit einer reellen Zahl und
+addieren das ganze zu einer reellen Zahl?! Da mischen wir auch Äpfel mit
+Birnen und das geht sogar recht gut! Also lass uns eine reelle Zahl $a\cdot b$
+mit einer orientierten Fläche $a\wedge b$ addieren und schauen was rauskommt.
+
+Ist also $a \parallel b$, dann ist, wie wir oben fest gestellt haben, $ab = a
+\cdot b$. Setzen wir $b=a$ ein, dann ist
+\[aa=a\cdot a = |a|^2\]
+Teilen wir beide Seiten mit $|a|^2$, so erhalten wir
+\[\frac{aa}{|a|^2}=1.\]
+Wenn wir jetzt noch zulassen, das wir die positive reelle Zahl $|a|^2$ auf
+eines der Vektoren verteilen dürfen, dann erhalten wir
+\[a\frac{a}{|a|^2}=1\]
+Durch ein scharfes hinsehen erkennen wir das $\frac{a}{|a|^2}$ zu $a$ invers
+ist. Denn das geometrische Produkt von $a$ mit $\frac{a}{|a|^2}$ ist eins. Wow
+... wir dürfen mit einem Vektor teilen?! Das ist neu!
+\newpage
+Wie meine ist das mit einem Vektor teilen. Jeder Vektor (ungleich Null) hat
+eine Inverse bzgl. des geometrischen Produktes. Damit können wir zum Beispiel
+die Gleichung
+\[ab=c\]
+umschreiben in
+\[a=cb^{-1}=c\frac{b}{|b|^2}=c\frac{b}{b\cdot b}\]
+und wenn wir cheaten können wir mit $b$ kürzen und erhalten
+\[a=\frac{c}{b}\]
+Diese Gleichung ist aber mit vorsicht zu genießen, da wir aus ihr nicht sehen,
+ob wir die links oder die rechts Inverse von $b$ genommen haben!
 \end{document}
