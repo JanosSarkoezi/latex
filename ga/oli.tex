@@ -1,6 +1,9 @@
 \documentclass[fleqn]{scrartcl}
 \usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
 \usepackage{tikz}
+\usetikzlibrary{calc}
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usetikzlibrary {arrows.meta, angles, quotes}
@@ -122,7 +125,7 @@ Orientierungen gibt wird die Beziehung
 \[a\wedge b = - b\wedge a\]
 zwischen den äußeren Produkten gelten. Die Fläche des Parallelogramms lässt
 sich mit der Gleichung
-\[|a\wedge b| = |a||b|\sin\alpha\]
+\[|a\wedge b| = |a||b||\sin\alpha|\]
 beschreiben.
 
 Hier enstehen die Ähnlichkeiten zwischen einem Vektor und einer orientierten
@@ -146,13 +149,53 @@ raus und damit
 Da das äußere Produkt als ein Produkt bezeichnet wird, soll auch die
 Distributivität gelten.
 \[a\wedge (b + c) = a\wedge b + a\wedge c\]
+In der Ebene ist diese Gleichung leicht einzusehen. Betrachte die folgende
+Abbildung
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at ( 0.0, 0.0);
+    \coordinate (A) at (-0.5, 3.0);
+    \coordinate (B) at ( 4.0, 0.0);
+    \coordinate (C) at ( 7.0, 2.0);
 
+    \draw[->, thick] (O) -- (A);
+    \draw[->, thick] (O) -- (B);
+    \draw[->, thick] (B) -- (C);
+    \draw[->, thick] (O) -- (C);
+
+    \draw[->, thick] (A) -- ($(C)+(A)$);
+    \draw[->, thick] (B) -- ($(B)+(A)$);
+    \draw[->, thick] (C) -- ($(C)+(A)$);
+    \draw[->, thick] (A) -- ($(B)+(A)$);
+    \draw[->, thick] ($(B)+(A)$) -- ($(C)+(A)$);
+
+    \node[shift={(-0.2,-0.6)}] (a) at (A) {$a$};
+    \node[shift={(-0.5,-0.3)}] (b) at (B) {$b$};
+    \node[shift={(-0.5,-0.6)}] (c) at (C) {$c$};
+\end{tikzpicture}
+\captionof{figure}{Distributivität des äußeren Pruduktes}
+\label{fig:distributivity}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+Schaeun wir die Paralellogramme der orientierten Flächen $a\wedge b$ und
+$a\wedge c$ an. Die Summe dieser Flächen ist gleich der orientierten Fläche
+$a\wedge(b+c)$. Die Orientierungen stimmen auch überein, denn die Orientierung
+von $a\wedge b$ und $a\wedge c$ ist im Uhrzeigersinn und die Orientierung von
+$a\wedge(b+c)$ ist ebenfalls im Uhrzeigersinn. Hierbei habe ich das
+einzeichnen der Orientierung im Bild weggelassen, da sonst das Bild überladen
+wäre.
+\newpage
 Nun können wir uns auf die Gleichheit von orientierten Fläche stürzen. Wird
 die Spitze des Vektor $b$ parallel zu dem Vektor $a$ verschoben, so ändert
 sich die Fläche des Parallelogramms nicht. Dies folgt aus den vorherigen
 Bemerkungen. Sei dafür $b'= b + \lambda a$. Dann gilt
 \[a\wedge b' = a\wedge (b + \lambda a) = a \wedge b + a\wedge (\lambda a)=
 a\wedge b\]
+Übersetzen wir die Gleichung in ein Bild, so erhalten wir folgendes
 \shorthandoff{"}
 \begin{center}
 \begin{minipage}{\linewidth}
@@ -168,8 +211,8 @@ a\wedge b\]
     \draw[->, thick] (O) -- (B);
     \draw (B) -- (C);
     \draw (A) -- (C);
-    \node[shift={(-0.5,-0.3)}] (v) at (B) {$b$};
-    \node[shift={(-0.5,-0.3)}] (u) at (A) {$a$};
+    \node[shift={(-0.5,-0.3)}] (b) at (B) {$b$};
+    \node[shift={(-0.5,-0.3)}] (a) at (A) {$a$};
     \draw[->, semithick] ([shift=(0:0.3)]1.8,0.8) arc (0:270:0.3);
 
     \begin{scope}[shift={(5.5,0)}]
@@ -183,8 +226,8 @@ a\wedge b\]
         \draw[->, thick] (O') -- (B');
         \draw (B') -- (C');
         \draw (A') -- (C');
-        \node[shift={(-0.2,-0.3)}] (v) at (B') {$b'$};
-        \node[shift={(-0.5,-0.3)}] (u) at (A') {$a$};
+        \node[shift={(-0.2,-0.3)}] (b) at (B') {$b'$};
+        \node[shift={(-0.5,-0.3)}] (a) at (A') {$a$};
         \draw[->, semithick] ([shift=(0:0.3)]1.3,0.8) arc (0:270:0.3);
     \end{scope}
 \end{tikzpicture}
@@ -247,12 +290,24 @@ Flächen gleich ist ändert sich das äußere Produkt nicht. Somit kann das äu�
 Produkt als ein Kreis, eine Ellipse oder ein wabbeliges Ding dargestellt
 werden.
 
+Wie steht es um die Assoziativität des äußeren Produktes? Wenn wir das
+wünschen, dann verlassen wir die zeite Dimension und treten in die dritte
+Dimension ein. Wir verlangen also
+\[a\wedge(b\wedge c) =(a\wedge b)\wedge c.\]
+Was für ein Ding ist das vor mir? Das ist ein orientiertes Volumen. Die
+Orientierung bestimmen die Vektoren $a, b$ und $c$. Betrachten wir die
+Analogien zwischen dem orientierten Parallelogramm und dem orientierten
+Parallelepiped. Das orientierte Parallelogramm hat orientierte Längen
+(Vektoren) am Rand und das orientierte Parallelepiped orientierte
+Paralellogramme. Geben wir endlich einen Namen für diese orientierte
+Paralellogramme.
+\[a\wedge b\textrm{ ist ein Bivektor.}\]
 \subsection{Eingenschaften des geometrischen Produktes}
 Durch die eben beschriebenen Eingenschaften des inneren und äußeren Produktes,
 können wir paar Eingenschaften des geometrischen Produktes herleiten. Aus der
 Gleichung
 \[ab = a\cdot b + a\wedge b\]
-können wir folgern
+sind folgende Punkte ersichtlich
 \begin{itemize}
 \item Wenn $a \cdot b = 0$, dann $ab = a \wedge b$.
   \begin{itemize}
@@ -288,15 +343,408 @@ eines der Vektoren verteilen dürfen, dann erhalten wir
 Durch ein scharfes hinsehen erkennen wir das $\frac{a}{|a|^2}$ zu $a$ invers
 ist. Denn das geometrische Produkt von $a$ mit $\frac{a}{|a|^2}$ ist eins. Wow
 ... wir dürfen mit einem Vektor teilen?! Das ist neu!
-\newpage
+
 Wie meine ist das mit einem Vektor teilen. Jeder Vektor (ungleich Null) hat
 eine Inverse bzgl. des geometrischen Produktes. Damit können wir zum Beispiel
 die Gleichung
 \[ab=c\]
 umschreiben in
 \[a=cb^{-1}=c\frac{b}{|b|^2}=c\frac{b}{b\cdot b}\]
-und wenn wir cheaten können wir mit $b$ kürzen und erhalten
+und wenn wir cheaten, können wir mit $b$ kürzen und erhalten
 \[a=\frac{c}{b}\]
 Diese Gleichung ist aber mit vorsicht zu genießen, da wir aus ihr nicht sehen,
 ob wir die links oder die rechts Inverse von $b$ genommen haben!
+\section{Geometrische Algebra in der Ebene}
+Wir haben jede menge Zeugs gesammelt bzw. motiviert. Sehen wir uns an, was auf
+der (euklidichen) Ebene mit der geometrischen Algebra alles anstellen kann.
+Dazu nehmen wir unsere alt bekannten Basisvektoren $e_1$ und $e_2$ aus der
+Kiste und rechnen damit etwas mit dem (neuen) geometrischen Produkt paar
+sachen aus. Dabei soll immer stillsweigend orthonormalität dieser Vektoren
+angenommen werden. Was ist das geometrische Produkt dieser Vektoren?
+\[e_1e_1=e_1\cdot e_1=1\textrm{ und auch }e_2e_2=1\]
+Das $e_1e_1 = e_1\cdot e_1$ ist, folgt aus der Paralelität des Vektors $e_1$
+mit sich selbst. Weiter folgt aus dieser Gleichung, dass $e_1$ und $e_2$ zu
+sich selbst invers sind. OK, was ist $e_1$ mit $e_2$ verheiratet? Erstmal die
+Größe der Fläche des Rechtecks (Parallelogramms).
+\[|e_1e_2|=|e_1\wedge e_2|=|e_1||e_2||\sin(\pi/2)|=1\textrm{ und auch
+}|e_2e_1|=1\]
+Da die beiden Vektoren $e_1$ und $e_2$ orthogonal sind ergibt sich aus der
+Kette von Gleichgungen
+\[e_1e_2=e_1\wedge e_2 = -e_2\wedge e_1 = -e_2e_1\]
+Damit nicht immer ein Kreis mit einem Pfeil für die Orientierung gezeichnet
+werden muss, ist auch die Anreihung der Vektoren $e_1$ und $e_2$ an einander
+eine Möglichkeit.
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O)    at (0.0, 0.0);
+    \coordinate (e1)   at (1.5, 0.0);
+    \coordinate (e2)   at (0.0, 1.5);
+    \coordinate (e1e2) at (1.5, 1.5);
+
+    \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
+    \draw[->, thick] (O) -- (e1);
+    \draw[->, thick] (e1) -- (e1e2);
+    \draw[->, thick] (e1e2) -- (e2);
+    \draw[->, thick] (e2) -- (O);
+    \node[label=below:{$e_1$}] at (0.75, 0.00) {};
+    \node[label=left:{$-e_2$}] at (0.00, 0.75) {};
+    \node[label=right:{$e_2$}] at (1.50, 0.75) {};
+    \node[label=above:{positiv orientiert}] at (0.75, 1.8) {$-e_1$};
+    \node[label=center:{$e_1\wedge e_2$}] at (0.75, 0.75) {};
+    \begin{scope}[shift={(5.5,0.0)}]
+        \coordinate (O)    at (0.0, 0.0);
+        \coordinate (e1)   at (1.5, 0.0);
+        \coordinate (e2)   at (0.0, 1.5);
+        \coordinate (e1e2) at (1.5, 1.5);
+
+        \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
+        \draw[->, thick] (O) -- (e2);
+        \draw[->, thick] (e2) -- (e1e2);
+        \draw[->, thick] (e1e2) -- (e1);
+        \draw[->, thick] (e1) -- (O);
+        \node[label=below:{$-e_1$}] at (0.75, 0.00) {};
+        \node[label=left:{$e_2$}]   at (0.00, 0.75) {};
+        \node[label=right:{$-e_2$}] at (1.50, 0.75) {};
+        \node[label=above:{negativ orientiert}] at (0.75, 1.8) {$e_1$};
+    \node[label=center:{$e_2\wedge e_1$}] at (0.75, 0.75) {};
+    \end{scope}
+\end{tikzpicture}
+\captionof{figure}{Orientierungen der Bivektoren $e_1\wedge e_2$ und
+    $e_2\wedge e_1$ in der Ebene}
+\label{fig:orientationPlane}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+\newpage
+Das ganze kann noch einfacher im Bild dargestelt werden, wenn die negatvien
+Vektoren weggelassen werden.
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O)    at (0.0, 0.0);
+    \coordinate (e1)   at (1.5, 0.0);
+    \coordinate (e2)   at (0.0, 1.5);
+    \coordinate (e1e2) at (1.5, 1.5);
+
+    \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
+    \draw[->, thick] (O) -- (e1);
+    \draw[->, thick] (e1) -- (e1e2);
+    \draw (e1e2) -- (e2);
+    \draw (e2) -- (O);
+    \node[label=below:{$e_1$}] at (0.75, 0.00) {};
+    \node[label=right:{$e_2$}] at (1.50, 0.75) {};
+    \node[label=above:{positiv orientiert}] at (0.75, 1.8) {};
+    \node[label=center:{$e_1\wedge e_2$}] at (0.75, 0.75) {};
+    \begin{scope}[shift={(5.5,0.0)}]
+        \coordinate (O)    at (0.0, 0.0);
+        \coordinate (e1)   at (1.5, 0.0);
+        \coordinate (e2)   at (0.0, 1.5);
+        \coordinate (e1e2) at (1.5, 1.5);
+
+        \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
+        \draw[->, thick] (O) -- (e2);
+        \draw[->, thick] (e2) -- (e1e2);
+        \draw (e1e2) -- (e1);
+        \draw (e1) -- (O);
+        \node[label=left:{$e_2$}]   at (0.00, 0.75) {};
+        \node[label=above:{negativ orientiert}] at (0.75, 1.8) {$e_1$};
+    \node[label=center:{$e_2\wedge e_1$}] at (0.75, 0.75) {};
+    \end{scope}
+\end{tikzpicture}
+\captionof{figure}{Orientierungen der Bivektoren $e_1\wedge e_2$ und
+    $e_2\wedge e_1$ in der Ebene}
+\label{fig:orientationPlane2}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+Jetzt wird es spannend. Was ist das Quadrat des Bivektors $e_1e_2$ bzgl. des
+geometrischen Produktes?
+\[(e_1e_2)^2\stackrel{1}=(e_1e_2)(e_1e_2)\stackrel{2}=e_1(e_2e_1)e_2\stackrel{3}=e_1(-e_1e_2)e_2\stackrel{4}=-(e_1e_1)(e_2e_2)\stackrel{5}=-1\]
+\begin{enumerate}
+    \item Ausschreiben des Quadrats bzgl des geometrischen Produktes.
+    \item Assoziativität des geometrischen Produktes.
+    \item $e_2e_1$ ist, wie wir veiter oben berechnet haben $-e_1e_2$
+    \item Erneut Assoziativität und vorziehen der Zahl $-1$.
+    \item Das geometrische Produkt von $e_1e_1$ bzw. $e_2e_2$ ist $1$.
+\end{enumerate}
+Ein neues Aha Moment! Nochmal das Ergebnis ohne (stöhrende) Zwischenrechnung
+\[(e_1e_2)^2=-1\]
+Das Quadrat von $e_1e_2$ ist $-1$?! Das ist doch wie bei der komplexen Zahl
+$i$. Nur hier ist alles reell. Wir haben also unsere Einheit der Ebene
+gefunden, mit der zusätzlichen Eigenschaft, das ihr Quadrat gleich minus eins
+ist.
+
+Um die Einheit $e_1e_2 = e_1\wedge e_2$ nutzen zu können vereibaren wir noch
+den Bereich von $\alpha$. Wenn $-\pi\leq\alpha\leq\pi$ ist, dann kann jedes
+äußere Produkt als
+\[a\wedge b= |a||b|\sin\alpha \hspace{1ex} e_1\wedge e_2\]
+geschrieben werden. Wollen wir Ähnlichkeiten zu den komplexen Zahlen erkennen,
+so definieren wir ein fettes $\*i$ als
+\[\*i:= e_1\wedge e_2\]
+und erhalten so
+\[a\wedge b= |a||b|\sin\alpha\*i\]
+Erinnern wir uns an die motivierende Gleichung der geometrischen Algebra, so
+erhalten wir
+\[ab=a\cdot b + a\wedge b = |a||b|\cos\alpha + |a||b|\sin\alpha\*i =
+|a||b|(\cos\alpha + \sin\alpha\*i)\]
+Kaum haben wir $\*i$ entdeckt, schon winkt uns $e^{\alpha\*i}$ entgegen, wenn
+wir $e^{\alpha\*i} := \cos\alpha + \*i\sin\alpha$ setzen. Ist diese Deinition
+sinnvoll? Waren wir nicht zu schnell? Betrachten wir den Anfang der
+Taylorreihe von $e^{\alpha\*i}$
+\[e^{\alpha\*i}=1+\frac{\alpha\*i}{1!}+\frac{(\alpha\*i)^2}{2!}
++\frac{(\alpha\*i)^3}{3!}+\frac{(\alpha\*i)^4}{4!}+\frac{(\alpha\*i)^5}{5!}+ ...\]
+Oh Gott, jetzt müssen wir auch noch Potenzen von $\alpha\*i$ berechnen. Na
+dann, ranan die Arbeit. Da $\alpha$ eine reelle Zahl ist, reicht nur die
+Potenzen von $\*i$ zu betrachten.
+\begin{enumerate}
+    \item $(\*i)^1=\*i$ done.
+    \item $(\*i)^2=(e_1\wedge e_2)^2=-1$ auch durch.
+    \item $(\*i)^3 = (\*i)^2\*i = -\*i$. Mensch das geht ja schnell.
+    \item $(\*i)^4=(\*i)^2(\*i)^2=1$. Da sage ich nix zu. :)
+    \item $(\*i)^5=(\*i)^3(\*i)^2=\*i$. Ok, Muster erkannt.
+\end{enumerate}
+Setzen wir das ein, so kommt
+\[e^{\alpha\*i}=1+\frac{\alpha\*i}{1!}-\frac{(\alpha)^2}{2!}
++\frac{(\alpha)^3\*i}{3!}+\frac{(\alpha)^4}{4!}+\frac{(\alpha)^5\*i}{5!}+ ...\]
+raus. Sortieren wir die Summanden in der Reihe um und sagen das alle
+notwendigen Voraussetzungen bzgl der absoluten Konvergenz erfüllt sind, so
+erhalten wir
+\[e^{\alpha\*i}=\left(1-\frac{(\alpha)^2}{2!}+\frac{(\alpha)^4}{4!}-...\right)
++\*i\left(\frac{\alpha}{1!}+\frac{(\alpha)^3}{3!}+\frac{(\alpha)^5}{5!}+
+...\right)=\cos\alpha+\*i\sin\alpha\]
+Damit ist die Definition von $e^{\alpha\*i}$ sinnvoll. Was können wir damit
+anfangen? Um das zu verstehen gehen wir ein Schritt zurück und betrachten die
+zwei Seiten von dem Bivektor $\*i$. Die eine Seite ist $\*i$ als orientierte
+Fläche zu betrachten. Zeichnen wir ein Koordinatensystem der Ebene auf mit
+dem Bivektor $\*i$.
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O)    at (0.0, 0.0);
+    \coordinate (e1)   at (1.0, 0.0);
+    \coordinate (e2)   at (0.0, 1.0);
+    \coordinate (e1e2) at (1.0, 1.0);
+
+    \draw[step=1.0, lightgray, very thin] (-0.8,-0.8) grid (4.8, 2.8);
+    \draw ( 0.0, -1.0) -- (0.0, 3.0);
+    \draw (-1.0,  0.0) -- (5.0, 0.0);
+
+    \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
+    \draw[->, thick] (O) -- (e1);
+    \draw[->, thick] (O) -- (e2);
+    \draw (e1e2) -- (e2);
+    \draw (e2) -- (O);
+    \node[label=below:{$e_1$}] at (0.5, 0.0) {};
+    \node[label=left:{$e_2$}]  at (0.0, 0.5) {};
+\end{tikzpicture}
+\captionof{figure}{Der Bivektors $\*i$ in der Ebene}
+\label{fig:bivector1}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+Zeichen wir noch zwei Vektoren $a=3e_1+0e_2$ und $b=1e_1+2e_2$ ein und
+betrachten das äußere Produkt von $a\wedge b$ so sieht das dann so aus
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O)    at (0.0, 0.0);
+    \coordinate (e1)   at (1.0, 0.0);
+    \coordinate (e2)   at (0.0, 1.0);
+    \coordinate (e1e2) at (1.0, 1.0);
+    \coordinate (a)    at (3.0, 0.0);
+    \coordinate (b)    at (1.0, 2.0);
+
+    \draw[step=1.0, lightgray, very thin] (-0.8,-0.8) grid (4.8, 2.8);
+    \draw ( 0.0, -1.0) -- (0.0, 3.0);
+    \draw (-1.0,  0.0) -- (5.0, 0.0);
+
+    \filldraw[fill=green!20] (O) -- (a) -- ($(a)+(b)$) -- (b);
+    \draw[->, thick] (O) -- (e1);
+    \draw[->, thick] (O) -- (e2);
+    \draw[->, thick] (O) -- (a);
+    \draw[->, thick] (a) -- ($(b)+(a)$);
+    \draw ($(b)+(a)$) -- (b) -- (O);
+    \node[label=below:{$e_1$}] at (0.5, 0.0) {};
+    \node[label=left:{$e_2$}]  at (0.0, 0.5) {};
+    \node[label=below:{$a$}] at (2.5, 0.0) {};
+    \node[label=right:{$b$}]  at (3.5, 1.0) {};
+\end{tikzpicture}
+\captionof{figure}{Der Bivektors $\*i$ in der Ebene}
+\label{fig:bivector2}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+Denken wir uns die untere Seite des Parallelogramms fest verankert, die Seiten
+aus Gummi und die obere Seite als ein Stab, der sich nur parallel zu der
+unteren Seite verschieben lässt, so können wir das Parallelogramm zu einem
+Rechteck verformen. Dabei bleibt die Orientierung und Größe des
+Parallelogramms erhalten. Diese Operation ergibt das folgende Bild
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O)    at (0.0, 0.0);
+    \coordinate (e1)   at (1.0, 0.0);
+    \coordinate (e2)   at (0.0, 1.0);
+    \coordinate (a)    at (3.0, 0.0);
+    \coordinate (b)    at (0.0, 2.0);
+
+    \draw[step=1.0, lightgray, very thin] (-0.8,-0.8) grid (4.8, 2.8);
+    \draw ( 0.0, -1.0) -- (0.0, 3.0);
+    \draw (-1.0,  0.0) -- (5.0, 0.0);
+
+    \filldraw[fill=green!20] (O) -- (a) -- ($(a)+(b)$) -- (b);
+    \draw[->, thick] (O) -- (e1);
+    \draw[->, thick] (O) -- (e2);
+    \draw[->, thick] (O) -- (a);
+    \draw[->, thick] (a) -- ($(b)+(a)$);
+    \draw ($(b)+(a)$) -- (b) -- (O);
+    \node[label=below:{$e_1$}] at (0.5, 0.0) {};
+    \node[label=left:{$e_2$}]  at (0.0, 0.5) {};
+    \node[label=below:{$a$}] at (2.5, 0.0) {};
+    \node[label=right:{$b$}]  at (3.0, 1.5) {};
+\end{tikzpicture}
+\captionof{figure}{Der Bivektors $\*i$ in der Ebene}
+\label{fig:bivector3}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+Jetzt können wir ganz geschmeidig die Größe der Fläche $a\wedge b$ abzählen
+und erhalten mit der selben Orientierung wie $e_1\wedge e_2$
+\[a\wedge b= 6e_1\wedge e_2\]
+Wenn wir $b\wedge a$ genommen hätten, dan wäre $b\wedge a = -6e_1\wedge e_2$
+rausgekommen. Somit ist $\*i=e_1e_2=e_1\wedge e_2$ \textbf{die} orientierte
+Fläche mit der Größe eins. Anders gesagt $\*i$ ist \textbf{der} Bivetor der
+Ebene. Es kann nur einen (in der Ebene) geben (Highlander).
+\newpage
+Kehren wir die seite der Medaille um. Was stellt $\*i$ mit dem Vektor $e_1$
+an, wenn wir $e_1$ mit $\*i$ von rechts multiplizieren?
+\[e_1\*i\stackrel{1}=e_1(e_1e_2)\stackrel{2}=(e_1e_1)e_2\stackrel{3}=e_2\]
+\begin{enumerate}
+    \item Deifinition von $\*i$.
+    \item Assoziativität des geometrischen Produktes.
+    \item $e_1e_1=1$
+\end{enumerate}
+Was macht $\*i$ mit $e_1$, wenn von links multipliziert wird? Die Rechnun
+mache wir etwas schneller, da wir schon geübter sind. :)
+\[\*ie_1=(e_1e_2)e_1=(-e_2e_1)e_1=-e_2\]
+Die Multiplikation mit $\*i$ von rechts führt $e_1$ in $e_2$ und von links in
+$-e_2$. Das ganze noch für $e_2$.
+\begin{align*}
+    e_2\*i &= e_2(e_1e_2) = e_2(-e_2e_1) = -e_1 \\
+    \*ie_2 &= (e_1e_2)e_2 = e_1(e_2e_2) = e_1
+\end{align*}
+
+Durch diese Rechnungen ist jetzt die Berechnung von einem beliebigen
+Vektor $a=xe_1+ye_2$ schnell gemacht.
+\begin{align*}
+    a\*i &= (xe_1+ye_2)\*i = xe_1\*i+ye_2\*i = -ye_1 + xe_2 \\
+    \*ia &= \*i(xe_1+ye_2) = x\*ie_1+y\*ie_2 = +ye_1 - xe_2
+\end{align*}
+Zeichen wir das ganze zum Beispiel mit dem Vektor $a=3e_1+2e_2$ auf
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O)    at ( 0.0,  0.0);
+    \coordinate (e1)   at ( 1.0,  0.0);
+    \coordinate (e2)   at ( 0.0,  1.0);
+    \coordinate (a)    at ( 3.0,  2.0);
+    \coordinate (a1)   at (-2.0,  3.0);
+    \coordinate (a2)   at ( 2.0, -3.0);
+
+    \draw[step=1.0, lightgray, very thin] (-3.8,-3.8) grid (3.8, 3.8);
+    \draw ( 0.0, -4.0) -- (0.0, 4.0);
+    \draw (-4.0,  0.0) -- (4.0, 0.0);
+
+    \draw[->, thick] (O) -- (e1);
+    \draw[->, thick] (O) -- (e2);
+    \draw[->, thick, blue] (O) -- (a);
+    \draw[->, thick, red] (O) -- (a1);
+    \draw[->, thick, green] (O) -- (a2);
+    \node[label=below:{$e_1$}] at (1.0, 0.0) {};
+    \node[label=right:{$e_2$}]  at (0.0, 1.0) {};
+    \node[label=below:{$a$}] at (2.7, 1.8) {};
+    \node[label=above:{$a\*i$}] at (-1.5, 2.5) {};
+    \node[label=right:{$\*ia$}] at (1.6, -2.4) {};
+    \pic["$\*i$ von rechts", ->, draw=red, angle radius=2.0cm, angle eccentricity=1.2]
+    {angle=a--O--a1};
+    \pic["$\*i$ von links", <-, draw=green, angle radius=2.0cm, angle eccentricity=1.6]
+    {angle=a2--O--a};
+\end{tikzpicture}
+\captionof{figure}{Rotation um $90^\circ$ mit $\*i$}
+\label{fig:rotate90degree}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+
+Zusammenfassend sind die beinde Seiten der Medaille
+\begin{itemize}
+    \item $\*i$ ist der Einheitsbivektor.
+    \item $\*i$ rotiert die Vektoren der Ebene um $90^{\circ}$.
+\end{itemize}
+
+Welche Objekte haben wir in der Ebene kennen gelernt? Wir wissen was passiert,
+wenn wir eine reelle Zahl $\lambda$ mit einer anderen rellen Zahl $\mu$
+multiplizieren. Es kommt eine neue rellen Zahl raus. Wir wissen auch was
+$\lambda$ mit einem Vektor anstellt. Sie kürzt, verlängert oder dreht die
+Richtung des Vektors um. Anders gesagt, sie veränder die Größe oder die
+Orientierung des Vektors. Weiterhin stellt $\lambda$ mit $\*i$ das gleiche an,
+wie mit einem Vektor. Sie verändert die Größe oder die Orientierung des
+Bivektors $\*i$.
+
+Ein Vektor mit einem anderen Vektor multipliziert, ergibt eine Zahl und ein
+vielfaches des Bivektors $\*i$. Ein Vektor mit dem Bivektor $\*i$
+multipliziert, ergibt ein (gedrehtes) Vektor. Schließlich ergibt der Bivektor
+$\*i$ mit sich selbst multipliziert die Zahl $-1$.
+
+Damit haben wir die Objkete $1, e_1, e_2$ und $e_1e_2$ der Ebene
+Identifiziert. Werden diese Objekte in Diamantenform strukturiert, so können
+wir der einzelen Ebenen, die bei der Strukturierung entsteht, namen geben.
+\[
+\begin{matrix}
+    1 \\ 
+    e_1\hspace{3ex} e_2 \\ 
+    e_1e_2
+\end{matrix}
+\hspace{3ex}
+\begin{matrix*}[l]
+    \textrm{basis für }0\textrm{-Vektoren} \\ 
+    \textrm{basis für }1\textrm{-Vektoren} \\ 
+    \textrm{basis für }2\textrm{-Vektoren}
+\end{matrix*}
+\]
+Durch die Feststellung das es in der Ebene nur ein Bivektor mit der Größe eins
+gibt, hat diese Diamantenform auch andere Namen.
+\[
+\begin{matrix}
+    1 \\ 
+    e_1\hspace{3ex} e_2 \\ 
+    e_1e_2
+\end{matrix}
+\hspace{3ex}
+\begin{matrix*}[l]
+    \textrm{Skalar} \\ 
+    \textrm{Vektoren} \\ 
+    \textrm{Pseudoskalar}
+\end{matrix*}
+\]
+Mit diesen Objekten können wir durch linearkombination dieser ein sogenanntes
+Multivektor erstellen.
+\[
+    m = \lambda_0 + \lambda_1e_1 + \lambda_2e_2 +
+    \lambda_3e_1e_2\hspace{3ex}\textrm{für alle
+    }\lambda_i\in\mathbb{R}\textrm{ mit } i=0,1,2,3
+\]
 \end{document}
