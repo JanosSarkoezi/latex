@@ -60,6 +60,92 @@ distributiv ist
     a(b+c) &= ab + ac
 \end{align*}
 Wenden wir uns nun den einzelnen Komponenten des geometrischen Produktes zu.
+\subsection{Das Gummiband und der Stab}
+Wir werden viel mit Parallelogramme in der geometrischen Algebra arbeiten.
+Daher eine Idee für die Flächenerhaltende Modifikation eines
+Parallelogramms. Betrachten wir die untere seite des Parallelogramms als fest
+verankert, die linke und rechte Seite aus einem Gummiband und die obere Seite
+als ein Stab (der selben Länge, wie die unterer Seite).
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \draw (-0.5, 0.0) -- (3.5, 0.0);
+    \draw (-1.0, 1.5) -- (4.5, 1.5);
+    \coordinate (O) at ( 0.0, 0.0);
+    \coordinate (A) at ( 3.0, 0.0);
+    \coordinate (B) at (-0.5, 1.5);
+    \draw [draw=black, fill=green, opacity=0.5]
+    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+
+    \coordinate (B) at ( 1.0, 1.5);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+\end{tikzpicture}
+\captionof{figure}{Der Stab nach der Linksverschiebung}
+\label{fig:gummiUndStab1}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+Auf der Abbildung \ref{fig:gummiUndStab1} wurde der Stab nach links
+verschoben. Die alte Position des Parallelogramms ist noch duchsichtig
+angedeutet. Schieben wir den Stab noch weiter nach links, so köntte das so
+aussehen.
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \draw (-0.5, 0.0) -- (3.5, 0.0);
+    \draw (-3.0, 1.5) -- (4.5, 1.5);
+    \coordinate (O) at ( 0.0, 0.0);
+    \coordinate (A) at ( 3.0, 0.0);
+    \coordinate (B) at (-2.5, 1.5);
+    \draw [draw=black, fill=green, opacity=0.5]
+    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+
+    \coordinate (B) at ( 1.0, 1.5);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+\end{tikzpicture}
+\captionof{figure}{Der Stab nach veitere Linksverschiebung}
+\label{fig:gummiUndStab2}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+Verändern wir die die Initialkonfiguration des Parallelogramms so, das jetzt
+die linke seite fest verankert ist, die rechte Seite ein Stab wird und die
+obere bzw. untere Steie aus einem Gummiband besteht. Nun verschieben wir die
+rechte Stei schräg nach unten und erhalten.
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at ( 0.0, 0.0);
+    \coordinate (A) at ( 3.0, 0.0);
+    \coordinate (B) at ( 1.0, 1.5);
+    \draw ($-0.2*(B)$) -- ($1.2*(B)$);
+    \draw ($(A)+1.2*(B)$) -- ($(A)-1.8*(B)$);
+    \draw [draw=black, fill=green, opacity=0.5]
+    (O) -- (B) -- ($(A) - 0.5*(B)$) -- ($(A) - 1.5*(B)$) -- cycle;
+
+    \coordinate (B) at ( 1.0, 1.5);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+\end{tikzpicture}
+\captionof{figure}{Neue Konfiguration. Der Stab nach links unten verschoben}
+\label{fig:gummiUndStab3}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+All diese Parallelogramme haben den selben Flächeninhalt. Später führen wie
+noch eine Orientierung ein, die auch bei allen Parallelogrammem erhalten
+bleibt.
+
+Ab jetzt können wir den Gummi-Stab Trick auf Parallelogramme anwenden und
+wissen was gemeint ist.
 \newpage
 \subsection{Das innere Produkt}
 Das innere Produkt ist uns allen durch die Formel bekannt
@@ -160,6 +246,12 @@ Abbildung
     \coordinate (A) at (-0.5, 3.0);
     \coordinate (B) at ( 4.0, 0.0);
     \coordinate (C) at ( 7.0, 2.0);
+    \draw [draw=black, fill=green, opacity=0.3]
+    (O) -- (B) -- ($(A) + (B)$) -- (A) -- cycle;
+    \draw [draw=black, fill=green, opacity=0.3]
+    (B) -- (C) -- ($(C) + (A)$) -- ($(A) + (B)$) -- cycle;
+    \draw [draw=black, fill=yellow, opacity=0.3]
+    (O) -- (C) -- ($(C) + (A)$) -- (A) -- cycle;
 
     \draw[->, thick] (O) -- (A);
     \draw[->, thick] (O) -- (B);
@@ -182,20 +274,20 @@ Abbildung
 \end{center}
 \shorthandon{"}
 Schaeun wir die Paralellogramme der orientierten Flächen $a\wedge b$ und
-$a\wedge c$ an. Die Summe dieser Flächen ist gleich der orientierten Fläche
-$a\wedge(b+c)$. Die Orientierungen stimmen auch überein, denn die Orientierung
-von $a\wedge b$ und $a\wedge c$ ist im Uhrzeigersinn und die Orientierung von
-$a\wedge(b+c)$ ist ebenfalls im Uhrzeigersinn. Hierbei habe ich das
-einzeichnen der Orientierung im Bild weggelassen, da sonst das Bild überladen
-wäre.
+$a\wedge c$ an. Sie sind Grün eingefärbt. Das Paralellogramm der orientierten
+Fläche $a\wedge (b + c)$ ist Gelb. Aus dem Bild ist leicht zu erkennen, dass
+die Summe der grünen Flächen gleich dem der gelben Fläche ist. Die
+Orientierungen der drei Flächen sind alle im Uhrzeigersinn.
 \newpage
-Nun können wir uns auf die Gleichheit von orientierten Fläche stürzen. Wird
-die Spitze des Vektor $b$ parallel zu dem Vektor $a$ verschoben, so ändert
-sich die Fläche des Parallelogramms nicht. Dies folgt aus den vorherigen
-Bemerkungen. Sei dafür $b'= b + \lambda a$. Dann gilt
+Nun können wir uns auf die Gleichheit von orientierten Fläche stürzen. Denken
+wir uns ein Paralellogramm so, dass der Vektor $a$ horizhontal liegt und der
+Vektor $b$ schräg nach rechst oben zeigt. Wenden wir den Gummi-Stab Trick so
+an, dass der Vektor $a$ fest verankert ist und der Vektor $b$ zu einem
+Gummiband wird, und verscheiben den oberen Stab nach links. Dann wird der
+Vektor $b$ zu einem Vektor $b'=b+\lambda a$. Setzen wir das ein und rechnen
+aus.
 \[a\wedge b' = a\wedge (b + \lambda a) = a \wedge b + a\wedge (\lambda a)=
 a\wedge b\]
-Übersetzen wir die Gleichung in ein Bild, so erhalten wir folgendes
 \shorthandoff{"}
 \begin{center}
 \begin{minipage}{\linewidth}
@@ -231,36 +323,33 @@ a\wedge b\]
         \draw[->, semithick] ([shift=(0:0.3)]1.3,0.8) arc (0:270:0.3);
     \end{scope}
 \end{tikzpicture}
-\captionof{figure}{Verschiebung der Spitze des Vektors $b$ parallel zu $a$}
+\captionof{figure}{Der Gummi-Stab Trick einmal angewendet}
 \label{fig:shiftb}
 \end{minipage}
 \end{center}
 \shorthandon{"}
 
-Das gleiche gilt auch für den Vektor $a$, wenn die Spitze des Vektors $a$
-parallel zu dem Vektor $b$ verschoben wird. Eins weiter gedacht, gilt dies auch
-für den Vektor $b'$ und $a$. Wenn also die Spitze des Vektors $a$ parallel zu
-dem Vektor $b'$ verschoben wird. 
-%\newpage
-Hier das Endergebnis unsrer Überlegungen.
+Wende wir den Gummi-Stab Trick auf den so entstadenen Paralellogramm an. Jetzt
+wird $b'$ verankert und $a$ zu einem Gummiband. Nach dem Gummi-Stab Trick
+könnte das so aussehen.
 \shorthandoff{"}
 \begin{center}
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[>=Stealth]
-    \coordinate (O) at (0,0);
-    \coordinate (A) at (3,0);
-    \coordinate (C) at (4,1.5);
-    \coordinate (B) at (1,1.5);
+        \coordinate (O') at (0,0);
+        \coordinate (A') at (3,0);
+        \coordinate (C') at (2.7,1.5);
+        \coordinate (B') at (-0.3,1.5);
 
-    \filldraw[fill=green!20] (O) -- (A) -- (C) -- (B);
-    \draw[->, thick] (O) -- (A);
-    \draw[->, thick] (O) -- (B);
-    \draw (B) -- (C);
-    \draw (A) -- (C);
-    \node[shift={(-0.5,-0.3)}] (v) at (B) {$b$};
-    \node[shift={(-0.5,-0.3)}] (u) at (A) {$a$};
-    \draw[->, semithick] ([shift=(0:0.3)]1.8,0.8) arc (0:270:0.3);
+        \filldraw[fill=green!20] (O') -- (A') -- (C') -- (B');
+        \draw[->, thick] (O') -- (A');
+        \draw[->, thick] (O') -- (B');
+        \draw (B') -- (C');
+        \draw (A') -- (C');
+        \node[shift={(-0.2,-0.3)}] (b) at (B') {$b'$};
+        \node[shift={(-0.5,-0.3)}] (a) at (A') {$a$};
+        \draw[->, semithick] ([shift=(0:0.3)]1.3,0.8) arc (0:270:0.3);
 
     \begin{scope}[shift={(5.5,0)}]
         \coordinate (O') at (0,0);
@@ -278,7 +367,7 @@ Hier das Endergebnis unsrer Überlegungen.
         \draw[->, semithick] ([shift=(0:0.3)]1.2,1.0) arc (0:270:0.3);
     \end{scope}
 \end{tikzpicture}
-\captionof{figure}{Verschiebungen der Vektoren $a$ und $b$}
+\captionof{figure}{Der Gummi-Stab Trick nochmal angewendet}
 \label{fig:shiftshift}
 \end{minipage}
 \end{center}
@@ -286,9 +375,9 @@ Hier das Endergebnis unsrer Überlegungen.
 
 Die Flächen sind gleich, die Orientierung ist gleich ... Ahaaa ... Ich kann
 also beliebige Flächen betrachten, solange nur die Orientierung und Größe der
-Flächen gleich ist ändert sich das äußere Produkt nicht. Somit kann das äußere
-Produkt als ein Kreis, eine Ellipse oder ein wabbeliges Ding dargestellt
-werden.
+Flächen identisch ist ändert sich das äußere Produkt nicht. Somit kanndas
+äußere Produkt als ein Kreis, eine Ellipse oder ein wabbeliges Ding
+dargestellt werden.
 
 Wie steht es um die Assoziativität des äußeren Produktes? Wenn wir das
 wünschen, dann verlassen wir die zeite Dimension und treten in die dritte
@@ -299,9 +388,7 @@ Orientierung bestimmen die Vektoren $a, b$ und $c$. Betrachten wir die
 Analogien zwischen dem orientierten Parallelogramm und dem orientierten
 Parallelepiped. Das orientierte Parallelogramm hat orientierte Längen
 (Vektoren) am Rand und das orientierte Parallelepiped orientierte
-Paralellogramme. Geben wir endlich einen Namen für diese orientierte
 Paralellogramme.
-\[a\wedge b\textrm{ ist ein Bivektor.}\]
 \subsection{Eingenschaften des geometrischen Produktes}
 Durch die eben beschriebenen Eingenschaften des inneren und äußeren Produktes,
 können wir paar Eingenschaften des geometrischen Produktes herleiten. Aus der
