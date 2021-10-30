@@ -39,7 +39,7 @@ Arbeit keine große Aufmerksamkeit gewidmet.
 
 Über hundert Jahre vergingen, bis sich jemand wieder mit diesen Themen
 befasste. Er nahm die Arbeiten von Grassman, Hamilton und Clifford auf und
-führte die geometrische Algebra auf neue gefilde. Diese Person ist David
+führte die geometrische Algebra auf neue Gefilde. Diese Person ist David
 Hestenes.
 
 \section{Motivation und Ideen}
@@ -62,8 +62,8 @@ distributiv ist
 Wenden wir uns nun den einzelnen Komponenten des geometrischen Produktes zu.
 \subsection{Das Gummiband und der Stab}
 Wir werden viel mit Parallelogramme in der geometrischen Algebra arbeiten.
-Daher eine Idee für die Flächenerhaltende Modifikation eines
-Parallelogramms. Betrachten wir die untere seite des Parallelogramms als fest
+Daher eine Idee für die Fläche erhaltende Modifikation eines
+Parallelogramms. Betrachten wir die untere Seite des Parallelogramms als fest
 verankert, die linke und rechte Seite aus einem Gummiband und die obere Seite
 als ein Stab (der selben Länge, wie die unterer Seite).
 \shorthandoff{"}
@@ -89,8 +89,8 @@ als ein Stab (der selben Länge, wie die unterer Seite).
 \end{center}
 \shorthandon{"}
 Auf der Abbildung \ref{fig:gummiUndStab1} wurde der Stab nach links
-verschoben. Die alte Position des Parallelogramms ist noch duchsichtig
-angedeutet. Schieben wir den Stab noch weiter nach links, so köntte das so
+verschoben. Die alte Position des Parallelogramms ist noch durchsichtig
+angedeutet. Schieben wir den Stab noch weiter nach links, so könnte das so
 aussehen.
 \shorthandoff{"}
 \begin{center}
@@ -114,10 +114,10 @@ aussehen.
 \end{minipage}
 \end{center}
 \shorthandon{"}
-Verändern wir die die Initialkonfiguration des Parallelogramms so, das jetzt
-die linke seite fest verankert ist, die rechte Seite ein Stab wird und die
-obere bzw. untere Steie aus einem Gummiband besteht. Nun verschieben wir die
-rechte Stei schräg nach unten und erhalten.
+Verändern wir die Initialkonfiguration des Parallelogramms so, das jetzt
+die linke Seite fest verankert ist, die rechte Seite ein Stab wird und die
+obere bzw. untere Seite aus einem Gummiband besteht. Nun verschieben wir die
+rechte Seite schräg nach unten und erhalten.
 \shorthandoff{"}
 \begin{center}
 \begin{minipage}{\linewidth}
@@ -141,7 +141,7 @@ rechte Stei schräg nach unten und erhalten.
 \end{center}
 \shorthandon{"}
 All diese Parallelogramme haben den selben Flächeninhalt. Später führen wie
-noch eine Orientierung ein, die auch bei allen Parallelogrammem erhalten
+noch eine Orientierung ein, die auch bei allen Parallelogrammen erhalten
 bleibt.
 
 Ab jetzt können wir den Gummi-Stab Trick auf Parallelogramme anwenden und
@@ -184,16 +184,14 @@ Bild
 \begin{tikzpicture}[>=Stealth]
     \coordinate (O) at (0,0);
     \coordinate (A) at (3,0);
-    \coordinate (C) at (4,1.5);
     \coordinate (B) at (1,1.5);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
 
-    \filldraw[fill=green!20] (O) -- (A) -- (C) -- (B);
     \draw[->, thick] (O) -- (A);
     \draw[->, thick] (O) -- (B);
-    \draw (B) -- (C);
-    \draw (A) -- (C);
-    \node[shift={(-0.5,-0.3)}] (v) at (B) {$b$};
-    \node[shift={(-0.5,-0.3)}] (u) at (A) {$a$};
+    \node[shift={(-0.5,-0.3)}] at (B) {$b$};
+    \node[shift={(-0.5,-0.3)}] at (A) {$a$};
     \pic ["$\alpha$", -, draw=black, angle radius=0.8cm, angle eccentricity=0.6] {angle=A--O--B};
     \draw[->, semithick] ([shift=(0:0.3)]1.8,0.8) arc (0:270:0.3);
 \end{tikzpicture}
@@ -273,17 +271,17 @@ Abbildung
 \end{minipage}
 \end{center}
 \shorthandon{"}
-Schaeun wir die Paralellogramme der orientierten Flächen $a\wedge b$ und
-$a\wedge c$ an. Sie sind Grün eingefärbt. Das Paralellogramm der orientierten
+Schaeun wir die Parallelogramme der orientierten Flächen $a\wedge b$ und
+$a\wedge c$ an. Sie sind Grün eingefärbt. Das Parallelogramm der orientierten
 Fläche $a\wedge (b + c)$ ist Gelb. Aus dem Bild ist leicht zu erkennen, dass
 die Summe der grünen Flächen gleich dem der gelben Fläche ist. Die
 Orientierungen der drei Flächen sind alle im Uhrzeigersinn.
 \newpage
 Nun können wir uns auf die Gleichheit von orientierten Fläche stürzen. Denken
-wir uns ein Paralellogramm so, dass der Vektor $a$ horizhontal liegt und der
+wir uns ein Parallelogramm so, dass der Vektor $a$ horizontal liegt und der
 Vektor $b$ schräg nach rechst oben zeigt. Wenden wir den Gummi-Stab Trick so
 an, dass der Vektor $a$ fest verankert ist und der Vektor $b$ zu einem
-Gummiband wird, und verscheiben den oberen Stab nach links. Dann wird der
+Gummiband wird, und verschieben den oberen Stab nach links. Dann wird der
 Vektor $b$ zu einem Vektor $b'=b+\lambda a$. Setzen wir das ein und rechnen
 aus.
 \[a\wedge b' = a\wedge (b + \lambda a) = a \wedge b + a\wedge (\lambda a)=
@@ -295,31 +293,27 @@ a\wedge b\]
 \begin{tikzpicture}[>=Stealth]
     \coordinate (O) at (0,0);
     \coordinate (A) at (3,0);
-    \coordinate (C) at (4,1.5);
     \coordinate (B) at (1,1.5);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
 
-    \filldraw[fill=green!20] (O) -- (A) -- (C) -- (B);
     \draw[->, thick] (O) -- (A);
     \draw[->, thick] (O) -- (B);
-    \draw (B) -- (C);
-    \draw (A) -- (C);
-    \node[shift={(-0.5,-0.3)}] (b) at (B) {$b$};
-    \node[shift={(-0.5,-0.3)}] (a) at (A) {$a$};
+    \node[shift={(-0.5,-0.3)}] at (B) {$b$};
+    \node[shift={(-0.5,-0.3)}] at (A) {$a$};
     \draw[->, semithick] ([shift=(0:0.3)]1.8,0.8) arc (0:270:0.3);
 
     \begin{scope}[shift={(5.5,0)}]
-        \coordinate (O') at (0,0);
-        \coordinate (A') at (3,0);
-        \coordinate (C') at (2.7,1.5);
-        \coordinate (B') at (-0.3,1.5);
+        \coordinate (O) at (0,0);
+        \coordinate (A) at (3,0);
+        \coordinate (B) at (-0.3,1.5);
+        \draw [draw=black, fill=green, opacity=0.2]
+        (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
 
-        \filldraw[fill=green!20] (O') -- (A') -- (C') -- (B');
-        \draw[->, thick] (O') -- (A');
-        \draw[->, thick] (O') -- (B');
-        \draw (B') -- (C');
-        \draw (A') -- (C');
-        \node[shift={(-0.2,-0.3)}] (b) at (B') {$b'$};
-        \node[shift={(-0.5,-0.3)}] (a) at (A') {$a$};
+        \draw[->, thick] (O) -- (A);
+        \draw[->, thick] (O) -- (B);
+        \node[shift={(-0.2,-0.3)}] at (B) {$b'$};
+        \node[shift={(-0.5,-0.3)}] at (A) {$a$};
         \draw[->, semithick] ([shift=(0:0.3)]1.3,0.8) arc (0:270:0.3);
     \end{scope}
 \end{tikzpicture}
@@ -329,41 +323,36 @@ a\wedge b\]
 \end{center}
 \shorthandon{"}
 
-Wende wir den Gummi-Stab Trick auf den so entstadenen Paralellogramm an. Jetzt
-wird $b'$ verankert und $a$ zu einem Gummiband. Nach dem Gummi-Stab Trick
-könnte das so aussehen.
+Wende wir den Gummi-Stab Trick auf den so entstandenes Parallelogramm an.
+Jetzt wird $b'$ verankert und $a$ zu einem Gummiband. Nach dem Gummi-Stab
+Trick könnte das so aussehen.
 \shorthandoff{"}
 \begin{center}
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[>=Stealth]
-        \coordinate (O') at (0,0);
-        \coordinate (A') at (3,0);
-        \coordinate (C') at (2.7,1.5);
-        \coordinate (B') at (-0.3,1.5);
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (3,0);
+    \coordinate (B) at (-0.3,1.5);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
 
-        \filldraw[fill=green!20] (O') -- (A') -- (C') -- (B');
-        \draw[->, thick] (O') -- (A');
-        \draw[->, thick] (O') -- (B');
-        \draw (B') -- (C');
-        \draw (A') -- (C');
-        \node[shift={(-0.2,-0.3)}] (b) at (B') {$b'$};
-        \node[shift={(-0.5,-0.3)}] (a) at (A') {$a$};
-        \draw[->, semithick] ([shift=(0:0.3)]1.3,0.8) arc (0:270:0.3);
-
+    \draw[->, thick] (O) -- (A);
+    \draw[->, thick] (O) -- (B);
+    \node[shift={(-0.2,-0.3)}] at (B) {$b'$};
+    \node[shift={(-0.5,-0.3)}] at (A) {$a$};
+    \draw[->, semithick] ([shift=(0:0.3)]1.3,0.8) arc (0:270:0.3);
     \begin{scope}[shift={(5.5,0)}]
-        \coordinate (O') at (0,0);
-        \coordinate (A') at (2.9,0.5);
-        \coordinate (C') at (2.6,2.0);
-        \coordinate (B') at (-0.3,1.5);
+        \coordinate (O) at (0,0);
+        \coordinate (A) at (2.9,0.5);
+        \coordinate (B) at (-0.3,1.5);
+        \draw [draw=black, fill=green, opacity=0.2]
+        (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
 
-        \filldraw[fill=green!20] (O') -- (A') -- (C') -- (B');
-        \draw[->, thick] (O') -- (A');
-        \draw[->, thick] (O') -- (B');
-        \draw (B') -- (C');
-        \draw (A') -- (C');
-        \node[shift={(-0.2,-0.3)}] (v) at (B') {$b'$};
-        \node[shift={(-0.5,-0.3)}] (u) at (A') {$a'$};
+        \draw[->, thick] (O) -- (A);
+        \draw[->, thick] (O) -- (B);
+        \node[shift={(-0.2,-0.3)}] at (B) {$b'$};
+        \node[shift={(-0.5,-0.3)}] at (A) {$a'$};
         \draw[->, semithick] ([shift=(0:0.3)]1.2,1.0) arc (0:270:0.3);
     \end{scope}
 \end{tikzpicture}
@@ -375,12 +364,12 @@ könnte das so aussehen.
 
 Die Flächen sind gleich, die Orientierung ist gleich ... Ahaaa ... Ich kann
 also beliebige Flächen betrachten, solange nur die Orientierung und Größe der
-Flächen identisch ist ändert sich das äußere Produkt nicht. Somit kanndas
+Flächen identisch ist ändert sich das äußere Produkt nicht. Somit kann das
 äußere Produkt als ein Kreis, eine Ellipse oder ein wabbeliges Ding
 dargestellt werden.
 
 Wie steht es um die Assoziativität des äußeren Produktes? Wenn wir das
-wünschen, dann verlassen wir die zeite Dimension und treten in die dritte
+wünschen, dann verlassen wir die zweite Dimension und treten in die dritte
 Dimension ein. Wir verlangen also
 \[a\wedge(b\wedge c) =(a\wedge b)\wedge c.\]
 Was für ein Ding ist das vor mir? Das ist ein orientiertes Volumen. Die
@@ -388,7 +377,7 @@ Orientierung bestimmen die Vektoren $a, b$ und $c$. Betrachten wir die
 Analogien zwischen dem orientierten Parallelogramm und dem orientierten
 Parallelepiped. Das orientierte Parallelogramm hat orientierte Längen
 (Vektoren) am Rand und das orientierte Parallelepiped orientierte
-Paralellogramme.
+Parallelogramme.
 \subsection{Eingenschaften des geometrischen Produktes}
 Durch die eben beschriebenen Eingenschaften des inneren und äußeren Produktes,
 können wir paar Eingenschaften des geometrischen Produktes herleiten. Aus der
@@ -443,20 +432,20 @@ Diese Gleichung ist aber mit vorsicht zu genießen, da wir aus ihr nicht sehen,
 ob wir die links oder die rechts Inverse von $b$ genommen haben!
 \section{Geometrische Algebra in der Ebene}
 Wir haben jede menge Zeugs gesammelt bzw. motiviert. Sehen wir uns an, was auf
-der (euklidichen) Ebene mit der geometrischen Algebra alles anstellen kann.
+der (euklidischen) Ebene mit der geometrischen Algebra alles anstellen kann.
 Dazu nehmen wir unsere alt bekannten Basisvektoren $e_1$ und $e_2$ aus der
 Kiste und rechnen damit etwas mit dem (neuen) geometrischen Produkt paar
-sachen aus. Dabei soll immer stillsweigend orthonormalität dieser Vektoren
+Sachen aus. Dabei soll immer stillschweigend Orthonormalität dieser Vektoren
 angenommen werden. Was ist das geometrische Produkt dieser Vektoren?
 \[e_1e_1=e_1\cdot e_1=1\textrm{ und auch }e_2e_2=1\]
-Das $e_1e_1 = e_1\cdot e_1$ ist, folgt aus der Paralelität des Vektors $e_1$
+Das $e_1e_1 = e_1\cdot e_1$ ist, folgt aus der Parallelität des Vektors $e_1$
 mit sich selbst. Weiter folgt aus dieser Gleichung, dass $e_1$ und $e_2$ zu
 sich selbst invers sind. OK, was ist $e_1$ mit $e_2$ verheiratet? Erstmal die
 Größe der Fläche des Rechtecks (Parallelogramms).
 \[|e_1e_2|=|e_1\wedge e_2|=|e_1||e_2||\sin(\pi/2)|=1\textrm{ und auch
 }|e_2e_1|=1\]
 Da die beiden Vektoren $e_1$ und $e_2$ orthogonal sind ergibt sich aus der
-Kette von Gleichgungen
+Kette von Gleichungen
 \[e_1e_2=e_1\wedge e_2 = -e_2\wedge e_1 = -e_2e_1\]
 Damit nicht immer ein Kreis mit einem Pfeil für die Orientierung gezeichnet
 werden muss, ist auch die Anreihung der Vektoren $e_1$ und $e_2$ an einander
@@ -466,15 +455,15 @@ eine Möglichkeit.
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[>=Stealth]
-    \coordinate (O)    at (0.0, 0.0);
-    \coordinate (e1)   at (1.5, 0.0);
-    \coordinate (e2)   at (0.0, 1.5);
-    \coordinate (e1e2) at (1.5, 1.5);
+    \coordinate (O)  at (0.0, 0.0);
+    \coordinate (e1) at (1.5, 0.0);
+    \coordinate (e2) at (0.0, 1.5);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (e1) -- ($(e1)+(e2)$) -- (e2) -- cycle;
 
-    \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
     \draw[->, thick] (O) -- (e1);
-    \draw[->, thick] (e1) -- (e1e2);
-    \draw[->, thick] (e1e2) -- (e2);
+    \draw[->, thick] (e1) -- ($(e1) + (e2)$);
+    \draw[->, thick] ($(e1) + (e2)$) -- (e2);
     \draw[->, thick] (e2) -- (O);
     \node[label=below:{$e_1$}] at (0.75, 0.00) {};
     \node[label=left:{$-e_2$}] at (0.00, 0.75) {};
@@ -482,15 +471,15 @@ eine Möglichkeit.
     \node[label=above:{positiv orientiert}] at (0.75, 1.8) {$-e_1$};
     \node[label=center:{$e_1\wedge e_2$}] at (0.75, 0.75) {};
     \begin{scope}[shift={(5.5,0.0)}]
-        \coordinate (O)    at (0.0, 0.0);
-        \coordinate (e1)   at (1.5, 0.0);
-        \coordinate (e2)   at (0.0, 1.5);
-        \coordinate (e1e2) at (1.5, 1.5);
+        \coordinate (O)  at (0.0, 0.0);
+        \coordinate (e1) at (1.5, 0.0);
+        \coordinate (e2) at (0.0, 1.5);
+        \draw [draw=black, fill=green, opacity=0.2]
+        (O) -- (e1) -- ($(e1)+(e2)$) -- (e2) -- cycle;
 
-        \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
         \draw[->, thick] (O) -- (e2);
-        \draw[->, thick] (e2) -- (e1e2);
-        \draw[->, thick] (e1e2) -- (e1);
+        \draw[->, thick] ($(e1) + (e2)$) -- (e1);
+        \draw[->, thick] (e2) -- ($(e1) + (e2)$);
         \draw[->, thick] (e1) -- (O);
         \node[label=below:{$-e_1$}] at (0.75, 0.00) {};
         \node[label=left:{$e_2$}]   at (0.00, 0.75) {};
@@ -513,31 +502,27 @@ Vektoren weggelassen werden.
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[>=Stealth]
-    \coordinate (O)    at (0.0, 0.0);
-    \coordinate (e1)   at (1.5, 0.0);
-    \coordinate (e2)   at (0.0, 1.5);
-    \coordinate (e1e2) at (1.5, 1.5);
+    \coordinate (O)  at (0.0, 0.0);
+    \coordinate (e1) at (1.5, 0.0);
+    \coordinate (e2) at (0.0, 1.5);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (e1) -- ($(e1)+(e2)$) -- (e2) -- cycle;
 
-    \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
     \draw[->, thick] (O) -- (e1);
-    \draw[->, thick] (e1) -- (e1e2);
-    \draw (e1e2) -- (e2);
-    \draw (e2) -- (O);
+    \draw[->, thick] (e1) -- ($(e1) + (e2)$);
     \node[label=below:{$e_1$}] at (0.75, 0.00) {};
     \node[label=right:{$e_2$}] at (1.50, 0.75) {};
     \node[label=above:{positiv orientiert}] at (0.75, 1.8) {};
     \node[label=center:{$e_1\wedge e_2$}] at (0.75, 0.75) {};
     \begin{scope}[shift={(5.5,0.0)}]
-        \coordinate (O)    at (0.0, 0.0);
-        \coordinate (e1)   at (1.5, 0.0);
-        \coordinate (e2)   at (0.0, 1.5);
-        \coordinate (e1e2) at (1.5, 1.5);
+        \coordinate (O)  at (0.0, 0.0);
+        \coordinate (e1) at (1.5, 0.0);
+        \coordinate (e2) at (0.0, 1.5);
+        \draw [draw=black, fill=green, opacity=0.2]
+        (O) -- (e1) -- ($(e1)+(e2)$) -- (e2) -- cycle;
 
-        \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
         \draw[->, thick] (O) -- (e2);
-        \draw[->, thick] (e2) -- (e1e2);
-        \draw (e1e2) -- (e1);
-        \draw (e1) -- (O);
+        \draw[->, thick] (e2) -- ($(e1) + (e2)$);
         \node[label=left:{$e_2$}]   at (0.00, 0.75) {};
         \node[label=above:{negativ orientiert}] at (0.75, 1.8) {$e_1$};
     \node[label=center:{$e_2\wedge e_1$}] at (0.75, 0.75) {};
@@ -555,18 +540,18 @@ geometrischen Produktes?
 \begin{enumerate}
     \item Ausschreiben des Quadrats bzgl des geometrischen Produktes.
     \item Assoziativität des geometrischen Produktes.
-    \item $e_2e_1$ ist, wie wir veiter oben berechnet haben $-e_1e_2$
+    \item $e_2e_1$ ist, wie wir weiter oben berechnet haben $-e_1e_2$
     \item Erneut Assoziativität und vorziehen der Zahl $-1$.
     \item Das geometrische Produkt von $e_1e_1$ bzw. $e_2e_2$ ist $1$.
 \end{enumerate}
-Ein neues Aha Moment! Nochmal das Ergebnis ohne (stöhrende) Zwischenrechnung
+Ein neues Aha Moment! Nochmal das Ergebnis ohne (störende) Zwischenrechnung
 \[(e_1e_2)^2=-1\]
 Das Quadrat von $e_1e_2$ ist $-1$?! Das ist doch wie bei der komplexen Zahl
 $i$. Nur hier ist alles reell. Wir haben also unsere Einheit der Ebene
 gefunden, mit der zusätzlichen Eigenschaft, das ihr Quadrat gleich minus eins
 ist.
 
-Um die Einheit $e_1e_2 = e_1\wedge e_2$ nutzen zu können vereibaren wir noch
+Um die Einheit $e_1e_2 = e_1\wedge e_2$ nutzen zu können vereinbaren wir noch
 den Bereich von $\alpha$. Wenn $-\pi\leq\alpha\leq\pi$ ist, dann kann jedes
 äußere Produkt als
 \[a\wedge b= |a||b|\sin\alpha \hspace{1ex} e_1\wedge e_2\]
@@ -580,13 +565,13 @@ erhalten wir
 \[ab=a\cdot b + a\wedge b = |a||b|\cos\alpha + |a||b|\sin\alpha\*i =
 |a||b|(\cos\alpha + \sin\alpha\*i)\]
 Kaum haben wir $\*i$ entdeckt, schon winkt uns $e^{\alpha\*i}$ entgegen, wenn
-wir $e^{\alpha\*i} := \cos\alpha + \*i\sin\alpha$ setzen. Ist diese Deinition
+wir $e^{\alpha\*i} := \cos\alpha + \*i\sin\alpha$ setzen. Ist diese Definition
 sinnvoll? Waren wir nicht zu schnell? Betrachten wir den Anfang der
 Taylorreihe von $e^{\alpha\*i}$
 \[e^{\alpha\*i}=1+\frac{\alpha\*i}{1!}+\frac{(\alpha\*i)^2}{2!}
 +\frac{(\alpha\*i)^3}{3!}+\frac{(\alpha\*i)^4}{4!}+\frac{(\alpha\*i)^5}{5!}+ ...\]
 Oh Gott, jetzt müssen wir auch noch Potenzen von $\alpha\*i$ berechnen. Na
-dann, ranan die Arbeit. Da $\alpha$ eine reelle Zahl ist, reicht nur die
+dann, ran an die Arbeit. Da $\alpha$ eine reelle Zahl ist, reicht nur die
 Potenzen von $\*i$ zu betrachten.
 \begin{enumerate}
     \item $(\*i)^1=\*i$ done.
@@ -614,22 +599,20 @@ Ebene auf mit dem Bivektor $\*i$.
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[>=Stealth]
-    \coordinate (O)    at (0.0, 0.0);
-    \coordinate (e1)   at (1.0, 0.0);
-    \coordinate (e2)   at (0.0, 1.0);
-    \coordinate (e1e2) at (1.0, 1.0);
+    \coordinate (O)  at (0.0, 0.0);
+    \coordinate (e1) at (1.0, 0.0);
+    \coordinate (e2) at (0.0, 1.0);
 
     \draw[step=1.0, lightgray, very thin] (-0.8,-0.8) grid (4.8, 2.8);
     \draw ( 0.0, -1.0) -- (0.0, 3.0);
     \draw (-1.0,  0.0) -- (5.0, 0.0);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (e1) -- ($(e1) + (e2)$) -- (e2) -- cycle;
 
-    \filldraw[fill=green!20] (O) -- (e1) -- (e1e2) -- (e2);
     \draw[->, thick] (O) -- (e1);
-    \draw[->, thick] (O) -- (e2);
-    \draw (e1e2) -- (e2);
-    \draw (e2) -- (O);
+    \draw[->, thick] (e1) -- ($(e1) + (e2)$);
     \node[label=below:{$e_1$}] at (0.5, 0.0) {};
-    \node[label=left:{$e_2$}]  at (0.0, 0.5) {};
+    \node[label=right:{$e_2$}] at (1.0, 0.5) {};
 \end{tikzpicture}
 \captionof{figure}{Der Bivektors $\*i$ in der Ebene}
 \label{fig:bivector1}
@@ -643,25 +626,27 @@ betrachten das äußere Produkt von $a\wedge b$ so sieht das dann so aus
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[>=Stealth]
-    \coordinate (O)    at (0.0, 0.0);
-    \coordinate (e1)   at (1.0, 0.0);
-    \coordinate (e2)   at (0.0, 1.0);
-    \coordinate (e1e2) at (1.0, 1.0);
-    \coordinate (a)    at (3.0, 0.0);
-    \coordinate (b)    at (1.0, 2.0);
+    \coordinate (O)  at (0.0, 0.0);
+    \coordinate (e1) at (1.0, 0.0);
+    \coordinate (e2) at (0.0, 1.0);
+    \coordinate (a)  at (3.0, 0.0);
+    \coordinate (b)  at (1.0, 2.0);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (e1) -- ($(e1) + (e2)$) -- (e2) -- cycle;
 
     \draw[step=1.0, lightgray, very thin] (-0.8,-0.8) grid (4.8, 2.8);
     \draw ( 0.0, -1.0) -- (0.0, 3.0);
     \draw (-1.0,  0.0) -- (5.0, 0.0);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (a) -- ($(a) + (b)$) -- (b) -- cycle;
 
-    \filldraw[fill=green!20] (O) -- (a) -- ($(a)+(b)$) -- (b);
     \draw[->, thick] (O) -- (e1);
-    \draw[->, thick] (O) -- (e2);
-    \draw[->, thick] (O) -- (a);
-    \draw[->, thick] (a) -- ($(b)+(a)$);
-    \draw ($(b)+(a)$) -- (b) -- (O);
+    \draw[->, thick] (e1) -- ($(e1) + (e2)$);
     \node[label=below:{$e_1$}] at (0.5, 0.0) {};
-    \node[label=left:{$e_2$}]  at (0.0, 0.5) {};
+    \node[label=right:{$e_2$}] at (1.0, 0.5) {};
+
+    \draw[->, thick] (O) -- (a);
+    \draw[->, thick] (a) -- ($(a)+(b)$);
     \node[label=below:{$a$}] at (2.5, 0.0) {};
     \node[label=right:{$b$}]  at (3.5, 1.0) {};
 \end{tikzpicture}
@@ -670,36 +655,34 @@ betrachten das äußere Produkt von $a\wedge b$ so sieht das dann so aus
 \end{minipage}
 \end{center}
 \shorthandon{"}
-Denken wir uns die untere Seite des Parallelogramms fest verankert, die Seiten
-aus Gummi und die obere Seite als ein Stab, der sich nur parallel zu der
-unteren Seite verschieben lässt, so können wir das Parallelogramm zu einem
-Rechteck verformen. Dabei bleibt die Orientierung und Größe des
-Parallelogramms erhalten. Diese Operation ergibt das folgende Bild
+Wenden wir den Gummi-Stab Trick so an, dass das neue Parallelogramm ein Rechteck wird.
 \shorthandoff{"}
 \begin{center}
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[>=Stealth]
-    \coordinate (O)    at (0.0, 0.0);
-    \coordinate (e1)   at (1.0, 0.0);
-    \coordinate (e2)   at (0.0, 1.0);
-    \coordinate (a)    at (3.0, 0.0);
-    \coordinate (b)    at (0.0, 2.0);
+    \coordinate (O)  at (0.0, 0.0);
+    \coordinate (e1) at (1.0, 0.0);
+    \coordinate (e2) at (0.0, 1.0);
+    \coordinate (a)  at (3.0, 0.0);
+    \coordinate (b)  at (0.0, 2.0);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (e1) -- ($(e1) + (e2)$) -- (e2) -- cycle;
 
     \draw[step=1.0, lightgray, very thin] (-0.8,-0.8) grid (4.8, 2.8);
     \draw ( 0.0, -1.0) -- (0.0, 3.0);
     \draw (-1.0,  0.0) -- (5.0, 0.0);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (a) -- ($(a) + (b)$) -- (b) -- cycle;
 
-    \filldraw[fill=green!20] (O) -- (a) -- ($(a)+(b)$) -- (b);
     \draw[->, thick] (O) -- (e1);
-    \draw[->, thick] (O) -- (e2);
-    \draw[->, thick] (O) -- (a);
-    \draw[->, thick] (a) -- ($(b)+(a)$);
-    \draw ($(b)+(a)$) -- (b) -- (O);
+    \draw[->, thick] (e1) -- ($(e1) + (e2)$);
     \node[label=below:{$e_1$}] at (0.5, 0.0) {};
-    \node[label=left:{$e_2$}]  at (0.0, 0.5) {};
+    \node[label=right:{$e_2$}] at (1.0, 0.5) {};
+    \draw[->, thick] (O) -- (a);
+    \draw[->, thick] (a) -- ($(a)+(b)$);
     \node[label=below:{$a$}] at (2.5, 0.0) {};
-    \node[label=right:{$b$}]  at (3.0, 1.5) {};
+    \node[label=right:{$b'$}] at (3.0, 1.5) {};
 \end{tikzpicture}
 \captionof{figure}{Der Bivektors $\*i$ in der Ebene}
 \label{fig:bivector3}
@@ -709,12 +692,19 @@ Parallelogramms erhalten. Diese Operation ergibt das folgende Bild
 Jetzt können wir ganz geschmeidig die Größe der Fläche $a\wedge b$ abzählen
 und erhalten mit der selben Orientierung wie $e_1\wedge e_2$
 \[a\wedge b= 6e_1\wedge e_2\]
-Wenn wir $b\wedge a$ genommen hätten, dan wäre $b\wedge a = -6e_1\wedge e_2$
+
+Ist es möglich, das Ergebnis auch zu berechnen? Ja!
+\begin{align*}
+    a\wedge b &= 3e_1\wedge(e_1+2e_2) \\
+    &= 3e_1\wedge e_1 + 3e_1\wedge 2e_2 \\
+    &=6 e_1\wedge e_2
+\end{align*}
+Wenn wir $b\wedge a$ genommen hätten, dann wäre $b\wedge a = -6e_1\wedge e_2$
 rausgekommen. Somit ist $\*i=e_1e_2=e_1\wedge e_2$ \textbf{die} orientierte
 Fläche mit der Größe eins. Anders gesagt $\*i$ ist \textbf{der} Bivetor der
 Ebene. Es kann nur einen (in der Ebene) geben (Highlander).
 \newpage
-Kehren wir die seite der Medaille um. Was stellt $\*i$ mit dem Vektor $e_1$
+Kehren wir die Seite der Medaille um. Was stellt $\*i$ mit dem Vektor $e_1$
 an, wenn wir $e_1$ mit $\*i$ von rechts multiplizieren?
 \[e_1\*i\stackrel{1}=e_1(e_1e_2)\stackrel{2}=(e_1e_1)e_2\stackrel{3}=e_2\]
 \begin{enumerate}
@@ -722,7 +712,7 @@ an, wenn wir $e_1$ mit $\*i$ von rechts multiplizieren?
     \item Assoziativität des geometrischen Produktes.
     \item $e_1e_1=1$
 \end{enumerate}
-Was macht $\*i$ mit $e_1$, wenn von links multipliziert wird? Die Rechnun
+Was macht $\*i$ mit $e_1$, wenn von links multipliziert wird? Die Rechnung
 mache wir etwas schneller, da wir schon geübter sind. :)
 \[\*ie_1=(e_1e_2)e_1=(-e_2e_1)e_1=-e_2\]
 Die Multiplikation mit $\*i$ von rechts führt $e_1$ in $e_2$ und von links in
@@ -744,12 +734,12 @@ Zeichen wir das ganze zum Beispiel mit dem Vektor $a=3e_1+2e_2$ auf
 \begin{minipage}{\linewidth}
 \centering
 \begin{tikzpicture}[>=Stealth]
-    \coordinate (O)    at ( 0.0,  0.0);
-    \coordinate (e1)   at ( 1.0,  0.0);
-    \coordinate (e2)   at ( 0.0,  1.0);
-    \coordinate (a)    at ( 3.0,  2.0);
-    \coordinate (a1)   at (-2.0,  3.0);
-    \coordinate (a2)   at ( 2.0, -3.0);
+    \coordinate (O)  at ( 0.0,  0.0);
+    \coordinate (e1) at ( 1.0,  0.0);
+    \coordinate (e2) at ( 0.0,  1.0);
+    \coordinate (a)  at ( 3.0,  2.0);
+    \coordinate (a1) at (-2.0,  3.0);
+    \coordinate (a2) at ( 2.0, -3.0);
 
     \draw[step=1.0, lightgray, very thin] (-3.8,-3.8) grid (3.8, 3.8);
     \draw ( 0.0, -4.0) -- (0.0, 4.0);
@@ -776,15 +766,145 @@ Zeichen wir das ganze zum Beispiel mit dem Vektor $a=3e_1+2e_2$ auf
 \end{center}
 \shorthandon{"}
 
-Zusammenfassend sind die beinde Seiten der Medaille
+Zusammenfassend sind die beiden Seiten der Medaille
 \begin{itemize}
     \item $\*i$ ist der Einheitsbivektor.
     \item $\*i$ rotiert die Vektoren der Ebene um $90^{\circ}$.
 \end{itemize}
 
+Nach diesen Erkenntnissen wenden wir $e^{\alpha\*i}$ auf einen beliebigen
+Vektor $a$ an.
+\begin{align*}
+    e^{\alpha\*i} a &= (\cos\alpha + \*i \sin\alpha) a = a \cos\alpha +
+    \*ia \sin\alpha \\
+    a e^{\alpha\*i} &= a (\cos\alpha + \*i \sin\alpha) = a \cos\alpha +
+    a\*i \sin\alpha
+\end{align*}
+
+Weiter oben haben wir die Werte für $a\*i$ und $\*ia$ schon berechnet. Setzen
+wir dies ein und erhalten
+\begin{align*}
+    e^{\alpha\*i} a &= (xe_1 +ye_2) \cos\alpha + (ye_1 -xe_2) \sin\alpha \\
+    &= (x\cos\alpha+y\sin\alpha)e_1 + (y\cos\alpha - x\sin\alpha) e_2 \\
+    a e^{\alpha\*i} &= (xe_1 -ye_2)\cos\alpha + (ye_1 + xe_2) \sin\alpha \\
+    &= (x\cos\alpha-y\sin\alpha)e_1 + (y\cos\alpha +x\sin\alpha) e_2
+\end{align*}
+
+Das alles sieht nache einer Drehung des Vektors $a$ um den Winkel $\alpha$
+aus. Im Falle von $ae^{\alpha\*i}$ gegen dem Uhrzeigersinn und im Falle von
+$e^{\alpha\*i}a$ mit dem Uhrzeigersinn. Wie sind wir auf die Formel mit
+$e^{\alpha\*i}$ gekommen? Wir hatten das geometrische Produkt von zwei
+Vektoren betrachtet. Die hießen dort $a$ und $b$. Da aber $a$ ein
+vielbeschfäftigter Vektor  ist nenne ich sie mal in $u$ und $v$ um. Damit ist
+dann die Formel
+\[
+    uv=|u||v|e^{\alpha\*i}
+\]
+Wobei $\alpha$ der Winkel zwischen den Vektoren $u$ und $v$ ist. Haben $u$ und
+$v$ die Länge $1$ so ist
+\[
+    uv=e^{\alpha\*i}
+\]
+Dieses geometrische Produkt von Einheitsbivektoren wird als Rotor bezeichnet.
+Setzen wir $R_\alpha := e^{\alpha\*i}$ und spielen mit der Gleichung
+$uv=R_\alpha$.  Multiplizieren sie einmal links mit $u$ und einmal rechts mit
+$v$ so erhalten wir die Gleichungen
+\[
+    v = uR_\alpha\hspace{3ex}u = R_\alpha v
+\]
+Die erste Gleichung führt den Vektor $u$ in $v$ und die zweite Gleichung $v$
+in $u$ über. Der Rotor $R_\alpha$ führt also tatsache eine Rotation der
+Einheitsvektoren durch. Damit haben wir die die koordinatenfreie
+Interpretation des Rotors $R_\alpha$ erhalten.  Schauen wir paar Bilder dazu
+an.
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at (0.0, 0.0);
+    \coordinate (u) at (2.0, 0.0);
+    \coordinate (v) at ($(O)!1!40:(u)$);
+
+    \draw[->, draw=red, thick] (O) -- (u);
+    \draw[->, draw=red, thick] (O) -- (v);
+    \pic["$\alpha$", -, draw=black, angle radius=2.0cm, angle eccentricity=1.2]
+    {angle=u--O--v};
+    \node at (1.0, -0.3) {$u$};
+    \node at (0.7,  0.9) {$v$};
+
+    \begin{scope}[shift={(3.0,0.0)}]
+        \coordinate (O) at (0.0, 0.0);
+        \coordinate (u) at (2.0, 0.0);
+        \coordinate (v) at ($(O)!1!40:(u)$);
+
+        \draw[-, thick] (O) -- (u);
+        \draw[-, thick] (O) -- (v);
+        \pic["$R_\alpha$", ->, thick, draw=red, angle radius=2.0cm, angle eccentricity=1.2]
+    {angle=u--O--v};
+    \end{scope}
+\end{tikzpicture}
+\captionof{figure}{$R_\alpha$ als gerichtetes Kreissegment}
+\label{fig:rotatealpha}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+Genauso wie wir einen Vektor $a$ als den gleichen Vektor betrachten, wenn wir
+ihn in der Ebene verschieben, wird der Rotor $R_\alpha$ als der gleiche Rotor
+der Ebene betrachtet, wenn er gedreht wird.
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at (0.0, 0.0);
+    \coordinate (u) at (2.0, 0.0);
+    \coordinate (v) at ($(O)!1!40:(u)$);
+
+    \draw[-, thick] (O) -- (u);
+    \draw[-, thick] (O) -- (v);
+    \pic["$R_\alpha$", ->, thick, draw=red, angle radius=2.0cm, angle eccentricity=1.2]
+    {angle=u--O--v};
+    \begin{scope}[rotate=60]
+        \coordinate (O) at (0.0, 0.0);
+        \coordinate (u) at (2.0, 0.0);
+        \coordinate (v) at ($(O)!1!40:(u)$);
+
+        \draw[-, thick] (O) -- (u);
+        \draw[-, thick] (O) -- (v);
+        \pic["$R_\alpha$", ->, thick, draw=red, angle radius=2.0cm, angle eccentricity=1.2]
+    {angle=u--O--v};
+    \end{scope}
+    \begin{scope}[rotate=150]
+        \coordinate (O) at (0.0, 0.0);
+        \coordinate (u) at (2.0, 0.0);
+        \coordinate (v) at ($(O)!1!40:(u)$);
+
+        \draw[-, thick] (O) -- (u);
+        \draw[-, thick] (O) -- (v);
+        \pic["$R_\alpha$", ->, thick, draw=red, angle radius=2.0cm, angle eccentricity=1.2]
+    {angle=u--O--v};
+    \end{scope}
+    \begin{scope}[rotate=280]
+        \coordinate (O) at (0.0, 0.0);
+        \coordinate (u) at (2.0, 0.0);
+        \coordinate (v) at ($(O)!1!40:(u)$);
+
+        \draw[-, thick] (O) -- (u);
+        \draw[-, thick] (O) -- (v);
+        \pic["$R_\alpha$", ->, thick, draw=red, angle radius=2.0cm, angle eccentricity=1.2]
+    {angle=u--O--v};
+    \end{scope}
+\end{tikzpicture}
+\captionof{figure}{$R_\alpha$ als gerichtetes Kreissegment}
+\label{fig:rotatealpha}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+\newpage
 Welche Objekte haben wir in der Ebene kennen gelernt? Wir wissen was passiert,
-wenn wir eine reelle Zahl $\lambda$ mit einer anderen rellen Zahl $\mu$
-multiplizieren. Es kommt eine neue rellen Zahl raus. Wir wissen auch was
+wenn wir eine reelle Zahl $\lambda$ mit einer anderen reellen Zahl $\mu$
+multiplizieren. Es kommt eine neue reellen Zahl raus. Wir wissen auch was
 $\lambda$ mit einem Vektor anstellt. Sie kürzt, verlängert oder dreht die
 Richtung des Vektors um. Anders gesagt, sie veränder die Größe oder die
 Orientierung des Vektors. Weiterhin stellt $\lambda$ mit $\*i$ das gleiche an,
@@ -797,8 +917,8 @@ multipliziert, ergibt ein (gedrehtes) Vektor. Schließlich ergibt der Bivektor
 $\*i$ mit sich selbst multipliziert die Zahl $-1$.
 
 Damit haben wir die Objekte $1, e_1, e_2$ und $e_1e_2$ der Ebene
-Identifiziert. Werden diese Objekte in Diamantenform strukturiert, so können
-wir der einzelen Ebenen, die bei der Strukturierung entsteht, namen geben.
+Identifiziert. Werden diese Objekte in Diamantform strukturiert, so können
+wir der einzelnen Ebenen, die bei der Strukturierung entsteht, Namen geben.
 \[
 \begin{matrix}
     1 \\ 
@@ -813,7 +933,7 @@ wir der einzelen Ebenen, die bei der Strukturierung entsteht, namen geben.
 \end{matrix*}
 \]
 Durch die Feststellung das es in der Ebene nur ein Bivektor mit der Größe eins
-gibt, haben die Ebenen der Diamantenform auch andere Namen.
+gibt, haben die Ebenen der Diamantform auch andere Namen.
 \[
 \begin{matrix}
     1 \\ 
@@ -827,7 +947,7 @@ gibt, haben die Ebenen der Diamantenform auch andere Namen.
     \textrm{Pseudoskalar}
 \end{matrix*}
 \]
-Mit diesen Objekten können wir, durch linearkombination dieser, ein sogenanntes
+Mit diesen Objekten können wir, durch Linearkombination dieser, ein sogenanntes
 Multivektor erstellen.
 \[
     m = \lambda_0 + \lambda_1e_1 + \lambda_2e_2 +
