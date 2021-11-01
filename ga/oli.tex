@@ -218,6 +218,32 @@ dem Vektor die Länge und bei dem äußeren Produkt die Fläche. Die Orientierun
 bei der Fläche hat auch den Namen links bzw. rechts orientiert oder mit dem
 Uhrzeigersinn bzw. gegen dem Uhrzeigersinn.
 
+Eine andere Möglichkeit der Darstellung der Orientierung ist die Vektoren, wie
+bei der Addition an einander zu reihen.
+\shorthandoff{"}
+\begin{center}
+\begin{minipage}{\linewidth}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (3,0);
+    \coordinate (B) at (1,1.5);
+    \coordinate (C) at ($(A) + (B)$);
+    \draw [draw=black, fill=green, opacity=0.2]
+    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+
+    \draw[->, thick] (O) -- (A);
+    \draw[->, thick] (A) -- ($(A) + (B)$);
+    \node[shift={(-0.5,-0.3)}] at (A) {$a$};
+    \node[shift={( 0.2,-0.3)}] at ($(A) + (B)$) {$b$};
+    \node at ($(O)!0.5!(C)$) {$a\wedge b$};
+\end{tikzpicture}
+\captionof{figure}{Andere Darstellung des äußeren Produktes}
+\label{fig:outherProduct2}
+\end{minipage}
+\end{center}
+\shorthandon{"}
+
 Paar interessante Eigenschaften des äußeren Produktes. Zuerst eine einfache.
 Liegt der Vektor $b$ in der Richtung von $a$ so ist das äußere Produkt Null.
 Wenn also $b=\lambda a$ ist, so soll
@@ -243,28 +269,23 @@ Abbildung
     \coordinate (O) at ( 0.0, 0.0);
     \coordinate (A) at (-0.5, 3.0);
     \coordinate (B) at ( 4.0, 0.0);
-    \coordinate (C) at ( 7.0, 2.0);
+    \coordinate (C) at ( 3.0, 2.0);
     \draw [draw=black, fill=green, opacity=0.3]
     (O) -- (B) -- ($(A) + (B)$) -- (A) -- cycle;
     \draw [draw=black, fill=green, opacity=0.3]
-    (B) -- (C) -- ($(C) + (A)$) -- ($(A) + (B)$) -- cycle;
+    (B) -- ($(B) + (C)$) -- ($(A) + (B) + (C)$) -- ($(A) + (B)$) -- cycle;
     \draw [draw=black, fill=yellow, opacity=0.3]
-    (O) -- (C) -- ($(C) + (A)$) -- (A) -- cycle;
+    (O) -- ($(B) + (C)$) -- ($(A) + (B) + (C)$) -- (A) -- cycle;
 
     \draw[->, thick] (O) -- (A);
-    \draw[->, thick] (O) -- (B);
-    \draw[->, thick] (B) -- (C);
-    \draw[->, thick] (O) -- (C);
-
-    \draw[->, thick] (A) -- ($(C)+(A)$);
-    \draw[->, thick] (B) -- ($(B)+(A)$);
-    \draw[->, thick] (C) -- ($(C)+(A)$);
-    \draw[->, thick] (A) -- ($(B)+(A)$);
-    \draw[->, thick] ($(B)+(A)$) -- ($(C)+(A)$);
+    \draw[->, thick] (A) -- ($(A) + (B)$);
+    \draw[->, thick] (B) -- ($(A) + (B)$);
+    \draw[->, thick] ($(A) + (B)$) -- ($(A) + (B) + (C)$);
+    \draw[->, thick] (A) -- ($(A) + (B) + (C)$);
 
     \node[shift={(-0.2,-0.6)}] (a) at (A) {$a$};
-    \node[shift={(-0.5,-0.3)}] (b) at (B) {$b$};
-    \node[shift={(-0.5,-0.6)}] (c) at (C) {$c$};
+    \node[shift={(-0.5,-0.3)}] (b) at ($(A) + (B)$) {$b$};
+    \node[shift={(-0.5,-0.6)}] (c) at ($(A) + (B) + (C)$) {$c$};
 \end{tikzpicture}
 \captionof{figure}{Distributivität des äußeren Pruduktes}
 \label{fig:distributivity}
@@ -294,27 +315,28 @@ a\wedge b\]
     \coordinate (O) at (0,0);
     \coordinate (A) at (3,0);
     \coordinate (B) at (1,1.5);
+    \coordinate (C) at ($(A)+(B)$);
     \draw [draw=black, fill=green, opacity=0.2]
-    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+    (O) -- (A) -- (C) -- (B) -- cycle;
 
     \draw[->, thick] (O) -- (A);
-    \draw[->, thick] (O) -- (B);
-    \node[shift={(-0.5,-0.3)}] at (B) {$b$};
+    \draw[->, thick] (A) -- (C);
+    \node[shift={( 0.2,-0.3)}] at (C) {$b$};
     \node[shift={(-0.5,-0.3)}] at (A) {$a$};
-    \draw[->, semithick] ([shift=(0:0.3)]1.8,0.8) arc (0:270:0.3);
-
+    \node at ($(O)!0.5!(C)$) {$a\wedge b$};
     \begin{scope}[shift={(5.5,0)}]
         \coordinate (O) at (0,0);
         \coordinate (A) at (3,0);
         \coordinate (B) at (-0.3,1.5);
+        \coordinate (C) at ($(A)+(B)$);
         \draw [draw=black, fill=green, opacity=0.2]
-        (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+        (O) -- (A) -- (C) -- (B) -- cycle;
 
         \draw[->, thick] (O) -- (A);
-        \draw[->, thick] (O) -- (B);
-        \node[shift={(-0.2,-0.3)}] at (B) {$b'$};
+        \draw[->, thick] (A) -- (C);
+        \node[shift={( 0.4,-0.3)}] at (C) {$b'$};
         \node[shift={(-0.5,-0.3)}] at (A) {$a$};
-        \draw[->, semithick] ([shift=(0:0.3)]1.3,0.8) arc (0:270:0.3);
+        \node at ($(O)!0.5!(C)$) {$a\wedge b'$};
     \end{scope}
 \end{tikzpicture}
 \captionof{figure}{Der Gummi-Stab Trick einmal angewendet}
@@ -334,26 +356,28 @@ Trick könnte das so aussehen.
     \coordinate (O) at (0,0);
     \coordinate (A) at (3,0);
     \coordinate (B) at (-0.3,1.5);
+    \coordinate (C) at ($(A)+(B)$);
     \draw [draw=black, fill=green, opacity=0.2]
-    (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+    (O) -- (A) -- (C) -- (B) -- cycle;
 
     \draw[->, thick] (O) -- (A);
-    \draw[->, thick] (O) -- (B);
-    \node[shift={(-0.2,-0.3)}] at (B) {$b'$};
+    \draw[->, thick] (A) -- (C);
+    \node[shift={( 0.4,-0.3)}] at (C) {$b'$};
     \node[shift={(-0.5,-0.3)}] at (A) {$a$};
-    \draw[->, semithick] ([shift=(0:0.3)]1.3,0.8) arc (0:270:0.3);
+    \node at ($(O)!0.5!(C)$) {$a\wedge b'$};
     \begin{scope}[shift={(5.5,0)}]
         \coordinate (O) at (0,0);
         \coordinate (A) at (2.9,0.5);
         \coordinate (B) at (-0.3,1.5);
+        \coordinate (C) at ($(A)+(B)$);
         \draw [draw=black, fill=green, opacity=0.2]
-        (O) -- (A) -- ($(A)+(B)$) -- (B) -- cycle;
+        (O) -- (A) -- (C) -- (B) -- cycle;
 
         \draw[->, thick] (O) -- (A);
-        \draw[->, thick] (O) -- (B);
-        \node[shift={(-0.2,-0.3)}] at (B) {$b'$};
+        \draw[->, thick] (A) -- (C);
+        \node[shift={( 0.4,-0.3)}] at (C) {$b'$};
         \node[shift={(-0.5,-0.3)}] at (A) {$a'$};
-        \draw[->, semithick] ([shift=(0:0.3)]1.2,1.0) arc (0:270:0.3);
+        \node at ($(O)!0.5!(C)$) {$a'\wedge b'$};
     \end{scope}
 \end{tikzpicture}
 \captionof{figure}{Der Gummi-Stab Trick nochmal angewendet}
@@ -365,8 +389,8 @@ Trick könnte das so aussehen.
 Die Flächen sind gleich, die Orientierung ist gleich ... Ahaaa ... Ich kann
 also beliebige Flächen betrachten, solange nur die Orientierung und Größe der
 Flächen identisch ist ändert sich das äußere Produkt nicht. Somit kann das
-äußere Produkt als ein Kreis, eine Ellipse oder ein wabbeliges Ding
-dargestellt werden.
+äußere Produkt weiter verallgemeinert werden. Es kann als ein Kreis, eine
+Ellipse oder ein wabbeliges Ding dargestellt werden.
 
 Wie steht es um die Assoziativität des äußeren Produktes? Wenn wir das
 wünschen, dann verlassen wir die zweite Dimension und treten in die dritte
@@ -408,10 +432,10 @@ addieren das ganze zu einer reellen Zahl?! Da mischen wir auch Äpfel mit
 Birnen und das geht sogar recht gut! Also lass uns eine reelle Zahl $a\cdot b$
 mit einer orientierten Fläche $a\wedge b$ addieren und schauen was rauskommt.
 
-Ist also $a \parallel b$, dann ist, wie wir oben fest gestellt haben, $ab = a
-\cdot b$. Setzen wir $b=a$ ein, dann ist
+Ist $a \parallel b$, dann ist, wie wir oben fest gestellt haben, $ab = a
+\cdot b$. Setzen wir $b=a$ ein, dann kommt
 \[aa=a\cdot a = |a|^2\]
-Teilen wir beide Seiten mit $|a|^2$, so erhalten wir
+raus. Teilen wir beide Seiten mit $|a|^2$, so erhalten wir
 \[\frac{aa}{|a|^2}=1.\]
 Wenn wir jetzt noch zulassen, das wir die positive reelle Zahl $|a|^2$ auf
 eines der Vektoren verteilen dürfen, dann erhalten wir
@@ -619,7 +643,7 @@ Ebene auf mit dem Bivektor $\*i$.
 \end{minipage}
 \end{center}
 \shorthandon{"}
-Zeichen wir noch zwei Vektoren $a=3e_1+0e_2$ und $b=1e_1+2e_2$ ein und
+Zeichnen wir noch zwei Vektoren $a=3e_1+0e_2$ und $b=1e_1+2e_2$ ein und
 betrachten das äußere Produkt von $a\wedge b$ so sieht das dann so aus
 \shorthandoff{"}
 \begin{center}
@@ -648,7 +672,7 @@ betrachten das äußere Produkt von $a\wedge b$ so sieht das dann so aus
     \draw[->, thick] (O) -- (a);
     \draw[->, thick] (a) -- ($(a)+(b)$);
     \node[label=below:{$a$}] at (2.5, 0.0) {};
-    \node[label=right:{$b$}]  at (3.5, 1.0) {};
+    \node[fill=white] at (3.9, 1.0) {$b$};
 \end{tikzpicture}
 \captionof{figure}{Der Bivektors $\*i$ in der Ebene}
 \label{fig:bivector2}
@@ -812,10 +836,10 @@ $v$ so erhalten wir die Gleichungen
 \[
     v = uR_\alpha\hspace{3ex}u = R_\alpha v
 \]
-Die erste Gleichung führt den Vektor $u$ in $v$ und die zweite Gleichung $v$
-in $u$ über. Der Rotor $R_\alpha$ führt also tatsache eine Rotation der
-Einheitsvektoren durch. Damit haben wir die die koordinatenfreie
-Interpretation des Rotors $R_\alpha$ erhalten.  Schauen wir paar Bilder dazu
+Die erste Gleichung führt den Vektor $u$ in $v$ und die zweite Gleichung $v$ in
+$u$ über. Der Rotor $R_\alpha$ führt also tatsache eine Rotation der
+Einheitsvektoren durch. Damit haben wir die koordinatenfreie Interpretation des
+Rotors $R_\alpha$ erhalten.  Schauen wir paar Bilder dazu
 an.
 \shorthandoff{"}
 \begin{center}
