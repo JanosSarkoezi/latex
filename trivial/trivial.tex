@@ -42,17 +42,15 @@ Zitat aus diesem Buch.
     z. B.
     \[
         v_0 = v_{17}, v_3 \in v_2, v_7 \in v_7
-    \]
+    \]%
 \end{quote}
-\noindent
-In diesem Buch werde die Junktoren $\lnot, \land, \lor, \rightarrow,
+In diesem Buch werden die Junktoren $\lnot, \land, \lor, \rightarrow,
 \leftrightarrow$ in der Reienfolge für \textit{nicht, und, oder, wenn ...
 dann, genau dann ... wenn} benutzt. Dann gibt es noch die Quantoren $\forall,
 \exists$, die stehen für die Beschrebung eines Ausdrucks \textit{für alle, es
 gibt ein} in der Reienfolge.
 \newline
 
-\noindent
 In der Mengenlehre wird also mit Ausdrücken gearbeitet. Ein Ausdruck aus dem
 Buch ist zum Beispiel
 \[
@@ -65,27 +63,12 @@ deutlichkeitshalber auch $\varphi(y, z)$ geschrieben werden kann, sodaß wir
     \varphi(y, z) := \exists u\forall x(x\in y \rightarrow \exists y(y\in z))
 \]
 schreiben können.
-\newline
-
-\noindent
+\subsection{Die leere Menge $\emptyset\subseteq X$}
 Fangen wir mit dem trivialen Ausdruck \[ \emptyset \subseteq X \] an. Was
-bedeuten die Symbole $\emptyset$, $\subseteq$ und $X$? Das Symbol $\emptyset$
-ist die leere Menge. Um die leere Menge zu verstehen, machen wir ein Schritt
-zurück und versuchen eine Menge zu beschreiben, die ein Element hat. Der
-folgende Ausdruck beschreibt diesen Sachverhalt
-\[
-    \varphi(y) := \exists z(z\in y)
-\]
-Sie besagt in Worten: $y$ hat ein Element. Nun müssen wir diesen Satz nur noch
-verneinen und sagen $y$ hat kein Element oder etwas mathematischer, es gibt kein
-Element in $y$. In Symbolen also
-\[
-    \psi(y) :=\lnot\varphi(y) = \lnot\exists z(z\in y)
-\]
-Und dieses $y$ ist unsere leere Menge $\emptyset$. Nun zu dem Symbol
-$\subseteq$. In dem Buch von \cite{Ebbinghaus2003} wird $\subseteq$ durch
-ein Prädikat eingeführt und die leere Menge $\emptyset$ duch eine
-Operation. Am besten zitiere ich direkt den Author des Buches
+bedeuten die Symbole $\emptyset$, $\subseteq$ und $X$? Um diese Symbole zu
+verstehen machen wir eine kleine Reise im Buch von \cite{Ebbinghaus2003}. In
+diesem Buch wird $\subseteq$ durch ein Prädikat eingeführt. Am besten zitiere
+ich direkt den Author des Buches:
 \begin{quote}
     \textbf{Prädikate.} Der Ausdruck
     \[
@@ -112,7 +95,9 @@ Operation. Am besten zitiere ich direkt den Author des Buches
 Somit ist zum Beispiel $\varphi(y) := \exists z(z\in y)$ ein einstelliges
 Prädikat und die (zweistellige) Elementbezieung $x\in y$ ist ein
 (zweistelliges) Prädikat. Der nächste Schritt ist die Einführung von
-Operationen.
+Operationen. Bei der Einführung von Operationen, wird mit der leeren Menge als
+Beispiel argumentiert. Dabei wird die leere Menge als ein Konstantensymbol
+eingeführt.
 \begin{quote}
     \textbf{Operationen.} Die Abbildung, die jeder Menge $x$ des Universums
     die Menge der Teilmengen von $x$, die sog. \textit{Potenzmenge} von $x$,
@@ -130,7 +115,7 @@ Operationen.
     Bei Operationen stellt sich nun, anders als bei Prädikaten, eine
     spezifische Schwierigkeit ein. Auf Grund Unserer inhaltlichen
     Mengenvorstellung ist die Potenzmengenabbildung \textit{wohldefiniert}, d.
-    h. es gibt zu \textit{jedem x genau ein x mit} $\varphi_P(x,y)$. Wenn wir
+    h. es gibt zu \textit{jedem x genau ein y mit} $\varphi_P(x,y)$. Wenn wir
     also axiomatisch vorgehen, stehen uns nur die Axiome als Information zu
     Verfügung und wir können die Potenzmengenabbildung erst dann als
     wohldefiniert ansehen, wenn sich aus den betreffenden Axiomen
@@ -140,9 +125,11 @@ Operationen.
 
     Allgemein: Es sei $\varphi(x,y)$ ein Ausdruck. Dann stehe "$\varphi(x,y)$
     \textit{ist funktional}" für den Ausdruck $\forall x\exists^{=1}y\,
-    \varphi(x,y)$.
-    
-    ...
+    \varphi(x,y)$. Ist $\varphi(x,y)$ funktional, (d.h. gilt dieser Ausdruck)
+    so definiert eine Abbildung auf dem Universum, die jeder Menge $x$
+    \textit{das} $y$ mit $\varphi(x,y)$ zuordnet, mithin einer Operation. Auf
+    die Funktionalität können wir aber nur dann zurückgreifen, falls sie aus den
+    zugrunde gelegten Axiomen \textit{beweisbar} ist.
 
     Für Operationen führt man häufig neue Symbole, sog.
     \textit{Operationssymbole} ein, so etwa für die Potenzmengenabbildung, das
@@ -152,22 +139,138 @@ Operationen.
     \]
     aber, um es noch einmal zu sagen, dies erst dann, wenn wir die
     Funktionalität von $\varphi_P(x,y)$ gesichert haben.
+    
+    ...
+
+    Statt \textit{einstelliger} Operationen lassen sich völlig analog
+    \textit{zweistellige, dreistellige, ...} Operationen einführen. Ein
+    Sonderfall ist die Stellenzahl 0: Wenn ein Ausdruck $\varphi(y)$ in dem
+    Sinne funktional ist, dass $\exists^{=1}\varphi(y)$ gilt, so beschreibt
+    $\varphi(y)$ eindeutig eine Menge. Für diese Menge können wir ein
+    \textit{Konstantensymbol}, etwa $c$, dessen Bedeutung durch die Definition
+    \[
+        c = y :\leftrightarrow \varphi(y)
+    \]
+    festlegen. Zum Beispiel können wir schon mit wenigen Axiomen zeigen, dass
+    der Ausdruck $\varphi(y)=\neg\exists z~z\in y$ ("y ist leer") funktional
+    ist, und dann mit
+    \[
+        \emptyset = y :\leftrightarrow \neg\exists z~z\in y
+    \]
+    das übliche Konstantensymbol für die leere Menge einführen.
+\end{quote}
+Nun ist es von vorteil, wenn noch ein paar Axiome der Mengenlehre betrachtet
+weden, um die Leere Menge zu verstehen.
+
+\begin{quote}
+\textbf{Existenzaxiom (Ex):}
+\textit{Ex gibt eine Menge.}
+Also
+\[
+    \exists x~x=x
+\]
+\textbf{Extensionalitätsaxiom (Ext):}
+\textit{Umfangsgleiche Mengen sind gleich.}
+Also
+\[
+    \forall xy(\forall z(z\in x \leftrightarrow z\in y) \leftrightarrow x=y)
+\]
+\textbf{Ext} gebietet Mengen nur unter quantitaitiven Gesichtspunkten zu sehen.
+In der von uns gewählten Form hat es eine Konsequenz, die für die Gestallt der
+Mengenlehre wesentlich ist: Wir aben uns enschlossen die Urelemnete asl Mengen
+aufzufassen, die dann selbstferständlich nicht selber Elemente enthalten sollen,
+also \textit{leer} sind. Nach \textbf{Ext} sind all diese Mengen gleich, d. h.
+\textbf{Ext} \textit{schließt die Existenz verschiedene Urelemente aus}.
+
+\textbf{Schema der Aussonderungsaxiome (Aus):}
+Das Schema ent-hält zu jedem Ausdruck der Gestallt $\varphi(z,
+\overset{n}{x})$\footnote{Dabei soll $\varphi(z, \overset{n}{x})$ eine
+Abkürzung für $\varphi(z,x_1, ..., x_n)$ sein.} aus der ursprügli-chen
+mengentheoretischen Sprache das Axiom
+
+\textit{Zu allen $x_1, ..., x_n$ und zu allen x gibt es ein y, dass genau
+diejenigen Elemente z von x enthält, für die $\varphi(z, \overset{n}{x})$ gilt.} 
+
+Also
+\[
+    \forall\overset{n}{x}\forall x\exists y(\forall z(z\in y \leftrightarrow z\in
+    x\land \varphi(z, \overset{n}{x}))
+\]
 \end{quote}
 
+\noindent
+Im Buch wird noch darauf hingewiesen, dass die Menge $y$, die die Bedingung
+\[
+\forall z(z\in y \leftrightarrow z\in x\land \varphi(z, \overset{n}{x})
+\]
+\textbf{Ext}
+erfüllt, eindeutig bestimmt ist. Damit wird eine $n+1$ stellige Operation auf
+dem Universum beschrieben und kann hiermit vereinbart als
+\[
+    \{z\in x: \varphi(z, \overset{n}{x})\}
+\]
+abgekürzt geschrieben werden. Wir nähern uns der entgültigen Definition der
+leeren Menge. Hierzu weiter im Buch
+
+\begin{quote}
+    \textbf{Die leere Menge.} Sei $x$ eine Menge (\textbf{Ex!}). Nach
+    \textbf{Aus} existiert dann die Menge $\{z\in x: z\neq z\}$. Sie ist leer
+    und nach \textbf{Ext} eindeutig bestimmt.
+\end{quote}
+
+Im Buch wird für solche Fälle noch eine Vereinbarung für eine verkürzte
+Schreibweise getroffen: Wenn es eine Menge gibt, die genau aus den $z$ mit
+$\varphi(z, \overset{n}{x})$ besteht, schreiben wir für diese Menge auch
+\[
+    \{z:\varphi(z,\overset{n}{x})\}
+\]
+Damit kann die leere Menge als
+\[
+    \emptyset:=\{z:z\neq z\}
+\]
+gesetzt werden.
 
 Jetz haben wir alle Zutaten, um zu entscheiden zu können, ob der
 Ausdruck
 \[
     \emptyset \subseteq X
 \]
-wahr ist, oder nicht. Wir müssen nur alle einsetzen und erhalten
+wahr ist, oder nicht. Wir müssen nur alle Symbole eliminieren und erhalten so
 \begin{equation}
 \begin{split}
-    \emptyset \subseteq X & \quad gdw\quad \varphi_T(\emptyset, X) \\ 
-     & \quad gdw\quad\forall z(z\in \emptyset \rightarrow z\in X)
+    \emptyset \subseteq X & \quad \leftrightarrow\quad \varphi_T(\emptyset, X) \\ 
+     & \quad\leftrightarrow\quad\forall z(z\in \emptyset \rightarrow z\in X) \\
+     & \quad\leftrightarrow\quad\forall z(z\in \emptyset \rightarrow z\in X) \\
+     & \quad\leftrightarrow\quad\forall z(z\neq z \rightarrow z\in X) \\
+     & \quad\leftrightarrow\quad\forall z(\lnot(z=z) \rightarrow z\in X) \\
+     & \quad\leftrightarrow\quad\forall z(z=z \lor z\in X)
 \end{split}
 \end{equation}
-
+Damit ist der Ausdruck $\emptyset\subseteq X$ war. Anders gesagt, die leere Menge
+ist in jeder Menge enthalten.
+\subsection{Die leere Menge $X\cap\emptyset = \emptyset$}
+Als nächstes können wir den Ausdruck
+\[
+X\cap\emptyset = \emptyset
+\]
+anschauen. Dafür betrachten wir die Definition von
+\[
+    x\cap y := \{z\in x: z\in y\}
+\]
+dem Durchschnitt zweier Mengen und erhalten so
+\begin{equation}
+\begin{split}
+X\cap\emptyset = \emptyset
+& \quad\leftrightarrow\quad \forall z(z\in (X\cap\emptyset) \leftrightarrow
+z\in\emptyset) \\
+& \quad\leftrightarrow\quad\forall z(z\in X \land z\in\emptyset
+\leftrightarrow z\in\emptyset) \\
+& \quad\leftrightarrow\quad\forall z(z\in X \land z\neq z \leftrightarrow z
+\neq z) \\
+\end{split}
+\end{equation}
+Der Durchschnitt der leeren Menge mit einer beliebigen Menge ist die leere
+Menge.
 \newpage
 \bibliographystyle{plainnat}
 \bibliography{books}
