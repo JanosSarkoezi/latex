@@ -1,0 +1,96 @@
+\documentclass[11pt, a4paper]{article}
+% \documentclass{article}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[hungarian]{babel}
+\usetikzlibrary{calc}
+
+\title{%
+  Antwort von \\
+  \large Janos Sarközi}
+
+
+\begin{document}
+\maketitle
+\section{Vorbemerkungen}
+Um aus der Gleichung 
+\begin{equation}
+    -\frac{q_0\cdot l^3}{24E\cdot I_y} + \frac{\mu_A\cdot l}{6E\cdot I_y} +
+    \frac{\mu_B\cdot l}{3E\cdot I_y} = 0
+\end{equation}
+die Gleichung
+\begin{equation}
+    - \frac{q_0\cdot l}{8} + \frac{\mu_A}{2} + \mu_B = 0
+\end{equation}
+zu bekommen mache ich paar Vorbemerkungen. Dafür betrachten wir erst eine einfache Gleichung
+\[
+5x = 0
+\]
+und stellen die Frage: Welches $x$ löst diese Gleichung? Die Antowrt ist $x =
+0$. Dabei ist wichtig zu wissen, dass die Zahl fünf ungleich Null ist. Jetzt
+gehen wir ein Schritt weiter und betrachten die Gleichung
+\[
+5x + 5y = 0
+\]
+Hier muss für $x$ und $y$ die Gleichung $x+y=0$ gelten. Warum? Wir können die
+obige Gleichung umschreiben:
+\[
+5(x + y) = 0
+\]
+Damit sind wir in der ähnlichen Situation wie bei der Gleichung $5x=0$. Jetzt
+der letzte Schritt für die Vorbereitungen. Dafür machen wir eine Gleichung mit
+drei Termen, wie bei deiner Aufgabe, nur nicht so mit krassen Zeichen wir bei
+dir. Dabei sind die Buchstaben $a, b$ und $c$ beliebige Konstanten.
+\[
+    -\frac{a\cdot x}{b\cdot c} + \frac{a\cdot y}{b\cdot c} + \frac{a\cdot
+    z}{b\cdot c} = 0
+\]
+\newpage
+Alle drei Terme haben die Konstante $a$ im Zähler. Damit können wir diese
+Konstante aus allen drei Thermen herausziehen.
+\[
+    a\left(-\frac{x}{b\cdot c} + \frac{y}{b\cdot c} + \frac{z}{b\cdot c}\right)
+    = 0
+\]
+Nun entdecken wir was Ähnliches mit den Konstanten $b$ und $c$, die im Nenner
+sind. Damit erhalten wir:
+\[
+    \frac{a}{b\cdot c}(-x + y + z) = 0
+\]
+Dies ist die Distributivität der reellen Zahlen. Normalerweise haben wir die
+Gleichung in der Form
+\[
+    a(x+y) = ax+ay
+\]
+Wir haben also eher die einfachere Variante im Kopf: Wir lösen die Klammer auf.
+Wenn wir die Gleichung aber umdrehen, dann führen wir die Klammer ein. Dies ist
+meiner Meinung nach etwas schwieriger. Damit sind die Vorbereitungen
+abgeschlossen.
+\section{Antwort}
+Um aus der Gleichung (1) die Gleichung (2) zu erhalten benutzen wir mehrmals die
+Distributivität der reellen Zahlen. Ich rechne mal das in Zeitlupe vor:
+\[
+    -\frac{q_0\cdot l^3}{24E\cdot I_y} + \frac{\mu_A\cdot l}{6E\cdot I_y} +
+    \frac{\mu_B\cdot l}{3E\cdot I_y} = 0
+\]
+Wir sehen in allen drei Termen die Variable $l$, dies können wir aus allen drei
+Termen herausziehen:
+\[
+    l\left(-\frac{q_0\cdot l^2}{24E\cdot I_y} + \frac{\mu_A}{6E\cdot I_y} +
+    \frac{\mu_B}{3E\cdot I_y}\right) = 0
+\]
+Jetzt entdecken wir das auch für $E$ und $I_y$. Damit haben wir
+\[
+    \frac{l}{E\cdot I_y}\left(-\frac{q_0\cdot l^2}{24} + \frac{\mu_A}{6} +
+    \frac{\mu_B}{3}\right) = 0
+\]
+Nun haben wir noch glück und können die Zahl drei auch vor die Klammer Ziehen.
+\[
+    \frac{l}{3E\cdot I_y}\left(-\frac{q_0\cdot l^2}{8} + \frac{\mu_A}{2} +
+    \mu_B\right) = 0
+\]
+Damit ich aus der Gleichung (1) die Gleichung (2) folgern kann, dürfen die
+Variablen $l, E$ und $I_y$ nicht Null sein. Ich denke, dass können wir von denen
+auch sagen. QED.
+\end{document}
