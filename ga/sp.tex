@@ -1,0 +1,42 @@
+\documentclass[fleqn]{scrartcl}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usetikzlibrary {arrows.meta, angles, quotes}
+
+% Numerierung der Formel innerhalb einer Sektion
+\numberwithin{equation}{section}
+
+% Abkürzung für mathbf
+\def\*#1{\mathbf{#1}}
+
+\title{Superposition \\
+für Stefan Mattes}
+\author{Janos Sarközi}
+
+\begin{document}
+\maketitle
+\newpage
+\section{Vorbereitungen}
+Zuerst werden die Biegelinien verschiedener Konstruktionen betrachtet, die eine wesentliche Rolle bei der Ermittlung der Momente und Kräfte in statisch unbestimmten Systemen spielen werden. Dafür werden aus den Gleichungen
+\[
+    Q'=-q,\hspace{1ex}M'=Q,\hspace{1ex},\psi'=\frac{M}{EI},\hspace{1ex}w'=-\psi
+\]
+die Differentialgleichung der Biegeline in zwei Formen aufgeschrieben. Die erste Form ist
+\[
+    w''=-\frac{M}{EI}
+\]
+Dies fogt aus den letzten beiden Gleichungen. Setzt man die zweite Gleichung in die erte ein, so erhält man $M''=-q$ und damit
+\[
+    (EIw'')''=q
+\]
+Wird nun $EI$ als konstant angenommen, dann erhalten wir die finale Version der Biegelinie
+:
+\[
+    EIw^{IV}=q
+\]
+\end{document}
