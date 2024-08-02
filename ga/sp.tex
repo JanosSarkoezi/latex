@@ -13,20 +13,22 @@
 \usetikzlibrary{patterns}
 \usetikzlibrary{positioning}
 
-% Festlager
-\newcommand{\fl}[2]{
-\begin{scope}[shift={(#1)},
-  every node/.style={ draw, font=\footnotesize, node distance=3mm and 4mm }
-]
-    \draw (0,0) -- (3mm,0) -- (60:3mm) coordinate (B) -- (0,0) -- cycle;
-    % Der Boden
-    \begin{scope}[shift={(#2)}]
-        \draw (-1mm,0)--(4mm,0);
-        \pattern[pattern=north east lines]
-        (-1mm,0)--(4mm,0)--(4mm,-2mm)--(-1mm,-2mm)--cycle;
-    \end{scope}
-    \draw[fill=white] (B) circle (0.5mm);
-\end{scope}
+\tikzset{
+    % pics/lager/.style n args = {1}{code={
+    pics/lager/.style = {code={
+    \coordinate (A)  at ( 90:2.0mm);
+    \coordinate (B)  at (210:2.0mm);
+    \coordinate (C)  at (-30:2.0mm);
+    \coordinate (GL) at ([shift={(-1mm, #1)}] B.west);
+    \coordinate (GR) at ([shift={( 1mm, #1)}] C.east);
+    \coordinate (DL) at ([shift={( 0mm,-2mm)}] GL.south);
+    \coordinate (DR) at ([shift={( 0mm,-2mm)}] GR.south);
+
+    \draw (A) -- (B) -- (C) -- cycle;
+    \draw [fill=white] (A) circle (0.5mm);
+    \draw (GL) -- (GR);
+    \pattern[pattern=north east lines] (GL) -- (GR) -- (DR) -- (DL) -- cycle;
+    }}
 }
 
 
@@ -64,8 +66,9 @@ Wird nun $EI$ als konstant angenommen, dann erhalten wir die finale Version der 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-    \fl {0,0} {0,0}
-    \fl {1cm,0} {0, -0.6mm}
+    \pic (LA) at (0.0, 0.0) {lager={ 0.0mm}};
+    \pic (LB) at (4.0, 0.0) {lager={-0.7mm}};
+    \node [draw, minimum width=4.4cm, above=0.0 and 0.0 of $(LAA)!0.5!(LBA)$] (z) {};
 \end{tikzpicture}
 \caption{Brücke}
 \label{fig:paralel}
