@@ -13,10 +13,10 @@
 \usetikzlibrary{patterns}
 \usetikzlibrary{positioning}
 
-
+\tikzstyle{dim}     = [latex-latex]
 \tikzstyle{abmasse} = [rectangle, minimum width=4.0cm, inner sep=0.0]
-\tikzstyle{balken} = [abmasse, minimum height=0.2cm, draw=black, above=0.0 of #1]
-\tikzstyle{last}   = [abmasse, minimum height=0.4cm, draw=red, fill=red!20!white, above=0.0 of #1]
+\tikzstyle{balken}  = [abmasse, minimum height=0.2cm, draw=black, above=0.0 of #1]
+\tikzstyle{last}    = [abmasse, minimum height=0.4cm, draw=red, fill=red!20!white, above=0.0 of #1]
 
 \tikzset{
     % pics/lager/.style n args = {1}{code={
@@ -71,15 +71,32 @@ Wird nun $EI$ als konstant angenommen, dann erhalten wir die finale Version der 
 \[
     EIw^{IV}=q
 \]
+Wir fassen die Randbedingungen in einer Tabelle Zusammen:
+\begin{figure}[h]
+\centering
+\begin{tabular}[h]{lcccc}
+    Lager            & $w$      & $w'$     & $M$      & $Q$ \\
+    Gelenkiges Lager & $0$      & $\neq 0$ & $0$      & $\neq 0$ \\
+    Parallelführung  & $\neq 0$ & $0$      & $\neq 0$ & $0$ \\
+    Einspannung      & $0$      & $0$      & $\neq 0$ & $\neq 0$ \\
+    Freies Ende      & $\neq 0$ & $\neq 0$ & $0$      & $0$ \\
+\end{tabular}
+\caption{Randbedingungen}
+\label{fig:randbedingungen}
+\end{figure}
+
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
     \pic (LA) at (0.0, 0.0) {lager={ 0.0mm}};
     \pic (LB) at (4.0, 0.0) {lager={-0.7mm}};
-    \node [balken={$(LAA)!0.5!(LBA)$}] (b) {};
-    \node [last={b.north}] (l) {};
+    \node [balken={$(LAA)!0.5!(LBA)$}] (B) {};
+    \node [last={B.north}] (L) {};
     \draw [fill=white] (LAA) circle (0.6mm);
     \draw [fill=white] (LBA) circle (0.6mm);
+    \draw [dim] ([yshift=-10mm]LAA) -- ([yshift=-10mm]LBA) node [midway, above] {$l$};
+    \draw (LAA) ++(0, -7mm) -- ++(0, -6mm);
+    \draw (LBA) ++(0, -7mm) -- ++(0, -6mm);
 \end{tikzpicture}
 \caption{Brücke}
 \label{fig:paralel}
