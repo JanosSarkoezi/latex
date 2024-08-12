@@ -13,24 +13,32 @@
 \usetikzlibrary{patterns}
 \usetikzlibrary{positioning}
 
+
+\tikzstyle{abmasse} = [rectangle, minimum width=4.0cm, inner sep=0.0]
+\tikzstyle{balken} = [abmasse, minimum height=0.2cm, draw=black, above=0.0 of #1]
+\tikzstyle{last}   = [abmasse, minimum height=0.4cm, draw=red, fill=red!20!white, above=0.0 of #1]
+
 \tikzset{
     % pics/lager/.style n args = {1}{code={
     pics/lager/.style = {code={
     \coordinate (A)  at ( 90:2.0mm);
     \coordinate (B)  at (210:2.0mm);
     \coordinate (C)  at (-30:2.0mm);
-    \coordinate (GL) at ([shift={(-1mm, #1)}] B.west);
-    \coordinate (GR) at ([shift={( 1mm, #1)}] C.east);
-    \coordinate (DL) at ([shift={( 0mm,-2mm)}] GL.south);
-    \coordinate (DR) at ([shift={( 0mm,-2mm)}] GR.south);
+    \coordinate (BL) at ([shift={(-1mm, 0mm)}] B);
+    \coordinate (CR) at ([shift={( 1mm, 0mm)}] C);
+    \coordinate (GL) at ([shift={(-1mm, #1)}] B);
+    \coordinate (GR) at ([shift={( 1mm, #1)}] C);
+    \coordinate (DL) at ([shift={( 0mm,-2mm)}] GL);
+    \coordinate (DR) at ([shift={( 0mm,-2mm)}] GR);
 
     \draw (A) -- (B) -- (C) -- cycle;
-    \draw [fill=white] (A) circle (0.5mm);
+    % \draw [fill=white] (A) circle (0.5mm);
     \draw (GL) -- (GR);
+    \draw (BL) -- (CR);
+    \draw (B) ++(-1mm,0) -- (C) ++(2mm,0);
     \pattern[pattern=north east lines] (GL) -- (GR) -- (DR) -- (DL) -- cycle;
     }}
 }
-
 
 % Numerierung der Formel innerhalb einer Sektion
 \numberwithin{equation}{section}
@@ -68,7 +76,10 @@ Wird nun $EI$ als konstant angenommen, dann erhalten wir die finale Version der 
 \begin{tikzpicture}
     \pic (LA) at (0.0, 0.0) {lager={ 0.0mm}};
     \pic (LB) at (4.0, 0.0) {lager={-0.7mm}};
-    \node [draw, minimum width=4.4cm, above=0.0 and 0.0 of $(LAA)!0.5!(LBA)$] (z) {};
+    \node [balken={$(LAA)!0.5!(LBA)$}] (b) {};
+    \node [last={b.north}] (l) {};
+    \draw [fill=white] (LAA) circle (0.6mm);
+    \draw [fill=white] (LBA) circle (0.6mm);
 \end{tikzpicture}
 \caption{Brücke}
 \label{fig:paralel}
