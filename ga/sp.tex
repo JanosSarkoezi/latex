@@ -94,11 +94,29 @@ Wir fassen die Randbedingungen in einer Tabelle Zusammen:
     \node [last={B.north}] (L) {};
     \draw [fill=white] (LAA) circle (0.6mm);
     \draw [fill=white] (LBA) circle (0.6mm);
+    % Abmasse
     \draw [dim] ([yshift=-10mm]LAA) -- ([yshift=-10mm]LBA) node [midway, above] {$l$};
     \draw (LAA) ++(0, -7mm) -- ++(0, -6mm);
     \draw (LBA) ++(0, -7mm) -- ++(0, -6mm);
 \end{tikzpicture}
 \caption{Brücke}
-\label{fig:paralel}
+\label{fig:bruecke}
+\end{figure}
+\newpage
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    % Balken
+    \draw (0mm, 0mm) -- ++(40mm, 0mm) -- ++(0mm, 2mm) -- ++(-40mm, 0mm) -- cycle;
+    % Wand
+    \draw (0mm, -5mm) -- ++(0mm,  12mm);
+    \pattern[pattern=north east lines] (0mm, -5mm) -- ++( 0mm,  12mm) -- ++(-3mm,   0mm) -- ++( 0mm, -12mm) -- cycle;
+    % Abmasse
+    \draw [dim] (0mm, -10mm) -- (40mm, -10mm) node [midway, above] {$l$};
+    \draw ( 0mm, -10mm) ++(0, 3mm) -- ++(0, -6mm);
+    \draw (40mm, -10mm) ++(0, 3mm) -- ++(0, -6mm);
+\end{tikzpicture}
+\caption{Einspannung}
+\label{fig:einspannung}
 \end{figure}
 \end{document}
