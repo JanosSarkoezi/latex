@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newtheorem{theorem}{Satz}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Diskussion der Quantoren-Verschmelzung}
+\author{Nach Daniel J. Velleman: \emph{How to Prove It}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Das mathematische Problem}
+
+Wir wollen beweisen, dass die verschachtelte Aussage (vor der Verschmelzung) logisch äquivalent zur einfachen Aussage (nach der Verschmelzung) ist. Das heißt, für feste Mengen $x$ und $\mathcal{F}$ gilt:
+\[
+\exists Y \, \Big( \exists A \, (A \in \mathcal{F} \land \mathcal{P}(A) = Y) \land x \in Y \Big)
+\iff
+\exists A \, (A \in \mathcal{F} \land x \in \mathcal{P}(A))
+\]
+
+Da es sich um eine Äquivalenz ($\iff$) handelt, teilt sich unser Velleman-Scratch-Work in zwei Richtungen auf: Hinrichtung ($\rightarrow$) und Rückrichtung ($\leftarrow$).
+
+---
+
+\section*{Richtung 1: Hinrichtung ($\rightarrow$)}
+Wir nehmen die verschachtelte Aussage als bekannt an und wollen die verschmolzene Aussage zeigen.
+
+\subsection*{Scratch Work (Hinrichtung)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+% Schritt 0
+1. $\exists Y \, \Big( \exists A \, (A \in \mathcal{F} \land \mathcal{P}(A) = Y) \land x \in Y \Big)$ &
+\emph{Goal:} $\exists A \, (A \in \mathcal{F} \land x \in \mathcal{P}(A))$ \\[1ex]
+\hline
+% Schritt 1: Existenzquantor für Y in den Givens abbauen
+2. $Y_0$ ist ein konkretes Objekt. \newline
+3. $\exists A \, (A \in \mathcal{F} \land \mathcal{P}(A) = Y_0) \land x \in Y_0$ \newline
+(\emph{Rezept: $\exists$ im Given genutzt}) &
+\emph{Goal:} $\exists A \, (A \in \mathcal{F} \land x \in \mathcal{P}(A))$ \\[1ex]
+\hline
+% Schritt 2: UND-Verknüpfung in Given 3 aufspalten
+2. $Y_0$ ist ein konkretes Objekt. \newline
+4. $\exists A \, (A \in \mathcal{F} \land \mathcal{P}(A) = Y_0)$ \newline
+5. $x \in Y_0$ \newline
+(\emph{Rezept: $\land$ im Given genutzt}) &
+\emph{Goal:} $\exists A \, (A \in \mathcal{F} \land x \in \mathcal{P}(A))$ \\[1ex]
+\hline
+% Schritt 3: Existenzquantor für A in Given 4 abbauen
+2. $Y_0$ ist ein konkretes Objekt. \newline
+5. $x \in Y_0$ \newline
+6. $A_0$ ist ein konkretes Objekt. \newline
+7. $A_0 \in \mathcal{F} \land \mathcal{P}(A_0) = Y_0$ \newline
+(\emph{Rezept: $\exists$ im Given genutzt}) &
+\emph{Goal:} $\exists A \, (A \in \mathcal{F} \land x \in \mathcal{P}(A))$ \\[1ex]
+\hline
+% Schritt 4: UND-Verknüpfung in Given 7 aufspalten und substituieren
+2. $Y_0$ ist ein konkretes Objekt. \newline
+5. $x \in Y_0$ \newline
+6. $A_0$ ist ein konkretes Objekt. \newline
+8. $A_0 \in \mathcal{F}$ \newline
+9. $\mathcal{P}(A_0) = Y_0$ \newline
+10. $x \in \mathcal{P}(A_0)$ \quad (Substituiere 9 in 5) &
+\emph{Goal:} $\exists A \, (A \in \mathcal{F} \land x \in \mathcal{P}(A))$ \\[1ex]
+\hline
+% Schritt 5: Existenzquantor im Goal erfüllen (Konstruktion!)
+% Wir wählen A_0 als unseren Zeugen für das Goal.
+[Givens wie oben in Schritt 4] &
+\emph{Neues Goal:} $A_0 \in \mathcal{F} \land x \in \mathcal{P}(A_0)$ \newline
+(\emph{Rezept: $\exists$ im Goal mit Kandidat $A_0$}) \newline
+\newline
+\checkmark \quad (Ziel erreicht, da Given 8 und Given 10 genau das fordern!) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+---
+
+\section*{Richtung 2: Rückrichtung ($\leftarrow$)}
+Wir nehmen die einfache, verschmolzene Aussage an und wollen die verschachtelte Struktur rekonstruieren.
+
+\subsection*{Scratch Work (Rückrichtung)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+% Schritt 0
+1. $\exists A \, (A \in \mathcal{F} \land x \in \mathcal{P}(A))$ &
+\emph{Goal:} $\exists Y \, \Big( \exists A \, (A \in \mathcal{F} \land \mathcal{P}(A) = Y) \land x \in Y \Big)$ \\[1ex]
+\hline
+% Schritt 1: Existenzquantor im Given abbauen
+2. $A_0$ ist ein konkretes Objekt. \newline
+3. $A_0 \in \mathcal{F} \land x \in \mathcal{P}(A_0)$ &
+[Goal wie oben] \\[1ex]
+\hline
+% Schritt 2: UND-Verknüpfung aufspalten
+2. $A_0$ ist ein konkretes Objekt. \newline
+4. $A_0 \in \mathcal{F}$ \newline
+5. $x \in \mathcal{P}(A_0)$ &
+[Goal wie oben] \\[1ex]
+\hline
+% Schritt 3: Existenzquantor im Goal angreifen (Konstruktion)
+% Welches Y löst das Goal? Wir WÄHLEN Y = \mathcal{P}(A_0)!
+2. $A_0$ ist ein konkretes Objekt. \newline
+4. $A_0 \in \mathcal{F}$ \newline
+5. $x \in \mathcal{P}(A_0)$ &
+\emph{Neues Goal:} \newline
+$\exists A \, (A \in \mathcal{F} \land \mathcal{P}(A) = \mathcal{P}(A_0)) \land x \in \mathcal{P}(A_0)$ \newline
+(\emph{Rezept: $\exists$ im Goal mit Kandidat $Y = \mathcal{P}(A_0)$}) \\[1ex]
+\hline
+% Schritt 4: Das UND-Goal aufteilen (Zweig 1 und Zweig 2)
+% Zweig 2 (x \in \mathcal{P}(A_0)) ist durch Given 5 sofort wahr.
+% Bleibt nur noch das linke Goal übrig:
+2. $A_0$ ist ein konkretes Objekt. \newline
+4. $A_0 \in \mathcal{F}$ \newline
+5. $x \in \mathcal{P}(A_0)$ &
+\emph{Verbleibendes Goal:} \newline
+\phantom{X} $\exists A \, (A \in \mathcal{F} \land \mathcal{P}(A) = \mathcal{P}(A_0))$ \\[1ex]
+\hline
+% Schritt 5: Letzten Existenzquantor im Goal lösen
+% Welches A erfüllt dieses Goal? Natürlich unser A_0!
+[Givens wie oben] &
+\emph{Letztes Goal:} \newline
+$A_0 \in \mathcal{F} \land \mathcal{P}(A_0) = \mathcal{P}(A_0)$ \newline
+(\emph{Kandidat $A = A_0$}) \newline
+\newline
+\checkmark \quad (Ziel erreicht! $A_0 \in \mathcal{F}$ ist Given 4, und $\mathcal{P}(A_0) = \mathcal{P}(A_0)$ ist trivialerweise wahr!) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

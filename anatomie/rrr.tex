@@ -1,0 +1,218 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newtheorem{theorem}{Satz}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Vellemans Beweis-Rezepte (Vollständige Vorher/Nachher-Ansicht)}
+\author{Nach Daniel J. Velleman: \emph{How to Prove It}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Vellemans Logische Rezepte (Scratch-Regeln)}
+
+\subsection*{1. Die UND-Verknüpfung ($P \land Q$)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Wenn $P \land Q$ in den GIVENS steht} & \textbf{Wenn $P \land Q$ im GOAL steht} \\
+\midrule
+\textbf{Vorher:} \newline
+1. $P \land Q$ \newline
+\emph{Goal:} $R$ &
+\textbf{Vorher:} \newline
+1. [Voraussetzungen] \newline
+\emph{Goal:} $P \land Q$ \\
+\hline
+\textbf{Nachher (Rezept angewendet):} \newline
+1. $P$ \newline
+2. $Q$ \newline
+\emph{Goal:} $R$ \newline
+(\emph{Man darf $P$ und $Q$ als separate Wahrheiten nutzen.}) &
+\textbf{Nachher (Rezept angewendet):} \newline
+Es entstehen zwei separate Beweis-Zweige: \newline
+\textbf{Zweig 1:} Zeige Goal $P$. \newline
+\textbf{Zweig 2:} Zeige Goal $Q$. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{2. Die IMPLIKATION ($P \rightarrow Q$)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Wenn $P \rightarrow Q$ in den GIVENS steht} & \textbf{Wenn $P \rightarrow Q$ im GOAL steht} \\
+\midrule
+\textbf{Vorher:} \newline
+1. $P \rightarrow Q$ \newline
+\emph{Goal:} $R$ &
+\textbf{Vorher:} \newline
+1. [Voraussetzungen] \newline
+\emph{Goal:} $P \rightarrow Q$ \\
+\hline
+\textbf{Nachher (Modus Ponens):} \newline
+Wenn du im Verlauf des Beweises irgendwann das Given $P$ erreichst, darfst du sofort hinzufügen: \newline
+2. $Q$ &
+\textbf{Nachher (Conditional Proof):} \newline
+1. [Voraussetzungen] \newline
+2. $P$ (\emph{Nimm die linke Seite an!}) \newline
+\emph{Neues Goal:} $Q$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{3. Der ALLQUANTOR ($\forall x \, P(x)$)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Wenn $\forall x \, P(x)$ in den GIVENS steht} & \textbf{Wenn $\forall x \, P(x)$ im GOAL steht} \\
+\midrule
+\textbf{Vorher:} \newline
+1. $\forall x \, P(x)$ \newline
+\emph{Goal:} $R$ &
+\textbf{Vorher:} \newline
+1. [Voraussetzungen] \newline
+\emph{Goal:} $\forall x \, P(x)$ \\
+\hline
+\textbf{Nachher (Universal Instantiation):} \newline
+Wenn im Beweis bereits ein konkretes Objekt (z.B. $c$) existiert, darfst du eintragen: \newline
+2. $P(c)$ \newline
+(\emph{Du ,,stopfst`` ein existierendes Objekt hinein.}) &
+\textbf{Nachher (Universal Generalization):} \newline
+1. [Voraussetzungen] \newline
+2. Sei $c$ ein neues, \emph{beliebiges} Objekt. \newline
+\emph{Neues Goal:} $P(c)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection*{4. Die ODER-Verknüpfung ($P \lor Q$)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Wenn $P \lor Q$ in den GIVENS steht} & \textbf{Wenn $P \lor Q$ im GOAL steht} \\
+\midrule
+\textbf{Vorher:} \newline
+1. $P \lor Q$ \newline
+\emph{Goal:} $R$ &
+\textbf{Vorher:} \newline
+1. [Voraussetzungen] \newline
+\emph{Goal:} $P \lor Q$ \\
+\hline
+\textbf{Nachher (Proof by Cases):} \newline
+Der Beweis verzweigt sich in zwei Pfade. Du musst das Goal $R$ zweimal zeigen: \newline
+\textbf{Fall 1:} Füge Given $P$ hinzu $\rightarrow$ Zeige $R$. \newline
+\textbf{Fall 2:} Füge Given $Q$ hinzu $\rightarrow$ Zeige $R$. &
+\textbf{Nachher (Rezept angewendet):} \newline
+Wähle eine von zwei Strategien: \newline
+1. Zeige direkt $P$ (oder direkt $Q$). \newline
+2. Oder (häufiger): Nimm an, $P$ wäre falsch. \newline
+$\rightarrow$ Given: $\neg P$ \newline
+$\rightarrow$ \emph{Neues Goal:} $Q$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{5. Der EXISTENZQUANTOR ($\exists x \, P(x)$)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Wenn $\exists x \, P(x)$ in den GIVENS steht} & \textbf{Wenn $\exists x \, P(x)$ im GOAL steht} \\
+\midrule
+\textbf{Vorher:} \newline
+1. $\exists x \, P(x)$ \newline
+\emph{Goal:} $R$ &
+\textbf{Vorher:} \newline
+1. [Voraussetzungen] \newline
+\emph{Goal:} $\exists x \, P(x)$ \\
+\hline
+\textbf{Nachher (Existential Instantiation):} \newline
+Führe einen Namen für das existierende Objekt ein (z. B. $x_0$). \newline
+1. $x_0$ ist ein konkretes Objekt. \newline
+2. $P(x_0)$ \newline
+\emph{Goal:} $R$ \newline
+(\emph{Wichtig: $x_0$ muss ein brandneuer Variablenname sein!}) &
+\textbf{Nachher (Konstruktion):} \newline
+Du musst aus deinen Givens einen konkreten Kandidaten (nennen wir ihn $c$) finden oder berechnen. \newline
+1. [Voraussetzungen] \newline
+\emph{Neues Goal:} $P(c)$ \newline
+(\emph{Du musst beweisen, dass dein Kandidat die Eigenschaft erfüllt.}) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+\section*{Anwendungsbeispiel für $\exists$ und $\lor$}
+
+\begin{theorem}
+Seien $A, B, C$ Mengen. Wenn $A \neq \emptyset$ und $A \subseteq B$, dann ist $A \cup C \neq \emptyset$.
+\end{theorem}
+
+\subsection*{Scratch Work}
+Zur Erinnerung: $X \neq \emptyset$ bedeutet logisch übersetzt $\exists x \, (x \in X)$.
+
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. $\exists x \, (x \in A)$ \newline
+2. $\forall z \, (z \in A \rightarrow z \in B)$ &
+\emph{Goal:} $\exists x \, (x \in A \lor x \in C)$ \\[1ex]
+\hline
+% Anwendung: Existenzquantor im Given abbauen
+3. $x_0$ ist ein konkretes Objekt. \newline
+4. $x_0 \in A$ \newline
+(\emph{Nach Rezept: $\exists$ in Givens}) \newline
+5. $\forall z \, (z \in A \rightarrow z \in B)$ &
+\emph{Goal:} $\exists x \, (x \in A \lor x \in C)$ \\[1ex]
+\hline
+% Anwendung: Allquantor im Given nutzen
+3. $x_0$ ist ein konkretes Objekt. \newline
+4. $x_0 \in A$ \newline
+5. $x_0 \in A \rightarrow x_0 \in B$ \quad (\emph{Instanziierung}) \newline
+6. $x_0 \in B$ \quad (\emph{Modus Ponens}) &
+\emph{Goal:} $\exists x \, (x \in A \lor x \in C)$ \\[1ex]
+\hline
+% Anwendung: Existenzquantor im Goal abbauen (Konstruktion)
+% Wir wählen x_0 als unseren Zeugen!
+3. $x_0$ ist ein konkretes Objekt. \newline
+4. $x_0 \in A$ \newline
+6. $x_0 \in B$ &
+\emph{Neues Goal:} $x_0 \in A \lor x_0 \in C$ \newline
+(\emph{Nach Rezept: $\exists$ im Goal mit Kandidate $x_0$}) \\[1ex]
+\hline
+% Anwendung: Oder im Goal erfüllen
+3. $x_0$ ist ein konkretes Objekt. \newline
+4. $x_0 \in A$ \newline
+6. $x_0 \in B$ &
+$x_0 \in A \lor x_0 \in C$ \quad \checkmark \newline
+(\emph{Ziel erreicht, da Given 4 wahr ist!}) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Formaler Beweis}
+\begin{proof}
+Angenommen, $A \neq \emptyset$ und $A \subseteq B$. Da $A \neq \emptyset$ gilt, existiert ein Element in $A$. Wir nennen dieses Element $x_0$ (es gilt also $x_0 \in A$). Da nach Voraussetzung $A \subseteq B$ gilt (also jedes Element aus $A$ auch in $B$ liegt), folgt aus $x_0 \in A$ sofort $x_0 \in B$.
+
+Um zu zeigen, dass $A \cup C \neq \emptyset$ gilt, müssen wir zeigen, dass ein Element existiert, das in $A \cup C$ liegt. Wir wählen $x_0$ als unseren Kandidaten. Da bereits $x_0 \in A$ wahr ist, ist die Oder-Aussage $x_0 \in A \lor x_0 \in C$ ebenfalls wahr. Somit ist $x_0 \in A \cup C$, woraus folgt, dass $A \cup C$ nicht leer ist.
+\end{proof}
+
+\end{document}
