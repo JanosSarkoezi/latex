@@ -1,0 +1,30 @@
+# Standardaktion: Kompiliert das Dokument und räumt danach auf
+default: build clean
+
+# Kompiliert die LaTeX-Datei (Standard: 'main.tex')
+# Nutzung: 'just build' oder 'just build mein_dokument' (ohne .tex)
+build filename="main":
+    @echo "Starte pdflatex für {{filename}}.tex..."
+    # Erster Durchlauf für die Struktur
+    pdflatex -interaction=nonstopmode {{filename}}.tex
+    # Zweiter Durchlauf, damit Inhaltsverzeichnis und Verweise (z.B. Seitenzahlen) stimmen
+    pdflatex -interaction=nonstopmode {{filename}}.tex
+    @echo "PDF erfolgreich erstellt!"
+
+# Öffnet die erstellte PDF-Datei mit dem Linux-Standard-Viewer (xdg-open)
+view filename="main":
+    @if [ -f "{{filename}}.pdf" ]; then \
+        xdg-open {{filename}}.pdf & \
+    else \
+        echo "{{filename}}.pdf existiert nicht. Bitte zuerst 'just build' ausführen."; \
+    fi
+
+# Löscht alle temporären LaTeX-Hilfsdateien im aktuellen Ordner
+clean:
+    @echo "Räume temporäre LaTeX-Dateien auf..."
+    rm -f *.aux *.log *.toc *.out *.synctex.gz *.bbl *.blg *.auxlock
+
+# Löscht ALLES inklusive der finalen PDF-Datei
+clean-all: clean
+    @echo "Lösche alle PDFs..."
+    rm -f *.pdf

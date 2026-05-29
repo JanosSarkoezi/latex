@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Satz}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Vom Durchschnitt von Topologien zu $\sigma$-Algebren}
+\author{Nach Daniel J. Velleman: \emph{How to Prove It}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Definition einer Topologie}
+
+Sei $X$ eine Grundmenge. Ein Mengensystem $\mathcal{T} \subseteq \mathcal{P}(X)$ heißt \textbf{Topologie} auf $X$, wenn die folgenden drei Axiome erfüllt sind:
+\begin{enumerate}
+    \item T1 (Leere Menge und Ganzraum): $\emptyset \in \mathcal{T} \land X \in \mathcal{T}$
+    \item T2 (Endliche Durchschnitte): $\forall U, V \, \big( (U \in \mathcal{T} \land V \in \mathcal{T}) \rightarrow (U \cap V \in \mathcal{T}) \big)$
+    \item T3 (Beliebige Vereinigungen): $\forall \mathcal{A} \, \big( \mathcal{A} \subseteq \mathcal{T} \rightarrow \bigcup \mathcal{A} \in \mathcal{T} \big)$
+\end{enumerate}
+
+---
+
+\section*{2. Der Satz vom Durchschnitt einer Familie}
+
+\begin{theorem}
+Sei $X$ eine Menge und $I$ eine nichtleere Indexmenge. Für jedes $i \in I$ sei $\mathcal{T}_i$ eine Topologie auf $X$. Dann ist der Durchschnitt der Familie, definiert als
+\[
+\mathcal{T}_{\cap} = \bigcap_{i \in I} \mathcal{T}_i = \{ U \subseteq X \mid \forall i \in I \, (U \in \mathcal{T}_i) \},
+\]
+ebenfalls eine Topologie auf $X$.
+\end{theorem}
+
+---
+
+\section*{3. Scratch Work (Exemplarisch für Axiom T2)}
+
+Um zu beweisen, dass $\mathcal{T}_{\cap}$ eine Topologie ist, müssen wir alle drei Axiome zeigen. Schauen wir uns das Velleman-Scratch-Work für das oft kniffligste Axiom an: **T2 (Stabilität unter endlichen Durchschnitten)**.
+
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+% Schritt 0: Ausgangssituation
+1. $\forall i \in I \, (\mathcal{T}_i \text{ ist Topologie})$ \newline
+2. $\mathcal{T}_{\cap} = \{ U \subseteq X \mid \forall i \in I \, (U \in \mathcal{T}_i) \}$ &
+\emph{Goal:} $\forall U, V \big( (U \in \mathcal{T}_{\cap} \land V \in \mathcal{T}_{\cap}) \rightarrow U \cap V \in \mathcal{T}_{\cap} \big)$ \\[1ex]
+\hline
+
+% Schritt 1: Goal abbauen (Allquantoren und Implikation)
+1. [Givens wie oben] \newline
+3. Seien $U$ und $V$ beliebige Mengen. \newline
+4. $U \in \mathcal{T}_{\cap}$ (Annahme) \newline
+5. $V \in \mathcal{T}_{\cap}$ (Annahme) &
+\emph{Neues Goal:} $U \cap V \in \mathcal{T}_{\cap}$ \newline
+\newline
+(\emph{Laut Definition von $\mathcal{T}_{\cap}$ bedeutet das:}) \newline
+\emph{Goal*:} $\forall i \in I \, (U \cap V \in \mathcal{T}_i)$ \\[1ex]
+\hline
+
+% Schritt 2: Givens 4 und 5 mittels Definition von T_neu aufspalten
+1. [Givens wie oben] \newline
+3. $U, V$ beliebig \newline
+6. $\forall i \in I \, (U \in \mathcal{T}_i)$ \quad (aus Given 4) \newline
+7. $\forall i \in I \, (V \in \mathcal{T}_i)$ \quad (aus Given 5) &
+\emph{Goal*:} $\forall i \in I \, (U \cap V \in \mathcal{T}_i)$ \\[1ex]
+\hline
+
+% Schritt 3: Allquantor im Goal angreifen
+1. [Givens wie oben] \newline
+3. $U, V$ beliebig; 6. und 7. wie oben \newline
+8. Sei $i_0 \in I$ ein beliebiges, festes Indexelement. &
+\emph{Neues Goal:} $U \cap V \in \mathcal{T}_{i_0}$ \\[1ex]
+\hline
+
+% Schritt 4: Givens mit dem konkreten i_0 instanziieren
+3. $U, V$ beliebig; 8. $i_0 \in I$ beliebig \newline
+9. $U \in \mathcal{T}_{i_0}$ \quad (Instanziierung von 6 mit $i_0$) \newline
+10. $V \in \mathcal{T}_{i_0}$ \quad (Instanziierung von 7 mit $i_0$) \newline
+11. $\mathcal{T}_{i_0}$ erfüllt T2 (da es eine Topologie ist!) &
+\emph{Goal:} $U \cap V \in \mathcal{T}_{i_0}$ \\[1ex]
+\hline
+
+% Schritt 5: Axiom T2 von T_{i_0} nutzen (Modus Ponens)
+% Wir instanziieren das Axiom T2 von T_{i_0} mit unseren Mengen U und V
+3. $U,V$ beliebig; 8. $i_0$ beliebig; 9., 10. wie oben \newline
+12. $(U \in \mathcal{T}_{i_0} \land V \in \mathcal{T}_{i_0}) \rightarrow U \cap V \in \mathcal{T}_{i_0}$ \newline
+13. $U \cap V \in \mathcal{T}_{i_0}$ \quad (Modus Ponens aus 9, 10 und 12) &
+\emph{Goal:} $U \cap V \in \mathcal{T}_{i_0}$ \newline
+\newline
+\checkmark \quad (Ziel erreicht!) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

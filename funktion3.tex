@@ -1,0 +1,271 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{array} % Für erweiterte Spaltendefinitionen (p-Spalten mit \raggedright)
+
+% Seitenränder definieren
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% Farbdefinitionen für Hervorhebungen
+\definecolor{blockbg}{HTML}{F8F9FA}
+\definecolor{blockborder}{HTML}{D1D5DB}
+\definecolor{stuckbg}{HTML}{FEF2F2}
+\definecolor{stuckborder}{HTML}{EF4444}
+\definecolor{stucktext}{HTML}{991B1B}
+\definecolor{proofbg}{HTML}{F0FDF4}
+\definecolor{proofborder}{HTML}{22C55E}
+
+\tcbuselibrary{skins,breakable}
+
+% Box für Givens/Goal Tabellen
+\newtcolorbox{vellemantable}[1][]{
+  colback=blockbg,
+  colframe=blockborder,
+  arc=3mm,
+  boxrule=1pt,
+  left=2mm, right=2mm, top=2mm, bottom=2mm,
+  #1
+}
+
+% Box für die funktionierenden Beweise
+\newtcolorbox{proofbox}[1][]{
+  colback=proofbg,
+  colframe=proofborder,
+  arc=3mm,
+  boxrule=1pt,
+  left=3mm, right=3mm, top=3mm, bottom=3mm,
+  #1
+}
+
+% Box für die Stellen, an denen der Beweis scheitert
+\newtcolorbox{stuckbox}[1][]{
+  colback=stuckbg,
+  colframe=stuckborder,
+  coltitle=stucktext,
+  fonttitle=\bfseries,
+  arc=3mm,
+  boxrule=1.2pt,
+  title={Hier bleiben wir stecken! (Fehlende Inklusion)},
+  #1
+}
+
+\title{\textbf{Analyse von Bild- und Urbildmengen}\\[0.3em]
+\large Formalismen nach Daniel Velleman (\textit{How to Prove It})}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problemstellung}
+Sei $f: X \to Y$ eine beliebige Funktion, $A \subseteq X$ und $B \subseteq Y$. Wir untersuchen die Mengenbeziehungen zwischen $f$ und $f^{-1}$. Für jede der beiden Konstruktionen zeigen wir zuerst die **allgemein gültige Inklusion** und analysieren im Anschluss genau, **warum die Rückrichtung im Allgemeinen scheitert**.
+
+---
+
+\section{Die Menge $f(f^{-1}(B))$}
+
+\subsection*{Teil 1: Der gültige Beweis für $f(f^{-1}(B)) \subseteq B$}
+
+\subsubsection*{Givens \& Goal Struktur}
+\begin{vellemantable}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}p{0.42\textwidth} >{\raggedright\arraybackslash}p{0.42\textwidth}}
+\textbf{Schritt} & \textbf{Givens} & \textbf{Goal} \\ \hline
+1 & $f: X \to Y, \; B \subseteq Y$ & $f(f^{-1}(B)) \subseteq B$ \\[0.4em]
+2 & $y \in f(f^{-1}(B))$ & $y \in B$ \\[0.4em]
+3 & $\exists x \in f^{-1}(B) \: (f(x) = y)$ \newline {\small \textit{(Definition Bildmenge)}} & $y \in B$ \\[0.4em]
+4 & $x_0 \in f^{-1}(B) \land f(x_0) = y$ \newline {\small \textit{(Existenzinstanziierung)}} & $y \in B$ \\[0.4em]
+5 & $f(x_0) \in B$ \newline {\small \textit{(Definition Urbild auf $x_0 \in f^{-1}(B)$)}} & $y \in B$ \\[0.4em]
+6 & Da $f(x_0) = y$, folgt direkt $y \in B$. & \textbf{Fertig} \\
+\end{tabular}
+\end{vellemantable}
+
+\begin{proofbox}
+\textbf{Formaler Beweis (Velleman-Stil):}\\
+Sei $y$ beliebig. Nehmen wir an, dass $y \in f(f^{-1}(B))$. Nach der Definition der Bildmenge existiert ein $x \in f^{-1}(B)$ mit $f(x) = y$. Sei $x_0$ ein solches Element. Da $x_0 \in f^{-1}(B)$, folgt per Definition des Urbilds, dass $f(x_0) \in B$. Da $f(x_0) = y$ ist, gilt $y \in B$. Somit gilt $f(f^{-1}(B)) \subseteq B$. \hfill $\blacksquare$
+\end{proofbox}
+
+\subsection*{Teil 2: Die Rückrichtung $B \subseteq f(f^{-1}(B))$}
+
+\begin{vellemantable}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}p{0.42\textwidth} >{\raggedright\arraybackslash}p{0.42\textwidth}}
+\textbf{Schritt} & \textbf{Givens} & \textbf{Goal} \\ \hline
+1 & $f: X \to Y, \; B \subseteq Y$ & $B \subseteq f(f^{-1}(B))$ \\[0.4em]
+2 & $y \in B$ & $y \in f(f^{-1}(B))$ \\[0.4em]
+3 & $y \in B$ & $\exists x \in f^{-1}(B) \: (f(x) = y)$ \newline {\small \textit{(Def. Bild)}} \\[0.4em]
+4 & $y \in B$ & $\exists x \: (f(x) \in B \land f(x) = y)$ \newline {\small \textit{(Def. Urbild)}} \\
+\end{tabular}
+\end{vellemantable}
+
+\begin{stuckbox}
+Aus $y \in B$ folgt \textbf{nicht}, dass überhaupt ein $x \in X$ existiert mit $f(x) = y$.
+
+Wenn $y$ nicht im Bild von $f$ liegt ($\text{Bild}(f)$), existiert kein solches $x$. Das Urbild $f^{-1}(B)$ enthält für dieses $y$ kein Element, und $y$ kann nicht erneut von $f$ getroffen werden.
+
+\medskip
+\textbf{Benötigte Eigenschaft:} \textbf{Surjektivität} von $f$ (bzw. $B \subseteq \text{Bild}(f)$), um die Existenz eines $x \in X$ mit $f(x) = y$ für jedes $y \in B$ zu garantieren.
+\end{stuckbox}
+
+---
+
+\newpage
+\section{Die Menge $f^{-1}(f(A))$}
+
+\subsection*{Teil 1: Der gültige Beweis für $A \subseteq f^{-1}(f(A))$}
+
+\subsubsection*{Givens \& Goal Struktur}
+\begin{vellemantable}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}p{0.42\textwidth} >{\raggedright\arraybackslash}p{0.42\textwidth}}
+\textbf{Schritt} & \textbf{Givens} & \textbf{Goal} \\ \hline
+1 & $f: X \to Y, \; A \subseteq X$ & $A \subseteq f^{-1}(f(A))$ \\[0.4em]
+2 & $x \in A$ & $x \in f^{-1}(f(A))$ \\[0.4em]
+3 & $x \in A$ & $f(x) \in f(A)$ \newline {\small \textit{(Def. Urbild)}} \\[0.4em]
+4 & $x \in A$ & $\exists a \in A \: (f(a) = f(x))$ \newline {\small \textit{(Def. Bild)}} \\[0.4em]
+5 & Wählen wir $a = x$. Da $x \in A$ und $f(x) = f(x)$, erfüllt dies das Ziel. & \textbf{Fertig} \\
+\end{tabular}
+\end{vellemantable}
+
+\begin{proofbox}
+\textbf{Formaler Beweis (Velleman-Stil):}\\
+Sei $x$ beliebig. Nehmen wir an, dass $x \in A$. Um zu zeigen, dass $x \in f^{-1}(f(A))$, müssen wir zeigen, dass $f(x) \in f(A)$. Nach Definition der Bildmenge ist $f(x) \in f(A)$ genau dann erfüllt, wenn ein $a \in A$ existiert mit $f(a) = f(x)$. Wählen wir $a = x$, so gilt $x \in A$ und trivialerweise $f(x) = f(x)$. Daher gilt $f(x) \in f(A)$ und folglich $x \in f^{-1}(f(A))$. Somit gilt $A \subseteq f^{-1}(f(A))$. \hfill $\blacksquare$
+\end{proofbox}
+
+\subsection*{Teil 2: Die Rückrichtung $f^{-1}(f(A)) \subseteq A$}
+
+\begin{vellemantable}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}p{0.42\textwidth} >{\raggedright\arraybackslash}p{0.42\textwidth}}
+\textbf{Schritt} & \textbf{Givens} & \textbf{Goal} \\ \hline
+1 & $f: X \to Y, \; A \subseteq X$ & $f^{-1}(f(A)) \subseteq A$ \\[0.4em]
+2 & $x \in f^{-1}(f(A))$ & $x \in A$ \\[0.4em]
+3 & $f(x) \in f(A)$ \newline {\small \textit{(Def. Urbild)}} & $x \in A$ \\[0.4em]
+4 & $\exists a \in A \: (f(a) = f(x))$ \newline {\small \textit{(Def. Bild)}} & $x \in A$ \\[0.4em]
+5 & $a_0 \in A \land f(a_0) = f(x)$ & $x \in A$ \\
+\end{tabular}
+\end{vellemantable}
+
+\begin{stuckbox}
+Wir wissen nur, dass $x$ denselben Funktionswert hat wie irgendein Element $a_0 \in A$ (also $f(x) = f(a_0)$).
+
+Das bedeutet jedoch nicht automatisch, dass $x = a_0$ gilt. Es könnte ein weiteres Element $x \notin A$ geben, das auf denselben Bildpunkt abgebildet wird.
+
+\medskip
+\textbf{Benötigte Eigenschaft:} \textbf{Injektivität} von $f$, da hieraus direkt $f(a_0) = f(x) \implies a_0 = x$ folgt (womit $x = a_0 \in A$ bewiesen wäre).
+\end{stuckbox}
+
+\section{Äquivalenz: \(f(A) \subseteq B \iff A \subseteq f^{-1}(B)\)}
+
+\subsection*{Hinrichtung: \(f(A) \subseteq B \implies A \subseteq f^{-1}(B)\)}
+
+\subsubsection*{Givens \& Goal Struktur}
+\begin{vellemantable}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}p{0.42\textwidth} >{\raggedright\arraybackslash}p{0.42\textwidth}}
+\textbf{Schritt} & \textbf{Givens} & \textbf{Goal} \\ \hline
+1 & \(f: X \to Y, \; A \subseteq X, \; B \subseteq Y, \; f(A) \subseteq B\) & \(A \subseteq f^{-1}(B)\) \\[0.4em]
+2 & \(f(A) \subseteq B\) als \(\forall y\,(y \in f(A) \to y \in B)\) & \(A \subseteq f^{-1}(B)\) als \(\forall x\,(x \in A \to f(x) \in B)\) \\[0.4em]
+3 & \(a \in A\) \newline {\small \textit{(beliebig gewählt)}} & \(f(a) \in B\) \\[0.4em]
+4 & Instanziiere \(\forall y\) mit \(y = f(a)\): \newline \(f(a) \in f(A) \to f(a) \in B\) & \(f(a) \in B\) \\[0.4em]
+5 & \(f(a) \in f(A) \iff \exists x\,(x \in A \land f(x) = f(a))\) & \(f(a) \in B\) \\[0.4em]
+6 & Also: \(\bigl(\exists x\,(x \in A \land f(x) = f(a))\bigr) \to f(a) \in B\) & \(f(a) \in B\) \\[0.4em]
+7 & Wähle \(x = a\). Da \(a \in A\) und \(f(a) = f(a)\), gilt \(\exists x\,(x \in A \land f(x) = f(a))\) & \(f(a) \in B\) \\[0.4em]
+8 & Modus Ponens auf Schritt 6 und 7 & \(f(a) \in B\) \\[0.4em]
+9 & Da \(a \in A\) beliebig war, folgt \(\forall x\,(x \in A \to f(x) \in B)\) & \textbf{Fertig} \\
+\end{tabular}
+\end{vellemantable}
+
+\begin{proofbox}
+\textbf{Formaler Beweis (Velleman-Stil):}\\
+Sei \(a \in A\) beliebig. Zu zeigen ist \(a \in f^{-1}(B)\), d.h. \(f(a) \in B\).
+
+Wegen \(a \in A\) ist \(f(a) \in f(A)\). Denn um \(f(a) \in f(A)\) zu zeigen, müssen wir ein \(x \in A\) mit \(f(x) = f(a)\) finden. Wähle \(x = a\). Dann ist \(a \in A\) und trivialerweise \(f(a) = f(a)\).
+Nach Voraussetzung \(f(A) \subseteq B\) folgt aus \(f(a) \in f(A)\) direkt \(f(a) \in B\). Also ist \(a \in f^{-1}(B)\).
+
+Da \(a \in A\) beliebig war, gilt \(A \subseteq f^{-1}(B)\). \hfill \(\blacksquare\)
+\end{proofbox}
+
+\subsection*{Rückrichtung: \(A \subseteq f^{-1}(B) \implies f(A) \subseteq B\)}
+
+\subsubsection*{Givens \& Goal Struktur}
+\begin{vellemantable}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}p{0.42\textwidth} >{\raggedright\arraybackslash}p{0.42\textwidth}}
+\textbf{Schritt} & \textbf{Givens} & \textbf{Goal} \\ \hline
+1 & \(f: X \to Y, \; A \subseteq X, \; B \subseteq Y, \; A \subseteq f^{-1}(B)\) & \(f(A) \subseteq B\) \\[0.4em]
+2 & \(A \subseteq f^{-1}(B)\) als \(\forall x\,(x \in A \to f(x) \in B)\) & \(f(A) \subseteq B\) als \(\forall y\,(y \in f(A) \to y \in B)\) \\[0.4em]
+3 & \(y \in f(A)\) \newline {\small \textit{(beliebig gewählt)}} & \(y \in B\) \\[0.4em]
+4 & \(y \in f(A) \iff \exists x\,(x \in A \land f(x) = y)\) & \(y \in B\) \\[0.4em]
+5 & Also: \(\exists x\,(x \in A \land f(x) = y)\) & \(y \in B\) \\[0.4em]
+6 & Existenzinstanziierung: \(x_0 \in A \land f(x_0) = y\) & \(y \in B\) \\[0.4em]
+7 & Instanziiere \(\forall x\) aus \(A \subseteq f^{-1}(B)\) mit \(x = x_0\): \newline \(x_0 \in A \to f(x_0) \in B\) & \(y \in B\) \\[0.4em]
+8 & Modus Ponens: \(x_0 \in A\), also \(f(x_0) \in B\) & \(y \in B\) \\[0.4em]
+9 & Wegen \(f(x_0) = y\) folgt \(y \in B\) & \(y \in B\) \\[0.4em]
+10 & Da \(y \in f(A)\) beliebig war, folgt \(\forall y\,(y \in f(A) \to y \in B)\) & \textbf{Fertig} \\
+\end{tabular}
+\end{vellemantable}
+
+\begin{proofbox}
+\textbf{Formaler Beweis (Velleman-Stil):}\\
+Sei \(y \in f(A)\) beliebig. Zu zeigen ist \(y \in B\).
+
+Nach Definition der Bildmenge existiert ein \(x \in A\) mit \(f(x) = y\). Sei \(x_0\) ein solches Element, also \(x_0 \in A\) und \(f(x_0) = y\).
+Wegen \(x_0 \in A\) und der Voraussetzung \(A \subseteq f^{-1}(B)\) folgt \(x_0 \in f^{-1}(B)\). Nach Definition des Urbilds bedeutet das \(f(x_0) \in B\).
+Da \(f(x_0) = y\), erhalten wir \(y \in B\).
+
+Da \(y \in f(A)\) beliebig war, gilt \(f(A) \subseteq B\). \hfill \(\blacksquare\)
+\end{proofbox}
+
+\section{Das Bild einer einelementigen Menge}
+
+\subsection*{Aussage: \(f(\{a\}) = \{f(a)\}\)}
+
+\subsubsection*{Givens \& Goal Struktur}
+\begin{vellemantable}
+\centering
+\begin{tabular}{>{\centering\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}p{0.42\textwidth} >{\raggedright\arraybackslash}p{0.42\textwidth}}
+\textbf{Schritt} & \textbf{Givens} & \textbf{Goal} \\ \hline
+1 & \(f: X \to Y, \; a \in X\) & \(f(\{a\}) = \{f(a)\}\) \\[0.4em]
+2 & \(f(\{a\}) \subseteq \{f(a)\}\) \newline {\small \textit{(erste Inklusion)}} & \(f(\{a\}) \subseteq \{f(a)\}\) \\[0.4em]
+3 & \(y \in f(\{a\})\) & \(y \in \{f(a)\}\) \\[0.4em]
+4 & \(\exists x \in \{a\}\,(f(x) = y)\) \newline {\small \textit{(Def. Bild)}} & \(y = f(a)\) \\[0.4em]
+5 & \(x_0 \in \{a\} \land f(x_0) = y\) \newline {\small \textit{(Existenzinstanziierung)}} & \(y = f(a)\) \\[0.4em]
+6 & \(x_0 = a\) \newline {\small \textit{(da \(x_0 \in \{a\}\))}} & \(y = f(a)\) \\[0.4em]
+7 & \(f(a) = y\), also \(y = f(a)\) & \(y = f(a)\) \\[0.4em]
+8 & Damit ist die erste Inklusion gezeigt. & \textbf{Fertig} \\[0.6em]
+9 & \(\{f(a)\} \subseteq f(\{a\})\) \newline {\small \textit{(zweite Inklusion)}} & \(\{f(a)\} \subseteq f(\{a\})\) \\[0.4em]
+10 & \(y \in \{f(a)\}\) & \(y \in f(\{a\})\) \\[0.4em]
+11 & \(y = f(a)\) & \(\exists x \in \{a\}\,(f(x) = y)\) \\[0.4em]
+12 & Wähle \(x = a\). Wegen \(a \in \{a\}\) und \(f(a) = y\) gilt die Existenzaussage. & \(y \in f(\{a\})\) \\[0.4em]
+13 & Damit ist auch die zweite Inklusion gezeigt. & \textbf{Fertig} \\
+\end{tabular}
+\end{vellemantable}
+
+\begin{proofbox}
+\textbf{Formaler Beweis (Velleman-Stil):}\\
+Wir zeigen beide Inklusionen.
+
+\medskip
+\noindent\textbf{1. Inklusion: \(f(\{a\}) \subseteq \{f(a)\}\).}\\
+Sei \(y \in f(\{a\})\) beliebig. Nach Definition der Bildmenge existiert ein \(x \in \{a\}\) mit \(f(x) = y\). Sei \(x_0\) ein solches Element. Wegen \(x_0 \in \{a\}\) gilt \(x_0 = a\). Also ist \(f(a) = y\), d.h. \(y = f(a)\). Damit ist \(y \in \{f(a)\}\).
+
+\medskip
+\noindent\textbf{2. Inklusion: \(\{f(a)\} \subseteq f(\{a\})\).}\\
+Sei \(y \in \{f(a)\}\) beliebig. Dann ist \(y = f(a)\). Wähle \(x = a\). Wegen \(a \in \{a\}\) und \(f(a) = y\) gilt
+\[
+\exists x \in \{a\}\,(f(x) = y).
+\]
+Nach Definition der Bildmenge folgt \(y \in f(\{a\})\).
+
+\medskip
+Aus beiden Inklusionen folgt \(f(\{a\}) = \{f(a)\}\). \hfill \(\blacksquare\)
+\end{proofbox}
+
+\end{document}

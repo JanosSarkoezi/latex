@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Mathematische Beschreibung endlicher Mengenfamilien}
+\author{Nach Daniel J. Velleman: \emph{How to Prove It}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Die zwei mathematischen Beschreibungen}
+
+Wenn wir von einer ,,endlichen Familie von Teilmengen einer Topologie $\mathcal{T}$`` sprechen, können wir das auf zwei Arten formalisieren:
+
+\subsection*{Variante A: Über eine explizite Durchnummerierung}
+Wir nutzen die ersten $n$ natürlichen Zahlen als Indexmenge: $I = \{1, 2, \dots, n\}$ für ein $n \in \mathbb{N}_{\ge 1}$.
+Die Familie wird geschrieben als:
+\[
+(U_k)_{k=1}^n \quad \text{oder} \quad \{U_1, U_2, \dots, U_n\}
+\]
+Die Eigenschaft, dass alle diese Mengen in der Topologie liegen, lautet in Quantorenform:
+\[
+\forall k \in \{1, 2, \dots, n\} \, (U_k \in \mathcal{T})
+\]
+
+\subsection*{Variante B: Über eine abstrakte endliche Indexmenge}
+Wir sagen einfach, $I$ ist eine beliebige Menge, die aber die Eigenschaft hat, \emph{endlich} zu sein ($|I| < \infty$).
+Die Familie wird geschrieben als:
+\[
+(U_i)_{i \in I}
+\]
+Die Eigenschaft lautet dann:
+\[
+\forall i \in I \, (U_i \in \mathcal{T}) \quad \land \quad |I| < \infty
+\]
+
+---
+
+\section*{Vergleich im Scratch-Format}
+
+Warum sind diese Schreibweisen so wichtig? Weil sie bestimmen, wie wir das \textbf{Given-Rezept für den Allquantor} anwenden dürfen. Schauen wir uns an, was passiert, wenn wir diese Familie im Beweis nutzen wollen.
+
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Nutzen von Variante A (Nummeriert)} & \textbf{Nutzen von Variante B (Abstrakt)} \\
+\midrule
+\textbf{Givens:} \newline
+1. $\forall k \in \{1, \dots, n\} \, (U_k \in \mathcal{T})$ \newline
+2. Ein konkretes $k_0 \in \{1, \dots, n\}$ existiert bereits im Beweis. &
+\textbf{Givens:} \newline
+1. $\forall i \in I \, (U_i \in \mathcal{T})$ \newline
+2. $I$ ist endlich. \newline
+3. Ein konkretes $i_0 \in I$ existiert bereits. \\
+\hline
+\textbf{Nachher (Instanziierung):} \newline
+Du darfst die Information für dieses konkrete Element sofort nutzen: \newline
+3. $U_{k_0} \in \mathcal{T}$ &
+\textbf{Nachher (Instanziierung):} \newline
+Du darfst die Information für dieses konkrete Element sofort nutzen: \newline
+4. $U_{i_0} \in \mathcal{T}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+\textbf{Fazit für die Praxis:}
+\begin{itemize}
+    \item \textbf{Variante A} ist perfekt, wenn du einen Beweis per \emph{vollständiger Induktion} führen willst (wie wir es gerade beim Durchschnitt gemacht haben), weil du dort aktiv mit der Zahl $n$ und dem Schritt zu $n+1$ arbeitest.
+    \item \textbf{Variante B} ist eleganter, wenn du Eigenschaften wie ,,Stabilität unter endlichen Durchschnitten`` allgemein voraussetzen möchtest, ohne dich auf eine feste Reihenfolge festzulegen.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Die fundamentale Symmetrie zwischen $\forall$ und $\bigcap$}
+\author{Nach Daniel J. Velleman: \emph{How to Prove It}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Die Brücke zwischen Logik und Mengenlehre}
+
+Deine Beobachtung ist absolut exakt. Schauen wir uns die Definition des Durchschnitts einer Familie an. Ein Element $x$ liegt genau dann im Durchschnitt, wenn es in \emph{jedem einzelnen} $U_i$ liegt:
+\[
+x \in \bigcap_{i \in I} U_i \iff \forall i \in I \, (x \in U_i)
+\]
+Hier sieht man sofort: Die Operation $\bigcap$ wird auf der rechten Seite direkt durch das logische Symbol $\forall$ definiert!
+
+---
+
+\section*{Gegenüberstellung im Scratch-Format}
+
+Wenn wir Vellemans Rezepte anwenden, verhalten sich die Aussage über die Zugehörigkeit zur Topologie und die Aussage über den Durchschnitt eines Elements nahezu identisch:
+
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Die logische Eigenschaft} & \textbf{Das mengentheoretische Objekt} \\
+\midrule
+\textbf{Aussage:} \newline
+$\forall i \in I \, (U_i \in \mathcal{T})$ \newline
+\newline
+(\emph{Bedeutung: Alle Mengen der Familie liegen einzeln in der Topologie.}) &
+\textbf{Aussage:} \newline
+$x \in \bigcap_{i \in I} U_i \iff \forall i \in I \, (x \in U_i)$ \newline
+\newline
+(\emph{Bedeutung: Ein konkretes Element $x$ liegt in allen Mengen der Familie gleichzeitig.}) \\
+\hline
+\textbf{Rezept-Anwendung (Given):} \newline
+Wenn du ein konkretes $i_0 \in I$ hast, darfst du eintragen: \newline
+$\rightarrow U_{i_0} \in \mathcal{T}$ &
+\textbf{Rezept-Anwendung (Given):} \newline
+Wenn du dasselbe konkrete $i_0 \in I$ hast, darfst du eintragen: \newline
+$\rightarrow x \in U_{i_0}$ \\
+\hline
+\textbf{Rezept-Anwendung (Goal):} \newline
+Um die Aussage zu beweisen, musst du sagen: \newline
+$\rightarrow$ Sei $i_0 \in I$ beliebig. \newline
+$\rightarrow$ \emph{Neues Goal:} $U_{i_0} \in \mathcal{T}$ &
+\textbf{Rezept-Anwendung (Goal):} \newline
+Um zu beweisen, dass $x$ im Durchschnitt liegt, musst du sagen: \newline
+$\rightarrow$ Sei $i_0 \in I$ beliebig. \newline
+$\rightarrow$ \emph{Neues Goal:} $x \in U_{i_0}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Fazit der Analogie}
+
+Es gilt die wunderbare mathematische Eselsbrücke:
+\begin{itemize}
+    \item Der \textbf{Durchschnitt} ($\bigcap$) ist nichts anderes als ein riesiges, eventuell unendliches \textbf{UND} ($\land$). Er sammelt Elemente, die in \emph{allen} Mengen gleichzeitig sein müssen.
+    \item Die \textbf{Vereinigung} ($\bigcup$) ist das Gegenstück: Ein riesiges \textbf{ODER} ($\lor$). Sie sammelt Elemente, die in \emph{mindestens einer} Menge sein müssen.
+\end{itemize}
+
+\end{document}
