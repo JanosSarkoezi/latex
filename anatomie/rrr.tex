@@ -215,4 +215,259 @@ Angenommen, $A \neq \emptyset$ und $A \subseteq B$. Da $A \neq \emptyset$ gilt, 
 Um zu zeigen, dass $A \cup C \neq \emptyset$ gilt, müssen wir zeigen, dass ein Element existiert, das in $A \cup C$ liegt. Wir wählen $x_0$ als unseren Kandidaten. Da bereits $x_0 \in A$ wahr ist, ist die Oder-Aussage $x_0 \in A \lor x_0 \in C$ ebenfalls wahr. Somit ist $x_0 \in A \cup C$, woraus folgt, dass $A \cup C$ nicht leer ist.
 \end{proof}
 
+\newpage
+
+\section*{Äquivalenz von Existenzquantor und Oder-Verknüpfung}
+
+\begin{theorem}
+Sei $U$ eine Grundmenge und $P(x), Q(x)$ Prädikate über $U$. Dann gilt:
+\[ \exists x \, (P(x) \lor Q(x)) \iff (\exists x \, P(x)) \lor (\exists x \, Q(x)) \]
+\end{theorem}
+
+\subsection*{Scratch Work ($\Rightarrow$)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. $\exists x \, (P(x) \lor Q(x))$ & \emph{Goal:} $(\exists x \, P(x)) \lor (\exists x \, Q(x))$ \\[1ex]
+\hline
+2. $x_0$ ist ein konkretes Objekt. \newline
+3. $P(x_0) \lor Q(x_0)$ \quad (\emph{$\exists$ im Given}) & \emph{Goal:} $(\exists x \, P(x)) \lor (\exists x \, Q(x))$ \\[1ex]
+\hline
+\textbf{Fall 1:} $P(x_0)$ gilt. \newline
+(\emph{Wähle $x_0$ als Zeuge für linken Teil des Goals}) & \emph{Neues Goal:} $P(x_0)$ \newline
+$\rightarrow$ Erfüllt durch Fall-Annahme! $\checkmark$ \\[1ex]
+\hline
+\textbf{Fall 2:} $Q(x_0)$ gilt. \newline
+(\emph{Wähle $x_0$ als Zeuge für rechten Teil des Goals}) & \emph{Neues Goal:} $Q(x_0)$ \newline
+$\rightarrow$ Erfüllt durch Fall-Annahme! $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Scratch Work ($\Leftarrow$)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. $(\exists x \, P(x)) \lor (\exists x \, Q(x))$ & \emph{Goal:} $\exists x \, (P(x) \lor Q(x))$ \\[1ex]
+\hline
+\textbf{Fall 1:} $\exists x \, P(x)$ gilt. \newline
+2. $x_0$ ist konkret mit $P(x_0)$. \newline
+(\emph{Wähle $x_0$ als Kandidat für das Goal}) & \emph{Neues Goal:} $P(x_0) \lor Q(x_0)$ \newline
+$\rightarrow$ Wahr, da $P(x_0)$ gegeben ist! $\checkmark$ \\[1ex]
+\hline
+\textbf{Fall 2:} $\exists x \, Q(x)$ gilt. \newline
+2. $x_1$ ist konkret mit $Q(x_1)$. \newline
+(\emph{Wähle $x_1$ als Kandidat für das Goal}) & \emph{Neues Goal:} $P(x_1) \lor Q(x_1)$ \newline
+$\rightarrow$ Wahr, da $Q(x_1)$ gegeben ist! $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Formaler Beweis}
+\begin{proof}
+Wir beweisen die Äquivalenz in zwei Richtungen.
+
+\noindent
+\textbf{Richtung ($\Rightarrow$):} Angenommen, es gilt $\exists x \, (P(x) \lor Q(x))$. Nach dem Rezept für Existenzquantoren in den Voraussetzungen führen wir ein konkretes Objekt $x_0$ ein, für das $P(x_0) \lor Q(x_0)$ wahr ist. Wir nutzen nun eine Fallunterscheidung für dieses Oder-Given:
+\begin{description}
+    \item[Fall 1: $P(x_0)$ ist wahr.] Wenn $P(x_0)$ gilt, dann existiert ein $x$ (nämlich $x_0$), sodass $P(x)$ wahr ist. Es folgt $\exists x \, P(x)$. Damit ist auch die Oder-Aussage $(\exists x \, P(x)) \lor (\exists x \, Q(x))$ wahr.
+    \item[Fall 2: $Q(x_0)$ ist wahr.] Wenn $Q(x_0)$ gilt, folgt analog $\exists x \, Q(x)$. Damit ist die Oder-Aussage $(\exists x \, P(x)) \lor (\exists x \, Q(x))$ ebenfalls wahr.
+\end{description}
+In beiden Fällen ist das Ziel erreicht.
+
+\medskip
+\noindent
+\textbf{Richtung ($\Leftarrow$):} Angenommen, es gilt $(\exists x \, P(x)) \lor (\exists x \, Q(x))$. Da es sich um ein Oder in den Voraussetzungen handelt, machen wir eine Fallunterscheidung:
+\begin{description}
+    \item[Fall 1: $\exists x \, P(x)$ ist wahr.] Wir wählen ein konkretes Objekt $x_0$, sodass $P(x_0)$ gilt. Für dieses $x_0$ ist die Aussage $P(x_0) \lor Q(x_0)$ automatisch wahr. Also haben wir ein Objekt gefunden, das die Bedingung erfüllt, woraus $\exists x \, (P(x) \lor Q(x))$ folgt.
+    \item[Fall 2: $\exists x \, Q(x)$ ist wahr.] Wir wählen ein konkretes Objekt $x_1$, sodass $Q(x_1)$ gilt. Damit ist auch $P(x_1) \lor Q(x_1)$ wahr. Es folgt ebenfalls $\exists x \, (P(x) \lor Q(x))$.
+\end{description}
+Da das Ziel in beiden Fällen gezeigt wurde, ist die Äquivalenz bewiesen.
+\end{proof}
+
+\newpage
+
+\section*{Umgeschriebene Äquivalenz (Oder als Implikation)}
+
+\begin{theorem}
+Unter Verwendung der Äquivalenz $A \lor B \iff \neg A \rightarrow B$ lässt sich die Quantoren-Äquivalenz wie folgt formulieren:
+\begin{enumerate}
+    \item[\textbf{Richtung 1:}] $\exists x \, (P(x) \lor Q(x)) \implies \left[ \neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x) \right]$
+    \item[\textbf{Richtung 2:}] $\left[ \neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x) \right] \implies \exists x \, (P(x) \lor Q(x))$
+\end{enumerate}
+\end{theorem}
+
+\subsection*{Scratch Work zu Richtung 1}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. $\exists x \, (P(x) \lor Q(x))$ & \emph{Goal:} $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$ \\[1ex]
+\hline
+1. $\exists x \, (P(x) \lor Q(x))$ \newline
+2. $\neg(\exists x \, P(x))$ \quad ($\equiv \forall x \, \neg P(x)$) \newline
+(\emph{Rezept: $\rightarrow$ im Goal}) & \emph{Neues Goal:} $\exists x \, Q(x)$ \\[1ex]
+\hline
+3. $x_0$ ist ein konkretes Objekt. \newline
+4. $P(x_0) \lor Q(x_0)$ \quad (\emph{Aus Given 1}) \newline
+5. $\neg P(x_0)$ \quad (\emph{Instanziierung von Given 2}) & \emph{Goal:} $\exists x \, Q(x)$ \\[1ex]
+\hline
+3. $x_0$ ist ein konkretes Objekt. \newline
+6. $Q(x_0)$ \quad (\emph{Da $P(x_0)$ laut 5 falsch ist}) & \emph{Neues Goal:} $Q(x_0)$ \newline
+(\emph{Wähle $x_0$ als Kandidat}) $\rightarrow \checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Scratch Work zu Richtung 2}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$ & \emph{Goal:} $\exists x \, (P(x) \lor Q(x))$ \\[1ex]
+\hline
+1. $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$ \newline
+2. $\neg\exists x \, (P(x) \lor Q(x))$ \newline
+($\equiv \forall x \, (\neg P(x) \land \neg Q(x))$) \newline
+(\emph{Strategie: Widerspruchsbeweis}) & \emph{Neues Goal:} $\bot$ (Widerspruch) \\[1ex]
+\hline
+3. $\neg(\exists x \, P(x))$ \quad ($\equiv \forall x \, \neg P(x)$) \newline
+4. $\neg(\exists x \, Q(x))$ \quad ($\equiv \forall x \, \neg Q(x)$) \newline
+(\emph{Beide folgen direkt aus Given 2}) & \emph{Goal:} $\bot$ \\[1ex]
+\hline
+5. $\exists x \, Q(x)$ \quad (\emph{Modus Ponens auf 1 mit 3}) \newline
+6. $\neg(\exists x \, Q(x))$ \quad (\emph{Kopie von Given 4}) & \emph{Goal:} $\bot$ \newline
+$\rightarrow$ Widerspruch zwischen 5 und 6! $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Formaler Beweis (Umgeschriebene Variante)}
+\begin{proof}
+\textbf{Richtung 1:} Angenommen, es gilt $\exists x \, (P(x) \lor Q(x))$. Um das Goal $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$ zu zeigen, nehmen wir zusätzlich an, dass $\neg(\exists x \, P(x))$ wahr ist (was bedeutet, dass für kein $x$ die Eigenschaft $P(x)$ gilt).
+Aus der ersten Voraussetzung folgt die Existenz eines konkreten Objekts $x_0$, für das $P(x_0) \lor Q(x_0)$ gilt. Da laut unserer zweiten Annahme $P(x)$ für überhaupt kein $x$ gilt, ist insbesondere $P(x_0)$ falsch. Damit die Oder-Verknüpfung $P(x_0) \lor Q(x_0)$ dennoch wahr ist, muss zwingend $Q(x_0)$ wahr sein. Damit haben wir ein Objekt gefunden, für das $Q$ gilt, woraus $\exists x \, Q(x)$ folgt. Das Goal ist bewiesen.
+
+\medskip
+\textbf{Richtung 2:} Angenommen, es gilt $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$. Wir führen einen Beweis durch Widerspruch und nehmen an, das Goal wäre falsch, also $\neg\exists x \, (P(x) \lor Q(x))$.
+Diese Widerspruchsannahme bedeutet logisch, dass für kein $x$ entweder $P(x)$ oder $Q(x)$ gilt. Daraus folgt direkt zweierlei: Es gibt kein $x$ mit $P(x)$ (es gilt also $\neg\exists x \, P(x)$) und es gibt kein $x$ mit $Q(x)$ (es gilt also $\neg\exists x \, Q(x)$).
+Da nun $\neg\exists x \, P(x)$ wahr ist, ist die linke Seite unserer Hauptvoraussetzung erfüllt. Per Modus Ponens erhalten wir sofort $\exists x \, Q(x)$. Dies steht jedoch im direkten Widerspruch zu der Folgerung, dass kein $x$ mit $Q(x)$ existiert ($\neg\exists x \, Q(x)$). Der Widerspruch ist gelöst und die Behauptung damit bewiesen.
+\end{proof}
+
+\newpage
+
+\section*{Die rein implikative Quantoren-Äquivalenz}
+
+\begin{theorem}
+Werden alle Oder-Verknüpfungen systematisch durch Implikationen ersetzt ($\alpha \lor \beta \equiv \neg \alpha \rightarrow \beta$), lautet die zu beweisende Äquivalenz:
+\[ \exists x \, (\neg P(x) \rightarrow Q(x)) \iff \left[ \neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x) \right] \]
+\end{theorem}
+
+\subsection*{Scratch Work ($\Rightarrow$)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. $\exists x \, (\neg P(x) \rightarrow Q(x))$ & \emph{Goal:} $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$ \\[1ex]
+\hline
+1. $\exists x \, (\neg P(x) \rightarrow Q(x))$ \newline
+2. $\neg(\exists x \, P(x))$ \quad ($\equiv \forall x \, \neg P(x)$) \newline
+(\emph{Rezept: $\rightarrow$ im Goal}) & \emph{Neues Goal:} $\exists x \, Q(x)$ \\[1ex]
+\hline
+3. $x_0$ ist ein konkretes Objekt. \newline
+4. $\neg P(x_0) \rightarrow Q(x_0)$ \quad (\emph{Aus Given 1}) \newline
+5. $\neg P(x_0)$ \quad (\emph{Instanziierung von Given 2}) & \emph{Goal:} $\exists x \, Q(x)$ \\[1ex]
+\hline
+3. $x_0$ ist ein konkretes Objekt. \newline
+6. $Q(x_0)$ \quad (\emph{Modus Ponens auf 4 mit 5}) & \emph{Neues Goal:} $Q(x_0)$ \newline
+(\emph{Wähle $x_0$ als Kandidat}) $\rightarrow \checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Scratch Work ($\Leftarrow$)}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$ & \emph{Goal:} $\exists x \, (\neg P(x) \rightarrow Q(x))$ \\[1ex]
+\hline
+1. $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$ \newline
+2. $\neg\exists x \, (\neg P(x) \rightarrow Q(x))$ \newline
+($\equiv \forall x \, (\neg P(x) \land \neg Q(x))$) \newline
+(\emph{Strategie: Widerspruchsbeweis}) & \emph{Neues Goal:} $\bot$ \\
+\hline
+3. $\neg(\exists x \, P(x))$ \quad ($\equiv \forall x \, \neg P(x)$) \newline
+4. $\neg(\exists x \, Q(x))$ \quad ($\equiv \forall x \, \neg Q(x)$) \newline
+(\emph{Regel: Verneinte Implikation}) & \emph{Goal:} $\bot$ \\[1ex]
+\hline
+5. $\exists x \, Q(x)$ \quad (\emph{Modus Ponens auf 1 mit 3}) \newline
+6. $\neg(\exists x \, Q(x))$ \quad (\emph{Kopie von Given 4}) & \emph{Goal:} $\bot$ \newline
+$\rightarrow$ Widerspruch zwischen 5 und 6! $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Formaler Beweis}
+\begin{proof}
+\textbf{Richtung ($\Rightarrow$):} Angenommen, es gilt $\exists x \, (\neg P(x) \rightarrow Q(x))$. Um die Behauptung $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$ zu zeigen, nehmen wir zusätzlich an, es gelte $\neg(\exists x \, P(x))$. Dies bedeutet, dass für alle Objekte $x$ die Aussage $\neg P(x)$ wahr ist.
+Aus der ersten Voraussetzung folgt die Existenz eines konkreten Objekts $x_0$, für das die Implikation $\neg P(x_0) \rightarrow Q(x_0)$ gilt. Da laut unserer zweiten Annahme $\neg P(x)$ für alle $x$ gilt, gilt insbesondere $\neg P(x_0)$. Mittels Modus Ponens folgt aus $\neg P(x_0) \rightarrow Q(x_0)$ und $\neg P(x_0)$ sofort $Q(x_0)$. Da somit ein Zeuge für die Existenzaussage existiert, ist $\exists x \, Q(x)$ bewiesen.
+
+\medskip
+\textbf{Richtung ($\Leftarrow$):} Angenommen, es gilt $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$. Wir führen einen Beweis durch Widerspruch und nehmen an, die Behauptung wäre falsch, also $\neg \exists x \, (\neg P(x) \rightarrow Q(x))$.
+Dies ist äquivalent zu $\forall x \, \neg(\neg P(x) \rightarrow Q(x))$. Da eine Implikation $A \rightarrow B$ nur dann falsch ist, wenn $A$ wahr und $B$ falsch ist, bedeutet dies, dass für alle $x$ sowohl $\neg P(x)$ als auch $\neg Q(x)$ gilt. Daraus folgern wir direkt zweierlei: Es gibt kein $x$, für das $P(x)$ gilt ($\neg \exists x \, P(x)$), und es gibt kein $x$, für das $Q(x)$ gilt ($\neg \exists x \, Q(x)$).
+Weil nun $\neg \exists x \, P(x)$ wahr ist, ist die Voraussetzung unserer Hauptannahme erfüllt. Per Modus Ponens erhalten wir sofort $\exists x \, Q(x)$. Dies steht im direkten Widerspruch zu der universellen Gültigkeit von $\neg Q(x)$ für alle $x$. Der Widerspruch ist konstruiert, womit die Behauptung bewiesen ist.
+\end{proof}
+
+\newpage
+
+\subsection*{Direkter Beweis der Rückrichtung ($\Leftarrow$) ohne Widerspruch}
+
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$ & \emph{Goal:} $\exists x \, (\neg P(x) \rightarrow Q(x))$ \\[1ex]
+\hline
+\textbf{Fall A:} $\exists x \, P(x)$ gilt. \newline
+2. $x_0$ ist konkret mit $P(x_0)$. \newline
+(\emph{Wähle $x_0$ als Kandidat}) & \emph{Neues Goal:} $\neg P(x_0) \rightarrow Q(x_0)$ \newline
+$\rightarrow$ Wahr, da die Prämisse $\neg P(x_0)$ im Widerspruch zu Given 2 steht (Ex Falso). $\checkmark$ \\[1ex]
+\hline
+\textbf{Fall B:} $\neg(\exists x \, P(x))$ gilt. \newline
+2. $\exists x \, Q(x)$ \quad (\emph{Modus Ponens auf 1}) \newline
+3. $x_1$ ist konkret mit $Q(x_1)$. \newline
+(\emph{Wähle $x_1$ als Kandidat}) & \emph{Neues Goal:} $\neg P(x_1) \rightarrow Q(x_1)$ \newline
+$\rightarrow$ Wahr, da die Konklusion $Q(x_1)$ durch Given 3 wahr ist. $\checkmark$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proof}[Direkter Beweis für $(\Leftarrow)$]
+Vorausgesetzt sei $\neg(\exists x \, P(x)) \rightarrow \exists x \, Q(x)$. Wir zeigen die Existenzaussage durch eine direkte Fallunterscheidung über die Gültigkeit von $\exists x \, P(x)$:
+
+\begin{description}
+    \item[Fall A: $\exists x \, P(x)$ ist wahr.]
+    Es existiert ein konkretes Objekt $x_0$, für das $P(x_0)$ gilt. Wir wählen dieses $x_0$ als unseren Kandidaten für die Behauptung. Wir müssen zeigen, dass die Implikation $\neg P(x_0) \rightarrow Q(x_0)$ wahr ist. Da $P(x_0)$ wahr ist, ist die Bedingung $\neg P(x_0)$ falsch. Eine Implikation mit falscher Prämisse ist logisch immer wahr (Prinzip des "vacuous truth"). Somit gilt die Implikation für $x_0$, und die Existenzaussage ist erfüllt.
+
+    \item[Fall B: $\neg(\exists x \, P(x))$ ist wahr.]
+    In diesem Fall ist die Voraussetzung unserer Hauptannahme erfüllt. Per Modus Ponens erhalten wir direkt $\exists x \, Q(x)$. Es existiert also ein konkretes Objekt $x_1$, für das $Q(x_1)$ wahr ist. Wir wählen dieses $x_1$ als unseren Kandidaten für die Behauptung. Zu zeigen ist, dass $\neg P(x_1) \rightarrow Q(x_1)$ gilt. Wenn wir nun annehmen, dass $\neg P(x_1)$ wahr ist, bleibt zu zeigen, dass $Q(x_1)$ wahr ist. Dies ist jedoch nach Konstruktion von $x_1$ bereits gegeben. Damit ist die Implikation für $x_1$ wahr, und die Existenzaussage ist ebenfalls erfüllt.
+\end{description}
+Da das Ziel in beiden Fällen direkt konstruiert werden konnte, ist die Behauptung ohne Widerspruchsbeweis gezeigt.
+\end{proof}
 \end{document}

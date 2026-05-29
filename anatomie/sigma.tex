@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Satz}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Durchschnitt von $\sigma$-Algebren im Scratch-Format}
+\author{Nach Daniel J. Velleman: \emph{How to Prove It}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Definition einer $\sigma$-Algebra}
+
+Sei $X$ eine Grundmenge. Ein Mengensystem $\Sigma \subseteq \mathcal{P}(X)$ heißt \textbf{$\sigma$-Algebra} auf $X$, wenn die folgenden drei Axiome erfüllt sind:
+\begin{enumerate}
+    \item S1 (Ganzraum): $X \in \Sigma$
+    \item S2 (Komplementstabilität): $\forall A \, (A \in \Sigma \rightarrow A^c \in \Sigma)$ \quad (wobei $A^c = X \setminus A$)
+    \item S3 (Abzählbare Vereinigungen): Für jede Folge von Mengen $(A_n)_{n \in \mathbb{N}}$ gilt:
+    \[ \forall (A_n)_{n \in \mathbb{N}} \, \left( \forall n \in \mathbb{N} \, (A_n \in \Sigma) \rightarrow \bigcup_{n \in \mathbb{N}} A_n \in \Sigma \right) \]
+\end{enumerate}
+
+---
+
+\section*{2. Der Satz vom Durchschnitt einer Familie}
+
+\begin{theorem}
+Sei $X$ eine Menge und $I$ eine nichtleere Indexmenge. Für jedes $i \in I$ sei $\Sigma_i$ eine $\sigma$-Algebra auf $X$. Dann ist der Durchschnitt der Familie, definiert als
+\[
+\Sigma_{\cap} = \bigcap_{i \in I} \Sigma_i = \{ A \subseteq X \mid \forall i \in I \, (A \in \Sigma_i) \},
+\]
+ebenfalls eine $\sigma$-Algebra auf $X$.
+\end{theorem}
+
+---
+
+\section*{3. Velleman Scratch Work für die drei Axiome}
+
+Wir untersuchen nun nacheinander alle drei Axiome für das Durchschnittssystem $\Sigma_{\cap}$. Die grundlegenden Givens für alle Tabellen sind:
+\begin{itemize}
+    \item[G1:] $\forall i \in I \, (\Sigma_i \text{ ist eine } \sigma\text{-Algebra})$
+    \item[G2:] $\Sigma_{\cap} = \{ A \subseteq X \mid \forall i \in I \, (A \in \Sigma_i) \}$
+\end{itemize}
+
+\subsection*{Axiom S1: Zeige $X \in \Sigma_{\cap}$}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. G1 und G2 \newline
+\rule{0pt}{3ex} & \emph{Goal:} $X \in \Sigma_{\cap}$ \newline
+(\emph{Umgewandelt via Definition von $\Sigma_{\cap}$}) \newline
+\emph{Goal*:} $\forall i \in I \, (X \in \Sigma_i)$ \\[1ex]
+\hline
+1. G1 und G2 \newline
+3. Sei $i_0 \in I$ beliebig. & \emph{Neues Goal:} $X \in \Sigma_{i_0}$ \\[1ex]
+\hline
+4. $\Sigma_{i_0}$ erfüllt Axiom S1 (da es eine $\sigma$-Algebra ist). \newline
+5. $X \in \Sigma_{i_0}$ (aus Given 4) & \emph{Goal:} $X \in \Sigma_{i_0}$ \newline
+\newline
+\checkmark \quad (Ziel erreicht!) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection*{Axiom S2: Zeige $\forall A \, (A \in \Sigma_{\cap} \rightarrow A^c \in \Sigma_{\cap})$}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. G1 und G2 & \emph{Goal:} $\forall A \, (A \in \Sigma_{\cap} \rightarrow A^c \in \Sigma_{\cap})$ \\[1ex]
+\hline
+% Goal abbauen
+3. Sei $A$ eine beliebige Menge. \newline
+4. $A \in \Sigma_{\cap}$ (Annahme) \newline
+$\rightarrow$ d.h. $\forall i \in I \, (A \in \Sigma_i)$ & \emph{Neues Goal:} $A^c \in \Sigma_{\cap}$ \newline
+\newline
+(\emph{Umgewandelt via Definition von $\Sigma_{\cap}$}) \newline
+\emph{Goal*:} $\forall i \in I \, (A^c \in \Sigma_i)$ \\[1ex]
+\hline
+% Goal Allquantor abbauen
+3. Menge $A$ beliebig; 4. wie oben. \newline
+5. Sei $i_0 \in I$ beliebig. & \emph{Neues Goal:} $A^c \in \Sigma_{i_0}$ \\[1ex]
+\hline
+% Givens nutzen
+6. $A \in \Sigma_{i_0}$ (Instanziierung von Given 4 mit $i_0$) \newline
+7. $\Sigma_{i_0}$ erfüllt S2 (Komplementstabilität). \newline
+8. $A \in \Sigma_{i_0} \rightarrow A^c \in \Sigma_{i_0}$ (aus Given 7) \newline
+9. $A^c \in \Sigma_{i_0}$ (Modus Ponens aus 6 und 8) & \emph{Goal:} $A^c \in \Sigma_{i_0}$ \newline
+\newline
+\checkmark \quad (Ziel erreicht!) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Axiom S3: Zeige Stabilität unter abzählbaren Vereinigungen}
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+1. G1 und G2 & \emph{Goal:} $\forall (A_n)_{n \in \mathbb{N}} \left( \forall n (A_n \in \Sigma_{\cap}) \rightarrow \bigcup_{n} A_n \in \Sigma_{\cap} \right)$ \\[1ex]
+\hline
+% Goal abbauen
+3. Sei $(A_n)_{n \in \mathbb{N}}$ eine beliebige Folge. \newline
+4. $\forall n \in \mathbb{N} \, (A_n \in \Sigma_{\cap})$ (Annahme) \newline
+$\rightarrow$ d.h. $\forall n \in \mathbb{N} \, \forall i \in I \, (A_n \in \Sigma_i)$ & \emph{Neues Goal:} $\bigcup_{n \in \mathbb{N}} A_n \in \Sigma_{\cap}$ \newline
+\newline
+(\emph{Umgewandelt via Definition von $\Sigma_{\cap}$}) \newline
+\emph{Goal*:} $\forall i \in I \, \left(\bigcup_{n \in \mathbb{N}} A_n \in \Sigma_i \right)$ \\[1ex]
+\hline
+% Index i_0 einführen
+3. Folge beliebig; 4. wie oben. \newline
+5. Sei $i_0 \in I$ beliebig. & \emph{Neues Goal:} $\bigcup_{n \in \mathbb{N}} A_n \in \Sigma_{i_0}$ \\[1ex]
+\hline
+% Information für i_0 extrahieren
+6. $\forall n \in \mathbb{N} \, (A_n \in \Sigma_{i_0})$ \newline
+(\emph{Aus Given 4, da es für alle $i$ gilt}) \newline
+7. $\Sigma_{i_0}$ erfüllt das Axiom S3. \newline
+8. $\forall n (A_n \in \Sigma_{i_0}) \rightarrow \bigcup_{n} A_n \in \Sigma_{i_0}$ & \emph{Goal:} $\bigcup_{n \in \mathbb{N}} A_n \in \Sigma_{i_0}$ \\[1ex]
+\hline
+9. $\bigcup_{n \in \mathbb{N}} A_n \in \Sigma_{i_0}$ \newline
+(\emph{Modus Ponens aus Given 6 und 8}) & \emph{Goal:} $\bigcup_{n \in \mathbb{N}} A_n \in \Sigma_{i_0}$ \newline
+\newline
+\checkmark \quad (Ziel erreicht!) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

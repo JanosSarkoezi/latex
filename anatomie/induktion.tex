@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+
+\newtheorem{theorem}{Satz}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Endliche Durchschnitte in einer Topologie via Induktion}
+\author{Nach Daniel J. Velleman: \emph{How to Prove It}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Das mathematische Problem}
+
+Sei $\mathcal{T}$ eine Topologie auf $X$. Das Axiom T2 besagt: Wenn zwei Mengen in $\mathcal{T}$ liegen, liegt auch ihr Durchschnitt in $\mathcal{T}$. Wir wollen nun beweisen, dass dies für jede endliche Anzahl $n \ge 1$ von Mengen gilt.
+
+\textbf{Aussage $P(n)$:} Für jedes $n \in \mathbb{N}_{\ge 1}$ gilt: Wenn $U_1, U_2, \dots, U_n \in \mathcal{T}$, dann ist auch $\bigcap_{k=1}^n U_k \in \mathcal{T}$.
+
+---
+
+\section*{Vellemans Induktions-Rezept (Scratch-Form)}
+
+Bei einem Beweis per vollständiger Induktion ändert sich die Struktur des Goals fundamental. Das Ziel $\forall n \, P(n)$ wird in zwei völlig separate Teilziele zerlegt:
+1. \textbf{Induktionsbasis:} Zeige $P(1)$.
+2. \textbf{Induktionsschritt:} Nimm an, $P(n)$ gilt für ein festes, beliebiges $n$ (\emph{Induktionsvoraussetzung}). Zeige, dass unter dieser Annahme auch $P(n+1)$ wahr ist (\emph{Induktionsziel}).
+
+---
+
+\section*{Scratch Work für den Induktionsschritt ($P(n) \rightarrow P(n+1)$)}
+
+Die Induktionsbasis $P(1)$ ist trivial, da der Durchschnitt von nur einer Menge $\bigcap_{k=1}^1 U_k = U_1$ ist und $U_1 \in \mathcal{T}$ laut Voraussetzung gilt. Spannend ist der Induktionsschritt:
+
+\begin{center}
+\small
+\begin{tabular}{ L{0.45\textwidth} | L{0.45\textwidth} }
+\toprule
+\textbf{Givens} & \textbf{Goals} \\
+\midrule
+% Schritt 0: Setup
+1. $\mathcal{T}$ erfüllt das Axiom T2 (für zwei Mengen). \newline
+2. Sei $n \ge 1$ fest, aber beliebig gewählt. \newline
+3. \textbf{Induktionsvoraussetzung $P(n)$:} \newline
+$\forall V_1, \dots, V_n \in \mathcal{T} \rightarrow \bigcap_{k=1}^n V_k \in \mathcal{T}$ &
+\emph{Goal (Induktionsziel $P(n+1)$):} \newline
+Wenn $U_1, \dots, U_n, U_{n+1} \in \mathcal{T}$, dann $\bigcap_{k=1}^{n+1} U_k \in \mathcal{T}$. \\[1ex]
+\hline
+
+% Schritt 1: Goal abbauen (Implikation)
+1., 2., 3. [Givens wie oben] \newline
+4. Seien $U_1, U_2, \dots, U_n, U_{n+1} \in \mathcal{T}$ beliebige Mengen. &
+\emph{Neues Goal:} $\bigcap_{k=1}^{n+1} U_k \in \mathcal{T}$ \\[1ex]
+\hline
+
+% Schritt 2: Den großen Durchschnitt mathematisch aufspalten
+% Das ist der kreative mathematische Schritt: Ein (n+1)-Durchschnitt ist der Durchschnitt aus einem n-Durchschnitt und der (n+1)-ten Menge!
+1., 2., 3., 4. [Givens wie oben] \newline
+5. $\bigcap_{k=1}^{n+1} U_k = \left( \bigcap_{k=1}^n U_k \right) \cap U_{n+1}$ &
+\emph{Umgewandeltes Goal:} \newline
+$\left( \bigcap_{k=1}^n U_k \right) \cap U_{n+1} \in \mathcal{T}$ \\[1ex]
+\hline
+
+% Schritt 3: Induktionsvoraussetzung (Given 3) nutzen
+% Da U_1 bis U_n in T liegen (Given 4), dürfen wir Given 3 instanziieren!
+1., 2., 3., 4., 5. [Givens wie oben] \newline
+6. $\bigcap_{k=1}^n U_k \in \mathcal{T}$ \newline
+(\emph{Instanziierung von Given 3 mit unseren Mengen}) &
+\emph{Goal:} $\left( \bigcap_{k=1}^n U_k \right) \cap U_{n+1} \in \mathcal{T}$ \\[1ex]
+\hline
+
+% Schritt 4: Axiom T2 (Given 1) für zwei Mengen zünden
+% Wir haben zwei "Pakete": Paket A = \bigcap_{k=1}^n U_k (ist in T laut Given 6) und Paket B = U_{n+1} (ist in T laut Given 4).
+1., 2., 4., 5., 6. [Givens wie oben] \newline
+7. $U_{n+1} \in \mathcal{T}$ (aus Given 4) \newline
+8. Da Paket A und Paket B in $\mathcal{T}$ liegen, folgt aus Axiom T2 direkt, dass ihr gemeinsamer Durchschnitt in $\mathcal{T}$ liegt: \newline
+$\left( \bigcap_{k=1}^n U_k \right) \cap U_{n+1} \in \mathcal{T}$ &
+\emph{Goal:} $\left( \bigcap_{k=1}^n U_k \right) \cap U_{n+1} \in \mathcal{T}$ \newline
+\newline
+\checkmark \quad (Ziel erreicht!) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}
