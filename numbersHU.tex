@@ -1,0 +1,223 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage[top=2cm, left=2.5cm, right=2.5cm, bottom=2.5cm]{geometry}
+
+\begin{document}
+
+\section*{Bevezetés}
+Ismerkedjünk meg a számrendszerekkel a jól ismert tízes számrendszeren keresztül! Vizsgáljuk meg az \textbf{1976}-os számot. Húzzunk keretet az egyes számjegyek köré, hogy jobban megkülönböztethessük a helyi értékeiket.
+
+\begin{center}
+$1976 = $
+\begin{tikzpicture}[baseline=-0.5ex, every node/.style={align=center}]
+    \foreach \digit [count=\i from 0] in {1, 9, 7, 6} {
+        \node[draw, minimum width=0.8cm, minimum height=0.8cm, rounded corners=3pt] (tub\i) at (\i*1.1, 0) {\large $\mathbf{\digit}$};
+    }
+\end{tikzpicture}
+\end{center}
+
+Most írjuk az egyes számjegyek alá a tízes hatványait:
+
+\begin{center}
+$1976 = $
+\begin{tikzpicture}[baseline=-0.5ex, every node/.style={align=center}]
+    \foreach \digit/\power [count=\i from 0] in {1/10^3, 9/10^2, 7/10^1, 6/10^0} {
+        \node[draw, minimum width=0.8cm, minimum height=0.8cm, rounded corners=3pt] (tub\i) at (\i*1.1, 0) {\large $\mathbf{\digit}$};
+        \node[anchor=north, font=\small] at (tub\i.south) {$\power$};
+    }
+\end{tikzpicture}
+\end{center}
+
+Most írjuk alá a számjegyek és a tízes hatványok szorzatát, és adjuk össze őket:
+
+\begin{center}
+\begin{tikzpicture}[baseline=(box0.base), every node/.style={align=center}]
+    \foreach \digit/\power/\prod [count=\i from 0] in {
+        1 / 10^3 / 1 \cdot 10^3,
+        9 / 10^2 / 9 \cdot 10^2,
+        7 / 10^1 / 7 \cdot 10^1,
+        6 / 10^0 / 6 \cdot 10^0
+    } {
+        \pgfmathsetmacro{\xpos}{\i*2.2}
+        \node[draw, minimum width=0.8cm, minimum height=0.8cm, rounded corners=3pt] (box\i) at (\xpos, 0) {\large $\mathbf{\digit}$};
+        \node[anchor=north, font=\small] (pow\i) at ([yshift=-0.05cm]box\i.south) {$\power$};
+        \node[anchor=north, font=\small] (prod\i) at ([yshift=-0.25cm]pow\i.south) {$\prod$};
+        \ifnum\i<3
+            \node[anchor=base] at ({\xpos + 1.1}, {-0.8 - 0.7}) {$+$};
+        \fi
+    }
+\end{tikzpicture}
+\end{center}
+
+Végül számítsuk ki az egészet:
+
+\begin{center}
+\begin{align*}
+  &\phantom{= } 1 \cdot 10^3 + 9 \cdot 10^2 + 7 \cdot 10^1 + 6 \cdot 10^0 \\
+  &= 1 \cdot 1000 + 9 \cdot 100 + 7 \cdot 10 + 6 \cdot 1 \\
+  &= 1000 + 900 + 70 + 6 \\
+  &= 1976
+\end{align*}
+\end{center}
+A tízes számrendszerben tehát a 0, 1, 2, 3, 4, 5, 6, 7, 8 és 9 számjegyeket használjuk.
+\newpage
+
+Következőként nézzünk meg egy nagyobb számot, például a \textbf{8305710}-et. Itt is pontosan ugyanezt az elvet alkalmazzuk:
+
+\begin{center}
+\begin{tikzpicture}[baseline=(box0.base), every node/.style={align=center}]
+    \foreach \digit/\power/\prod [count=\i from 0] in {
+        8 / 10^6 / 8 \cdot 10^6,
+        3 / 10^5 / 3 \cdot 10^5,
+        0 / 10^4 / 0 \cdot 10^4,
+        5 / 10^3 / 5 \cdot 10^3,
+        7 / 10^2 / 7 \cdot 10^2,
+        1 / 10^1 / 1 \cdot 10^1,
+        0 / 10^0 / 0 \cdot 10^0
+    } {
+        \pgfmathsetmacro{\xpos}{\i*2.2}
+        \node[draw, minimum width=0.8cm, minimum height=0.8cm, rounded corners=3pt] (box\i) at (\xpos, 0) {\large $\mathbf{\digit}$};
+        \node[anchor=north, font=\small] (pow\i) at ([yshift=-0.05cm]box\i.south) {$\power$};
+        \node[anchor=north, font=\small] (prod\i) at ([yshift=-0.25cm]pow\i.south) {$\prod$};
+        \ifnum\i<6
+            \node[anchor=base] at ({\xpos + 1.1}, {-0.8 - 0.7}) {$+$};
+        \fi
+    }
+\end{tikzpicture}
+\end{center}
+
+Végül számítsuk ki az egészet:
+
+\begin{center}
+\begin{align*}
+  &\phantom{= } 8 \cdot 10^6 + 3 \cdot 10^5 + 0 \cdot 10^4 + 5 \cdot 10^3 + 7 \cdot 10^2 + 1 \cdot 10^1 + 0 \cdot 10^0 \\
+  &= 8 \cdot 1000000 + 3 \cdot 100000 + 0 \cdot 10000 + 5 \cdot 1000 + 7 \cdot 100 + 1 \cdot 10 + 0 \cdot 1 \\
+  &= 8000000 + 300000 + 0 + 5000 + 700 + 10 + 0 \\
+  &= 8305710
+\end{align*}
+\end{center}
+
+\section*{Feladat: Helyi értékek meghatározása}
+Próbáld meg beírni az \textbf{1971}-es számot a sémába, és kiegészíteni a hiányzó hatványokat és szorzatokat!
+
+\vspace{0.5cm}
+
+\begin{center}
+\begin{tikzpicture}[baseline=(box0.base), every node/.style={align=center}]
+    \foreach \i in {0, 1, 2, 3} {
+        \pgfmathsetmacro{\xpos}{\i*2.2}
+        \node[draw, minimum width=0.8cm, minimum height=0.8cm, rounded corners=3pt] (box\i) at (\xpos, 0) {};
+        \node[anchor=north, font=\small] (pow\i) at ([yshift=-0.05cm]box\i.south) {$\dots$};
+        \node[anchor=north, font=\small] (prod\i) at ([yshift=-0.25cm]pow\i.south) {$\dots$};
+        \ifnum\i<3
+            \node[anchor=base] at ({\xpos + 1.1}, {-0.8 - 0.7}) {$+$};
+        \fi
+    }
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.8cm}
+Számítsd ki a végeredményt:
+\begin{center}
+\begin{align*}
+  &\phantom{= } \dots \cdot 10^3 + \dots \cdot 10^2 + \dots \cdot 10^1 + \dots \cdot 10^0 \\
+  &= \dots + \dots + \dots + \dots \\
+  &= \underline{\hspace{3cm}}
+\end{align*}
+\end{center}
+
+\newpage
+
+\section{A kettes számrendszer (Bináris rendszer)}
+A kettes számrendszert bináris rendszernek is nevezik. Csak két számjegye van: a 0 és az 1. A tízes hatványok helyett itt a kettes hatványait használjuk. Analógiaként megjegyezhetjük: 10-es rendszer $\rightarrow$ tízes hatványok, 2-es rendszer $\rightarrow$ kettes hatványok. Nézzünk meg egy példát! Ugyanúgy építjük fel, mint a tízes rendszerben. Vizsgáljuk meg az 1101-es számot:
+
+\begin{center}
+$1101 = $
+\begin{tikzpicture}[baseline=-0.5ex, every node/.style={align=center}]
+    \foreach \digit [count=\i from 0] in {1, 1, 0, 1} {
+        \node[draw, minimum width=0.8cm, minimum height=0.8cm, rounded corners=3pt] (tub\i) at (\i*1.1, 0) {\large $\mathbf{\digit}$};
+    }
+\end{tikzpicture}
+\end{center}
+
+Most írjuk az egyes számjegyek alá a kettes hatványait:
+
+\begin{center}
+$1101 = $
+\begin{tikzpicture}[baseline=-0.5ex, every node/.style={align=center}]
+    \foreach \digit/\power [count=\i from 0] in {1/2^3, 1/2^2, 0/2^1, 1/2^0} {
+        \node[draw, minimum width=0.8cm, minimum height=0.8cm, rounded corners=3pt] (tub\i) at (\i*1.1, 0) {\large $\mathbf{\digit}$};
+        \node[anchor=north, font=\small] at (tub\i.south) {$\power$};
+    }
+\end{tikzpicture}
+\end{center}
+
+Most írjuk alá a számjegyek és a kettes hatványok szorzatát, és adjuk össze őket:
+
+\begin{center}
+\begin{tikzpicture}[baseline=(box0.base), every node/.style={align=center}]
+    \foreach \digit/\power/\prod [count=\i from 0] in {
+        1 / 2^3 / 1 \cdot 2^3,
+        1 / 2^2 / 1 \cdot 2^2,
+        0 / 2^1 / 0 \cdot 2^1,
+        1 / 2^0 / 1 \cdot 2^0
+    } {
+        \pgfmathsetmacro{\xpos}{\i*2.2}
+        \node[draw, minimum width=0.8cm, minimum height=0.8cm, rounded corners=3pt] (box\i) at (\xpos, 0) {\large $\mathbf{\digit}$};
+        \node[anchor=north, font=\small] (pow\i) at ([yshift=-0.05cm]box\i.south) {$\power$};
+        \node[anchor=north, font=\small] (prod\i) at ([yshift=-0.25cm]pow\i.south) {$\prod$};
+        \ifnum\i<3
+            \node[anchor=base] at ({\xpos + 1.1}, {-0.8 - 0.7}) {$+$};
+        \fi
+    }
+\end{tikzpicture}
+\end{center}
+
+Végül számítsuk ki az egészet:
+
+\begin{center}
+\begin{align*}
+  &\phantom{= } 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 \\
+  &= 1 \cdot 8 + 1 \cdot 4 + 0 \cdot 2 + 1 \cdot 1 \\
+  &= 8 + 4 + 0 + 1 \\
+  &= 13
+\end{align*}
+\end{center}
+
+Következőként nézzünk meg egy nagyobb számot, például az \textbf{11010110}-et. Itt is pontosan ugyanezt az elvet alkalmazzuk:
+
+\begin{center}
+\begin{tikzpicture}[baseline=(box0.base), every node/.style={align=center}]
+    \foreach \digit/\power/\prod [count=\i from 0] in {
+        1 / 2^7 / 1 \cdot 2^7,
+        1 / 2^6 / 1 \cdot 2^6,
+        0 / 2^5 / 0 \cdot 2^5,
+        1 / 2^4 / 1 \cdot 2^4,
+        0 / 2^3 / 0 \cdot 2^3,
+        1 / 2^2 / 1 \cdot 2^2,
+        1 / 2^1 / 1 \cdot 2^1,
+        0 / 2^0 / 0 \cdot 2^0
+    } {
+        \pgfmathsetmacro{\xpos}{\i*1.6}
+        \node[draw, minimum width=0.8cm, minimum height=0.8cm, rounded corners=3pt] (box\i) at (\xpos, 0) {\large $\mathbf{\digit}$};
+        \node[anchor=north, font=\small] (pow\i) at ([yshift=-0.05cm]box\i.south) {$\power$};
+        \node[anchor=north, font=\small] (prod\i) at ([yshift=-0.25cm]pow\i.south) {$\prod$};
+        \ifnum\i<7
+            \node[anchor=base] at ({\xpos + 0.8}, {-0.8 - 0.7}) {$+$};
+        \fi
+    }
+\end{tikzpicture}
+\end{center}
+
+Végül számítsuk ki az egészet:
+
+\begin{center}
+\begin{align*}
+  &\phantom{= } 1 \cdot 2^7 + 1 \cdot 2^6 + 0 \cdot 2^5 + 1 \cdot 2^4 + 0 \cdot 2^3 + 1 \cdot 2^2 + 1 \cdot 2^1 + 0 \cdot 2^0 \\
+  &= 1 \cdot 128 + 1 \cdot 64 + 0 \cdot 32 + 1 \cdot 16 + 0 \cdot 8 + 1 \cdot 4 + 1 \cdot 2 + 0 \cdot 1 \\
+  &= 128 + 64 + 0 + 16 + 0 + 4 + 2 + 0 \\
+  &= 214
+\end{align*}
+\end{center}
+\end{document}
