@@ -1,18 +1,22 @@
-pdf: sp.pdf
+TEX_FILES := $(wildcard *.tex)
+PDF_FILES := $(TEX_FILES:.tex=.pdf)
 
-sp.pdf: sp.aux
-	pdflatex -file-line-error -interaction=nonstopmode $(addsuffix .tex, $(basename $<))
+.PHONY: pdf clean cleanall
 
-sp.aux: sp.tex
+pdf: $(PDF_FILES)
+
+%.pdf: %.aux
+	pdflatex -file-line-error -interaction=nonstopmode $(addsuffix .tex,$(basename $<))
+
+%.aux: %.tex
 	pdflatex -file-line-error -interaction=nonstopmode $<
 
 clean:
-	rm -f *.toc *.aux *.log *.out *.idx *.dvi
+	rm -f *.toc *.aux *.log *.out *.idx *.dvi *.nav *.snm *.vrb *.bbl *.blg
 
-cleanall:
-	rm -f *.toc *.pdf *.aux *.log *.out *.idx *.dvi
+cleanall: clean
+	rm -f $(PDF_FILES)
 
-.PHONY: pdf clean cleanall
 .SILENT: pdf
 
 # vim: set tabstop=4 shiftwidth=4 noexpandtab:

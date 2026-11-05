@@ -1,0 +1,1558 @@
+\documentclass[fleqn]{scrartcl}
+% \usepackage{amsfonts}
+% mathtools loads
+% - amsmath -> amsbsy, amsopn, amstext
+% - kezval, calc, mhsetpu, graphicx
+\usepackage{mathtools} % -> amsmath -> amsbsy, amsopn, amstext
+\usepackage{tikz}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mathrsfs} % Für das geschwungene G (\mathscr{G})
+
+% Numerierung der Formel innerhalb einer Sektion
+\numberwithin{equation}{section}
+
+% Abkürzung für mathbf
+\def\*#1{\mathbf{#1}}
+
+\title{Geometric Calculus \\
+Formelsammlung}
+\author{Janos Sarközi}
+
+\begin{document}
+
+\section*{1-1. Axioms, Definitions and Identities}
+
+\noindent This section presents a convenient set of axioms for geometric algebra. In terms of the fundamental geometric product, several other products of special geometric and algebraic significance are defined, namely, the inner and outer products, the scalar product, and the commutator. A comprehensive set of basic identities is established, identities which are needed for efficient application of the algebra to almost any problem. The axioms, definitions and results of this section will be used repeatedly throughout the rest of this book.
+
+\vspace{1em}
+\noindent We define geometric algebra by a set of axioms which enable us to carry out proofs and computations without reference to basis in the algebra. For the sake of simplicity and ease of application, we have not attempted to eliminate all redundancy from the axioms.
+
+\vspace{1em}
+\noindent An element of the \textit{Geometric Algebra} \(\mathscr{G}\) will be called a multivector. We assume that \(\mathscr{G}\) is algebraically closed, that is, that the sum or product of any pair of multivectors is a unique multivector. The \textit{geometric sum} and \textit{product} of multivectors \(A, B, C, \dots\) have the following properties:
+
+\vspace{1em}
+\noindent Addition is commutative;
+\begin{equation}
+A + B = B + A. \tag{1.1}
+\end{equation}
+
+\noindent Addition and multiplication are associative;
+\begin{equation}
+(A + B) + C = A + (B + C); \tag{1.2}
+\end{equation}
+\begin{equation}
+(AB)C = A(BC). \tag{1.3}
+\end{equation}
+
+\noindent Multiplication is distributive with respect to addition;
+\begin{equation}
+A(B + C) = AB + AC, \tag{1.4}
+\end{equation}
+\begin{equation}
+(B + C)A = BA + CA. \tag{1.5}
+\end{equation}
+
+\noindent There exist unique additive and multiplicative identities 0 and 1;
+\begin{equation}
+A + 0 = A, \tag{1.6}
+\end{equation}
+\begin{equation}
+1A = A. \tag{1.7}
+\end{equation}
+
+\noindent Every multivector \(A\) has a unique additive inverse \(-A\);
+\begin{equation}
+A + (-A) = 0. \tag{1.8}
+\end{equation}
+
+\vspace{1em}
+\noindent Geometric algebra is set apart from other associative algebras by a few additional axioms which classify multivectors into different types or, as we shall say, \textit{grades}.\textsuperscript{*} We assume that any multivector \(A\) can be written as the sum
+\begin{equation}
+A = \langle A \rangle_0 + \langle A \rangle_1 + \langle A \rangle_2 + \dots = \sum_r \langle A \rangle_r. \tag{1.9}
+\end{equation}
+
+\vspace{2em}
+\noindent \rule{5cm}{0.4pt} \\
+\footnotesize \noindent * We have chosen the word `grade' over the terms `degree' and `dimension', which have frequently been used in the literature (e.g. in [H1] and [Wh]), to avoid possible confusion with other widely understood meanings of those terms.
+
+\section*{Geometric Algebra - Page 4}
+
+\noindent The quantity \(\langle A \rangle_r\) is called the \textit{r-vector part} of \(A\). If \(A = \langle A \rangle_r\) for some positive integer \(r\), then \(A\) is said to be \textit{homogeneous} of grade \(r\) and will be called an \textit{r-vector}. The terms \textit{scalar}, \textit{vector}, \textit{bivector}, \textit{trivector}, \(\dots\) are often used as alternatives to the terms 0-vector, 1-vector, 2-vector, 3-vector, \(\dots\) respectively.
+
+\vspace{1em}
+\noindent The \textit{grade operator} \(\langle \dots \rangle_r\) enjoys the properties
+\begin{equation}
+\langle A + B \rangle_r = \langle A \rangle_r + \langle B \rangle_r, \tag{1.10}
+\end{equation}
+\begin{equation}
+\langle \lambda A \rangle_r = \lambda \langle A \rangle_r = \langle A \rangle_r \lambda, \quad \text{if } \lambda = \langle \lambda \rangle_0, \tag{1.11}
+\end{equation}
+\begin{equation}
+\langle \langle A \rangle_r \rangle_r = \langle A \rangle_r. \tag{1.12}
+\end{equation}
+
+\noindent Axioms (1.10) and (1.11) imply that the space \(\mathscr{G}^r\) of all \(r\)-vectors is a linear subspace of \(\mathscr{G}\), and, indeed, that \(\mathscr{G}\) itself is a linear space. Axiom (1.11) also implies that the scalars compose a commutative subalgebra of \(\mathscr{G}\). Without further ado, we assume that the space \(\mathscr{G}^0\) of all scalars is identical with the set of \textit{real numbers}. As argued elsewhere in this book, we regard any wider definition of the scalars (for example as the complex numbers) to be entirely unnecessary and, indeed, inimical to the purposes of geometric algebra.
+
+\vspace{1em}
+\noindent Equation (1.12) exhibits the characteristic property of a projection operator, so \(\langle A \rangle_r\) can be regarded as the projection of \(A\) into the space \(\mathscr{G}^r\). Actually, (1.12) need not be regarded as an axiom, because it can be derived with the help of our remaining axioms which fix the relations among multivectors of different grade.
+
+\vspace{1em}
+\noindent Multiplication of vectors is related to scalars by the assumption that the `square' of any nonzero vector \(a\) is equal to the square of a unique \textit{positive} scalar \(|a|\) called the \textit{magnitude} of \(a\), that is
+\begin{equation}
+aa = a^2 = \langle a^2 \rangle_0 = |a|^2 > 0. \tag{1.13}
+\end{equation}
+
+\vspace{1em}
+\noindent The multiplicative relation of vectors to \(r\)-vectors is specified by assuming that, for any integer \(r > 0\), an \(r\)-vector can be expressed as a sum of \(r\)-blades. A multivector \(A_r\) is called an \textit{r-blade} or a \textit{simple} \(r\)-vector if and only if it can be \textit{factored} into a product of \(r\) anticommuting vectors \(a_1, a_2, \dots, a_r\), that is
+\begin{equation}
+A_r = a_1 a_2 \dots a_r, \tag{1.14a}
+\end{equation}
+where
+\begin{equation}
+a_j a_k = -a_k a_j \tag{1.14b}
+\end{equation}
+for \(j, k = 1, 2, \dots, r\), and \(j \neq k\).
+
+\vspace{1em}
+\noindent As a final axiom, we assume that for every nonzero \(r\)-blade \(A_r\), there exists a nonzero vector \(a\) in \(\mathscr{G}\) such that \(A_r a\) is an \((r + 1)\)-blade. This guarantees the existence of nontrivial blades of every finite grade. In fact, it implies that each \(\mathscr{G}^r\) and, of course, all of \(\mathscr{G}\) is a linear space of infinite dimension. This leads ultimately to delicate questions of convergence for homogeneous multivectors with infinite grade. But we will not be concerned with such questions in this book.
+
+\section*{Geometric Algebra - Page 5}
+
+\noindent Many consequences of the above axioms can be obtained by well-known arguments, so we need not dwell on them here. Instead, we emphasize arguments and results which are especially significant in geometric algebra.
+
+\vspace{1em}
+\noindent As a rule, we use Greek letters \(\alpha, \beta, \lambda, \mu, \dots\) to denote scalars, lower case Latin letters \(a, b, c, u, v, x, \dots\) to denote vectors and capital letters \(A, B, C, U, V, X, \dots\) to denote other multivectors.
+
+\vspace{1em}
+\noindent To avoid needless repetition, we specify at once that in this section we use \(A_{\bar{r}}\), \(B_{\bar{s}}\) and \(C_{\bar{t}}\) to denote multivectors of homogeneous grades \(r\), \(s\) and \(t\) respectively. On the other hand, we write \(a_k\) for the \(k\)th member of the set of vectors \(a_1, a_2, \dots, a_r\). In this latter case, the subscripts are indices with no relation to grade. If we wish to indicate unambiguously that a subscript specifies grade, we mark it with an overbar. Thus, we have the two notations
+\begin{equation}
+A_{\bar{r}} \equiv \langle A \rangle_r \tag{1.15}
+\end{equation}
+for the projection of \(A\) into \(\mathscr{G}^r\). Each notation has its own merits, and we have not succeeded in devising a single notation that is satisfactory in every way. The adoption of two notations seems to be justified, because the grade operator is used so frequently in geometric calculus. Also the scalar grade operator is sufficiently distinctive to merit the special notation
+\begin{equation}
+\langle A \rangle \equiv \langle A \rangle_0 \equiv A_{\bar{0}}. \tag{1.16}
+\end{equation}
+
+\vspace{1em}
+\noindent In algebraic computations it is often desirable to reorder the factors in a product. As a general aid to this activity it is convenient to introduce the operation of \textit{reversion} defined by the equations
+\begin{equation}
+(AB)^{\dagger} = B^{\dagger} A^{\dagger}, \tag{1.17a}
+\end{equation}
+\begin{equation}
+(A + B)^{\dagger} = A^{\dagger} + B^{\dagger}, \tag{1.17b}
+\end{equation}
+\begin{equation}
+(A^{\dagger})^{\dagger} = \langle A \rangle, \tag{1.17c}
+\end{equation}
+\begin{equation}
+a^{\dagger} = a \quad \text{where } a = \langle a \rangle_1. \tag{1.17d}
+\end{equation}
+
+\noindent It follows immediately that the \textit{reverse} of a product of vectors is
+\begin{equation}
+(a_1 a_2 \dots a_r)^{\dagger} = a_r \dots a_2 a_1. \tag{1.18}
+\end{equation}
+
+\noindent This justifies the name `reverse'.
+If the vectors in (1.18) anticommute, then, using (1.14b) to reorder the vectors on the right side of (1.18), we easily prove that
+\begin{equation}
+\langle A^{\dagger} \rangle_r = \langle A \rangle_r^{\dagger} = (-1)^{r(r-1)/2} \langle A \rangle_r. \tag{1.19}
+\end{equation}
+
+\noindent Although we have only indicated the proof for simple \(r\)-vectors, the result (1.19) obtains for arbitrary multivectors by virtue of the linearity of the grade operator.
+
+\section*{Geometric Algebra - Page 6}
+
+\noindent Of course, the associative axiom (1.3) was also used in the proof. Hereafter, we will usually omit mention of such familiar uses of the axioms.
+
+\vspace{1em}
+\noindent Using (1.17a), we get as immediate corollaries of (1.19), the relations
+\begin{equation}
+\langle AB \rangle_r = (-1)^{r(r-1)/2} \langle B^{\dagger} A^{\dagger} \rangle_r, \tag{1.20a}
+\end{equation}
+\begin{equation}
+\langle A_r B_s \rangle_r = \langle B_s^{\dagger} A_r \rangle_r = (-1)^{s(s-1)/2} \langle B_s A_r \rangle_r, \tag{1.20b}
+\end{equation}
+\begin{equation}
+\langle A_r B_s C_r \rangle_r = \langle C_r^{\dagger} B_s^{\dagger} A_r^{\dagger} \rangle_r, \tag{1.20c}
+\end{equation}
+\begin{equation}
+\langle A_r B_s C_t \rangle_q = (-1)^{\epsilon} \langle C_t B_s A_r \rangle_q, \tag{1.20d}
+\end{equation}
+where \(\epsilon = \frac{1}{2}(q^2 + r^2 + s^2 + t^2 - q - r - s - t)\). These relations suffice to show how reordering of \(r\)-vector parts is most easily accomplished.
+
+\vspace{1em}
+\noindent We define the \textit{inner product} of homogeneous multivectors by
+\begin{equation}
+A_r \cdot B_s \equiv \langle A_r B_s \rangle_{|r-s|}, \quad \text{if } r, s > 0, \tag{1.21a}
+\end{equation}
+\begin{equation}
+A_r \cdot B_s \equiv 0, \quad \text{if } r = 0 \text{ or } s = 0. \tag{1.21b}
+\end{equation}
+
+\noindent The inner product of arbitrary multivectors is then defined by
+\begin{equation}
+A \cdot B \equiv \sum_r A_{\bar{r}} \cdot B = \sum_s A \cdot B_{\bar{s}} = \sum_r \sum_s A_{\bar{r}} \cdot B_{\bar{s}}. \tag{1.21c}
+\end{equation}
+
+\noindent The equivalence of the three expressions on the right side of (1.21c) is an obvious consequence of (1.10) and the distributivity of the geometric product.
+
+\vspace{1em}
+\noindent In a similar way, we define the \textit{outer product} of homogeneous multivectors by
+\begin{equation}
+A_r \wedge B_s \equiv \langle A_r B_s \rangle_{r+s}. \tag{1.22a}
+\end{equation}
+
+\noindent Note that, in contrast to the special treatment given to scalars in (1.21b), we allow (1.22a) to yield
+\begin{equation}
+A_r \wedge \lambda = \lambda \wedge A_r = \lambda A_r, \quad \text{if } \lambda = \langle \lambda \rangle. \tag{1.22b}
+\end{equation}
+
+\noindent The outer product of arbitrary multivectors is defined by
+\begin{equation}
+A \wedge B \equiv \sum_r A_{\bar{r}} \wedge B = \sum_s A \wedge B_{\bar{s}} = \sum_r \sum_s A_{\bar{r}} \wedge B_{\bar{s}}. \tag{1.22c}
+\end{equation}
+
+\vspace{1em}
+\noindent According to (1.21a), if \(0 < r \leq s\), then \(A_r \cdot B_s\) is an \((s-r)\)-vector, so inner multiplication of \(B_s\) by \(A_r\) `lowers the grade' of \(B_s\) by \(r\) units. In order to be consistent with (1.27a) and other equations below, multiplication by a scalar is treated in (1.21b) as a trivial exception to this rule. However, (1.22a) says that, without exception, outer multiplication by an \(r\)-vector `raises grade' by \(r\) units. The outer and inner products are the grade raising and lowering operations in Geometric Algebra. For this reason, we must be thoroughly familiar with their properties if we wish to apply Geometric Algebra effectively.
+
+\section*{Geometric Algebra - Page 7}
+
+\noindent The general algebraic properties of inner and outer products are straightforward consequences of our definitions and the axioms of geometric algebra. Like the geometric product, the inner and outer products are not commutative. However, by using (1.19) on the right side of (1.20a), we find, for homogeneous multivectors, the reordering rules
+\begin{equation}
+A_r \cdot B_s = (-1)^{r(s-1)} B_s \cdot A_r, \quad \text{for } r \le s, \tag{1.23a}
+\end{equation}
+\begin{equation}
+A_r \wedge B_s = (-1)^{rs} B_s \wedge A_r. \tag{1.23b}
+\end{equation}
+
+\noindent Distributivity of the geometric product implies the distributive rules
+\begin{equation}
+A \cdot (B + C) = A \cdot B + A \cdot C, \tag{1.24a}
+\end{equation}
+\begin{equation}
+A \wedge (B + C) = A \wedge B + A \wedge C. \tag{1.24b}
+\end{equation}
+
+\noindent The outer product is associative;
+\begin{equation}
+A \wedge (B \wedge C) = (A \wedge B) \wedge C. \tag{1.25a}
+\end{equation}
+
+\noindent The inner product is not associative, but homogeneous multivectors obey the rules
+\begin{equation}
+A_r \cdot (B_s \cdot C_t) = (A_r \wedge B_s) \cdot C_t \quad \text{for } r + s \le t \text{ and } r, s > 0, \tag{1.25b}
+\end{equation}
+\begin{equation}
+A_r \cdot (B_s \cdot C_t) = (A_r \cdot B_s) \cdot C_t \quad \text{for } r + t \le s. \tag{1.25c}
+\end{equation}
+
+\noindent Equations (1.25a, b, c) are consequences of the associativity of the geometric product, but we delay the proof until we have established another general property of the product.
+
+\vspace{1em}
+\noindent Using (1.23b) and (1.25a) it is easy to establish the useful fact that the outer product is antisymmetric under an interchange of any pair of vectors, that is, for vectors \(a\) and \(b\),
+\begin{equation}
+a \wedge A \wedge b \wedge B = -b \wedge A \wedge a \wedge B. \tag{1.26a}
+\end{equation}
+
+\noindent This immediately gives the useful result
+\begin{equation}
+a \wedge A \wedge a \wedge B = 0 \tag{1.26b}
+\end{equation}
+for any \(A\) and \(B\).
+
+\vspace{1em}
+\noindent At this point it is convenient to introduce explicitly the convention that, if there is ambiguity, indicated inner and outer products should be performed before an adjacent geometric product. Thus
+\begin{align*}
+(A \wedge B)C &= A \wedge BC \neq A \wedge (BC), \\
+(A \cdot B)C &= A \cdot BC \neq A \cdot (BC).
+\end{align*}
+
+\section*{Geometric Algebra - Page 8}
+
+\noindent This convention eliminates an appreciable number of parentheses, especially in complicated expressions. Other parentheses can be eliminated by the convention that outer products have `preference' over inner products, so
+\[
+A \cdot (B \wedge C) = A \cdot B \wedge C \neq (A \cdot B) \wedge C,
+\]
+but we use this convention much less often than the previous one.
+
+% --- Fundamentale Formeln ---
+\vspace{1em}
+\noindent The inner and outer products are united by the geometric product. This is evident in the fundamental formulas for the product of a vector with an \(r\)-vector:
+\begin{equation}
+a \cdot A_r = \langle a A_r \rangle_{r-1} = \frac{1}{2}(a A_r - (-1)^r A_r a), \tag{1.27a}
+\end{equation}
+\begin{equation}
+a \wedge A_r = \langle a A_r \rangle_{r+1} = \frac{1}{2}(a A_r + (-1)^r A_r a). \tag{1.27b}
+\end{equation}
+\begin{equation}
+a A_r = a \cdot A_r + a \wedge A_r = \langle a A_r \rangle_{r-1} + \langle a A_r \rangle_{r+1}. \tag{1.28}
+\end{equation}
+
+\noindent It will be understood that the grade operator results in zero when its index is negative. This convention makes (1.27a) meaningful when \(r = 0\).
+
+\vspace{1em}
+\noindent Clearly any two of the three equations (1.27a, b), (1.28) imply the third. Equations (1.27a, b) reduce inner and outer products to the geometric product, and they will shortly be established. But first, we use the fact that the sign of \((-1)^r\) depends only on the evenness or oddness of \(r\) to get somewhat more general formulas.
+
+\vspace{1em}
+\noindent We say that a multivector \(A_+\) is \textit{even} if \(\langle A_+ \rangle_r = 0\) for all odd values of \(r\). Similarly, \(A_-\) is said to be \textit{odd} if \(\langle A_- \rangle_r = 0\) for even \(r\). Clearly any multivector \(A\) can be written as the sum of an even part \(A_+\) and an odd part \(A_-\);
+\begin{equation}
+A = A_+ + A_-. \tag{1.29}
+\end{equation}
+
+\noindent By virtue of the distributive rule, (1.27a, b) implies
+\begin{equation}
+a \cdot A_+ = \frac{1}{2}(a A_+ - A_+ a), \tag{1.30a}
+\end{equation}
+\begin{equation}
+a \wedge A_+ = \frac{1}{2}(a A_+ + A_+ a), \tag{1.30b}
+\end{equation}
+\begin{equation}
+a \cdot A_- = \frac{1}{2}(a A_- + A_- a), \tag{1.30c}
+\end{equation}
+\begin{equation}
+a \wedge A_- = \frac{1}{2}(a A_- - A_- a). \tag{1.30d}
+\end{equation}
+
+\noindent The sum of these expressions gives the generalization of (1.28); for any \(A\),
+\begin{equation}
+a A = a \cdot A + a \wedge A. \tag{1.31}
+\end{equation}
+
+\vspace{1em}
+\noindent Turning now to a proof of (1.27a), we first consider the case \(r = 1\). For vectors \(a\) and \(b\), the distributive rule gives
+\[
+(a+b)^2 = a^2 + ab + ba + b^2.
+\]
+
+\section*{Geometric Algebra - Page 9}
+
+\noindent Since \(a + b\) is a vector, we have, from (1.13),
+\[
+ab + ba = |a+b|^2 - |a|^2 - |b|^2,
+\]
+which is clearly a scalar. Since also \(\langle ab \rangle = \langle ba \rangle\), we have established
+\begin{equation}
+a \cdot b = \langle ab \rangle = \frac{1}{2}(ab + ba), \tag{1.32}
+\end{equation}
+which is identical to (1.27a) when \(A_r = b = \langle b \rangle_1\). Note that (1.32) implies that \(a \cdot b = 0\) if and only if \(ab = -ba\). If \(a \cdot b = 0\), we say that the two vectors \(a\) and \(b\) are \textit{orthogonal}.
+
+\vspace{1em}
+\noindent We can proceed now to a proof of (1.27a, b) in general by establishing the valuable vector identity
+\begin{equation}
+a \cdot (a_1 a_2 \dots a_r) = \sum_{k=1}^r (-1)^{k+1} a \cdot a_k (a_1 \dots \breve{a}_k \dots a_r), \tag{1.33}
+\end{equation}
+where the inverted circumflex means the \(k\)th vector is omitted from the product. Identity (1.33) holds for any choice of vectors. One instructive way to prove (1.33) is to notice that (1.32) can be written in the form \(ab = 2a \cdot b - ba\) and used to reverse the order of factors in a vector product. Applying this trick \(r\) successive times, we move the vector \(a\) from left to right in the product
+\begin{align*}
+aa_1a_2 \dots a_r &= 2a \cdot a_1 a_2 \dots a_r - a_1 a a_2 \dots a_r \\
+&= 2a \cdot a_1 a_2 \dots a_r - 2a \cdot a_2 a_1 a_3 \dots a_r + a_1 a_2 a a_3 \dots a_r \\
+&= \dots \\
+&= 2 \sum_{k=1}^r (-1)^{k+1} a \cdot a_k a_1 \dots \breve{a}_k \dots a_r + (-1)^r a_1 a_2 \dots a_r a.
+\end{align*}
+
+\noindent This gives (1.33) if
+\begin{equation}
+a \cdot (a_1 a_2 \dots a_r) = \frac{1}{2}(a a_1 \dots a_r - (-1)^r a_1 \dots a_r a). \tag{1.34}
+\end{equation}
+
+\noindent This is true by virtue of (1.30) since, as we shall shortly see, the product \(a_1a_2 \dots a_r\) is an even (odd) multivector if \(r\) is even (odd). But for the moment we simply notice that, for a simple \(r\)-vector \(A_r = a_1a_2 \dots a_r\) factored in accordance with axiom (1.14), (1.34) is equivalent to (1.27a). Moreover, in this case (1.14) also implies that each term on the right side of (1.33) is an \((r-1)\)-vector. Thus we have proved (1.27a) for simple \(r\)-vectors. The generalization to arbitrary \(r\)-vectors is trivial.
+
+\vspace{1em}
+\noindent To prove (1.27b), we continue to use the factorization \(A_r = a_1a_2 \dots a_r\). Because of (1.13),
+\[
+a_k^{-1} a_k = 1 \quad \text{where } a_k^{-1} = |a_k|^{-2} a_k.
+\]
+
+\section*{Geometric Algebra - Page 10}
+
+\noindent So (1.33) can now be written
+\begin{align*}
+a \cdot A_r &= \sum_{k=1}^r (-1)^{k+1} a \cdot a_k a_k^{-1} a_k a_1 \dots \breve{a}_k \dots a_r \\
+&= \sum_{k=1}^r a \cdot a_k a_k^{-1} A_r.
+\end{align*}
+
+\noindent Substituting this in (1.28) we get
+\begin{equation}
+a \wedge A_r = a A_r - a \cdot A_r = b A_r, \tag{1.35}
+\end{equation}
+where \(b = a - \sum_{k=1}^r a \cdot a_k a_k^{-1}\). This expression for \(b\) implies that \(b \cdot a_k = 0\) so, by (1.32), \(ba_k = -a_kb\). Thus, the factorability axiom (1.14) has been satisfied by the last term in (1.35), so that term is an \((r+1)\)-vector. This completes our proof of (1.27b) for simple \(r\)-vectors.
+
+\vspace{1em}
+\noindent We are now in a position to prove the fundamental formula
+\begin{align}
+A_r B_s &= \langle A_r B_s \rangle_{|r-s|} + \langle A_r B_s \rangle_{|r-s|+2} + \dots + \langle A_r B_s \rangle_{r+s} \notag \\
+&= \sum_{k=0}^m \langle A_r B_s \rangle_{|r-s|+2k}, \tag{1.36}
+\end{align}
+where \(m = \frac{1}{2}(r+s-|r-s|)\). We can prove (1.36) for simple \(A_r\) by using the factorization (1.14) of \(A_r\) into anticommuting vectors and applying (1.28) \(r\) times. The idea should be clear from examining the simplest case. For \(A_2 = a_1 \wedge a_2 = a_1 a_2\) and \(s \ge 2\),
+\begin{align}
+A_2 B_s &= a_1 a_2 B_s = a_1 (a_2 \cdot B_s + a_2 \wedge B_s) \notag \\
+&= a_1 \cdot (a_2 \cdot B_s) + a_1 \wedge (a_2 \cdot B_s) + a_1 \cdot (a_2 \wedge B_s) + a_1 \wedge a_2 \wedge B_s \notag \\
+&= A_2 \cdot B_s + \langle A_2 B_s \rangle_s + A_2 \wedge B_s, \tag{1.37a}
+\end{align}
+where
+\begin{equation}
+A_2 \cdot B_s = \langle A_2 B_s \rangle_{s-2} = a_1 \cdot (a_2 \cdot B_s), \tag{1.37b}
+\end{equation}
+\begin{equation}
+\langle A_2 B_s \rangle_s = a_1 \wedge (a_2 \cdot B_s) + a_1 \cdot (a_2 \wedge B_s), \tag{1.37c}
+\end{equation}
+\begin{equation}
+A_2 \wedge B_s = \langle A_2 B_s \rangle_{s+2} = a_1 \wedge a_2 \wedge B_s. \tag{1.37d}
+\end{equation}
+
+\noindent Equation (1.36) shows that, in general, the product of homogeneous multivectors is not homogeneous. The first and last terms on the right side of (1.36) will be identified as \(A_r \cdot B_s\) and \(A_r \wedge B_s\) respectively. The other terms are of intermediate grade differing from \(|r-s|\) and \(r+s\) by some multiple of two. It follows that the
+
+\section*{Geometric Algebra - Page 11}
+
+\noindent product of even multivectors is always even. Therefore the set of all even multivectors is a subalgebra of \(\mathscr{G}\), naturally called the \textit{even subalgebra} of \(\mathscr{G}\). On the other hand, it is obvious that the set of odd multivectors is not closed under multiplication.
+
+\vspace{1em}
+\noindent The preceding discussion makes it clear that the product \(a_1 a_2 \dots a_r\) is even if \(r\) is even, because each successive pair of vectors \(a_1 a_2, a_3 a_4, \dots, a_{r-1} a_r\) is even and their product is even. One more vector in the product will then make the result odd. This is the argument we promised to complete the proof of (1.33).
+
+\vspace{1em}
+\noindent We are now justified in pointing out that a very useful formula can be obtained from the \((r-1)\)-vector part of (1.33), which, by virtue of the distributive rule, can be written
+\[
+a \cdot \langle a_1 a_2 \dots a_r \rangle_r = \sum_{k=1}^r (-1)^{k+1} a \cdot a_k \langle a_1 \dots \breve{a}_k \dots a_r \rangle_{r-1}.
+\]
+But \(\langle a_1 a_2 \dots a_r \rangle_r = a_1 \wedge a_2 \wedge \dots \wedge a_r\), so
+\begin{equation}
+a \cdot (a_1 \wedge a_2 \wedge \dots \wedge a_r) = \sum_{k=1}^r (-1)^{k+1} a \cdot a_k \, a_1 \wedge \dots \wedge \breve{a}_k \wedge \dots \wedge a_r. \tag{1.38}
+\end{equation}
+
+\vspace{1em}
+\noindent The special case
+\begin{equation}
+a \cdot (a_1 \wedge a_2) = a \cdot a_1 a_2 - a \cdot a_2 a_1 \tag{1.39}
+\end{equation}
+generalizes a well-known formula; in fact the formulas for inner and outer products given here include generalizations of all the formulas in the vector algebra of Gibbs. All that will be developed in detail in the sequel to this book entitled \textit{New Foundations for Classical Mechanics}.
+
+\vspace{1em}
+\noindent A valuable generalization of (1.38) is the formula
+\begin{equation}
+\begin{aligned}
+B_r \cdot (a_1 \wedge \dots \wedge a_n) &= B_r \cdot (a_1 \wedge \dots \wedge a_r) a_{r+1} \wedge \dots \wedge a_n - \\
+&\quad - B_r \cdot (a_2 \wedge \dots \wedge a_{r+1}) a_1 \wedge a_{r+2} \wedge \dots \wedge a_n + \dots \\
+&= \sum_{j_1 < \dots < j_r} \epsilon(j_1 \dots j_n) B_r \cdot (a_{j_1} \wedge \dots \wedge a_{j_r}) \\
+&\quad\quad a_{j_{r+1}} \wedge \dots \wedge a_{j_n},
+\end{aligned}
+\tag{1.40}
+\end{equation}
+where \(B_r\) is an \(r\)-vector of grade \(r \leq n\), each \(j_k\) is a distinct positive integer not greater than \(n\), \(j_{r+1} < \dots < j_n\) as well as \(j_1 < \dots < j_r\), and the `permutation symbol' \(\epsilon(j_1 \dots j_n)\) has the value \(1\) (or \(-1\)) if \((j_1 \dots j_n)\) is an even (or odd) permutation of \((1, 2, \dots, n)\). The number of terms in the expansion is \(\binom{n}{r}\), which is the number of ways \(B_r\) can be `dotted' with \(r\) vectors from a collection of \(n\) vectors. Note that if \(a_k \cdot B_r = 0\), any coefficient `containing' the \(k\)th vector \(a_k\) will vanish; there can be \(n-r\) such vectors if \(B_r\) is simple, in which case the expansion has at most one
+
+\section*{Geometric Algebra - Page 12}
+
+\noindent nonvanishing term. Equation (1.40) can be proved by using (1.25b) and iterating with (1.38), but it will be established later as a by-product of our systematic study of bases in Section 3.
+
+\vspace{1em}
+\noindent Returning to some unfinished business, we easily supply the promised proofs of (1.25a) and (1.25b). Using (1.36) to evaluate each side of
+\[
+\langle A_r (B_s C_t) \rangle_{r+s+t} = \langle (A_r B_s) C_t \rangle_{r+s+t},
+\]
+we have a proof of (1.25a) for homogeneous multivectors. Similarly, we prove (1.25b) by using (1.36) to evaluate
+\[
+\langle A_r (B_s C_t) \rangle_{(t-s)-r} = \langle (A_r B_s) C_t \rangle_{t-(r+s)}.
+\]
+This wraps up the loose ends we left dangling earlier.
+
+\vspace{1em}
+\noindent To our arsenal of formulas, we can add one more group of identities of general applicability:
+\begin{align}
+a \cdot (A_r B_s) &= a \cdot A_r B_s + (-1)^r A_r a \cdot B_s. \tag{1.41a} \\
+&= a \wedge A_r B_s - (-1)^r A_r a \wedge B_s, \tag{1.41b} \\
+a \wedge (A_r B_s) &= a \wedge A_r B_s - (-1)^r A_r a \cdot B_s \tag{1.41c} \\
+&= a \cdot A_r B_s + (-1)^r A_r a \wedge B_s. \tag{1.41d}
+\end{align}
+
+\noindent We can prove any of these identities, for example (1.41a), by using (1.27) and (1.36) as follows:
+\begin{align*}
+a \cdot (A_r B_s) &= \tfrac{1}{2} \big(a A_r B_s - (-1)^{r+s} A_r B_s a\big) \\
+&= \tfrac{1}{2} \big(a A_r B_s - (-1)^r A_r a B_s\big) + (-1)^r \tfrac{1}{2} \big(A_r a B_s - (-1)^s A_r B_s a\big) \\
+&= a \cdot A_r B_s + (-1)^r A_r a \cdot B_s.
+\end{align*}
+
+\noindent The identities (1.41a, b, c, d) are useful as they stand, but we can project out of them a number of convenient identities involving inner and outer products alone. For example, from (1.41a) we get
+\begin{equation}
+a \cdot (A_r \wedge B_s) = (a \cdot A_r) \wedge B_s + (-1)^r A_r \wedge (a \cdot B_s), \tag{1.42}
+\end{equation}
+and from (1.41d) we get
+\begin{equation}
+a \wedge (A_r \cdot B_s) = (a \wedge A_r) \cdot B_s + (-1)^r A_r \cdot (a \wedge B_s), \quad \text{for } s \geq r > 1. \tag{1.43}
+\end{equation}
+
+\noindent The identity (1.42) should be compared with (1.33).
+
+\section*{Geometric Algebra - Page 13}
+
+\noindent The inner and outer products along with their identities suffice to express and exploit all possible relations among vectors of a given set. But to deal with more general multivectors, it is convenient to have the \textit{scalar product} defined by
+\begin{equation}
+A * B \equiv \langle AB \rangle. \tag{1.44}
+\end{equation}
+
+\noindent From (1.36) and (1.21a) we see that
+\begin{equation}
+A_{\bar{r}} * B_{\bar{s}} = 0 \quad \text{if } r \neq s, \tag{1.45a}
+\end{equation}
+\begin{equation}
+A_{\bar{r}} * B_{\bar{r}} = A_{\bar{r}} \cdot B_{\bar{r}} = B_{\bar{r}} * A_{\bar{r}} \quad \text{if } r \neq 0. \tag{1.45b}
+\end{equation}
+
+\noindent The restriction \(r \neq 0\) in (1.45b) is necessary only because the inner product of scalars was assumed to vanish in (1.21b). Of course,
+\[
+A_{\bar{0}} * B_{\bar{0}} = A_{\bar{0}} B_{\bar{0}} = \langle A \rangle \langle B \rangle.
+\]
+
+\noindent From (1.45), the axioms of geometric algebra lead immediately to the expansion of any scalar product in terms of homogeneous parts, that is
+\begin{equation}
+A * B = \sum_r A_{\bar{r}} * B = \sum_r A_{\bar{r}} * B_{\bar{r}} = \langle A \rangle \langle B \rangle + \sum_{r>0} A_{\bar{r}} \cdot B_{\bar{r}}. \tag{1.46}
+\end{equation}
+
+\noindent Moreover, the scalar product is seen to be symmetric and linear, that is
+\begin{equation}
+A * B = \langle AB \rangle = \langle BA \rangle = B * A, \tag{1.47a}
+\end{equation}
+\begin{equation}
+A * (\alpha B + \beta C) = \alpha A * B + \beta A * C, \tag{1.47b}
+\end{equation}
+where \(\alpha\) and \(\beta\) are scalars. And, referring to (1.20a), we see that
+\begin{equation}
+A * B = A^{\dagger} * B^{\dagger}. \tag{1.48}
+\end{equation}
+
+\vspace{1em}
+\noindent Our scalar product is `positive definite', that is, we can associate with any multivector \(A\) a unique positive scalar \textit{magnitude} \(|A|\) defined by
+\begin{equation}
+|A|^2 = A^{\dagger} * A = \sum_r |A_{\bar{r}}|^2 \geq 0, \tag{1.49}
+\end{equation}
+where \(|A| = 0\) if and only if \(A = 0\). It suffices to establish (1.49) for simple \(r\)-vectors. Using (1.18) and the axiom (1.13) we get the general formula
+\begin{equation}
+(a_1 \dots a_r)^{\dagger} (a_1 \dots a_r) = |a_1 \dots a_r|^2 = |a_1|^2 \dots |a_r|^2 \geq 0. \tag{1.50}
+\end{equation}
+
+\noindent From this we see immediately that
+\begin{equation}
+A_{\bar{r}}^{\dagger} A_{\bar{r}} = |A_{\bar{r}}|^2 \geq 0 \quad \text{if } A_{\bar{r}} \text{ is simple}. \tag{1.51}
+\end{equation}
+
+\section*{Geometric Algebra - Page 14}
+
+\noindent We note that, in general,
+\begin{equation}
+A * B \leq |A| \, |B|, \tag{1.52a}
+\end{equation}
+and
+\begin{equation}
+|AB| = |A| \, |B| \quad \text{if } A^{\dagger} A = |A|^2. \tag{1.52b}
+\end{equation}
+
+\noindent In addition, the distributive axiom leads immediately to the `law of cosines'
+\begin{equation}
+|A + B|^2 = |A|^2 + 2 A^{\dagger} * B + |B|^2, \tag{1.53a}
+\end{equation}
+where an `angle' between multivectors (denoted by \(\angle AB\)) can be defined by writing
+\begin{equation}
+\cos \angle AB = \frac{A^{\dagger} * B}{|A| \, |B|}. \tag{1.53b}
+\end{equation}
+
+\noindent This angle has a simple geometric interpretation if \(A\) and \(B\) are \(k\)-blades; it reduces to the so-called `dihedral angle' between intersecting planes if \(A\) and \(B\) are noncommuting 2-blades. Unfortunately, we will not have the occasion to examine the sundry geometrical interpretations of (1.53a, b) in more detail.
+
+\vspace{1em}
+\noindent An important consequence of (1.51) is the fact that every nonzero \(r\)-blade \(A_r\) has an inverse
+\begin{equation}
+A_r^{-1} = |A_r|^{-2} A_r^{\dagger}. \tag{1.54}
+\end{equation}
+
+\noindent Division by an \(r\)-blade is, of course, equivalent to successive division by \(r\) vectors. The possibility of division by vectors greatly expedites algebraic manipulation. Division cannot be defined for either the inner or outer product alone. It requires the full geometric product. This is one of the reasons for regarding the geometric product as more fundamental than either the inner or outer product.
+
+\vspace{1em}
+\noindent Sometimes it is convenient to employ the \textit{commutator} product, which we define by
+\begin{equation}
+A \times B = \frac{1}{2}(AB - BA). \tag{1.55}
+\end{equation}
+
+\noindent It is easily established that this product is anticommutative
+\begin{equation}
+A \times B = -B \times A, \tag{1.56a}
+\end{equation}
+linear
+\begin{equation}
+(\alpha A + \beta B) \times C = \alpha A \times C + \beta B \times C, \tag{1.56b}
+\end{equation}
+and, instead of being associative, satisfies the so-called `Jacobi identity'
+\begin{equation}
+A \times (B \times C) + B \times (C \times A) + C \times (A \times B) = 0. \tag{1.56c}
+\end{equation}
+
+\noindent In addition, the commutator is related to the geometric product by
+\begin{equation}
+A \times (BC) = (A \times B)C + B(A \times C). \tag{1.57}
+\end{equation}
+
+\section*{Geometric Algebra - Page 15}
+
+\noindent The commutator of a vector \(a\) with any multivector \(A\) can be expressed in inner and outer products with the even and odd parts of \(A\); from (1.30) we get
+\begin{equation}
+a \times A = a \cdot A_+ + a \wedge A_-. \tag{1.58}
+\end{equation}
+The commutator of this with another vector \(b\) is then
+\begin{equation}
+b \times (a \times A) = b \wedge (a \cdot A_+) + b \cdot (a \wedge A_-). \tag{1.59}
+\end{equation}
+
+\noindent With the help of (1.57) and the Jacobi identity we find the expressions
+\begin{align}
+(b \wedge a) \times A &= b \cdot (a \wedge A) - a \cdot (b \wedge A) \tag{1.60a} \\
+&= b \wedge (a \cdot A) - a \wedge (b \cdot A) \tag{1.60b} \\
+&= ba \cdot A - A \cdot ba \tag{1.60c} \\
+&= ba \wedge A - A \wedge ba = (ba) \times A. \tag{1.60d}
+\end{align}
+
+\noindent To prove the equivalence of (1.60c) to (1.60d), it is easiest to begin with
+\[
+bAa = b(A \cdot a + A \wedge a) = (b \cdot A + b \wedge A)a.
+\]
+
+\vspace{1em}
+\noindent Taking \(A = c\) to be a vector in (1.60a) we get the Jacobi identity for vectors in terms of inner and outer products;
+\begin{equation}
+a \cdot (b \wedge c) + b \cdot (c \wedge a) + c \cdot (a \wedge b) = 0. \tag{1.61}
+\end{equation}
+
+\vspace{1em}
+\noindent We seldom use the commutator product unless one of the factors is a bivector. To show that the commutator with a bivector is especially useful, we note that (1.37) along with (1.23) imply for a bivector \(B\) and \(r \neq 1\),
+\begin{align*}
+BA_r &= B \cdot A_r + \langle BA_r \rangle_r + B \wedge A_r, \\
+A_rB &= B \cdot A_r - \langle BA_r \rangle_r + B \wedge A_r.
+\end{align*}
+
+\noindent So the symmetric part of the product \(BA_r\) is
+\begin{equation}
+\tfrac{1}{2}(BA_r + A_rB) = B \cdot A_r + B \wedge A_r \quad \text{if } r \neq 1, \tag{1.62a}
+\end{equation}
+while the antisymmetric part is
+\begin{equation}
+B \times A_r = \langle BA_r \rangle_r. \tag{1.62b}
+\end{equation}
+
+\noindent Thus we have quite generally
+\begin{equation}
+BA = B \cdot A + B \times A + B \wedge A, \tag{1.63}
+\end{equation}
+if \(B = \langle B \rangle_2\) and \(\langle A \rangle_1 = 0\). The exclusion of vectors from (1.62a) and (1.63) is necessary because, by (1.58),
+\begin{equation}
+B \times a \equiv \tfrac{1}{2}(Ba - aB) = B \cdot a. \tag{1.64}
+\end{equation}
+
+\noindent Equations (1.64) and (1.63) should be compared with (1.27a) and (1.31).
+
+
+\section*{Geometric Algebra - Page 16}
+
+\noindent It is important to note that (1.62b) says that the commutator with a bivector preserves grade. So we immediately get from (1.57), for \(B = \langle B \rangle_2\),
+\begin{equation}
+B \times (A \cdot C) = (B \times A) \cdot C + A \cdot (B \times C), \tag{1.65}
+\end{equation}
+\begin{equation}
+B \times (A \wedge C) = (B \times A) \wedge C + A \wedge (B \times C). \tag{1.66}
+\end{equation}
+
+\noindent Iteration of (1.66) leads to the expansion formula for vectors \(a_k\),
+\begin{equation}
+\begin{aligned}
+B \times (a_1 \wedge \dots \wedge a_r) &= (B \times a_1) \wedge a_2 \wedge \dots \wedge a_r \, + \\
+&\quad + a_1 \wedge (B \times a_2) \wedge a_3 \wedge \dots \wedge a_r + \dots + a_1 \wedge \dots \wedge a_{r-1} \wedge (B \times a_r) \\
+&= \sum_{k=1}^r (-1)^{k+1} (B \cdot a_k) \wedge a_1 \wedge \dots \breve{a}_k \dots \wedge a_r.
+\end{aligned}
+\tag{1.67}
+\end{equation}
+
+\noindent Equation (1.62b) implies that the space of bivectors is closed under the commutator product. It follows that under the commutator product the bivectors make up a Lie algebra, which is, as is well-known and easy to show with geometric algebra, the Lie algebra of rotations in Euclidean space. The so-called structure equations for this Lie algebra can be written in the form
+\begin{equation}
+\begin{aligned}
+(a \wedge b) \times (c \wedge d) &= b \cdot ca \wedge d - b \cdot da \wedge c + a \cdot db \wedge c - a \cdot cb \wedge d \\
+&= a \wedge (b \cdot c \wedge d) - b \wedge (a \cdot c \wedge d),
+\end{aligned}
+\tag{1.68}
+\end{equation}
+where \(a, b, c, d\) are any vectors. Equation (1.68) is easily derived by using (1.39) in (1.60a). Putting \(d = b\) in (1.68), we find that
+\begin{equation}
+(a \wedge b) \times (c \wedge b) = (a \wedge b \wedge c) \cdot b. \tag{1.69}
+\end{equation}
+This relation has many applications; for example, the `law of sines' in spherical trigonometry follows from it almost trivially.
+
+\vspace{1.5em}
+\noindent\textbf{1.2. Vector Spaces, Pseudoscalars and Projections}
+
+\vspace{1em}
+\noindent In this section we show that every \(n\)-dimensional vector space \(\mathscr{A}_n\) determines a unique geometric algebra \(\mathscr{G}(\mathscr{A}_n)\) which can be interpreted as an algebra of subspaces of \(\mathscr{A}_n\). Projection operators are defined in terms of the geometric product and their properties are derived without resorting to a basis. Standard concepts of linear algebra such as `direct sum', `intersection' and `factor space' are characterized by relations in geometric algebra, making it easier to describe relations among subspaces and work out their implications. The result is an efficient calculus for, among other things, formulating and proving the theorems of projective geometry.
+
+\section*{Geometric Algebra - Page 17}
+
+\noindent Every nonzero \(n\)-blade \(A\) determines a unique \(n\)-dimensional vector space \(\mathscr{A}_n\) consisting of all vectors \(a\) which satisfy the equation
+\begin{equation}
+a \wedge A = 0. \tag{2.1}
+\end{equation}
+Hence it is appropriate to call \(\mathscr{A}_n\) the \textit{vector space of} \(A\).
+
+\vspace{1em}
+\noindent Conversely, every \(n\)-dimensional vector space \(\mathscr{A}_n\) uniquely determines two unit \(n\)-blades \(\pm I\). The \(n\)-blade formed by outer multiplication of any set of \(n\) vectors \(a_1, \dots, a_n\) in \(\mathscr{A}_n\) is proportional to \(I\), that is
+\begin{equation}
+a_1 \wedge a_2 \wedge \dots \wedge a_n = \lambda I, \tag{2.2}
+\end{equation}
+and the scalar \(\lambda\) vanishes if and only if the \(a_k\) are linearly dependent. Any nonzero scalar multiple of \(I\) is called \textit{a pseudoscalar of} \(\mathscr{A}_n\). Assignment of an orientation to \(\mathscr{A}_n\) is equivalent to associating a unique unit \(n\)-blade \(I\) with \(\mathscr{A}_n\); in that case, we say that \(I\) is the \textit{tangent} or the \textit{direction} of \(\mathscr{A}_n\). Thus \(\mathscr{A}_n\) and \(I\) are `equivalent' in the sense that specification of either uniquely determines the other.
+
+\vspace{1em}
+\noindent The asserted equivalence of \(\mathscr{A}_n\) and \(I\) will now be established. Since \(A = |A|I\) is simple, it can be factored into an outer product of \(n\) vectors:
+\begin{equation}
+A = a_1 \wedge a_2 \wedge \dots \wedge a_n. \tag{2.3}
+\end{equation}
+
+\noindent It follows by (1.26b) that
+\begin{equation}
+a_k \wedge A = 0, \tag{2.4}
+\end{equation}
+so each of the \(a_k\) is in \(\mathscr{A}_n\). Furthermore, the \(a_k\) are linearly independent; for supposing one of them, say \(a_n\), can be expressed as a linear combination of the others, we substitute
+\[
+a_n = \sum_{k=1}^{n-1} \alpha_k a_k
+\]
+into (2.3), whence
+\[
+A = \sum_{k=1}^{n-1} \alpha_k a_1 \wedge \dots \wedge a_{n-1} \wedge a_k = 0,
+\]
+because, by (1.26b), each term in the sum vanishes. But this contradicts the assumption that \(A \neq 0\). Hence the \(a_k\) compose a basis for \(\mathscr{A}_n\).
+
+\vspace{1em}
+\noindent To show that every \(a\) satisfying (2.1) is in \(\mathscr{A}_n\), we use (1.28) to get
+\begin{equation}
+aA = a \cdot A. \tag{2.5}
+\end{equation}
+
+\noindent Since \(A\) has a multiplicative inverse,
+\begin{equation}
+a = a \cdot A \, A^{-1} = a \cdot A^{-1} A. \tag{2.6}
+\end{equation}
+
+\section*{Geometric Algebra - Page 18}
+
+\noindent The proof is completed by showing that the right side of (2.6) can be expressed as an expansion of \(a\) in terms of the \(a_k\). If the \(a_k\) are orthogonal then \(A = a_1 a_2 \dots a_n\), \(A^{-1} = a_n^{-1} \dots a_2^{-1} a_1^{-1}\), so using (1.33) to expand \(a \cdot A^{-1}\), and anticommutativity to reorder the products, we obtain
+\begin{equation}
+a = \sum_{k=1}^n a \cdot a_k^{-1} a_k. \tag{2.7}
+\end{equation}
+
+\noindent Though (2.7) suffices for present purposes, it is worth mentioning that the expansion with nonorthogonal \(a_k\) is obtained in the next section.)
+
+\vspace{1em}
+\noindent The proof that \(A\) determines \(\mathscr{A}_n\) uniquely is now complete. In essence, by reversing the above argument it can be proved that \(\mathscr{A}_n\) determines \(I\), the main point being to show that all \(n\)-vectors generated by multiplication of vectors in \(\mathscr{A}_n\) are scalar proportional. This last fact is established in the course of the general considerations below.
+
+\vspace{1em}
+\noindent Incidentally, we have proved in the course of our discussion that \(n\) vectors \(a_1, a_2, \dots, a_n\) are linearly independent if and only if \(a_1 \wedge a_2 \wedge \dots \wedge a_n \neq 0\).
+
+\vspace{1em}
+\noindent The pseudoscalar \(A\) of \(\mathscr{A}_n\) facilitates the decomposition of any vector \(b\) into components in and orthogonal to \(\mathscr{A}_n\); thus,
+\[
+b = b A A^{-1} = (b \cdot A + b \wedge A) A^{-1},
+\]
+so
+\begin{equation}
+b = b_\parallel + b_\perp, \tag{2.8a}
+\end{equation}
+where
+\begin{equation}
+b_\parallel = P_A(b) \equiv b \cdot A A^{-1} \tag{2.8b}
+\end{equation}
+and
+\begin{equation}
+b_\perp = P_A^\perp(b) \equiv b \wedge A A^{-1}. \tag{2.8c}
+\end{equation}
+
+\noindent It is readily verified that \(b_\parallel A = b_\parallel \cdot A\) or \(b_\parallel \wedge A = 0\) so \(b_\parallel\) is in \(\mathscr{A}_n\), and \(b_\perp A = b_\perp \wedge A\) or \(b_\perp \cdot A = 0\) so \(b\) is orthogonal to every vector in \(\mathscr{A}_n\).
+
+\vspace{1em}
+\noindent The important thing about (2.8) is that it shows how orthogonal projections can be expressed in terms of geometric multiplication and addition; this makes it possible to derive the properties of projections by elementary algebraic computation. The representation (2.8b) for the orthogonal \textit{projection} \(P_A(b)\) of \(b\) into \(\mathscr{A}_n\) should be compared with the matrix representation of a projection which is usually employed for computations. The matrix representation requires a choice of some basis in \(\mathscr{A}_n\), while (2.8b) is independent of any such choice. The matrix representation is more unwieldy because the simple concept of an \(r\)-vector is absent from matrix algebra. It should be noted further that the function \(P_A^\perp(b)\), called the \textit{orthogonal rejection} of \(b\) \textit{from} \(\mathscr{A}_n\), is defined algebraically by (2.8c) without
+
+\section*{Geometric Algebra - Page 19}
+
+\noindent reference to any `enveloping' vector space in which \(\mathscr{A}_n\) is embedded. Such an enveloping space is required for the matrix representation of \(P_A^\perp(b)\) as the projection of \(b\) into the `orthogonal complement' of \(\mathscr{A}_n\), though for many purposes it is as irrelevant as the choice of vector basis.
+
+\vspace{1em}
+\noindent By multiplication and addition the vectors of \(\mathscr{A}_n\) generate a subalgebra \(\mathscr{G}(\mathscr{A}_n)\) of the complete Geometric Algebra called the \textit{Geometric Algebra of} \(\mathscr{A}_n\). In view of the `equivalence' of \(\mathscr{A}_n\) with \(A\), \(\mathscr{G}(\mathscr{A}_n)\) can with equal justice be called the geometric algebra of \(A\) and denoted by \(\mathscr{G}(A)\). It is not difficult to show that \(\mathscr{G}(A)\) is a \(2^n\)-dimensional linear space which is closed under the geometric product. From any set of \(n\) linearly independent vectors spanning \(\mathscr{A}_n = \mathscr{G}^1(A)\) we can form \(\binom{n}{r}\) linearly independent \(r\)-blades by taking the outer product of each combination of \(r\) different vectors selected from the given set. It is not difficult to prove that these \(r\)-blades compose a basis for the space \(\mathscr{G}^r(A)\) of all \(r\)-vectors in \(\mathscr{G}(A)\). The properties of a basis for \(\mathscr{G}^r(A)\) are developed in detail in the next section. Thus \(\mathscr{G}^r(A)\) is a linear subspace of \(\mathscr{G}(A)\) with dimension \(\binom{n}{r}\). The dimension of \(\mathscr{G}(A)\) is therefore given by
+\[
+\dim \mathscr{G}(A) = \sum_{r=0}^n \dim \mathscr{G}^r(A) = \sum_{r=0}^n \binom{n}{r} = 2^n.
+\]
+
+\vspace{1em}
+\noindent We can give each blade in \(\mathscr{G}(A)\) a geometric interpretation, and this determines a geometric interpretation for the whole of \(\mathscr{G}(A)\). Just as the \(n\)-blade \(A\) determines the vector space \(\mathscr{A}_n = \mathscr{G}^1(A)\), so each nonzero \(r\)-blade \(A_r\) in \(\mathscr{G}^r(A)\) determines a unique oriented vector space \(\mathscr{A}_r = \mathscr{G}^1(A_r)\), consisting of all vectors \(a\) which satisfy the equation \(a \wedge A_r = 0\). Indeed, \(\mathscr{A}_r\) is a subspace of \(\mathscr{A}_n\). Thus, every nonzero \(r\)-blade in \(\mathscr{G}^r(A)\) determines a unique oriented \(r\)-dimensional subspace of \(\mathscr{A}_n = \mathscr{G}^1(A)\). Conversely, each oriented \(r\)-dimensional subspace \(\mathscr{A}_r\) of \(\mathscr{A}_n\) determines a unique unit \(r\)-blade \(I_r\), `the direction' of \(\mathscr{A}_r\). This one-to-one correspondence between oriented subspaces and unit blades makes it possible to describe every relation between subspaces by an algebraic relation or equation for the corresponding blades. For example, the fact that \(\mathscr{A}_r = \mathscr{G}^1(I_r)\) is a subspace of \(\mathscr{A}_n = \mathscr{G}^1(I)\) is expressed algebraically by the fact that the direction \(I_r\) is a factor of the unit \(n\)-blade \(I\), that is, there exists a unique unit \((n-r)\)-blade \(I_{n-r}\) such that
+\[
+I_r I_{n-r} = I.
+\]
+
+\vspace{1em}
+\noindent This can be solved for \(I_{n-r} = I_r^{\dagger} I\). The subspace \(\mathscr{A}_{n-r} = \mathscr{G}^1(I_{n-r})\) (disregarding orientation) often called the \textit{orthogonal complement} of \(\mathscr{A}_r\) (with respect to \(\mathscr{A}_n\)). Thus, orthogonal complements are easily represented or determined by a factorization of the pseudoscalar. With this example as an illustration, we assert that \(\mathscr{G}(\mathscr{A}_n)\) \textit{can be interpreted as an algebra of directions in} \(\mathscr{A}_n\), because it completely characterizes the so-called `lattice of subspaces of \(\mathscr{A}_n\)'. We elaborate on this theme throughout the rest of the chapter.
+
+\vspace{1em}
+\noindent A word about nomenclature is in order. Because we always use the word `vector' to refer to a one-vector in geometric algebra, we find it convenient to distinguish
+
+\section*{Geometric Algebra - Page 20}
+
+\noindent between the terms `vector space' and `linear space'. We use the word `linear space' in the usual sense, and, as usual, we take a vector space always to be a linear space, but more, we always assume that the elements of a vector space have the multiplicative properties of a one-vector in Geometric Algebra.
+
+\vspace{1em}
+\noindent The expression (2.8b) for the projection of a vector into \(\mathscr{A}_n\) can be generalized to an algebraic expression for the orthogonal projection \(P_A(B)\) of any multivector \(B\) into \(\mathscr{G}(\mathscr{A}_n)\); specifically,
+\begin{equation}
+\begin{aligned}
+P_A(B) &= (B \cdot A) \cdot A^{-1} = A^{-1} \cdot (A \cdot B) \\
+&= P_I(B) = (B \cdot I) \cdot I^{\dagger} = I^{\dagger} \cdot (I \cdot B) = (-1)^{n(n-1)/2} (B \cdot I) \cdot I,
+\end{aligned}
+\tag{2.9a}
+\end{equation}
+where \(A^{-1} = |A|^{-1} I^{\dagger} = (-1)^{n(n-1)/2} |A|^{-1} I\). Unfortunately, Eqn. (2.9a) gives \(P(\langle B \rangle) = 0\) and \(P(B_{\bar{n}}) = 0\) because of the convention (1.21b), but of course the projection operator should have the properties
+\begin{equation}
+P(\langle B \rangle) = \langle B \rangle, \tag{2.9b}
+\end{equation}
+\begin{equation}
+P(B_{\bar{n}}) = \langle B \rangle_n \cdot AA^{-1}. \tag{2.9c}
+\end{equation}
+
+\noindent To ensure this, we can stipulate that (2.9a) does not apply to scalars or pseudoscalars and postulate (2.9b, c) separately. Or, whenever we use (2.9a), we can disregard the exceptional convention (1.21b) and require that (1.21a) define the inner product even for zero grades, in which case (2.9b, c) follow from (2.9a). Desirable as this convention is when we work with (2.9a), it cannot be adopted universally without complicating many other formulas such as (1-1.28) and (1-1.41).
+
+\vspace{1em}
+\noindent Now let us consider the properties of (2.9a) in more detail. If \(B\) is a simple \(s\)-vector, then \(B \cdot A\) is simple, so it is factorizable into a product of \(|n-s|\) vectors when \(s \neq n\), that is \(B \cdot A = c_1 c_2 \dots c_{|s-n|}\); moreover, if \(s > n\), then \(c_k \cdot A = 0\) for each vector factor \(c_k\); but if \(s < n\), then \(c_k \wedge A = 0\) for each \(c_k\). Hence
+\begin{equation}
+P_A(B_{\bar{s}}) = 0 \quad \text{if } s > n, \tag{2.10a}
+\end{equation}
+and
+\begin{equation}
+P_A(B_{\bar{s}}) = B_{\bar{s}} \cdot AA^{-1} \quad \text{if } s \leq n. \tag{2.10b}
+\end{equation}
+
+\noindent Equation (2.10b) differs from (2.9a) only in the absence of a `dot', but that difference makes it much easier to use. For example, the right side of (2.10b) makes it obvious that
+\begin{equation}
+P_A(B_{\bar{s}}) = B_{\bar{s}} \quad \text{if } B_{\bar{s}}A = B_{\bar{s}} \cdot A. \tag{2.11}
+\end{equation}
+
+\vspace{1em}
+\noindent It is usually convenient to take (2.11) as the `defining property' of \(\mathscr{G}(A)\). To show that it is equivalent to the definition of \(\mathscr{G}(A)\) as the algebra generated by vectors in \(\mathscr{A}_n\), it is necessary to prove the assertion that
+\begin{equation}
+P_A(B) = B \quad \text{iff } B \text{ is in } \mathscr{G}(A)^{\ast}. \tag{2.12}
+\end{equation}
+
+\vspace{2em}
+\noindent \rule{4cm}{0.4pt} \\
+\footnotesize \noindent * `iff' means `if and only if'.
+
+\section*{Geometric Algebra - Page 21}
+
+\noindent This assertion has already been proved for one-vectors in connection with (2.8). The proof for a simple \(s\)-vector can be accomplished by factoring it into a product of vectors as shown in the argument following Eqn. (2.9). Then only linearity is needed to complete the proof for an arbitrary multivector.
+
+\vspace{1em}
+\noindent The projection operator defined by (2.9) has the following general properties in addition to those already mentioned.
+\begin{equation}
+P(\alpha B + \beta C) = \alpha P(B) + \beta P(C), \tag{2.13a}
+\end{equation}
+\begin{equation}
+P(\langle B \rangle_r) = \langle P(B) \rangle_r, \tag{2.13b}
+\end{equation}
+\begin{equation}
+P(P(B)) = P(B), \tag{2.13c}
+\end{equation}
+\begin{equation}
+P(C \wedge B) = P(C) \wedge P(B), \tag{2.13d}
+\end{equation}
+\begin{equation}
+P(BC) = BP(C) \quad \text{if } P(B) = B. \tag{2.13e}
+\end{equation}
+
+\noindent The abbreviation \(P = P_A\) is convenient when a single projection is of interest. It will be noted that, because of (2.13b), (2.13e) includes the important special case
+\begin{equation}
+P(B \cdot C) = B \cdot P(C) \quad \text{if } P(B) = B, \tag{2.13f}
+\end{equation}
+but, in general, \(P(B \cdot C) \neq P(B) \cdot P(C)\).
+
+\vspace{1em}
+\noindent In general, the relation between two different projection operators, say \(P_A\) and \(P_B\), is quite complicated, though it is algebraically determined by (2.9). However, the relation has a simple form in two important special cases. If
+\begin{equation}
+BA = B \wedge A, \tag{2.14a}
+\end{equation}
+then we have the operator equations*
+\begin{equation}
+P_B P_A = P_B + P_A, \tag{2.14b}
+\end{equation}
+\begin{equation}
+P_B P_A = P_A P_B = 0. \tag{2.14c}
+\end{equation}
+
+\vspace{2em}
+\noindent \rule{4cm}{0.4pt} \\
+\footnotesize \noindent * In (2.14c) and (2.15c) we have followed the common convention of indicating a composite linear function by juxtaposition; thus (2.14c) is equivalent to
+\[
+P_B P_A(a) \equiv P_B(P_A(a)) = P_A(P_B(a)) = 0 \quad \text{for all } a.
+\]
+
+\vspace{1em}
+\noindent Unfortunately this convention increases the risk of confusing symbols which denote functions with symbols which denote multivectors, because the geometric product is also indicated by juxtaposition. The problem is even more serious when the value of a function is represented by the same symbol as the function itself, a practice which is common and convenient if not absolutely necessary in application to physics. However the resulting simplification of equations seems to be worth the risk, and we will often rely on the context in which an equation is presented to remove any ambiguity in its meaning. Thus, only the context tells us that (2.14c) is not to be interpreted as the equation
+\[
+P_B(a) P_A(a) = 0.
+\]
+
+\section*{Geometric Algebra - Page 22}
+
+\noindent But if
+\begin{equation}
+BA = B \cdot A \quad \text{and} \quad \text{grade } B \leq \text{grade } A, \tag{2.15a}
+\end{equation}
+then
+\begin{equation}
+P_B A = P_A - P_B, \tag{2.15b}
+\end{equation}
+\begin{equation}
+P_B P_A = P_A P_B = P_B. \tag{2.15c}
+\end{equation}
+
+\vspace{1em}
+\noindent It will be noted that \(\mathscr{G}(B)\) is a subalgebra of \(\mathscr{G}(A)\) if and only if (2.15a) is satisfied. Also it should be understood that the projection operators \(P_A, P_B\) are well defined only for simple multivectors \(A, B\).
+
+\vspace{1em}
+\noindent Now let us say a few words about the proofs of the projection properties. Properties (2.13a, b) are obvious consequences of the linearity of the inner product and, in fact, were used in the argument leading from (2.9) to (2.10). A simple variation of that argument also proves (2.13c). Let us prove (2.13d) for \(C_r = \langle C \rangle_r\) and \(B_s = \langle B \rangle_s\). If \(r+s > n\), then the left side of (2.13d) vanishes by (2.10a), while the right side vanishes because of (2.12) and (2.10a). If \(r+s \leq n\), then, with the help of (2.10b), (1.25b) and (1.23b), we have
+\begin{align*}
+P(C_r \wedge B_s)A &= (C_r \wedge B_s) \cdot A \\
+&= C_r \cdot (B_s \cdot A) = C_r \cdot (P(B_s) \cdot A) \\
+&= [C_r \wedge P(B_s)] \cdot A = (-1)^{rs} [P(B_s) \wedge C_r] \cdot A \\
+&= (-1)^{rs} [P(B_s) \wedge P(C_r)] \cdot A = P(C_r) \wedge P(B_s)A.
+\end{align*}
+
+\vspace{1em}
+\noindent The proof of (2.13e) will be given presently, after the duality of inner and outer products has been explained. The simple proofs of (2.14) and (2.15) will be omitted, as they involve no new ideas.
+
+\vspace{1em}
+\noindent We call the \(|n-s|\)-vector \(B_s \cdot A\) the \textit{dual} of \(B_s\) \textit{by the} \(n\)-\textit{blade} \(A\), because it can be regarded as an algebraic formulation of the duality concept in geometry. Often the word `dual' is used when the direction but not the magnitude and orientation of \(A\) is specified. Ordinarily, the notion of duality by \(A\) is applied only to elements of \(\mathscr{G}(A)\), but the more general notion used here ties up duality with orthogonal projections. Thus, the right side of (2.9a) says that, except for a possible difference in sign, the projection into \(\mathscr{G}(A)\) is equal to the `double dual' by the pseudoscalar \(A\). If \(B\) is any multivector in \(\mathscr{G}(A)\), then (2.12) guarantees that the dual of \(B\) is simply \(BA\).
+
+\vspace{1em}
+\noindent From (1.41b, d) we get the valuable relations
+\begin{equation}
+(a \cdot B)A = a \wedge (BA) \quad \text{if } a \wedge A = 0, \tag{2.16a}
+\end{equation}
+\begin{equation}
+(a \wedge B)A = a \cdot (BA) \quad \text{if } a \wedge A = 0. \tag{2.16b}
+\end{equation}
+
+\section*{Geometric Algebra - Page 23}
+
+\noindent These relations hold even if \(B\) is not in \(\mathscr{G}(A)\). As a special case of (2.16), we have
+\begin{equation}
+(a \cdot B) \cdot A = a \wedge (B \cdot A) \quad \text{if } a \wedge A = 0, \tag{2.17a}
+\end{equation}
+\begin{equation}
+(a \wedge B) \cdot A = a \cdot (B \cdot A) \quad \text{if } a \wedge A = 0. \tag{2.17b}
+\end{equation}
+
+\vspace{1em}
+\noindent In accordance with the definition of dual in the last paragraph, (2.17) may be interpreted as expressing the \textit{duality of inner and outer products} with respect to \(A\). In (2.17a), the dual of the inner product is equal to the outer product of the dual. Of course, by virtue of (2.11), Eqns. (2.16) and (2.17) are identical if \(B\) is in \(\mathscr{G}(A)\), in which case (2.16) is the better expression of duality. It should be noted that the duality of inner and outer products is independent of the scale and orientation of \(A\).
+
+\vspace{1em}
+\noindent By iterating (2.16) it is easy to establish the more general `duality relations'
+\begin{equation}
+C_{\bar{r}} \cdot B_{\bar{s}}A = C_{\bar{r}} \wedge (B_{\bar{s}}A) \quad \text{for } r \leq s, \tag{2.18a}
+\end{equation}
+\begin{equation}
+C_{\bar{r}} \wedge B_{\bar{s}}A = C_{\bar{r}} \cdot (B_{\bar{s}}A) \quad \text{for } r \leq |s-n|, \tag{2.18b}
+\end{equation}
+where \(C_{\bar{r}}A = C_{\bar{r}} \cdot A\), \(r \leq n\) and \(A = A_{\bar{n}}\). The restrictions on grade in (2.18) arise from using (1.25b) in the proof.
+
+\vspace{1em}
+\noindent We now prove that
+\begin{equation}
+P(aB) = aP(B) \quad \text{if } P(a) = a. \tag{2.19}
+\end{equation}
+
+\noindent The more general result (2.13e) is easily obtained from this by iteration and linearity. Since, by (2.10a), \(\langle P(B) \rangle_r = P(\langle B \rangle_r)\) vanishes if \(r > n\), it suffices to prove (2.19) under the assumption that \(\langle B \rangle_r = 0\) for \(r > n\), in which case we can use (2.10b) along with (2.16). Thus,
+\[
+P(a \cdot B)A = (a \cdot B) \cdot A = a \wedge (B \cdot A) = a \wedge [P(B)A] = a \cdot P(B)A.
+\]
+
+\noindent From (2.13d) we see immediately that \(P(a \wedge B) = a \wedge P(B)\), so (2.19) can be established by using
+\[
+P(aB) = P(a \cdot B + a \wedge B) = P(a \cdot B) + P(a \wedge B).
+\]
+
+\vspace{1em}
+\noindent To describe properties of vector spaces it is common to introduce set relations and operations such as inclusion, intersection and addition. However, since every vector space is determined by a pseudoscalar, the properties of vector spaces can alternatively be described as algebraic properties of their pseudoscalars. This approach admits a more detailed description of vector spaces, because the Geometric Algebra has more structure than the set language. Furthermore, it has considerable computational advantages, because, as will be shown in chapter 3, all linear vector functions can be expressed in terms of geometric algebra. To translate the `set language' into Geometric Algebra, we give a small dictionary.
+
+\section*{Geometric Algebra - Page 24}
+
+\noindent A vector space \(\mathscr{B} = \mathscr{G}^1(B)\) is a subspace of \(\mathscr{A} = \mathscr{G}^1(A)\) if and only if its pseudoscalar \(B\) is a \textit{factor} of \(A\); that is,
+\begin{equation}
+\mathscr{B} \subset \mathscr{A} \text{ iff } BA = B \cdot A, \text{ grade } B < \text{grade } A. \tag{2.20}
+\end{equation}
+
+\noindent This is a fairly obvious consequence of our previous results, particularly (2.11). Of course, we assume that \(A\) and \(B\) are simple here. That the equation \(BA = B \cdot A\) says that \(B\) is a factor of \(A\) is clear by solving the equation; thus,
+\[
+A = BB^{-1} \cdot A = BA' = B \wedge A'.
+\]
+
+\noindent The factor \(A' = B^{-1} \cdot A\) orthogonal to \(B\) is obviously unique. However, there are other factorizations of \(A\) of the form \(A = B \wedge C \neq BC\), where \(C\) is not uniquely determined by \(B\) and \(A\), though \(C\) is simple and \(\text{grade } C = \text{grade } A' = \text{grade } A - \text{grade } B\). Such a factorization is equivalent to the decomposition of a vector space into a \textit{direct sum} of subspaces, as expressed by
+\begin{equation}
+\mathscr{G}^1(B \wedge C) = \mathscr{G}^1(B) \cup \mathscr{G}^1(C). \tag{2.21}
+\end{equation}
+
+\noindent The outer product describes more than the direct sum, because it relates orientations of the spaces. So we can interpret (2.21) as specifying an oriented direct sum of oriented vector spaces.
+
+\vspace{1em}
+\noindent If \(C\) is a \textit{common factor of maximum grade} of blades \(A\) and \(B\), then
+\begin{equation}
+\langle AB \rangle_{\text{max}} = (A \cdot C) \wedge (C^{-1} \cdot B) = A' \wedge B', \tag{2.22}
+\end{equation}
+where \(\langle AB \rangle_{\text{max}}\) denotes the part of \(AB\) with maximum grade, and \(A', B'\) are blades satisfying \(A = A' \wedge C, B = C^{-1} \wedge B'\). Furthermore, the vector space \(\mathscr{G}^1(C)\) is the intersection of vector spaces \(\mathscr{A} = \mathscr{G}^1(A)\) and \(\mathscr{B} = \mathscr{G}^1(B)\);
+\begin{equation}
+\mathscr{G}^1(C) = \mathscr{G}^1(A) \cap \mathscr{G}^1(B) = \mathscr{A} \cap \mathscr{B}. \tag{2.23}
+\end{equation}
+
+\noindent The \textit{sum} \(\mathscr{A} \cup \mathscr{B}\) of vector spaces is related to the product \(AB\) by
+\begin{equation}
+\mathscr{A} \cup \mathscr{B} = \mathscr{G}^1(C \wedge \langle AB \rangle_{\text{max}}) = \mathscr{A} \cap \mathscr{B} + \mathscr{G}^1(\langle AB \rangle_{\text{max}}). \tag{2.24}
+\end{equation}
+
+\noindent If \(A\) and \(B\) have no common factor, then \(C = 0\) and \(\langle AB \rangle_{\text{max}} = A \wedge B\), so (2.24) reduces to
+\begin{equation}
+\mathscr{A} \cup \mathscr{B} = \mathscr{G}^1(A \wedge B). \tag{2.25}
+\end{equation}
+
+\noindent Thus, a nonvanishing outer product of blades describes the direct sum of nonintersecting vector spaces. Unfortunately, when blades have a nonvanishing common factor \(C\), that factor cannot be computed from products of \(A\) and \(B\) alone, so the intersection of vector spaces (2.23) cannot be determined without additional information needed to compute the common factor. We shall see what information is needed below.
+
+\section*{Geometric Algebra - Page 25}
+
+\noindent The correspondence between operations of set theory and geometric algebra can be made more direct by introducing a new operation defined in terms of inner and outer products. It will be convenient to introduce the notation
+\begin{equation}
+\tilde{A} \equiv A I^{\dagger} = A \cdot I^{\dagger} \tag{2.26}
+\end{equation}
+for the dual of a multivector \(A\) in \(\mathscr{G}(I)\), where \(I\) is a unit \(n\)-vector. The double dual is then
+\begin{equation}
+(\tilde{A})^{\sim} = (-1)^{n(n-1)/2} A. \tag{2.27}
+\end{equation}
+
+\noindent Now we can define the \textit{meet} \(A \vee B\) of multivectors \(A\) and \(B\) in \(\mathscr{G}(I)\) by
+\begin{equation}
+A \vee B \equiv (\tilde{A} \wedge \tilde{B}) \cdot I = (-1)^{n(n-1)/2} (\tilde{A} \wedge \tilde{B})^{\sim}. \tag{2.28}
+\end{equation}
+
+\noindent Multiplication by \(I^{\dagger}\) gives
+\begin{equation}
+(A \vee B)^{\sim} = \tilde{A} \wedge \tilde{B}. \tag{2.29}
+\end{equation}
+
+\noindent This exhibits the meet as the dual of the outer product. It is, of course, a disguised form for the duality between inner and outer products which we noted earlier. Indeed, if \(\text{grade } (A \wedge B) \leq n\), then (2.18b) implies
+\[
+(\tilde{A} \wedge \tilde{B}) \cdot I = \tilde{A} \cdot (\tilde{B}I) = \tilde{A} \cdot (BI^{\dagger}I) = \tilde{A} \cdot B.
+\]
+Hence (2.29) reduces to
+\begin{equation}
+A \vee B = \tilde{A} \cdot B = A \cdot I^{\dagger}B \quad \text{if grade } (\tilde{A} \wedge \tilde{B}) \leq n. \tag{2.30}
+\end{equation}
+
+\noindent Of course, \(\tilde{A} \wedge \tilde{B} = 0\) if \(\text{grade } (\tilde{A} \wedge \tilde{B}) > n\), so the meet vanishes if (2.30) is not satisfied. With this proviso, we could define the meet by (2.30) instead of (2.28).
+
+\vspace{1em}
+\noindent From the associativity and the anticommutivity (1.23b) of the outer product it follows that the meet is associative and anticommutative with
+\begin{equation}
+A \vee B = (-1)^{(n-r)(n-s)}B \vee A \tag{2.31}
+\end{equation}
+if \(r\) and \(s\) are the grades of blades \(A\) and \(B\). Also, from (2.26) we have
+\[
+\tilde{A} \cdot I = (AI^{\dagger})I = A = II^{\dagger}A = \tilde{I}A
+\]
+so from (2.30) we obtain
+\begin{equation}
+A \vee I = I \vee A = A. \tag{2.32}
+\end{equation}
+
+\vspace{1em}
+\noindent Now, a geometrical interpretation for the meet is determined by choosing \(I\) to be the pseudoscalar for
+\begin{equation}
+\mathscr{A} \cup \mathscr{B} = \mathscr{G}^1(I). \tag{2.33}
+\end{equation}
+
+\section*{Geometric Algebra - Page 26}
+
+\noindent So from (2.24) we have
+\[
+C \wedge \langle AB \rangle_{\text{max}} = C \langle AB \rangle_{\text{max}} = \lambda I,
+\]
+where \(\lambda\) is a scale factor to be chosen for our convenience. With this choice for \(I\), if \(A\) and \(B\) have a common factor, then their duals do not; hence,
+\[
+\langle AB \rangle_{\text{max}} = \langle AI^{\dagger}IB \rangle_{\text{max}} = (-1)^k \langle \tilde{A}\tilde{B} \rangle_{\text{max}} = (-1)^k \tilde{A} \wedge \tilde{B},
+\]
+where \(k\) is an integer. Now we choose \(\lambda\) so that
+\[
+C^{-1} \wedge \tilde{A} \wedge \tilde{B} = C^{-1} \tilde{A} \wedge \tilde{B} = I^{\dagger},
+\]
+which can be solved for
+\[
+C = \tilde{A} \wedge \tilde{B}I = A \vee B.
+\]
+Therefore,
+\begin{equation}
+\mathscr{A} \cap \mathscr{B} = \mathscr{G}^1(A \vee B) \tag{2.34}
+\end{equation}
+when (2.33) is satisfied. It should be noted that \(A \vee B\) specifies an orientation for \(\mathscr{A} \cap \mathscr{B}\) which depends on the orientation of \(\mathscr{B} \cup \mathscr{A}\) as well as the orientations of \(\mathscr{A}\) and \(\mathscr{B}\). The relation among these orientations is completely determined by (2.30).
+
+\vspace{1em}
+\noindent The meet was introduced originally by Doublet \textit{et al.} [Do] as part of a formalism that is completely equivalent to geometric algebra as we have used it here. Rota and Stein [Ro] have shown that the formalism is `ideally suited to proving theorems in projective geometry', and the reader is referred to their article for an account of this application.
+
+\vspace{1em}
+\noindent For the last entry in our dictionary, let us see how to formulate the notion of a factor space in terms of Geometric Algebra. First, note that if a \(k\)-blade \(B\) is a factor of a \((k+1)\)-blade \(C\), then the set of all vectors \(a\) satisfying the equation \(a \wedge B = C\) is a \(k\)-plane with tangent (or pseudoscalar) \(B\); the \(k\)-plane is located a distance \(d = a \wedge BB^{-1} = CB^{-1}\) from the origin. If \(\mathscr{B} = \mathscr{G}^1(B)\) is a subspace of \(\mathscr{A} = \mathscr{G}^1(A)\), then the set of all such \(k\)-planes in \(\mathscr{A}\) is the factor space \(\mathscr{A}/\mathscr{B}\). Clearly \(\mathscr{A}/\mathscr{B}\) is isomorphic to the set of all \((k+1)\)-vectors in \(\mathscr{G}^{k+1}(A)\) with a common \(k\)-factor \(B\); that is,
+\begin{equation}
+\mathscr{A}/\mathscr{B} = \mathscr{G}^1(A)/\mathscr{G}^1(B) \leftrightarrow \{a \wedge B\}. \tag{2.35}
+\end{equation}
+
+\noindent The right side of the isomorphism (2.35) is not only easier to handle algebraically, but it is often more \textit{apropos} in applications than the factor space.
+
+\section*{Geometric Algebra - Page 27}
+
+\noindent\textbf{1-3. Frames and Matrices}
+
+\vspace{1em}
+\noindent It is common practice to define a vector as an ordered set of scalars and develop matrix algebra as a system for manipulating such sets. In contrast, geometric algebra puts vectors and scalars on an equal footing and makes a definite algebraic distinction between vectors and ordered sets of scalars. With the geometric product it is easier to base matrix algebra on manipulations with ordered sets of vectors instead of scalars.
+
+\vspace{1em}
+\noindent This section shows how geometric algebra simplifies and systematizes the fundamental procedures for finding orthogonal and reciprocal sets of vectors, as well as solving vector equations for scalar coefficients, of which Cramer's rule is a special case. The construction of a basis for finite dimensional geometric algebras is also carried out.
+
+\vspace{1em}
+\noindent The last topic of the section is the construction of an inverse for a nonsingular matrix. The construction requires that a matrix be regarded as a set of inner products of vectors, which is always possible. This is one of many examples which show, we think, that matrix algebra is best developed \textit{ab initio} from a multilinear algebra of vectors.
+
+\vspace{1em}
+\noindent We say that a set of vectors \(a_1, a_2, \dots, a_n\) is a \textit{frame} if and only if \(A_n = a_1 \wedge a_2 \wedge \dots \wedge a_n \neq 0\). With the complete Geometric Algebra and the identities of Section 1 at our disposal, we find that the condition \(A_n \neq 0\) is usually easier to use than the equivalent condition that the \(a_k\) be linearly independent. Manipulations with a frame can be simplified by orthogonalization or by introducing a reciprocal frame, so we discuss these procedures first.
+
+\vspace{1em}
+\noindent A given frame \(a_1, a_2, \dots, a_n\) can be systematically orthogonalized by constructing the `graded sequence' of multivectors
+\begin{equation}
+A_0 = 1, \quad A_1 = a_1, \quad A_2 = a_1 \wedge a_2, \dots, \quad A_n = a_1 \wedge \dots \wedge a_n, \tag{3.1}
+\end{equation}
+from which we obtain the frame of vectors
+\begin{equation}
+c_k = A_k^{\dagger} A_{k-1}, \quad k = 1, \dots, n. \tag{3.2}
+\end{equation}
+
+\noindent The \(c_k\) are obviously orthogonal, because (3.2) expresses each \(c_k\) as the dual by \(A_k\) of the pseudoscalar \(A_{k-1}\) of the vector space spanned by the preceding \(k-1\) vectors. Using (1.51), we find that
+\begin{equation}
+c_1 c_2 \dots c_k = A_k |A_{k-1}|^2 \dots |A_2|^2 |A_1|^2, \tag{3.3}
+\end{equation}
+which gives a factorization of \(A_k\) into a product of orthogonal vectors. The \(c_k\) can be used as they are in (3.2) or, by iterating with (1.25b) and (1.38) or using (1.40), they can be expressed as a linear combination of the \(a_k\). For \(k > 1\), we find
+\begin{equation}
+\begin{aligned}
+c_k &= A_{k-1}^{\dagger} \cdot A_k = (a_{k-1} \wedge \dots \wedge a_1) \cdot (a_1 \wedge \dots \wedge a_k) \\
+&= \sum_{i=1}^k (-1)^{k-i} (a_{k-1} \wedge \dots \wedge a_1) \cdot (a_1 \wedge \dots \breve{a}_i \dots \wedge a_k) a_i.
+\end{aligned}
+\tag{3.4}
+\end{equation}
+
+\section*{Geometric Algebra - Page 28}
+
+\noindent The coefficients on the right side of (3.4) are determinants and their properties will be discussed in more detail in the next section. In particular, we will show how to express the determinant in terms of the inner products \(a_j \cdot a_k\), which is especially desirable when the inner products are given at the beginning of a problem.
+
+\vspace{1em}
+\noindent The result (3.4) is identical to that obtained by the so-called `Gram-Schmidt orthogonalization process', but it is in a more compact and perspicuous form.
+
+\vspace{1em}
+\noindent When one desires to work directly with a given frame \(a_1, a_2, \dots, a_n\) of nonorthogonal vectors, it is convenient to introduce the \textit{reciprocal frame} \(a^1, \dots, a^n\), specified by the equations
+\begin{equation}
+a^k \cdot a_j = \delta_j^k, \tag{3.5}
+\end{equation}
+where \(j, k = 1, \dots, n\), and \(\delta_j^k\), the \textit{Kronecker delta}, has the value \(1\) if \(j = k\) and the value \(0\) if \(j \neq k\). Geometric Algebra makes it especially easy to solve equation (3.5) for the \(a^k\) in terms of the \(a_j\). Note that
+\begin{equation}
+A_n = a_1 \wedge \dots \wedge a_n = (-1)^{k-1} a_k \wedge (a_1 \wedge \dots \breve{a}_k \dots \wedge a_n). \tag{3.6}
+\end{equation}
+
+\noindent So, because of (1.26b) and (2.16b)
+\begin{align*}
+\delta_j^k &= a_j \wedge [(-1)^{k-1} a_1 \wedge \dots \breve{a}_k \dots \wedge a_n] A_n^{-1} \\
+&= a_j \cdot [(-1)^{k-1} (a_1 \wedge \dots \breve{a}_k \dots \wedge a_n) A_n^{-1}].
+\end{align*}
+
+\noindent Hence
+\begin{equation}
+a^k = (-1)^{k-1} a_1 \wedge \dots \breve{a}_k \dots \wedge a_n A_n^{-1} \tag{3.7}
+\end{equation}
+satisfies (3.5). The frames \(\{a^k\}\) and \(\{a_k\}\) are sometimes said to be \textit{dual} to one another, because, as (3.7) shows, \(a^k\) is the dual of an \((n-1)\)-vector composed of the \(a_j\). Equation (3.7) is the most useful expression for the \(a^k\), but if desired we can get explicit expressions for the \(a^k\) as linear combinations of the \(a_k\) in the same way that we arrived at (3.4). Thus, according to (1.54) and (1.51),
+\[
+A_n^{-1} = \frac{A_n^{\dagger}}{A_n A_n^{\dagger}} = \frac{a_n \wedge \dots \wedge a_1}{(a_1 \wedge \dots \wedge a_n)(a_n \wedge \dots \wedge a_1)},
+\]
+so we get from (3.7),
+\begin{equation}
+\begin{aligned}
+a^k &= (-1)^{k-1} \frac{(a_1 \wedge \dots \breve{a}_k \dots \wedge a_n) \cdot (a_n \wedge \dots \wedge a_1)}{(a_1 \wedge \dots \wedge a_n) \cdot (a_n \wedge \dots \wedge a_1)} \\
+&= \sum_{i=1}^n (-1)^{k+i} \frac{(a_1 \wedge \dots \breve{a}_k \dots \wedge a_n) \cdot (a_n \wedge \dots \breve{a}_i \dots \wedge a_1) a_i}{(a_1 \wedge \dots \wedge a_n) \cdot (a_n \wedge \dots \wedge a_1)}.
+\end{aligned}
+\tag{3.8}
+\end{equation}
+
+\section*{Geometric Algebra - Page 29}
+
+\noindent While we are on the subject of frames, we may as well show how to construct a basis and its reciprocal for the complete Geometric Algebra \(\mathscr{G}(A_n)\) from a basis for \(\mathscr{G}^1(A_n)\). But the mere existence of a basis for \(\mathscr{G}(A_n)\) is all that we shall ever appeal to in the rest of the book, so the details of the following construction may be passed over without loss.
+
+\vspace{1em}
+\noindent From a frame \(\{a_k\}\) with pseudoscalar \(A_n = a_1 \wedge \dots \wedge a_n\), a basis for the space of \(r\)-vectors \(\mathscr{G}^r(A_n)\) can be constructed by outer multiplication, namely, the simple \(r\)-blades
+\begin{equation}
+a_{k_1} \wedge a_{k_2} \wedge \dots \wedge a_{k_r}, \quad 0 < k_1 < \dots < k_r \leq n. \tag{3.9}
+\end{equation}
+
+\noindent A dual basis can be constructed from the dual frame \(\{a^k\}\), namely
+\begin{equation}
+a^{j_1} \wedge a^{j_2} \wedge \dots \wedge a^{j_r}, \quad 0 < j_1 < \dots < j_r \leq n. \tag{3.10}
+\end{equation}
+
+\noindent Each such \(r\)-vector is the dual of an \((n - r)\)-vector, specifically
+\begin{equation}
+a^{j_1} \wedge \dots \wedge a^{j_r} = (-1)^{\sum_{i=1}^r (j_i - 1)} a_{j_{r+1}} \wedge \dots \wedge a_{j_n} A_n^{-1}, \tag{3.11}
+\end{equation}
+where \(0 < j_{r+1} < \dots < j_n \leq n\), and all the \(j\)'s are distinct integers. Equation (3.11) can be proved by using (2.11), (1.25b) and (1.38) as follows:
+\begin{equation}
+\begin{aligned}
+a^{j_1} A_n &= a^{j_1} (a_1 \wedge \dots \wedge a_n) = (-1)^{j_1 - 1} a_1 \wedge \dots \breve{a}_{j_1} \dots \wedge a_n \\
+a^{j_2} \wedge a^{j_1} A_n &= a^{j_2} \cdot [a^{j_1} \cdot A_n] = (-1)^{j_1 - 1} (-1)^{j_2 - 2} a_1 \wedge \dots \breve{a}_{j_1} \dots \breve{a}_{j_2} \dots \wedge a_n \\
+&\qquad \dots \\
+a^{j_r} \wedge \dots \wedge a^{j_1} A_n &= (-1)^{\sum_{i=1}^r (j_i - i)} a_{j_{r+1}} \wedge \dots \wedge a_{j_n}.
+\end{aligned}
+\tag{3.12}
+\end{equation}
+
+\noindent Division of (3.12) by \(A_n\) gives (3.11), since
+\begin{equation}
+a^{j_r} \wedge \dots \wedge a^{j_1} = (-1)^{r(r-1)/2} a^{j_1} \wedge \dots \wedge a^{j_r} = (-1)^r (-1)^{\sum_{i=1}^r j_i} a^{j_1} \wedge \dots \wedge a^{j_r}. \tag{3.13}
+\end{equation}
+
+\noindent The inner product of (3.9) with (3.10) can be evaluated with the help of (3.11); thus
+\begin{equation}
+\begin{aligned}
+(a_{k_1} \wedge \dots \wedge a_{k_r}) &\cdot (a^{j_1} \wedge \dots \wedge a^{j_r}) \\
+&= (-1)^{\sum_{i=1}^r (j_i - 1)} a_{k_r} \wedge \dots \wedge a_{k_1} \wedge a_{j_{r+1}} \wedge \dots \wedge a_{j_n} A_n^{-1} \\
+&= \delta_{k_1}^{j_1} \delta_{k_2}^{j_2} \dots \delta_{k_r}^{j_r}.
+\end{aligned}
+\tag{3.14}
+\end{equation}
+
+\section*{Geometric Algebra - Page 30}
+
+\noindent If \(r = n\), (3.14) gives \((a^n \wedge \dots \wedge a^1)(a_1 \wedge \dots \wedge a_n) = 1\), so
+\begin{equation}
+A^n \equiv a^n \wedge \dots \wedge a^1 = A_n^{-1}. \tag{3.15}
+\end{equation}
+
+\vspace{1em}
+\noindent The projection of an \(r\)-vector \(B_r\) into \(\mathscr{G}(A_n)\) can be expanded in a basis in \(\mathscr{G}^r(A_n)\). For \(1 \leq r \leq n\),
+\begin{equation}
+P(B_r) = (B_r \cdot A_n)A_n^{-1} = \sum_{j_1 < \dots < j_r} B_r \cdot (a_{j_r} \wedge \dots \wedge a_{j_1}) a^{j_1} \wedge \dots \wedge a^{j_r}. \tag{3.16}
+\end{equation}
+
+\noindent This can be used to supply the promised proof of (1.40). Multiplying (3.16) by \(A_n\) to get
+\[
+B_r \cdot A_n = \sum_{j_1 < \dots < j_r} B_r \cdot (a_{j_r} \wedge \dots \wedge a_{j_1}) (a^{j_1} \wedge \dots \wedge a^{j_r}) \cdot A_n,
+\]
+and substituting (3.12), we get (1.40) with the following expression for the permutation symbol:
+\begin{equation}
+\epsilon(j_1 \dots j_n) = (-1)^{\sum_{i=1}^r (j_i - i)}, \tag{3.17}
+\end{equation}
+which holds for \(j_1 < \dots < j_r\) and \(j_{r+1} < \dots < j_n\).
+
+\vspace{1em}
+\noindent As an application of (3.16), recall that we have shown that any \(r\)-dimensional subspace \(\mathscr{B}_r\) of the vector space \(\mathscr{A}_n = \mathscr{G}^1(A_n)\) is uniquely determined by specifying an \(r\)-blade \(B_r\). Expanding \(B_r\) in terms of a basis as in (3.16), we have
+\[
+B_r = \sum_{j_1 < \dots < j_r} \beta_{j_r \dots j_1} a^{j_1} \wedge \dots \wedge a^{j_r}.
+\]
+
+\noindent The ratios of the coefficients \(\beta_{j_r \dots j_1} = B_r \cdot (a_{j_r} \wedge \dots \wedge a_{j_1})\) are independent of the magnitude of \(B_r\); they are called the \textit{Plücker coordinates} of the space \(\mathscr{B}_r = \mathscr{G}^1(B_r)\) in the mathematical literature. Since \(B_r\) is simple, the \(\beta_{j_r \dots j_1}\) cannot be chosen freely, being constrained by the condition that \(B_r^{\dagger} B_r = |B_r|^2\). For example, for \(n = 4, r = 2\), we have \(B_r^{\dagger} \wedge B_r = 0\) which, when expressed as a condition on the coefficients, becomes
+\[
+\beta_{12}\beta_{34} + \beta_{31}\beta_{24} + \beta_{23}\beta_{14} = 0.
+\]
+
+\vspace{1em}
+\noindent We have no need for Plücker coordinates, because geometric algebra enables us to characterize the \(r\)-blade \(B_r\) directly by its algebraic properties without reference to coordinates.
+
+\vspace{1em}
+\noindent To get a compact notation for a basis in \(\mathscr{G}(A_n)\), we represent sets of indices by a single capital letter. We write
+\begin{equation}
+J = (j_1, \dots, j_n). \tag{3.18a}
+\end{equation}
+
+\section*{Geometric Algebra - Page 31}
+
+\noindent where \(j_k = k\) or \(0\). If we delete elements for which \(j_k = 0\), any one of the base blades (3.9) can be written in the form
+\begin{equation}
+a_J \equiv a_{j_1} \wedge a_{j_2} \wedge \dots \wedge a_{j_n}. \tag{3.18b}
+\end{equation}
+
+\noindent For the case when all the \(j_k\) vanish, we take \(a_J = a_{(0, \dots, 0)} = 1\). For the corresponding reciprocal blades we have the indices in opposite order;
+\begin{equation}
+a^J \equiv a^{j_n} \wedge \dots \wedge a^{j_2} \wedge a^{j_1}. \tag{3.18c}
+\end{equation}
+
+\noindent Evidently (3.14) can now be written in the form
+\begin{equation}
+a_K * a^J = \delta_K^J. \tag{3.19}
+\end{equation}
+
+\noindent The projection (2.9) of any multivector \(B\) into \(\mathscr{G}(A_n)\) can now be written
+\begin{equation}
+P(B) = \sum_J B * a^J a_J = \sum_J B * a_J a^J. \tag{3.20}
+\end{equation}
+
+\noindent Use of the scalar product in (3.20) (instead of the inner product as in (3.16)) is essential to pick out \(\langle B \rangle_r\) when \(a_J\) is an \(r\)-vector.
+
+\vspace{1em}
+\noindent Perhaps the most basic problem in linear algebra is to solve a vector equation of the form
+\begin{equation}
+a = \beta^1 b_1 + \beta^2 b_2 + \dots + \beta^n b_n \tag{3.21}
+\end{equation}
+for the scalar coefficients \(\beta^k\). A unique solution exists if \(B_n = b_1 \wedge \dots \wedge b_n \neq 0\), which, we repeat, is the most felicitous way of expressing that the \(b_k\) are linearly independent. The solution is easily effected by outer-multiplying equation (3.21) on the left by \(b_1 \wedge \dots \wedge b_{k-1}\) and on the right by \(b_{k+1} \wedge \dots \wedge b_n\) and noting that, by (1.26b), all terms on the right but one vanish leaving
+\[
+b_1 \wedge \dots \wedge b_{k-1} \wedge a \wedge b_{k+1} \wedge \dots \wedge b_n = \beta^k b_1 \wedge \dots \wedge b_n.
+\]
+
+\noindent Dividing by \(b_1 \wedge \dots \wedge b_n \neq 0\), we get \(\beta^k\) as the ratio of proportional or, better, \textit{codirectional} \(n\)-blades:
+\begin{equation}
+\beta^k = \frac{b_1 \wedge \dots \wedge b_{k-1} \wedge a \wedge b_{k+1} \wedge \dots \wedge b_n}{b_1 \wedge \dots \wedge b_n}. \tag{3.22}
+\end{equation}
+
+\noindent Division is well-defined in (3.22) since numerator and denominator commute. The appropriate way to get a definite real number from the right side of (3.22) is determined by the form in which our information is given. We consider one common way below.
+
+\vspace{1em}
+\noindent Instead of the vector Eqn. (3.21), we might have been given the system of \(n\) linear scalar equations in \(n\) unknowns \(\beta^k\):
+\begin{equation}
+a^j = b_k^j \beta^k, \quad j, k = 1, \dots, n. \tag{3.23}
+\end{equation}
+
+\section*{Geometric Algebra - Page 32}
+
+\noindent In (3.23) and often hereafter we use the convention that summation over all values of repeated pairs of upper and lower indices is understood.
+
+\vspace{1em}
+\noindent We can reformulate (3.23) as a vector equation of the form (3.21) by introducing any frame of vectors \(a_1, \dots, a_n\) and writing
+\begin{equation}
+a = \alpha^j a_j, \qquad b_k = b_k^j a_j. \tag{3.24}
+\end{equation}
+
+\noindent The solution of (3.23) is then given by (3.22), but we would like the answer in terms of the scalars \(\alpha^j\) and \(b_k^j\) given in (3.23). To accomplish this, we note that, because of (3.5), multiplication of (3.24) gives us back the scalars; thus,
+\begin{equation}
+\alpha^j = a^j \cdot a, \tag{3.25a}
+\end{equation}
+\begin{equation}
+b_k^j = a^j \cdot b_k. \tag{3.25b}
+\end{equation}
+
+\vspace{1em}
+\noindent Now, in the same way that we rationalize the denominator of a scalar fraction, we can `scalarize' the denominator of (3.22) by multiplying numerator and denominator by the \(n\)-vector \(a^n \wedge \dots \wedge a^1\). Noting that the product of any pair of the \(n\)-vectors is a scalar, we get from (3.22),
+\begin{equation}
+\beta^k = \frac{(b_1 \wedge \dots \wedge b_{k-1} \wedge a \wedge b_{k+1} \wedge \dots \wedge b_n) \cdot (a^n \wedge \dots \wedge a^1)}{(b_1 \wedge \dots \wedge b_n) \cdot (a^n \wedge \dots \wedge a^1)}. \tag{3.26}
+\end{equation}
+
+\noindent This result is the well-known \textit{Cramer's Rule} for the solution of a set of simultaneous linear equations. Equation (3.26) expresses \(\beta^k\) as a ratio of determinants, and we shall see in the next section how, using (3.25), these determinants can be evaluated in terms of the original scalars.
+
+\vspace{1em}
+\noindent An \(n \times n\) matrix \(b_k^j\) together with a frame of vectors \(\{a_k\}\) with pseudoscalar \(A_n = a_1 \wedge \dots \wedge a_n\) determines a linear transformation \(f\) of \(\mathscr{A}_n = \mathscr{G}^1(A_n)\) into \(\mathscr{A}_n\);
+\begin{equation}
+f \colon a_k \to f(a_k) = b_k = b_k^j a_j. \tag{3.27a}
+\end{equation}
+
+\noindent Conversely, the linear transformation \(f\) of a frame \(\{a_k\}\) with dual \(\{a^k\}\) determines the matrix
+\begin{equation}
+b_k^j = a^j \cdot b_k = a^j \cdot f(a_k). \tag{3.27b}
+\end{equation}
+
+\vspace{1em}
+\noindent If \(m\) is the largest grade of nonvanishing multivectors formed by outer multiplication of the \(b_k\), then \(f\) (or \(b_k^j\)) is said to have \textit{rank} \(m\). If the \(b_k\) are in \(\mathscr{G}^1(A_n)\), then \(b_k^j\) is said to be a \textit{matrix representation} of \(f\). It follows that \(f\) is a linear transformation of \(\mathscr{A}_n\) to an \(m\)-dimensional subspace \(\mathscr{B}_m = \mathscr{G}^1(B_m)\). A frame \(\{b^1, b^2, \dots, b^m\}\) dual to \(\{b_1, \dots, b_m\}\) can be defined as before.
+
+\vspace{1em}
+\noindent We say that \(f\) (or \(b_k^j\)) is \textit{nonsingular} if and only if \(B_n \equiv b_1 \wedge \dots \wedge b_n = f(a_1) \wedge \dots \wedge f(a_n) \neq 0\). If \(f\) is nonsingular, it has an inverse
+\begin{equation}
+f^{-1} \colon b_i \to f^{-1}(b_i) = a_i = a_i^j b_j \tag{3.28a}
+\end{equation}
+
+\section*{Geometric Algebra - Page 33}
+
+\noindent with associated matrix
+\begin{equation}
+a_i^j = b^i \cdot a_j = b^i \cdot f^{-1}(b_j). \tag{3.28b}
+\end{equation}
+
+\noindent The problem of finding \(f^{-1}\) from \(f\) is equivalent to the problem of finding the frame \(\{b^i\}\) dual to given \(\{b_k\}\). Equation (3.7) gives the solution immediately.
+\begin{equation}
+\begin{aligned}
+b^i &= (-1)^{i-1}(b_1 \wedge \dots \breve{b}_i \dots \wedge b_n) A^n (A^n)^{-1} B_n^{-1} \\
+&= (-1)^{i-1} \frac{(b_1 \wedge \dots \breve{b}_i \dots \wedge b_n) \cdot A^n}{A^n \cdot B_n},
+\end{aligned}
+\tag{3.29}
+\end{equation}
+where \(A^n = A_n^{-1}\). Substitution of (3.29) into (3.28b) gives
+\begin{equation}
+a_i^j = \frac{(b_1 \wedge \dots \wedge b_{i-1} \wedge a_j \wedge b_{i+1} \wedge \dots \wedge b_n) \cdot A^n}{A^n \cdot B_n}. \tag{3.30}
+\end{equation}
+
+\noindent From this one can identify the `classical adjugate matrix'
+\begin{equation}
+ad(b_i^j) = (b_1 \wedge \dots \wedge b_{i-1} \wedge a_j \wedge b_{i+1} \wedge \dots \wedge b_n) \cdot A^n. \tag{3.31}
+\end{equation}
+The quantity \(A^n B_n\) is the \textit{determinant} of \(f\) (or \(b_i^j\)); it will be discussed in the next section. Of course (3.30) is just a form of Cramer's rule (3.26).
+
+\vspace{1.5em}
+\noindent\textbf{1-4. Alternating Forms and Determinants}
+
+\vspace{1em}
+\noindent Alternating forms play a prominent role in many modern mathematical works. But when Geometric Algebra is used, alternating forms are much less important, because all their properties are merely simple special cases of the results in Section 1-1. Thus, many computations with forms are more easily carried out by using Geometric Algebra directly. In this section we briefly discuss a typical version of the `algebra of forms' primarily to show how it can be translated into Geometric Algebra.
+
+\vspace{1em}
+\noindent A determinant can be regarded as a special kind of alternating form. Indeed, a determinant is nothing more nor less than the scalar product of two blades. So we get even the more complicated expansion theorems for determinants immediately from our previous work.
+
+\vspace{1em}
+\noindent A scalar-valued function of \(r\) vector variables is said to be an \textit{alternating r-form} (or just an `\(r\)-form', for short) if it is skew-symmetric and linear in each argument. Section 2-3 will provide a simple proof that any \(r\)-form \(\alpha_r = \alpha_r(a_1, a_2, \dots, a_r)\) can be written in the form
+\begin{equation}
+\alpha_r = A_r^{\dagger} \cdot (a_1 \wedge a_2 \wedge \dots \wedge a_r) \tag{4.1}
+\end{equation}
+where \(A_r^{\dagger}\) is a unique \(r\)-vector.
+
+\section*{Geometric Algebra - Page 34}
+
+\noindent From (4.1) all the properties of \(r\)-forms are obvious consequences of the properties of inner and outer products already established. So it should be quite sufficient to list some of them:
+\begin{equation}
+\alpha_r \text{ is a linear function of each vector argument } a_k. \tag{4.2a}
+\end{equation}
+\begin{equation}
+\alpha_r \text{ vanishes if two arguments are equal.} \tag{4.2b}
+\end{equation}
+\begin{equation}
+\alpha_r \text{ changes sign if any two arguments are interchanged.} \tag{4.2c}
+\end{equation}
+\begin{equation}
+\alpha_r \text{ vanishes if any argument is zero.} \tag{4.2d}
+\end{equation}
+\begin{equation}
+\alpha_r \text{ vanishes if the arguments are linearly dependent.} \tag{4.2e}
+\end{equation}
+
+\vspace{1em}
+\noindent We now explain how fundamentals of the `algebra of forms' which has recently become popular with mathematicians can easily be formulated in terms of geometric algebra.\textsuperscript{*} By virtue of (4.1), the sum of \(r\)-forms \(\alpha_r\) and \(\beta_r\) is an \(r\)-form
+\begin{equation}
+\begin{aligned}
+\alpha_r + \beta_r &= A_r^{\dagger} \cdot (a_1 \wedge \dots \wedge a_r) + B_r^{\dagger} \cdot (a_1 \wedge \dots \wedge a_r) \\
+&= (A_r^{\dagger} + B_r^{\dagger}) \cdot (a_1 \wedge \dots \wedge a_r).
+\end{aligned}
+\tag{4.3}
+\end{equation}
+
+\noindent The `exterior product' of \(\alpha_r\) with an \(s\)-form \(\beta_s = B_s^{\dagger} \cdot (b_1 \wedge \dots \wedge b_s)\) is defined to be the \((r+s)\)-form
+\begin{equation}
+\alpha_r \wedge \beta_s \equiv (A_r \wedge B_s)^{\dagger} \cdot (a_1 \wedge \dots \wedge a_r \wedge b_1 \wedge \dots \wedge b_s). \tag{4.4}
+\end{equation}
+
+\noindent It follows from our results in Section 1 that the exterior product of forms is associative, distributive and satisfies
+\begin{equation}
+\alpha_r \wedge \beta_s = (-1)^{rs}\beta_s \wedge \alpha_r. \tag{4.5}
+\end{equation}
+
+\vspace{1em}
+\noindent An \((r-1)\)-form \(\alpha_{r-1}\), called the `contraction' of \(\alpha_r\) by the vector \(b\), is obtained by fixing the first argument of \(\alpha_r\) at the value \(b\); thus
+\begin{equation}
+\begin{aligned}
+\alpha_{r-1} &= \alpha_{r-1}(a_2, \dots, a_r) \equiv A_r^{\dagger} \cdot (b \wedge a_2 \wedge \dots \wedge a_r) \\
+&= (A_r^{\dagger} \cdot b) \cdot (a_2 \wedge \dots \wedge a_r) = (b \cdot A_r)^{\dagger} \cdot (a_2 \wedge \dots \wedge a_r).
+\end{aligned}
+\tag{4.6}
+\end{equation}
+
+\noindent This shows that \(\alpha_{r-1}\) is uniquely determined by the \((r-1)\)-vector \(b \cdot A_r\). Alternatively, \(\alpha_{r-1}\) can be regarded as the `interior product' of \(\alpha_r\) with the 1-form \(\beta_1 = b \cdot a_1\). The `interior product' of an \(r\)-form with an \(s\)-form can be defined (for \(r > s\)) to be the \((r-s)\)-form
+\begin{equation}
+\beta_s \cdot \alpha_r \equiv (B_s \cdot A_r)^{\dagger} \cdot (a_{s+1} \wedge \dots \wedge a_r). \tag{4.7}
+\end{equation}
+
+\vspace{2em}
+\noindent \rule{4cm}{0.4pt} \\
+\footnotesize \noindent * In Section 6-4 we discuss differential forms.
+
+\section*{Geometric Algebra - Page 35}
+
+\noindent This much should suffice to show how to make translations from the `language of forms' to Geometric Algebra. It should also be clear that within the language of geometric algebra the notions of interior and exterior products of forms are quite superfluous; they are supplanted by the more versatile inner and outer products of multivectors.
+
+\vspace{1em}
+\noindent An \(r\)-form \(\alpha_r = A_r^{\dagger} \cdot (b_1 \wedge \dots \wedge b_r)\) is said to be simple if \(A_r\) is simple. A \textit{determinant} of rank \(r\) is a simple \(r\)-form. Since \(A_r\) is simple, it can be factored into a product of vectors, \(A_r = a_1 \wedge a_2 \wedge \dots \wedge a_r\), and the determinant \(\alpha_r\) takes the form
+\begin{equation}
+\alpha_r = (a_r \wedge \dots \wedge a_1) \cdot (b_1 \wedge \dots \wedge b_r). \tag{4.8}
+\end{equation}
+
+\noindent The \(a_i\) are called `row vectors' and the \(b_k\) `column vectors' of the determinant \(\alpha_r\).
+
+\vspace{1em}
+\noindent Of course a determinant has all the properties (4.2a) to (4.2e) enumerated above for a general \(r\)-form, but it has additional properties because it is simple. Thus, by (1.45b) and (1.19),
+\begin{equation}
+(a_r \wedge \dots \wedge a_1) \cdot (b_1 \wedge \dots \wedge b_r) = (b_r \wedge \dots \wedge b_1) \cdot (a_1 \wedge \dots \wedge a_r), \tag{4.9}
+\end{equation}
+which shows that the value of a determinant is unaffected by an interchange of rows and columns. Moreover, using (1.23b), (1.25b) and (1.38), we obtain
+\begin{equation}
+\begin{aligned}
+\alpha_r &= (-1)^{j+1} (a_r \wedge \dots \breve{a}_j \dots \wedge a_1) \cdot [a_j \cdot (b_1 \wedge \dots \wedge b_r)] \\
+&= \sum_{k=1}^r (-1)^{j+k} a_j \cdot b_k (a_r \wedge \dots \breve{a}_j \dots \wedge a_1) \cdot (b_1 \wedge \dots \breve{b}_k \dots \wedge b_r).
+\end{aligned}
+\tag{4.10}
+\end{equation}
+
+\noindent This is the familiar expansion of a determinant by the \(j\)th row. To get a more general formula, use (1.23b) repeatedly to write \(A_r\) in the form
+\begin{equation}
+A_r = (-1)^{k_1 - 1 + k_2 - 2 + \dots + k_s - s} A_s \wedge A_{r-s}, \tag{4.11a}
+\end{equation}
+where
+\begin{equation}
+A_s = a_{k_1} \wedge \dots \wedge a_{k_s}, \qquad A_{r-s} = a_{k_{s+1}} \wedge \dots \wedge a_{k_r}, \tag{4.11b}
+\end{equation}
+and all the \(k_i\) are distinct positive integers not exceeding \(n\) such that \(k_1 < \dots < k_s\), \(k_{s+1} < \dots < k_r\). Using (1.25b) and then (1.40) and (3.17), we obtain
+\begin{equation}
+\alpha_r = \sum_{j_1 < \dots < j_s} (-1)^{\sum_{i=1}^s (k_i + j_i)} A_s^{\dagger} \cdot (b_{j_1} \wedge \dots \wedge b_{j_s}) A_{r-s}^{\dagger} \cdot (b_{j_{s+1}} \wedge \dots \wedge b_{j_r}). \tag{4.11c}
+\end{equation}
+
+\noindent This is the so-called `Laplace expansion' of a determinant by the rows \(k_1, k_2, \dots, k_s\).
+
+\begin{document}
+
+\section*{Geometric Algebra - Page 36}
+
+\noindent Successive application of the expansions (4.10) or (4.11) shows that \(\alpha_r = (a_r \wedge \dots \wedge a_1) \cdot (b_1 \wedge \dots \wedge b_r)\) is completely determined by the matrix of inner products \(a_i \cdot b_j\). Accordingly, \(\alpha_r\) is called the \textit{determinant of the matrix} \(a_i \cdot b_j\).
+
+\vspace{1em}
+\noindent The \textit{determinant} of the linear transformation \(f\) defined by (3.27) is defined to be the same as the \textit{determinant} of its associated matrix \(b_k^j = a^j \cdot b_k\); thus,
+\begin{equation}
+\begin{aligned}
+\det f \equiv \det b_k^j &= (a^n \wedge \dots \wedge a^1) \cdot (b_1 \wedge \dots \wedge b_n) \\
+&= A^n \cdot B_n = A^n B_n = \frac{B_n}{A_n}.
+\end{aligned}
+\tag{4.12}
+\end{equation}
+
+\noindent The important thing to note here is that \(A_n = a_1 \wedge \dots \wedge a_n\), \(A^n = A_n^{-1}\), and \(B_n\) are all pseudoscalars of the same vector space \(\mathscr{A}_n\); hence they are scalar multiples of one another, so it is permissible to remove the dot denoting inner product in (4.12); also, \(A_n\) commutes with \(B_n\), so division is unambiguously expressed by the usual notation used in scalar algebra. The value of \(\det b_k^j\) is completely independent of the choice of frame \(\{a^j\}\) in \(\mathscr{A}_n\). We prove this implicitly in Chapter 3 by giving a manifestly frame-free definition of \(\det f\) and showing that it is equivalent to (4.12).
+
+\vspace{1em}
+\noindent Multiplying (4.12) by \(A_n\), we get
+\begin{equation}
+B_n = (\det f)A_n. \tag{4.13}
+\end{equation}
+
+\noindent If \(f\) is followed by a linear transformation \(g\), the pseudoscalar \(B_n\) is mapped into
+\begin{equation}
+C_n = (\det g)B_n. \tag{4.14}
+\end{equation}
+
+\noindent Substituting (4.13) into (4.14), we obtain, for the composite transformation \(gf\) the well-known result
+\begin{equation}
+\det gf = (\det g)(\det f). \tag{4.15}
+\end{equation}
+
+\vspace{1em}
+\noindent The derivation of (4.15) from (4.12) depends crucially on the relation \(A^n \cdot B_n = A^n B_n\). This relation holds only because \(A^n\) and \(B_n\) are pseudoscalars of the same space, and so does not apply to all determinants. However, we can derive a generalization of (4.12) which has universal validity. To any pair of \(r\)-vectors \(A_r = a_1 \wedge \dots \wedge a_r\), \(B_r = b_1 \wedge \dots \wedge b_r\), we can associate a nonvanishing \(n\)-vector \(E_n = e_1 \wedge \dots \wedge e_n\) with the properties
+\begin{equation}
+A_r E_n = A_r \cdot E_n, \qquad B_r E_n = B_r \cdot E_n. \tag{4.16}
+\end{equation}
+
+\noindent This is equivalent to assuming that the \(a_j\) and \(b_k\) are elements of the vector space \(\mathscr{E}_n = \mathscr{G}^1(E_n)\) spanned by the frame \(\{e_k\}\) and its dual \(\{e^k\}\). It follows immediately from (2.12) and (3.16) that
+\begin{equation}
+\begin{aligned}
+A_r^{\dagger} \cdot B_r &= (a_r \wedge \dots \wedge a_1) \cdot (b_1 \wedge \dots \wedge b_r) \\
+&= \sum_{k_1 < \dots < k_r} A_r^{\dagger} \cdot (e^{k_r} \wedge \dots \wedge e^{k_1}) (e_{k_1} \wedge \dots \wedge e_{k_r}) \cdot B_r.
+\end{aligned}
+\tag{4.17}
+\end{equation}
+
+\end{document}

@@ -1,0 +1,201 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usetikzlibrary {arrows.meta, angles, quotes}
+
+\begin{document}
+
+\section*{Einführung}
+Wir beginnen mit ganz einfachen Sachen. Betrachten wir dazu erst einmal ein Rechteck.
+\begin{center}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at ( 0.0, 0.0);
+    \coordinate (A) at ( 3.0, 0.0);
+    \coordinate (B) at ( 3.0, 1.5);
+    \coordinate (C) at ( 0.0, 1.5);
+    \draw (O) -- (A) -- (B) -- (C) -- cycle;
+    % Buchstabe b links in der Mitte (an der Kante C-O)
+    \node[left] at ($(C)!0.5!(O)$) {$b$};
+
+    % Buchstabe a unten in der Mitte (an der Kante O-A)
+    \node[below] at ($(O)!0.5!(A)$) {$a$};
+
+    % Fläche rechts daneben (auf Höhe der Mitte des Punktes B und A)
+    \node[right] at (3.6, 0.75) {$A = a \cdot b$};
+\end{tikzpicture}
+\end{center}
+Neben dem Rechteck steht der Inhalt der Fläche. Dabei steht der große Buchstabe $A$ für Area (Fläche). Die Fläche wird also als Länge mal Höhe berechnet.
+
+Ziehen wir jetzt eine Diagonale von links oben nach rechts unten, teilen wir das Rechteck in zwei gleiche Teile. Füllen wir ein Dreieck mit grüner Farbe, haben wir folgendes erreicht:
+\begin{center}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at ( 0.0, 0.0);
+    \coordinate (A) at ( 3.0, 0.0);
+    \coordinate (B) at ( 3.0, 1.5);
+    \coordinate (C) at ( 0.0, 1.5);
+    \draw (O) -- (A) -- (B) -- (C) -- cycle;
+
+    % Buchstabe b links in der Mitte (an der Kante C-O)
+    \node[left] at ($(C)!0.5!(O)$) {$b$};
+
+    % Buchstabe a unten in der Mitte (an der Kante O-A)
+    \node[below] at ($(O)!0.5!(A)$) {$a$};
+
+    % Fläche rechts daneben (auf Höhe der Mitte des Punktes B und A)
+    \node[right] at (3.6, 0.75) {$A = \frac{a \cdot b}{2}$};
+    % Diagonale mit gefülltem Dreieck
+    \draw [draw=black, fill=green, opacity=0.5]
+    (O) -- (A) -- (C) -- cycle;
+\end{tikzpicture}
+\end{center}
+Damit ist zu sehen, dass die Fläche des Dreiecks halb so groß ist wie die des Rechtecks.
+Jetzt zeichnen wir ein anderes Dreieck in das Rechteck.
+\begin{center}
+\centering
+\begin{tikzpicture}[>=Stealth]
+    \coordinate (O) at ( 0.0, 0.0);
+    \coordinate (A) at ( 3.0, 0.0);
+    \coordinate (B) at ( 3.0, 1.5);
+    \coordinate (C) at ( 0.0, 1.5);
+    \draw (O) -- (A) -- (B) -- (C) -- cycle;
+
+    % Buchstabe b links in der Mitte (an der Kante C-O)
+    \node[left] at ($(C)!0.5!(O)$) {$b$};
+
+    % Buchstabe a unten in der Mitte (an der Kante O-A)
+    \node[below] at ($(O)!0.5!(A)$) {$a$};
+
+    % Diagonale mit gefülltem Dreieck
+    \coordinate (C) at ( 1.0, 1.5);
+    \draw [draw=black, fill=green, opacity=0.5]
+    (O) -- (A) -- (C) -- cycle;
+
+\end{tikzpicture}
+\end{center}
+Wie könnte man die Fläche dieses Dreiecks berechnen? Eine Idee ist es, von der Spitze des Dreiecks ein Lot zu zeichnen, um somit das Dreieck in zwei Teile zu zerlegen.
+
+\section{Herleitung des Flächeninhalts eines Dreiecks}
+
+Um die Fläche eines allgemeinen Dreiecks zu berechnen, können wir das Dreieck mithilfe eines \textbf{Lots} (der Höhe $h$) in zwei rechtwinklige Teildreiecke zerlegen.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, scale=1.2]
+
+    % --- LINKES BILD: Rechteck mit Lot im Dreieck ---
+    \coordinate (O) at (0.0, 0.0);
+    \coordinate (A) at (3.0, 0.0);
+    \coordinate (B) at (3.0, 1.5);
+    \coordinate (TopL) at (0.0, 1.5);
+    \coordinate (C) at (1.0, 1.5); % Spitze des Dreiecks
+    \coordinate (H) at (1.0, 0.0); % Fußpunkt des Lots
+
+    % Rechteck außen herum
+    \draw[dashed, gray] (O) -- (A) -- (B) -- (TopL) -- cycle;
+
+    % Grünes Dreieck
+    \draw [draw=black, fill=green!40, opacity=0.7] (O) -- (A) -- (C) -- cycle;
+
+    % Lot (Höhe h) einzeichnen
+    \draw[red, thick, dash dot] (C) -- (H) node[midway, right] {$h$};
+
+    % Beschriftung der Grundseitenabschnitte
+    \node[below] at ($(O)!0.5!(H)$) {$a_1$};
+    \node[below] at ($(H)!0.5!(A)$) {$a_2$};
+    \node[left] at ($(TopL)!0.5!(O)$) {$b$};
+
+    % --- RECHTES BILD: Getrennte Teilrechtecke ---
+    % Versatz nach rechts: Shift-X um 4.5 cm
+    \begin{scope}[xshift=4.5cm]
+
+        % Teilrechteck 1 (links, Breite a1 = 1.0)
+        \coordinate (O1) at (0.0, 0.0);
+        \coordinate (A1) at (1.0, 0.0);
+        \coordinate (B1) at (1.0, 1.5);
+        \coordinate (C1) at (0.0, 1.5);
+
+        \draw (O1) -- (A1) -- (B1) -- (C1) -- cycle;
+        \draw[fill=green!40, opacity=0.7] (O1) -- (A1) -- (B1) -- cycle;
+
+        \node[below] at (0.5, 0) {$a_1$};
+        \node[left] at (0, 0.75) {$h$};
+        \node[above] at (0.5, 1.5) {$A_1 = a_1 \cdot h$};
+
+        % Teilrechteck 2 (rechts, leicht getrennt mit 0.4cm Abstand, Breite a2 = 2.0)
+        \begin{scope}[xshift=1.4cm]
+            \coordinate (O2) at (0.0, 0.0);
+            \coordinate (A2) at (2.0, 0.0);
+            \coordinate (B2) at (2.0, 1.5);
+            \coordinate (C2) at (0.0, 1.5);
+
+            \draw (O2) -- (A2) -- (B2) -- (C2) -- cycle;
+            \draw[fill=green!40, opacity=0.7] (O2) -- (A2) -- (C2) -- cycle;
+
+            \node[below] at (1.0, 0) {$a_2$};
+            \node[right] at (2.0, 0.75) {$h$};
+            \node[above] at (1.0, 1.5) {$A_2 = a_2 \cdot h$};
+        \end{scope}
+    \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\begin{enumerate}
+    \item \textbf{Zerlegung der Grundseite:} Das Lot von der Spitze auf die Grundseite $a$ teilt diese in zwei Abschnitte $a_1$ und $a_2$, sodass gilt:
+    $$a = a_1 + a_2$$
+
+    \item \textbf{Betrachtung der Teilrechtecke:} Jedes der beiden Teildreiecke lässt sich in ein eigenes Teilrechteck einbetten:
+    \begin{itemize}
+        \item Das linke Teildreieck hat die Hälfte der Fläche des linken Teilrechtecks:
+        $$A_1 = \frac{1}{2} \cdot a_1 \cdot h$$
+        \item Das rechte Teildreieck hat die Hälfte der Fläche des rechten Teilrechtecks:
+        $$A_2 = \frac{1}{2} \cdot a_2 \cdot h$$
+    \end{itemize}
+
+    \item \textbf{Zusammenfügen der Gesamtfläche:} Die Gesamtfläche $A$ des Dreiecks ergibt sich aus der Summe der beiden Teildreiecke:
+    $$A = A_1 + A_2 = \frac{1}{2} \cdot a_1 \cdot h + \frac{1}{2} \cdot a_2 \cdot h$$
+
+    Durch Ausklammern von $\frac{1}{2} \cdot h$ erhalten wir die bekannte Formel:
+    $$A = \frac{1}{2} \cdot (a_1 + a_2) \cdot h \implies A = \frac{1}{2} \cdot a \cdot h$$
+\end{enumerate}
+
+Hier ist eine visuelle Vorstellung darüber, dass alle Dreiecke mit der gleichen Länge $a$ und der gleichen Höhe $h$ identische Flächeninhalte haben.
+
+\begin{center}
+\centering
+\begin{tikzpicture}[>=Stealth, scale=1.1]
+    % Parallele Geraden (die Stäbe)
+    \draw[thick, gray] (-1.0, 0.0) -- (4.5, 0.0) node[right] {};
+    \draw[thick, gray] (-1.5, 1.5) -- (4.5, 1.5) node[right] {};
+
+    % Grundseite a (fester Stab)
+    \coordinate (O) at (0.0, 0.0);
+    \coordinate (A) at (3.0, 0.0);
+    \draw[ultra thick, blue] (O) -- (A) node[midway, below] {$a$};
+
+    % Erstes Dreieck (Spitze links verschoben)
+    \coordinate (B1) at (-0.5, 1.5);
+    \draw [draw=black, fill=green!40, opacity=0.6] (O) -- (A) -- (B1) -- cycle;
+
+    % Zweites Dreieck (Spitze in der Mitte)
+    \coordinate (B2) at (1.8, 1.5);
+    \draw [draw=black, fill=green!40, opacity=0.4] (O) -- (A) -- (B2) -- cycle;
+
+    % Drittes Dreieck (Spitze rechts verschoben)
+    \coordinate (B3) at (3.2, 1.5);
+    \draw [draw=black, fill=green!40, opacity=0.2] (O) -- (A) -- (B3) -- cycle;
+
+    % Gestrichelte Höhe h zur Demonstration
+    \draw[red, dashed] (1.8, 1.5) -- (1.8, 0.0) node[midway, right] {$h$};
+
+\end{tikzpicture}
+\end{center}
+
+Du kannst dir vorstellen, dass die untere Seite des Dreiecks ein fester Stab ist und die Spitze des Dreiecks auf einem anderen Stab bewegbar mit zwei Gummibändern verbunden ist. Bewegst du die Spitze entlang des oberen Stabes, bleibt die Fläche des Dreiecks immer gleich.
+
+\end{document}
